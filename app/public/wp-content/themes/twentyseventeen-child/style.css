@@ -12,4 +12,8 @@ Tags: light, dark, two-columns, right-sidebar, responsive-layout, accessibility-
 Text Domain: twenty-seventeen-child
 */
 
-// Custom styles go here 
+/** Custom styles go here **/
+
+.page-id-12 .wp-custom-header img{
+    background-image: url(http://fastfireproject.local/wp-content/uploads/2020/02/bigstock-Downtown-Denver-Colorado-75641905.jpg);
+}

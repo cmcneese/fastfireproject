@@ -11,3 +11,9 @@ function my_theme_enqueue_styles() {
     );
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+
+/** Enqueues/Adds FontAwesome **/
+add_action( 'wp_enqueue_scripts', 'crunchify_enqueue_fontawesome' );
+function crunchify_enqueue_fontawesome() {
+        wp_enqueue_style('font-awesome', 'https://cdn.crunchify.com/wp-content/icon/font-awesome/css/font-awesome.min.css');
+}
