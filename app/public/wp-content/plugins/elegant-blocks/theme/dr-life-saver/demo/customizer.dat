@@ -1,0 +1,35 @@
+a:4:{s:8:"template";s:7:"bizberg";s:4:"mods";a:14:{i:0;b:0;s:18:"nav_menu_locations";a:2:{s:6:"menu-1";i:2;s:6:"footer";i:6;}s:18:"custom_css_post_id";i:290;s:11:"custom_logo";i:15;s:19:"footer_social_links";a:5:{i:0;a:2:{s:4:"icon";s:17:"fab fa-facebook-f";s:4:"link";s:1:"#";}i:1;a:2:{s:4:"icon";s:14:"fab fa-twitter";s:4:"link";s:1:"#";}i:2;a:2:{s:4:"icon";s:16:"fab fa-instagram";s:4:"link";s:1:"#";}i:3;a:2:{s:4:"icon";s:14:"fab fa-youtube";s:4:"link";s:1:"#";}i:4;a:2:{s:4:"icon";s:13:"fab fa-reddit";s:4:"link";s:1:"#";}}s:14:"header_padding";a:2:{s:3:"top";s:4:"15px";s:6:"bottom";s:4:"15px";}s:13:"header_search";b:0;s:13:"header_button";b:0;s:19:"header_button_label";s:10:"Contact US";s:12:"banner_title";s:34:"The Hospital of the  Future, Today";s:15:"banner_subtitle";s:31:"Entrust your health our doctors";s:12:"banner_image";s:95:"http://dr-life-saver-lite.cyclonethemes.com/wp-content/uploads/sites/33/2019/07/doctor-ipad.jpg";s:14:"excerpt_length";s:2:"25";s:16:"sidebars_widgets";a:2:{s:4:"time";i:1562917505;s:4:"data";a:2:{s:19:"wp_inactive_widgets";a:6:{i:0;s:8:"search-2";i:1;s:14:"recent-posts-2";i:2;s:17:"recent-comments-2";i:3;s:10:"archives-2";i:4;s:12:"categories-2";i:5;s:6:"meta-2";}s:9:"sidebar-2";a:5:{i:0;s:8:"search-3";i:1;s:10:"archives-3";i:2;s:17:"recent-comments-3";i:3;s:14:"recent-posts-3";i:4;s:11:"tag_cloud-2";}}}}s:7:"options";a:7:{s:9:"site_icon";s:1:"0";s:33:"jetpack_content_post_details_date";i:1;s:39:"jetpack_content_post_details_categories";i:1;s:33:"jetpack_content_post_details_tags";i:1;s:35:"jetpack_content_post_details_author";i:1;s:36:"jetpack_content_post_details_comment";i:1;s:23:"nav_menus_created_posts";a:0:{}}s:6:"wp_css";s:694:".book_an_appointment_wrapper input,.book_an_appointment_wrapper select{
+	width:100%;
+}
+
+@media only screen and (max-width: 823px) {
+	
+	.medical-service-section .home-service-title-wrapper .uagb-infobox .uagb-ifb-text-wrap{
+		display:none;
+	}
+	
+	.service-detail-wrapper-left p.uagb-ifb-desc{
+		margin-bottom:15px !important;
+	}
+	
+	.service-detail-wrapper-right p.uagb-ifb-desc{
+		margin-bottom:25px !important;
+	}
+	
+	.service-detail-wrapper-right .uagb-ifb-icon-wrap{
+		margin-bottom:15px;		
+	}
+	
+	.service-detail-wrapper-left .uagb-infobox__outer-wrap{
+		margin-bottom:30px;
+	}
+	
+	.service-detail-wrapper-left{
+		margin-bottom:40px
+	}
+	
+	.service-detail-wrapper-right{
+		margin-top:40px;
+	}
+	
+}";}

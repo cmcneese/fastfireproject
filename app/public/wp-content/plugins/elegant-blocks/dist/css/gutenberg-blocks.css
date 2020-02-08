@@ -1,0 +1,554 @@
+/*---------------------------------------------------------------------------------
+ * Gutenberg Styles - used for both editor and front-end display
+ * Enqueue this style sheet in both of theme's enqueue_block_editor_assets and enqueue_block_assets actions.
+ *
+ * gutenberg-blocks.css - Version 3.9.3
+ *
+ * As Gutenberg adds more blocks these will likely need updating
+ *
+ * Gutenberg provides some default styling for some blocks, but the final content
+ * will usually follow default theme styling.
+ *
+ * These styles supply specific block styling where overrides are needed to match the theme.
+ * They could be included in the standard theme style.css, but this file gets loaded for
+ * the Gutenberg editor to help make the editor match the theme.
+ *
+ * There are also other HTML elements that need styling to match the theme
+ *
+ * Note that this file will loaded via the enqueue_block_assets action, which load for
+ * both the editor and front-end displays
+ *
+ * --------------------------------------------------------------------------------- */
+ 
+/* Weaver Xtreme uses #content to wrap all page and post content */
+ 
+#content *[class^="wp-block-"] {    /* put a margin at the bottom of each block */
+    margin-bottom:      1.5em;
+}
+ 
+/* some helper classes exclusive to Gutenberg for this theme */
+ 
+ 
+.block-no-vertical-margins {
+    margin-top:         0 !important;
+    margin-bottom:      0 !important;
+}
+ 
+.block-no-bottom-margin {
+    margin-bottom:      0 !important;
+}
+ 
+.block-1em-vertical-margins {
+    margin-top:         1em !important;
+    margin-bottom:      1em !important;
+}
+ 
+.block-1em-bottom-margin {
+    margin-bottom:      1em !important;
+}
+ 
+.block-border {
+    border:             1px solid #222;
+    padding:            0.5em 1.0em;
+}
+ 
+.block-border-bottom {
+    border-bottom:      1px solid #222;
+    padding-bottom:     1.0em;
+}
+ 
+.block-no-border { border: none !important;}
+ 
+.block-rounded,
+.block-rounded-all{
+    border-radius:      8px !important;
+    padding:            1.0em 1.5em;
+}
+ 
+.block-rounded-top {
+    border-top-left-radius:             8px;
+    border-top-right-radius:            8px;
+    padding-top:                        1.0em;
+}
+ 
+.block-rounded-bottom {
+    border-bottom-left-radius:          8px;
+    border-bottom-right-radius:         8px;
+    padding-bottom:                     1.0em;
+}
+ 
+.block-rounded-left {
+    border-top-left-radius:             8px;
+    border-bottom-left-radius:          8px;
+    padding-left:                       1.0em;
+}
+ 
+.block-rounded-right {
+    border-top-right-radius:            8px;
+    border-bottom-right-radius:         8px;
+    padding-bottom:                     1.0em;
+}
+ 
+.block-bg-transparent-gray {
+    background-color:           rgba(0,0,0,0.1) !important;     /* !important makes it work in the editor, too */
+}
+ 
+ 
+/* Blockquotes
+ * Blockquotes needed a bit of styling to match the theme default.
+ **/
+blockquote.wp-block-quote {
+    background:     rgba(128, 128, 128, 0.1);
+    border-width:   0;
+    border-left:    4px solid rgba(128, 128, 128, 0.4) !important;
+    margin:         1.5em;
+    overflow:       auto;
+    padding:        1em 1.5em 1em 1.2em;
+    width:          90%;
+}
+ 
+.wp-block-quote p {
+    font-style:     italic;
+    font-size:      1em;
+    margin:         0;
+}
+ 
+ 
+.wp-block-quote cite {
+    border-width:   0;
+    color:          inherit;
+    display:        block;
+    font-style:     normal;
+    font-weight:    bold;
+    margin-left:    3em;
+    margin-top:     .5em;
+}
+ 
+ 
+/* =================== Audio =================== */
+ 
+.wp-block-audio {}
+ 
+/* =================== Block Columns =================== */
+.wp-block-columns {
+    grid-column-gap: 1.0em;     /* leave spacing between columns */
+}
+ 
+.wp-block-columns *[class^="wp-block-"] {   /* use the column gap for spacing */
+    margin:         0;
+}
+ 
+/* =================== Buttons =================== */
+ 
+.wp-block-button {
+    border-radius:  3px;
+    line-height:    1.25;
+    padding:        .6em 1em;
+    text-align:     center;
+}
+ 
+.wp-block-button a {
+    border:         0;
+    font-weight:    bold;
+}
+ 
+.wp-block-button:not([style]) a:hover,
+.wp-block-button:not([style]) a:focus {
+    color:          #fff;
+}
+ 
+.wp-block-button.alignwide,
+.wp-block-button.alignfull {
+    display:        block;
+}
+ 
+ 
+ 
+/* =================== Categories =================== */
+ 
+ 
+.wp-block-categories {}
+ 
+.wp-block-categories-list ul,
+.wp-block-categories-list li {
+    list-style:     none;
+    margin:         0;
+    padding:        0;
+}
+ 
+.wp-block-categories-list li {
+    padding:        0.25em 0;
+}
+ 
+.wp-block-categories-list li:not(:last-child) {
+    border-bottom: 1px dashed rgba(0,0,0,0.2);
+}
+ 
+.wp-block-categories-list ul ul {
+    padding-left:       2em;
+}
+ 
+.wp-block-categories-list ul ul li:last-child {
+    padding-bottom:     0;
+}
+ 
+.wp-block-categories-dropdown {}
+ 
+ 
+ 
+/* =================== Code =================== */
+ 
+/* =================== Preformatted =================== */
+ 
+/* Overrides to match theme */
+.wp-block-code,
+.wp-block-preformatted {
+    background:         rgba(128, 128, 128, 0.1);
+    border:             1px solid #aaaaaa;
+    border-bottom-color:    #cccccc;
+    border-radius:      2px;
+    font-family:        'Inconsolata', monospace;
+    font-size:          .8em;
+    height:             auto;
+    margin:             0;
+    margin-bottom:      1.5em;
+    outline:            none;
+    overflow:           auto;
+    padding:            6px 10px;
+    vertical-align:     middle;
+    width:              100%;
+    word-wrap:          break-word;
+    white-space:        pre-wrap;
+}
+ 
+.wp-block-code .blocks-plain-text {
+    background:         transparent;
+    border:             none !important;
+    color:              inherit !important;
+    font-family:        inherit!important;
+    font-size:          0.8em;
+    margin:             0 !important;
+    overflow-x:         auto!important;
+    padding:            0 !important;
+}
+ 
+ 
+ 
+/* =================== Cover Images =================== */
+ 
+.wp-block-cover-image {                 /* make them tall */
+    min-height:         50vw;
+    height:             100%;
+}
+ 
+.wp-block-cover-image.has-parallax {    /* this makes a nice looking parallax window */
+    min-height:          25vw;
+}
+ 
+/*
+ * iOS has problems with parallax cover images (unlike Android devices) - they display some
+ * random portion of the image that seems to be a dark background with no detail. Yuck!
+ * Weaver Xtreme detects iOS devices and defines .is-ios for those devices. This rule
+ * changes cover images to scroll instead of fixed which has much nicer display.
+ */
+.is-ios .wp-block-cover-image.has-parallax {
+    background-attachment: scroll;
+}
+ 
+ 
+.wp-block-cover-image.has-background-dim {}
+ 
+#content .wp-block-cover-image.has-parallax {   /* no margin for wide parallax images  */
+    margin-bottom:      0;
+}
+ 
+/* see more code in the Full Width Section */
+ 
+ 
+/* =================== Dropcaps =================== */
+ 
+.has-drop-cap {}
+ 
+/* Galleries */
+ul.wp-block-gallery,
+ul.wp-block-gallery li {
+    padding:            0;
+}
+ 
+/* Images */
+.wp-block-image {}
+ 
+.wp-block-image.aligncenter {
+    margin:             0 auto;
+}
+ 
+ 
+@media (max-width: 767px) {
+    figure.wp-block-image.alignleft {
+        max-width:      50%;                    /* make responsive */
+    }
+ 
+    figure.wp-block-image.alignright {
+        max-width:      50%;                    /* make responsive */
+    }
+}
+ 
+figure.wp-block-image.alignleft {
+    margin:             .5em 1.0em 1.0em 0;     /* this leaves margins when float-left or float-right */
+}
+ 
+figure.wp-block-image.alignright {
+    margin:             .5em 0em 1.0em 1.0em;   /* this leaves margins when float-left or float-right */
+}
+ 
+figure.wp-block-image.aligncenter {
+    margin:             1.0em auto 1.0em auto;  /* this leaves margins when aligncenter */
+}
+ 
+figure.wp-block-image {
+    margin:             0;                      /* make the default Gutenberg style: no margins */
+}
+ 
+#content .wp-block-image figcaption {           /* custom styling for .wp-block-image figcaption - make a bit closer to the image in #content, not editor */
+    margin:             -.25em 0 .25em 0;
+}
+ 
+ 
+/* =================== Embed =================== */
+ 
+.wp-block-embed {
+    clear:              both;
+}
+ 
+*[class^="wp-block-embed-"] {
+    clear:              both;
+}
+ 
+ 
+ 
+/* =================== Latest Posts =================== */
+ 
+.wp-block-latest-posts__post-date {
+    color:              inherit;
+    margin-bottom:      0;
+    opacity:            0.8;
+}
+ 
+.wp-block-latest-posts,
+.wp-block-latest-posts li {
+    list-style:         none;
+    margin:             0;
+}
+ 
+.wp-block-latest-posts li {
+    padding:            0.25em 0;
+}
+ 
+#content .wp-block-latest-posts li {
+    padding:            0.25em 2em;
+}
+ 
+.wp-block-latest-posts li:not(:last-child) {
+    border-bottom:      1px dashed rgba(0,0,0,0.2);
+}
+ 
+.wp-block-latest-posts.is-grid li {
+    border:             0;
+}
+ 
+ 
+/* =================== Pullquotes =================== */
+ 
+.wp-block-pullquote {
+    border:             2px dotted rgba(0,0,0,0.25);
+    background:         rgba(0,0,0,0.15);
+    box-shadow:         0px 0px 0px 10px rgba(0,0,0,0.15);
+    color:              inherit;
+    padding:            1.5em 0.75em;
+}
+ 
+.wp-block-pullquote > p {
+    font-family:        inherit;
+}
+ 
+.wp-block-pullquote cite {
+    color:              inherit;
+    opacity:            0.8;
+}
+ 
+ 
+ 
+/* =================== Separator =================== */
+ 
+.wp-block-separator {
+    background-color:   #ccc;
+    border:             none;
+    box-sizing:         content-box;
+    height:             4px;
+    margin:             1.0em auto;
+    max-width:          90%;
+    width:              90%;
+}
+ 
+ 
+/* =================== Tables ===================
+ *
+ * Overrides to match theme table styling
+ *
+ */
+ 
+.wp-block-table {
+    display:            table;
+}
+ 
+.wp-block-table th {
+    padding:            4px 4px;
+    text-align:         left;
+}
+ 
+.wp-block-table td {
+    margin:             0;
+    padding:            4px 4px;
+}
+ 
+ 
+ 
+/* =================== Text Columns =================== */
+ 
+@media only screen and ( max-width: 580px ) {   /* for phones */
+    .wp-block-text-columns,
+    .wp-block-text-columns.aligncenter {
+        display:        block;
+    }
+ 
+    .wp-block-text-columns.columns-2 .wp-block-column,
+    .wp-block-text-columns.columns-3 .wp-block-column,
+    .wp-block-text-columns.columns-4 .wp-block-column {
+        float:          none;
+        margin-left:    0;
+        margin-right:   0;
+        width:          100%;
+    }
+}
+ 
+ 
+ 
+/* =================== Verse =================== */
+ 
+.wp-block-verse {
+    background:         rgba(128, 128, 128, 0.1);
+    border:             none;
+    border-width:       0;
+    border-left:        4px solid rgba(128, 128, 128, 0.4);
+    box-shadow:         none;
+    font-family:        'Alegreya', serif;
+    font-size:          1em;
+    font-style:         italic;
+    margin:             1.5em;
+    padding:            1em 1.5em 1em 1.2em;
+    width:              90%;
+}
+ 
+ 
+ 
+/* =================== Video =================== */
+.wp-block-video {}
+ 
+.wp-block-video video,
+.wp-block-video iframe {
+    max-width:          100%;
+}
+ 
+/* =================== Full and Wide =================== */
+ 
+@media screen and (max-width: 767px) {  /* mobile */
+    *[class^="wp-block-"].alignleft,
+    *[class^="wp-block-"].alignright {
+        max-width:      75%;
+    }
+}
+ 
+.wp-block-cover-image.alignwide,
+.wp-block-cover-image.aligncenter {             /* This rule makes the image full width on desktops */
+        width:          100%;
+        margin-left:    auto;
+        margin-right:   auto;
+}
+ 
+.wp-block-cover-image.alignright {
+    width:              30%;
+    margin-left:        1.5em;
+}
+ 
+.wp-block-cover-image.alignleft {
+    width:              30%;
+    margin-right:       1.5em;
+}
+ 
+ 
+/*
+ * If you want to extend these to your theme support when Gutenberg is not installed,
+ * then they need to be in the theme's main style.css. Here, they support Gutenberg paragraphs.
+ *
+ */
+ 
+.alignfull,
+.alignwide,
+.aligncenter {
+    clear:              both;
+}
+ 
+.wp-block-cover-image {         /* make cover images display more responsively */
+    background-position:    center center;
+}
+ 
+/*
+ * Wide and full make sense only on wide screens, so we wrap it all with the @media.
+ * Extending images and areas to full width (beyond the normal content width) requires
+ * overflow to be visible, and this can cause problems if there are sidebars being displayed.
+ * Weaver Xtreme adds a couple of classes to the <body> so the full and wide width can be extended
+ * only on full width pages.
+ *
+ * Note that editor internally styles wide and full.
+ */
+@media (min-width: 768px) {
+ 
+    .wp-block-cover-image.alignfull,
+    .wp-block-gallery.alignfull,
+    .wp-block-image.alignfull img {
+        margin-left:    calc(50% - 50vw);
+        margin-right:   calc(50% - 50vw);
+        max-width:      1000%;
+        width:          100vw;
+    }
+ 
+    /* these are non-image based blocks, and look better with a bit of a left/right margin */
+ 
+    .wp-block-columns.alignfull,
+    .wp-block-text-columns.alignfull,
+    .wp-block-table.alignfull,
+    .wp-block-preformatted.alignfull,
+    .wp-block-button.alignfull,
+    .wp-block-verse.alignfull,
+    .wp-block-latest-posts.alignfull,
+    .wp-block-categories.alignfull,
+    .wp-block-pullquote.alignfull,
+    [class^="wp-block-embed"].alignfull,
+    p.alignfull  {
+        margin-left:    calc(45% - 45vw) !important;    /* Weaver Xtreme needs this to override theme's native .alignfull */
+        margin-right:   calc(45% - 45vw) !important;
+        max-width:      1000%;
+        width:          auto;
+    }
+
+    /* alignwide is much simpler, and looks good on all browsers with 25% */
+ 
+    .alignwide {
+        margin-left:    calc(25% - 25vw);
+        margin-right:   calc(25% - 25vw);
+        width:          auto;
+        max-width:      1000%;
+    }
+} /* end of @media */
+ 
+/* end */

@@ -1,0 +1,135 @@
+/*
+Theme Name: Building Construction Architecture
+Template: bizberg
+Text Domain: building-construction-architecture
+Author: Cyclone Themes
+Author URI: https://cyclonethemes.com/
+Theme URI: https://cyclonethemes.com/downloads/building-construction-architecture-lite/
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Description: Building Construction Architecture is child theme of Bizberg WordPress Theme. Building Construction Architecture theme is specially designed for construction business/companies, but it can also be used for any other business, corporate, lawyers, agencies, education, architecture firm, furniture companies and many more. It is a feature-rich theme with gorgeous layout. The very base of the theme is built on Bootstrap framework which makes the theme very handy and east to use. This WordPress theme is fully responsive, cross-browser compatible, translation ready & SEO friendly. If you run into any problem while using our theme, you can refer to extensive documentation or contact our friendly support team. It fully supports Gutenberg, all the sections are made from Gutenberg.
+Tags: custom-logo,custom-menu,featured-images,threaded-comments,translation-ready,left-sidebar,right-sidebar,grid-layout,theme-options,blog,news,portfolio
+Version: 0.3
+*/
+
+.breadcrumb-wrapper{
+	padding: 130px 0;
+}
+
+@media only screen and (max-width: 1281px){
+
+	.slicknav_btn {
+	    top: 40px;
+	}	
+
+	.slicknav_nav {
+	    top: 96px;
+	}
+
+	.navbar.sticky .slicknav_nav {
+	    top: 71px;
+	}
+
+}
+
+@media only screen and (max-width: 991px){
+	.navbar.sticky .slicknav_nav {
+	    top: 64px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 900px){
+
+	.slicknav_btn {
+	    top: 27px;
+	}
+
+	.slicknav_nav {
+	    top: 71px;
+	}
+
+	.breadcrumb-wrapper {
+	    padding: 60px 0;
+	}
+
+}
+
+@media(max-width: 767px){
+	.navbar.sticky .slicknav_nav{top: 66px;}
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  
+  	.slicknav_btn {
+	    top: 35px;
+	}	
+
+	.navbar.sticky .slicknav_btn {
+    	top: 26px;
+	}	
+
+	.breadcrumb-wrapper {
+	    padding: 60px 0;
+	}
+  
+}
+
+@media (max-width: 639px) {
+	.navbar.sticky .slicknav_nav{top: 61px;}
+	.breadcrumb-wrapper {
+	    padding: 60px 0;
+	}
+}
+
+.breadcrumb-wrapper .section-title{
+	text-align: left;
+	width: 100%;
+}
+
+.breadcrumb-wrapper .section-title h1{
+	padding-left: 0;
+}
+
+.page-fullwidth-transparent-header.theme-sticky .navbar.sticky, .navbar.sticky{
+	transition: none;
+}
+
+.become_teacher_form_wrapper input,.become_teacher_form_wrapper label {
+    width: 100%;
+}
+
+.become_teacher_form_wrapper .wpcf7-mail-sent-ok{
+	color:#fff;
+}
+
+@media only screen and (max-width: 823px) {
+	
+	.medical-service-section .home-service-title-wrapper .uagb-infobox .uagb-ifb-text-wrap{
+		display:none;
+	}
+	
+	.service-detail-wrapper-left p.uagb-ifb-desc{
+		margin-bottom:15px !important;
+	}
+	
+	.service-detail-wrapper-right p.uagb-ifb-desc{
+		margin-bottom:25px !important;
+	}
+	
+	.service-detail-wrapper-right .uagb-ifb-icon-wrap{
+		margin-bottom:15px;		
+	}
+	
+	.service-detail-wrapper-left .uagb-infobox__outer-wrap{
+		margin-bottom:30px;
+	}
+	
+	.service-detail-wrapper-left{
+		margin-bottom:40px
+	}
+	
+	.service-detail-wrapper-right{
+		margin-top:40px;
+	}
+	
+}

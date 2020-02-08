@@ -1,0 +1,1 @@
+2020/02/02 22:31:36 [error] 56#0: *1 connect() to unix:/var/run/php-fpm.sock failed (111: Connection refused) while connecting to upstream, client: 172.17.0.1, server: , request: "GET / HTTP/1.0", upstream: "fastcgi://unix:/var/run/php-fpm.sock:", host: "fastfireproject.local"

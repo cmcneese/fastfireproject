@@ -1,0 +1,593 @@
+/*---------------------------------------------------------------------------------
+ * https://weavertheme.com/example-theme-editor-styling-for-gutenberg/
+ *
+ * gutenberg-base-editor-style.css - Version 3.9.3
+ *
+ * Provides base styling for Gutenberg Editor
+ * Enqueue this style sheet in theme's enqueue_block_editor_assets action.
+ *
+ * This does not style the font-end view, but just the editor.
+ * Front-end base styling for Gutenberg blocks provided by gutenberg-blocks.css
+ *
+ * Note that this file will loaded via the enqueue_block_editor_assets action, which loads
+ * for the editor only
+ *
+ * --------------------------------------------------------------------------------- */
+ 
+/*
+ * Theme Styles found in Theme main style file
+ *
+ * Rather than loading the entire theme style sheet for the editor, the theme specific
+ * styles relevant to page post content should be duplicated in these styles. Here, they
+ * are mixed in with the .wp-block styles, but prefixed by .mce-content-body.
+ *
+ */
+ 
+/* ====== Widths ====== */
+ 
+/*
+ * Front-end default width set by theme. This comes close to making the editor match the theme's 1100px
+ * width fairly closely on a wide desktop view.
+ *
+ * This width does not account for sidebars, which might make the actual width on the front-end display smaller.
+ */
+ 
+ 
+.edit-post-visual-editor .editor-post-title,
+.edit-post-visual-editor .editor-block-list__block {
+    max-width:          1100px;
+}
+ 
+.edit-post-visual-editor .editor-block-list__block[data-align="wide"] {
+    max-width:          1300px;
+}
+ 
+.edit-post-layout {
+    background-color:   #FFF;
+    box-sizing:         border-box;
+}
+
+.edit-post-layout .editor-post-title {
+    color:              inherit;
+    background-color:   transparent;
+    font-weight:        bold;
+    margin-bottom:      .5em;
+    padding-bottom:     0;
+    padding-top:        0;
+    position:           relative;
+}
+ 
+ 
+/* ======= blockquote ====== */
+ 
+.mce-content-body blockquote {
+    background:     rgba(128, 128, 128, 0.1);
+    border-left:    4px solid rgba(128, 128, 128, 0.4) !important;
+    margin:         1.5em auto  !important;
+    overflow:       auto;
+    padding:        0.8em 1.5em 1em 1.2em;
+    width:          90%;
+}
+ 
+.mce-content-body blockquote cite {
+    font-style:     normal;
+    font-weight:    bold;
+}
+ 
+.mce-content-body blockquote p {
+    font-style:     italic;
+    font-size:      1em;
+    margin-bottom:  0;
+}
+ 
+.mce-content-body em,
+.mce-content-body i {
+    font-style:     italic;
+}
+ 
+.mce-content-body cite {            /* cite is supposed to be used only in a quote or blockquote */
+    border-width:   0;
+    display:        block;
+    margin-left:    3em;
+    margin-top:     .5em;
+}
+ 
+.mce-content-body blockquote em,
+.mce-content-body blockquote i {
+    font-style:     italic;
+}
+ 
+ 
+ 
+/* ====== Cover Images ====== */
+/*
+ * Following styling assumes the theme treats block-cover-image as a fullwidth parallax image.
+ * They won't display as full width in the editor, but will extend to margins.
+ *
+ */
+ 
+.editor-block-list__block .wp-block-cover-image {
+    height:             50vh;
+    margin-left:        auto;
+    margin-right:       auto;
+    min-height:         400px;
+    width:              100%;
+}
+ 
+.editor-block-list__block .wp-block-cover-image.alignfull {     /* This makes a full area image */
+        left:           0;
+        margin-left:    auto;
+        margin-right:   auto;
+        width:          100%;
+    }
+ 
+ 
+/* ======= Heading elements - <h1>-<h6> ====== */
+.wp-block-heading h1,
+.wp-block-heading h2,
+.wp-block-heading h3,
+.wp-block-heading h4,
+.wp-block-heading h5,
+.wp-block-heading h6,
+.mce-content-body h1,
+.mce-content-body h2,
+.mce-content-body h3,
+.mce-content-body h4,
+.mce-content-body h5,
+.mce-content-body h6 {
+    clear:              both;
+    color:              inherit;
+    font-family:        inherit;
+    clear:              both;
+    margin:             0;
+}
+ 
+.wp-block-heading h1,
+.wp-block-heading h2,
+.mce-content-body h1,
+.mce-content-body h2 {
+    margin-top:         0.5em;
+}
+ 
+.wp-block-heading h1,
+.mce-content-body h1 {
+    font-size:          262.5%;     /* these sizes derived from theme */
+    line-height:        1;
+    margin-bottom:      0.6em;
+}
+ 
+.wp-block-heading h2,
+.mce-content-body h2 {
+    font-size:          200%;
+    line-height:        1.1;
+    margin-bottom:      0.7em;
+}
+ 
+.wp-block-heading h3,
+.mce-content-body h3 {
+    font-size:          162.5%;
+    line-height:        1.1;
+    margin-bottom:      0.9em;
+}
+ 
+.wp-block-heading h4,
+.mce-content-body h4 {
+    font-size:          125%;
+    line-height:        1.1;
+    margin-bottom:      1.0em;
+}
+ 
+.wp-block-heading h5,
+.mce-content-body h5 {
+    font-size:          112.5%;
+    line-height:        1.1;
+    margin-bottom:      1.0em;
+}
+ 
+.wp-block-heading h6,
+.mce-content-body h6 {
+    font-size:          100%;
+    line-height:        1.1;
+    margin-bottom:      1.0em;
+}
+ 
+ 
+/* ====== Images ====== */
+/**
+ * We will do minimal styling on images.
+ * This will allow Gutenberg to style its images, and the theme to style non-Gutenberg images.
+ *
+ */
+ 
+.mce-content-body img {
+    max-width:          100%;
+}
+.mce-content-body img[class*="wp-image-"] {
+    height:             auto;
+    max-width:          100%;
+}
+ 
+.mce-content-body img.size-full {
+    max-width:          100% !important;
+    width:              auto; /* Prevent stretching of full-size images in IE8 */
+}
+ 
+.mce-content-body img.wp-smiley {
+    border:             none;
+    margin-bottom:      0;
+    margin-top:         0;
+    padding:            0;
+}
+.mce-content-body p img,
+.wp-caption {
+    margin-top:         0.4em;
+}
+ 
+.mce-content-body img {
+    background-color:   transparent;
+    margin-bottom:      1em;
+    padding:            0;          /* image border width */
+}
+ 
+.wp-caption, img {
+    background-color:   transparent;
+    border:             none;
+    height:             auto;
+    margin:             0;
+    margin-bottom:      1em;
+    max-width:          100%;
+    padding:            0;          /* image border width */
+    text-align:         center;
+}
+.wp-caption {
+    margin:             10px 20px 10px 10px;
+    padding:            8px 3px 0px 3px;
+}
+ 
+.mce-content-body img.alignleft,
+.mce-content-body img.alignright,
+.mce-content-body img.aligncenter {
+    margin-bottom:      1.625em;
+}
+ 
+ 
+ 
+/* ====== Lists ====== */
+ 
+.mce-content-body dl,
+.mce-content-body dt,
+.mce-content-body dd,
+.mce-content-body ol,
+.mce-content-body ul,
+.mce-content-body li {
+    margin:             0;
+    padding:            0;
+    word-wrap:          break-word;
+}
+ 
+.mce-content-body p {
+    margin:             0 0 1em 0;
+}
+ 
+.mce-content-body .atwk-slide .post ol,     /* also support Weaver Show Slides */
+.mce-content-body .atwk-slide .post ul,
+.mce-content-body .atw-post ol,
+.mce-content-body .atw-post ul,
+.mce-content-body ol,
+.mce-content-body ul {
+    list-style-position:    outside;
+}
+ 
+.mce-content-body .widget ol,
+.mce-content-body .widget ul {
+    list-style-position:    outside;
+    margin-left:            1.0em;
+}
+ 
+.mce-content-body ol {
+    list-style-type:    decimal;
+}
+ 
+.mce-content-body ol ol {
+    list-style:         upper-alpha;
+}
+ 
+.mce-content-body ol ol ol {
+    list-style:         lower-roman;
+}
+ 
+.mce-content-body ol ol ol ol {
+    list-style:         lower-alpha;
+}
+ 
+.mce-content-body dl {
+    margin:             0 1.5em;
+}
+ 
+.mce-content-body dt {
+    font-weight:        bold;
+}
+ 
+.mce-content-body dd {
+    margin-left:        1.5em;
+    margin-bottom:      1.5em;
+}
+ 
+.mce-content-body ul {
+    list-style:         disc outside none;
+}
+ 
+/* other elements */
+.mce-content-body abbr,
+.mce-content-body acronym,
+.mce-content-body dfn {
+    border-bottom:      1px dotted #666;
+}
+.mce-content-body address {
+    display:            block;
+    font-style:         italic;
+    margin:             0 0 1.625em;
+}
+.mce-content-body big {
+    font-size:          130%;
+}
+ 
+.mce-content-body code,
+.mce-content-body kbd,
+.mce-content-body tt,
+.mce-content-body var {
+    color:              inherit !important;
+    background:         none !important;
+    font-family:        'Inconsolata', monospace;
+    font-size:          1em;
+}
+ 
+.mce-content-body del {
+    color:              #222;
+}
+ 
+.mce-content-body pre {
+    box-shadow:             0 1px 0 #ffffff, inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-sizing:             border-box;
+    background:             rgba(128, 128, 128, 0.1);
+    border:                 1px solid #aaaaaa;
+    border-bottom-color:    #cccccc;
+    border-radius:          2px;
+    font-family:            'Inconsolata', monospace;
+    font-size:              .8em;
+    height:                 auto;
+    margin:                 0;
+    margin-bottom:          1.5em;
+    outline:                none;
+    overflow:               auto;
+    padding:                6px 10px;
+    vertical-align:         middle;
+    width:                  100%;
+    word-wrap:              break-word;
+    white-space:            pre-wrap;
+}
+ 
+ 
+.mce-content-body q {
+    font-style:         italic;
+}
+ 
+.mce-content-body ins {
+    background:         #ccc;
+    color:              #222;
+}
+ 
+.mce-content-body strong {
+    font-weight:        bold;
+}
+ 
+.mce-content-body sup,
+.mce-content-body sub {
+    font-size:          90%;
+    height:             0;
+    line-height:        1;
+    position:           relative;
+    vertical-align:     baseline;
+}
+ 
+.mce-content-body sup {
+    bottom:             1ex;
+}
+ 
+.mce-content-body sub {
+    top:                .5ex;
+}
+ 
+.mce-content-body var {
+    font-style:         italic;
+}
+ 
+.editor-block-list__block:not(.is-multi-selected) .wp-block-paragraph {
+    background:         transparent;
+}
+ 
+ 
+.mce-content-body label {
+    font-family:        inherit;
+    font-size:          1em;    /* 133% * 12 */
+}
+ 
+ 
+ 
+/* tables */
+.mce-content-body table, .mce-content-body caption,
+.mce-content-body tbody, .mce-content-body tfoot,
+.mce-content-body thead, .mce-content-body tr,
+.mce-content-body th, .mce-content-body td {
+    word-wrap:          break-word;
+}
+ 
+/* tables */
+.mce-content-body table,
+.mce-content-body th,
+.mce-content-body td {
+    border:             1px solid #d1d1d1;
+}
+ 
+.mce-content-body table {
+    border-collapse:    separate;
+    border-spacing:     0;
+    border-width:       1px 0 0 1px;
+    margin:             0 0 1.75em;
+    table-layout:       fixed;
+    /* Prevents HTML tables from becoming too wide */
+    width:              100%;
+}
+ 
+ 
+.mce-content-body th,
+.mce-content-body td {
+    font-weight:        normal;
+    padding:            0.4375em;
+    text-align:         left;
+}
+ 
+.mce-content-body th {
+    border-width:       0 1px 1px 0;
+    font-weight:        bold;
+    padding:            4px 4px;
+    text-align:         left;
+}
+ 
+.mce-content-body td {
+    border-width:       0 1px 1px 0;
+    margin:             0;
+    padding:            4px 4px;
+}
+ 
+ 
+/* hr +*/
+.mce-content-body hr {
+    background-color:   #ccc;
+    border:             none;
+    box-sizing:         content-box;
+    height:             4px;
+    margin:             1.0em auto;
+    max-width:          90%;
+    width:              90%;
+}
+ 
+ 
+/* Text elements */
+.mce-content-body p, .mce-content-body ul, .mce-content-body ol, .mce-content-body dl {
+    font-weight:        300;
+}
+.mce-content-body p {
+    margin-bottom:      1.5em;
+}
+ 
+.mce-content-body input[type=text],
+.mce-content-body textarea {
+    background:         inherit;
+    box-shadow:         inset 0 1px 1px rgba(0,0,0,0.1);
+    border:             1px solid #ddd;
+    color:              #888;
+}
+.mce-content-body input[type=text]:focus,
+.mce-content-body textarea:focus {
+    color:              #333;
+}
+.mce-content-body textarea {
+    padding-left:       3px;
+    width:              98%;
+}
+.mce-content-body input[type=text] {
+    padding:            3px;
+}
+ 
+/* Links */
+.mce-content-body a {
+    color:              #01b;
+    text-decoration:    none;
+}
+.mce-content-body a:focus,
+.mce-content-body a:active,
+.mce-content-body a:hover {
+    color:              #b10;
+    text-decoration:    none;
+}
+ 
+/* Assistive text */
+.assistive-text {
+    clip:               rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip:               rect(1px, 1px, 1px, 1px);
+    position:           absolute !important;
+}
+ 
+/* Alignment */
+ 
+.alignleft {
+    display:            inline;
+    float:              left;
+    margin-right:       1.625em;
+}
+.alignright {
+    display:            inline;
+    float:              right;
+    margin-left:        1.625em;
+}
+.aligncenter {
+    clear:              both;
+    display:            block;
+    margin-left:        auto;
+    margin-right:       auto;
+}
+ 
+.mce-content-body .alignfull,
+.mce-content-body .alignwide,
+.mce-content-body .aligncenter {
+    clear:              both;
+}
+ 
+.mce-content-body .alignwide,
+.mce-content-body p.alighnwide {
+    margin-left:        -10% !important;
+    margin-right:       -10% !important;
+    max-width:          120% !important;
+}
+ 
+.wp-block-text-columns.alignwide {
+    margin-left:        -5% !important;
+    margin-right:       -5% !important;
+    max-width:          110% !important;
+    }
+ 
+/* =HTML Elements */
+ 
+/* =FONTS -------------------------------------------------- */
+/* font family styling for in-line font styling on content elements
+ * These are all local to Weaver Xtreme theme - shortened example here...
+ *
+ */
+ 
+.mce-content-body .font-sans-serif {
+    font-family:        Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+ 
+.mce-content-body .font-arialBlack {
+    font-family:        "Arial Black", Gadget, Helvetica, sans-serif;
+}
+ 
+.mce-content-body .font-arialNarrow {
+    font-family:        "Arial Narrow", Arial, sans-serif;
+}
+ 
+.mce-content-body .font-impact {
+    font-family:        Impact, Haettenschweiler, Charcoal, "Arial Narrow Bold", sans-serif;
+}
+ 
+.mce-content-body .font-lucidaSans {
+    font-family:        "Lucida Sans", Geneva, Tahoma, sans-serif;
+}
+ 
+.mce-content-body .font-trebuchetMS {
+    font-family:        "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+ 
+ 
+/* end */
