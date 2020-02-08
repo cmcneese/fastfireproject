@@ -11,3 +11,7 @@
 2020-02-02 22:31:35 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
 2020-02-02 22:31:35 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
 2020-02-02 22:31:35 0 [Note] /usr/sbin/mysqld (mysqld 5.6.34) starting as process 466 ...
+200208 18:25:59 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-02-08 18:25:59 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+2020-02-08 18:25:59 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2020-02-08 18:25:59 0 [Note] /usr/sbin/mysqld (mysqld 5.6.34) starting as process 478 ...
