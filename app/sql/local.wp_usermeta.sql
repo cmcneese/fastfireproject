@@ -17,7 +17,7 @@ INSERT INTO `wp_usermeta` VALUES
 (13,1,"wp_user_level","10"),
 (14,1,"dismissed_wp_pointers",""),
 (15,1,"show_welcome_panel","1"),
-(16,1,"session_tokens","a:1:{s:64:\"4cb2ca4d0059ebb988938d0bbdc2ccc4aad56cdc693764f49e5e56f67b5affc2\";a:4:{s:10:\"expiration\";i:1581308333;s:2:\"ip\";s:10:\"172.17.0.1\";s:2:\"ua\";s:119:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.5 Safari/605.1.15\";s:5:\"login\";i:1581135533;}}"),
+(16,1,"session_tokens","a:2:{s:64:\"4cb2ca4d0059ebb988938d0bbdc2ccc4aad56cdc693764f49e5e56f67b5affc2\";a:4:{s:10:\"expiration\";i:1581308333;s:2:\"ip\";s:10:\"172.17.0.1\";s:2:\"ua\";s:119:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.5 Safari/605.1.15\";s:5:\"login\";i:1581135533;}s:64:\"9b6741f0478df0f327d150be95d43664132c7cd9575cad385800c0f3818d46fa\";a:4:{s:10:\"expiration\";i:1581360727;s:2:\"ip\";s:10:\"172.17.0.1\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36\";s:5:\"login\";i:1581187927;}}"),
 (17,1,"wp_dashboard_quick_press_last_post_id","8"),
 (18,1,"community-events-location","a:1:{s:2:\"ip\";s:12:\"192.168.94.0\";}"),
 (19,1,"closedpostboxes_ct_slider","a:0:{}"),
