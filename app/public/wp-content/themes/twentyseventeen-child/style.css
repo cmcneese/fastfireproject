@@ -23,5 +23,6 @@ body.page-id-12 .wp-custom-header img{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 50em;
+    height: auto;
+    min-height: 80em;
 }
