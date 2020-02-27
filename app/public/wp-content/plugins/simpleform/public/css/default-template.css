@@ -1,0 +1,57 @@
+/* General class selectors */
+.d-block {display: block!important;}
+.d-none {display: none!important;}
+.visible { visibility: visible!important; }
+
+/* Text above Contact Form */  
+#sform-introduction {padding-bottom: 15px;}
+
+/* Confirmation message after ajax submission */
+.form.confirmation { text-align: center;padding-top:50px; }
+.form.confirmation > img { margin: 30px auto;width: 150px }
+
+/* Field group */
+.field-group {line-height: 1; padding-bottom: 3px;}
+.field-group label {font-size: 16px; font-weight: 400; display: inline-block; margin-bottom:  5px; }
+label span { color: #dc3545; font-weight: 700; padding-left: 3px; }
+.form-control { border: 1px solid #ccc; font-size: 16px; font-weight: 400 !important; padding: 10px 16px !important; width: 100%; margin-bottom: 0 !important; }
+.form-control:not(#sform_captcha):focus { border-color: #0090D5; background: #fafafa; outline: none; box-shadow: none; } 
+textarea.form-control { height: auto; line-height: 1.5; }
+.error-des { line-height: 1; color: #dc3545; font-size: 14px; height: 14px; margin-top: 5px;  }
+.error-des span { display: none; }
+.form-control.is-invalid + .error-des span { display: block; }
+
+/* Terms field */
+#terms { margin-top: 10px; position: relative;}
+#sform_privacy { position: absolute; opacity: 0 !important; }
+#sform_privacy + label { display: inline-block; margin-left: 0; padding-left: 50px; cursor:pointer; line-height: 30px; font-size: 15px; margin-bottom: 22px; }
+#sform_privacy + label:before { content: ""; cursor:pointer; display: inline-block; position: absolute; width: 30px; height: 30px; left: 0; border: 1px solid #ccc; border-radius: 5px; background-color: #FFF; text-align: center; color:#FFF; font-weight: 800; font-size: 25px; } 
+#sform_privacy:checked + label:before { background-color: #8bc34a; border-color: #8bc34a; content: "\2713"; }
+#sform_privacy.is-invalid + label:before { border-color: #dc3545; }
+#sform_privacy.is-invalid + label { color: #dc3545; }
+
+/* Captcha field */
+#captcha-question-wrap { width: 180px; background-color: #fff; border: 1px solid #ccc; }
+#captcha-question-wrap.focus { background: #fafafa; border-color: #0090D5; box-shadow: none; }
+.form-control.is-invalid:focus, #captcha-question-wrap.is-invalid.focus { box-shadow: none;}
+.form-control.is-invalid, #captcha-question-wrap.is-invalid {border-color: #dc3545 !important;}
+#captcha-question { width: 106px; height: inherit; font-weight: 400; cursor: text; border: none;
+outline: none; display: inline-block; background-color: transparent; padding-right: 0 !important;
+text-align: right; box-shadow: none; }
+#sform_captcha { width: 70px; border: none; outline: none;  display: inline-block; background-color: transparent; padding-left: 10px !important; box-shadow: none; }
+#captcha-question:focus, #sform_captcha:focus { box-shadow: none; background-color: transparent !important; }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; } /* Hide Arrows: Chrome, Safari, Edge, Opera */
+input[type=number] { -moz-appearance:textfield; } /* Hide Arrows: Firefox */
+#captcha-question-wrap.is-invalid + .error-des span { display: block; }
+
+/* Error message */
+#sform-message {padding: 10px 0;}
+#sform-message span { display: block; visibility: hidden; outline: none; text-align: center; background: #dc3545; color: #FFF; font-size: 16px; padding: 7.5px 12.5px;}
+
+/* Submit field */
+#sform-submit-wrap { text-align: center; margin: 22px 0; }
+#submission { outline: none;  background-color: #0090D5; color: #FFF; border: 1px solid #0090D5; padding: 11px 15px; font-size: 16px; text-transform: uppercase; font-weight: 500; border-radius: 25px; line-height: 1; text-decoration: none; box-shadow: none; }
+#submission:hover { color: #0090D5; background-color: #FFF; box-shadow: none; }
+
+/* Text below Contact Form */
+#sform-bottom {font-size: 16px; margin: 0 auto; }

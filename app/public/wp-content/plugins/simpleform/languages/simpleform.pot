@@ -1,0 +1,1225 @@
+# SimpleForm Pot
+# Copyright 2019-2020(C) wpsform.com
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: SimpleForm\n"
+"POT-Creation-Date: 2020-02-11 22:17+0100\n"
+"PO-Revision-Date: 2020-01-11 16:00+0100\n"
+"Last-Translator: \n"
+"Language-Team: translations@wpsform.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: simpleform.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: admin/class-admin.php:48
+msgid "Contacts"
+msgstr ""
+
+#: admin/class-admin.php:51 admin/partials/submissions.php:9
+msgid "Submissions"
+msgstr ""
+
+#: admin/class-admin.php:54 admin/partials/editing.php:9
+msgid "Edit Form"
+msgstr ""
+
+#: admin/class-admin.php:57 admin/partials/settings.php:7
+msgid "Settings"
+msgstr ""
+
+#: admin/class-admin.php:135 admin/partials/editing.php:41
+msgid "Copy"
+msgstr ""
+
+#: admin/class-admin.php:135
+msgid "Copied"
+msgstr ""
+
+#: admin/class-admin.php:135
+msgid "Saving data in progress"
+msgstr ""
+
+#: admin/class-admin.php:135
+msgid "Saving settings in progress"
+msgstr ""
+
+#: admin/class-admin.php:135 admin/partials/settings.php:18
+msgid ""
+"Create a directory inside your active theme’s directory, name it simpleform, "
+"copy one of the template files and name it custom-template.php"
+msgstr ""
+
+#: admin/class-admin.php:135 admin/partials/settings.php:19
+msgid "In order to use this template, you need to load Bootstrap’s JS library"
+msgstr ""
+
+#: admin/class-admin.php:135 admin/partials/settings.php:170
+msgid "Show Configuration Warnings"
+msgstr ""
+
+#: admin/class-admin.php:135
+msgid "Hide Configuration Warnings"
+msgstr ""
+
+#: admin/class-admin.php:229
+msgid "The Contact Form has been updated"
+msgstr ""
+
+#: admin/class-admin.php:234
+msgid "The Contact Form has already been updated"
+msgstr ""
+
+#: admin/class-admin.php:313
+msgid ""
+"The SMTP server for outgoing email cannot be enabled if notification or "
+"confirmation email are not enabled"
+msgstr ""
+
+#: admin/class-admin.php:318
+msgid "Please enter the SMTP address"
+msgstr ""
+
+#: admin/class-admin.php:323
+msgid "Please enter the encryption type to relay outgoing email to SMTP server"
+msgstr ""
+
+#: admin/class-admin.php:328
+msgid "Please enter the port to relay outgoing email to SMTP server"
+msgstr ""
+
+#: admin/class-admin.php:333
+msgid "Please enter a valid port to relay outgoing email to SMTP server"
+msgstr ""
+
+#: admin/class-admin.php:338
+msgid "Please enter username to login to SMTP server"
+msgstr ""
+
+#: admin/class-admin.php:343
+msgid "Please enter a valid email address to login to SMTP server"
+msgstr ""
+
+#: admin/class-admin.php:348
+msgid "Please enter password to login to SMTP server"
+msgstr ""
+
+#: admin/class-admin.php:356
+msgid "You need to enable the notification email"
+msgstr ""
+
+#: admin/class-admin.php:416
+msgid "Settings have successfully saved"
+msgstr ""
+
+#: admin/class-admin.php:420
+msgid "Settings have already been saved"
+msgstr ""
+
+#: admin/partials/editing.php:6
+msgid ""
+"Change easily the way your contact form is displayed. Choose which fields to "
+"use and who should see them:"
+msgstr ""
+
+#: admin/partials/editing.php:18 public/class-public.php:896
+msgid "Contact Form"
+msgstr ""
+
+#: admin/partials/editing.php:19
+msgid ""
+"Please fill out the form below with your inquiry and we will get back to you "
+"as soon as possible. Mandatory fields are marked with (*)."
+msgstr ""
+
+#: admin/partials/editing.php:22 public/partials/form-variables.php:24
+msgid "Name"
+msgstr ""
+
+#: admin/partials/editing.php:25 public/partials/form-variables.php:28
+msgid "Email"
+msgstr ""
+
+#: admin/partials/editing.php:28 public/class-public.php:428
+#: public/class-public.php:792 public/partials/form-variables.php:32
+msgid "Subject"
+msgstr ""
+
+#: admin/partials/editing.php:30 public/class-public.php:457
+#: public/class-public.php:823 public/partials/form-variables.php:36
+msgid "Message"
+msgstr ""
+
+#: admin/partials/editing.php:32 public/partials/form-variables.php:43
+msgid "I have read and agree to the Privacy Policy"
+msgstr ""
+
+#: admin/partials/editing.php:35 public/partials/form-variables.php:44
+msgid "What does this equal to?"
+msgstr ""
+
+#: admin/partials/editing.php:36 public/partials/form-variables.php:49
+msgid "Submit"
+msgstr ""
+
+#: admin/partials/editing.php:41
+msgid "Shortcode"
+msgstr ""
+
+#: admin/partials/editing.php:43
+msgid "Form Name"
+msgstr ""
+
+#: admin/partials/editing.php:43
+msgid "Enter a name for this Form"
+msgstr ""
+
+#: admin/partials/editing.php:45
+msgid "Used in"
+msgstr ""
+
+#: admin/partials/editing.php:74
+msgid "Page currently containing the shortcode"
+msgid_plural "Pages currently containing the shortcode"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/partials/editing.php:76
+msgid ""
+"Still not used. Create a new page or choose an existing one and add the "
+"shortcode"
+msgstr ""
+
+#: admin/partials/editing.php:82
+msgid "Form Description"
+msgstr ""
+
+#: admin/partials/editing.php:84
+msgid "Text above Form"
+msgstr ""
+
+#: admin/partials/editing.php:84
+msgid ""
+"Enter the text that must be displayed above the form. It can be used to "
+"provide a description or instructions for filling in the form."
+msgstr ""
+
+#: admin/partials/editing.php:84 admin/partials/editing.php:86
+#: admin/partials/settings.php:132
+msgid "The html tags for formatting message are allowed"
+msgstr ""
+
+#: admin/partials/editing.php:86
+msgid "Text below Form"
+msgstr ""
+
+#: admin/partials/editing.php:86
+msgid ""
+"Enter the text that must be displayed below the form. It can be used to "
+"provide additional information."
+msgstr ""
+
+#: admin/partials/editing.php:88
+msgid "Form Fields"
+msgstr ""
+
+#: admin/partials/editing.php:90
+msgid "Name Field"
+msgstr ""
+
+#: admin/partials/editing.php:90 admin/partials/editing.php:96
+#: admin/partials/editing.php:102 admin/partials/editing.php:110
+#: admin/partials/editing.php:116
+msgid "Display to all users"
+msgstr ""
+
+#: admin/partials/editing.php:90 admin/partials/editing.php:96
+#: admin/partials/editing.php:102 admin/partials/editing.php:110
+#: admin/partials/editing.php:116
+msgid "Display only to registered users"
+msgstr ""
+
+#: admin/partials/editing.php:90 admin/partials/editing.php:96
+#: admin/partials/editing.php:102 admin/partials/editing.php:110
+#: admin/partials/editing.php:116
+msgid "Display only to anonymous users"
+msgstr ""
+
+#: admin/partials/editing.php:90 admin/partials/editing.php:96
+#: admin/partials/editing.php:102 admin/partials/editing.php:110
+#: admin/partials/editing.php:116
+msgid "Do not display"
+msgstr ""
+
+#: admin/partials/editing.php:92
+msgid "Name Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:92
+msgid "Enter a label for Name field"
+msgstr ""
+
+#: admin/partials/editing.php:94
+msgid "Name Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:94 admin/partials/editing.php:100
+#: admin/partials/editing.php:106 admin/partials/editing.php:114
+msgid "Make this field required"
+msgstr ""
+
+#: admin/partials/editing.php:96
+msgid "Email Field"
+msgstr ""
+
+#: admin/partials/editing.php:98
+msgid "Email Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:98
+msgid "Enter a label for Email field"
+msgstr ""
+
+#: admin/partials/editing.php:100
+msgid "Email Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:102
+msgid "Subject Field"
+msgstr ""
+
+#: admin/partials/editing.php:104
+msgid "Subject Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:104
+msgid "Enter a label for Subject field"
+msgstr ""
+
+#: admin/partials/editing.php:106
+msgid "Subject Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:108
+msgid "Message Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:108
+msgid "Enter a label for Message field"
+msgstr ""
+
+#: admin/partials/editing.php:110
+msgid "Terms Field"
+msgstr ""
+
+#: admin/partials/editing.php:112
+msgid "Terms Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:112
+msgid "Enter a label for Terms field"
+msgstr ""
+
+#: admin/partials/editing.php:112
+msgid "Entering URL requires the use of html tags"
+msgstr ""
+
+#: admin/partials/editing.php:114
+msgid "Terms Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:114
+msgid ""
+"If you’re collecting personal data this field is required for requesting the "
+"user explicit consent"
+msgstr ""
+
+#: admin/partials/editing.php:116
+msgid "Captcha Field"
+msgstr ""
+
+#: admin/partials/editing.php:118
+msgid "Captcha Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:118
+msgid "Enter a label for Captcha field"
+msgstr ""
+
+#: admin/partials/editing.php:120
+msgid "Submit Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:120
+msgid "Enter a label for Submit field"
+msgstr ""
+
+#: admin/partials/editing.php:125 admin/partials/settings.php:225
+msgid "Save Changes"
+msgstr ""
+
+#: admin/partials/settings.php:7
+msgid ""
+"Customize messages and whatever settings you want to better match your needs:"
+msgstr ""
+
+#: admin/partials/settings.php:9
+msgid "General"
+msgstr ""
+
+#: admin/partials/settings.php:9
+msgid "Messages"
+msgstr ""
+
+#: admin/partials/settings.php:9
+msgid "Emails"
+msgstr ""
+
+#: admin/partials/settings.php:44
+msgid "Form Submission Options"
+msgstr ""
+
+#: admin/partials/settings.php:46 admin/partials/settings.php:170
+msgid "SMTP Server Configuration"
+msgstr ""
+
+#: admin/partials/settings.php:46
+msgid ""
+"Hide the SMTP Server Configuration section in the Emails tab if you do not "
+"want to use it"
+msgstr ""
+
+#: admin/partials/settings.php:48
+msgid "Ajax Submission"
+msgstr ""
+
+#: admin/partials/settings.php:48
+msgid "Perform form submission via an AJAX call"
+msgstr ""
+
+#: admin/partials/settings.php:50
+msgid "Customization Options"
+msgstr ""
+
+#: admin/partials/settings.php:52
+msgid "Form Template"
+msgstr ""
+
+#: admin/partials/settings.php:52
+msgid "Default Form Template"
+msgstr ""
+
+#: admin/partials/settings.php:52
+msgid "Basic Bootstrap Form Template"
+msgstr ""
+
+#: admin/partials/settings.php:52
+msgid "Customized Form Template"
+msgstr ""
+
+#: admin/partials/settings.php:54
+msgid "Bootstrap’s JS library"
+msgstr ""
+
+#: admin/partials/settings.php:54
+msgid "Load 4.4.1 version of Bootstrap’s JS library via CDN"
+msgstr ""
+
+#: admin/partials/settings.php:54
+msgid ""
+"Keep checkbox unchecked if you are using a Bootstrap Theme or the "
+"Bootstrap’s JS library is already hosted locally"
+msgstr ""
+
+#: admin/partials/settings.php:56
+msgid "Form Stylesheet"
+msgstr ""
+
+#: admin/partials/settings.php:56
+msgid "Disable the default stylesheet"
+msgstr ""
+
+#: admin/partials/settings.php:56
+msgid "Check the checkbox if you want to use your own stylesheet for the form"
+msgstr ""
+
+#: admin/partials/settings.php:58
+msgid "Uninstall"
+msgstr ""
+
+#: admin/partials/settings.php:58
+msgid "Delete all data and settings when the plugin is uninstalled"
+msgstr ""
+
+#: admin/partials/settings.php:66 public/class-public.php:595
+#: public/partials/form-variables.php:51 public/partials/form-variables.php:67
+msgid "Please enter at least 2 characters"
+msgstr ""
+
+#: admin/partials/settings.php:67 public/class-public.php:596
+#: public/partials/form-variables.php:53 public/partials/form-variables.php:68
+msgid "The name contains characters that are not allowed"
+msgstr ""
+
+#: admin/partials/settings.php:68 public/class-public.php:597
+#: public/partials/form-variables.php:75
+msgid "Error occurred validating the name"
+msgstr ""
+
+#: admin/partials/settings.php:69 public/class-public.php:626
+msgid "Please enter a valid email"
+msgstr ""
+
+#: admin/partials/settings.php:70 public/class-public.php:627
+#: public/partials/form-variables.php:76
+msgid "Error occurred validating the email"
+msgstr ""
+
+#: admin/partials/settings.php:71 public/class-public.php:649
+#: public/partials/form-variables.php:55 public/partials/form-variables.php:70
+msgid "Please enter a subject at least 10 characters long"
+msgstr ""
+
+#: admin/partials/settings.php:72 admin/partials/settings.php:75
+#: public/class-public.php:650 public/class-public.php:684
+#: public/partials/form-variables.php:57 public/partials/form-variables.php:61
+#: public/partials/form-variables.php:71 public/partials/form-variables.php:73
+msgid "Enter only alphanumeric characters and punctuation marks"
+msgstr ""
+
+#: admin/partials/settings.php:73 public/class-public.php:651
+#: public/partials/form-variables.php:77
+msgid "Error occurred validating the subject"
+msgstr ""
+
+#: admin/partials/settings.php:74 public/class-public.php:683
+#: public/partials/form-variables.php:60 public/partials/form-variables.php:72
+msgid "Please enter a message at least 10 characters long"
+msgstr ""
+
+#: admin/partials/settings.php:76 public/class-public.php:686
+#: public/partials/form-variables.php:78
+msgid "Error occurred validating the message"
+msgstr ""
+
+#: admin/partials/settings.php:77 public/class-public.php:702
+#: public/partials/form-variables.php:79
+msgid "Please accept our terms and conditions before submitting form"
+msgstr ""
+
+#: admin/partials/settings.php:78 public/class-public.php:721
+#: public/partials/form-variables.php:74
+msgid "Please enter a valid captcha value"
+msgstr ""
+
+#: admin/partials/settings.php:79 public/class-public.php:722
+#: public/partials/form-variables.php:80
+msgid "Error occurred validating the captcha"
+msgstr ""
+
+#: admin/partials/settings.php:80 public/class-public.php:713
+#: public/partials/form-variables.php:81
+msgid "Error occurred during processing data"
+msgstr ""
+
+#: admin/partials/settings.php:81 public/class-public.php:758
+#: public/partials/form-variables.php:82
+msgid "Error occurred during processing data. Please try again!"
+msgstr ""
+
+#: admin/partials/settings.php:85 public/class-public.php:733
+#: public/partials/form-variables.php:63
+msgid "We have received your request!"
+msgstr ""
+
+#: admin/partials/settings.php:86 public/class-public.php:734
+#: public/partials/form-variables.php:64
+msgid ""
+"Your message will be reviewed soon, and we’ll get back to you as quickly as "
+"possible."
+msgstr ""
+
+#: admin/partials/settings.php:92
+msgid "Fields Error Messages"
+msgstr ""
+
+#: admin/partials/settings.php:94
+msgid "Lenght Name Error"
+msgstr ""
+
+#: admin/partials/settings.php:94
+msgid ""
+"Please enter an error message in case of empty field or name not enough long"
+msgstr ""
+
+#: admin/partials/settings.php:96
+msgid "Invalid Name Error"
+msgstr ""
+
+#: admin/partials/settings.php:96
+msgid "Please enter an error message in case of invalid name"
+msgstr ""
+
+#: admin/partials/settings.php:98
+msgid "Name Field Error"
+msgstr ""
+
+#: admin/partials/settings.php:98
+msgid "Please enter a message in case of error in name field"
+msgstr ""
+
+#: admin/partials/settings.php:100
+msgid "Invalid Email Error"
+msgstr ""
+
+#: admin/partials/settings.php:100
+msgid "Please enter an error message in case of empty field or invalid email"
+msgstr ""
+
+#: admin/partials/settings.php:102
+msgid "Email Field Error"
+msgstr ""
+
+#: admin/partials/settings.php:102
+msgid "Please enter a message in case of error in email field"
+msgstr ""
+
+#: admin/partials/settings.php:104
+msgid "Lenght Subject Error"
+msgstr ""
+
+#: admin/partials/settings.php:104
+msgid ""
+"Please enter an error message in case of empty field or subject not enough "
+"long"
+msgstr ""
+
+#: admin/partials/settings.php:106
+msgid "Invalid Subject Error"
+msgstr ""
+
+#: admin/partials/settings.php:106
+msgid "Please enter an error message in case of invalid subject"
+msgstr ""
+
+#: admin/partials/settings.php:108
+msgid "Subject Field Error"
+msgstr ""
+
+#: admin/partials/settings.php:108
+msgid "Please enter a message in case of error in subject field"
+msgstr ""
+
+#: admin/partials/settings.php:110
+msgid "Lenght Message Error"
+msgstr ""
+
+#: admin/partials/settings.php:110
+msgid ""
+"Please enter an error message in case of empty field or message not enough "
+"long"
+msgstr ""
+
+#: admin/partials/settings.php:112
+msgid "Invalid Message Error"
+msgstr ""
+
+#: admin/partials/settings.php:112
+msgid "Please enter an error message in case of invalid message"
+msgstr ""
+
+#: admin/partials/settings.php:114
+msgid "Message Field Error"
+msgstr ""
+
+#: admin/partials/settings.php:114
+msgid "Please enter a message in case of error in message field"
+msgstr ""
+
+#: admin/partials/settings.php:116
+msgid "Not Acceptance Error"
+msgstr ""
+
+#: admin/partials/settings.php:116
+msgid "Please enter an error message in case of not acceptance of the terms"
+msgstr ""
+
+#: admin/partials/settings.php:118
+msgid "Invalid Captcha Error"
+msgstr ""
+
+#: admin/partials/settings.php:118
+msgid ""
+"Please enter an error message in case of empty field or invalid captcha value"
+msgstr ""
+
+#: admin/partials/settings.php:120
+msgid "Captcha Field Error"
+msgstr ""
+
+#: admin/partials/settings.php:120
+msgid "Please enter a message in case of error in captcha field"
+msgstr ""
+
+#: admin/partials/settings.php:122
+msgid "Honeypot Field Error"
+msgstr ""
+
+#: admin/partials/settings.php:122
+msgid "Please enter a message in case of the honeypot field is filled in"
+msgstr ""
+
+#: admin/partials/settings.php:124
+msgid "Submission Error Messages"
+msgstr ""
+
+#: admin/partials/settings.php:126
+msgid "Server Error"
+msgstr ""
+
+#: admin/partials/settings.php:126
+msgid ""
+"Please enter an error message in case an error occurs on during processing "
+"data"
+msgstr ""
+
+#: admin/partials/settings.php:128
+msgid "Success Message"
+msgstr ""
+
+#: admin/partials/settings.php:130
+msgid "Confirmation Type"
+msgstr ""
+
+#: admin/partials/settings.php:130
+msgid "Display confirmation message"
+msgstr ""
+
+#: admin/partials/settings.php:130
+msgid "Redirect to confirmation page"
+msgstr ""
+
+#: admin/partials/settings.php:132
+msgid "Confirmation Message"
+msgstr ""
+
+#: admin/partials/settings.php:132
+msgid "Please enter a thank you message when the form is submitted"
+msgstr ""
+
+#: admin/partials/settings.php:134
+msgid "Confirmation Page"
+msgstr ""
+
+#: admin/partials/settings.php:134
+msgid "Select page where user is redirected when form is sent"
+msgstr ""
+
+#: admin/partials/settings.php:149
+msgid "Enter the username for SMTP authentication"
+msgstr ""
+
+#: admin/partials/settings.php:150
+msgid "Enter the password for SMTP authentication"
+msgstr ""
+
+#: admin/partials/settings.php:157 public/class-public.php:405
+#: public/class-public.php:769
+msgid "New Contact Request"
+msgstr ""
+
+#: admin/partials/settings.php:162 public/class-public.php:471
+#: public/class-public.php:836
+msgid "Your request has been received. Thanks!"
+msgstr ""
+
+#: admin/partials/settings.php:164 public/class-public.php:473
+#: public/class-public.php:838
+#, php-format
+msgid "Hi %s"
+msgstr ""
+
+#: admin/partials/settings.php:164 public/class-public.php:473
+#: public/class-public.php:838
+msgid ""
+"We have received your request. It will be reviewed soon and we’ll get back "
+"to you as quickly as possible."
+msgstr ""
+
+#: admin/partials/settings.php:164 public/class-public.php:473
+#: public/class-public.php:838
+msgid "Thanks,"
+msgstr ""
+
+#: admin/partials/settings.php:164 public/class-public.php:473
+#: public/class-public.php:838
+msgid "The Support Team"
+msgstr ""
+
+#: admin/partials/settings.php:172
+msgid ""
+"Improve the email deliverability sent from your website by configuring "
+"WordPress to work with a SMTP server"
+msgstr ""
+
+#: admin/partials/settings.php:172
+msgid ""
+"By default, WordPress uses the PHP mail() function to send emails, a basic "
+"feature in built in PHP. However, if own website is hosted on shared server "
+"it is very likely that the mail() function has been disabled by own hosting "
+"provider due to the abuse risk it presents. If you are experiencing problems "
+"with email reception, that may be exactly the reason why you're not "
+"receiving emails. The best and recommended solution is to use a SMTP server "
+"to send all outgoing emails, a dedicated machine that takes care of the "
+"whole email delivery process. One important function of the SMTP server is "
+"to prevent spam using authentication mechanisms that only allow authorized "
+"users to deliver emails. So, using a SMTP server for outgoing email makes it "
+"less likely that email sent out from your website being marked as spam and "
+"lowers the risk of email getting lost somewhere. As sender, you have a "
+"choice of multiple SMTP servers to forward your emails: you can choose your "
+"internet service provider, your email provider, your hosting service "
+"provider, you can use a specialized provider or you can even use your "
+"personal SMTP server. Obviously, the best option would be the specialized "
+"provider, but it is not necessary to subscribe to a paid service for having "
+"a good service, especially if there are not special needs and no need to "
+"send marketing or transactional emails. We suggest to use your own hosting "
+"service provider’s SMTP server or your own email provider initially. If you "
+"have a hosting plan, you just need to create a new email account that uses "
+"your domain name if you haven't already. Then use configuration information "
+"that your hosting provider gives you to connect to his own SMTP server "
+"filling all the fields in this section. If you haven't a hosting plan yet "
+"and your website is still running on localhost, you can use your preferred "
+"email address to send email, just enter data provided by your email provider "
+"(Gmail, Yahoo, Hotmail, etc...). Don’t forget to enable less secure apps on "
+"your email account. Furthermore, be careful to enter only your email address "
+"for that account, or an alias, into the \"From Email Address\" and the "
+"\"Reply-To Email Address\" fields, since public SMTP servers have spam "
+"filters particularly strong and do not allow to override the email headers. "
+"Always remember to change configuration data as soon as your website is put "
+"online, because your hosting provider may block outgoing SMTP connections. "
+"If you want to continue using your preferred email address, ask your hosting "
+"provider if the port used is open for traffic outbound."
+msgstr ""
+
+#: admin/partials/settings.php:172
+#, php-format
+msgid ""
+"The SMPT login credentials are stored in your website database. We highly "
+"recommend you setup your login credentials in your WordPress configuration "
+"file for improved security. To do this, leave blank the %1$s field and the "
+"%2$s field and add the lines below to your %3$s file:"
+msgstr ""
+
+#: admin/partials/settings.php:172
+msgid "Your full email address (e.g. name@domain.com)"
+msgstr ""
+
+#: admin/partials/settings.php:172
+msgid "Your account's password"
+msgstr ""
+
+#: admin/partials/settings.php:172
+msgid ""
+"Anyway, this section is optional. Ignore it and do not enter data if you "
+"want to use a dedicated plugin to take care of outgoing email or if you "
+"don't have to."
+msgstr ""
+
+#: admin/partials/settings.php:175
+msgid "Outgoing Server SMTP"
+msgstr ""
+
+#: admin/partials/settings.php:175
+msgid "Enable a SMTP server for outgoing email if you havent't already"
+msgstr ""
+
+#: admin/partials/settings.php:175
+msgid ""
+"Uncheck if you want to use a dedicated plugin to take care of outgoing email"
+msgstr ""
+
+#: admin/partials/settings.php:177
+msgid "SMTP Host Address"
+msgstr ""
+
+#: admin/partials/settings.php:177
+msgid "Enter the server address for outgoing email"
+msgstr ""
+
+#: admin/partials/settings.php:177
+msgid "Your outgoing email server address"
+msgstr ""
+
+#: admin/partials/settings.php:179
+msgid "Type of Encryption"
+msgstr ""
+
+#: admin/partials/settings.php:179
+msgid "None"
+msgstr ""
+
+#: admin/partials/settings.php:179
+msgid "SSL"
+msgstr ""
+
+#: admin/partials/settings.php:179
+msgid "TLS"
+msgstr ""
+
+#: admin/partials/settings.php:179
+msgid ""
+"If your SMTP provider support both SSL and TLS options, we recommend using "
+"TLS encryption"
+msgstr ""
+
+#: admin/partials/settings.php:181
+msgid "SMTP Port"
+msgstr ""
+
+#: admin/partials/settings.php:181
+msgid "The port that will be used to relay outgoing email to your email server"
+msgstr ""
+
+#: admin/partials/settings.php:183
+msgid "SMTP Authentication"
+msgstr ""
+
+#: admin/partials/settings.php:183
+msgid "Enable SMTP Authentication"
+msgstr ""
+
+#: admin/partials/settings.php:183
+msgid "This options should always be checked"
+msgstr ""
+
+#: admin/partials/settings.php:185
+msgid "SMTP Username"
+msgstr ""
+
+#: admin/partials/settings.php:185
+msgid ""
+"The username to login to SMTP email server (your email). Please read the "
+"above warnings for improved security"
+msgstr ""
+
+#: admin/partials/settings.php:187
+msgid "SMTP Password"
+msgstr ""
+
+#: admin/partials/settings.php:187
+msgid ""
+"The password to login to SMTP email server (your password). Please read the "
+"above warnings for improved security"
+msgstr ""
+
+#: admin/partials/settings.php:189
+msgid "Notification Email"
+msgstr ""
+
+#: admin/partials/settings.php:191
+msgid "Enable Notification"
+msgstr ""
+
+#: admin/partials/settings.php:191
+msgid "Send notification email when a new request is submitted"
+msgstr ""
+
+#: admin/partials/settings.php:193
+msgid "Address All Submissions To"
+msgstr ""
+
+#: admin/partials/settings.php:193
+msgid "Enter the email address which notification is sent to"
+msgstr ""
+
+#: admin/partials/settings.php:193
+msgid ""
+"Form submissions are sent to this email. It is recommended to enter that one "
+"used to respond to the requests"
+msgstr ""
+
+#: admin/partials/settings.php:195 admin/partials/settings.php:211
+msgid "From Email Address"
+msgstr ""
+
+#: admin/partials/settings.php:195
+#, php-format
+msgid ""
+"Enter the email address which notification is sent from. If blank, %s will "
+"be used"
+msgstr ""
+
+#: admin/partials/settings.php:195 admin/partials/settings.php:211
+msgid ""
+"To avoid that emails sent out from your website being marked as spam, it is "
+"recommended to use one associated with own website's domain"
+msgstr ""
+
+#: admin/partials/settings.php:197 admin/partials/settings.php:213
+msgid "From Name"
+msgstr ""
+
+#: admin/partials/settings.php:197
+msgid "Use requester name"
+msgstr ""
+
+#: admin/partials/settings.php:197
+msgid "Use contact form name"
+msgstr ""
+
+#: admin/partials/settings.php:197
+msgid "Use custom name"
+msgstr ""
+
+#: admin/partials/settings.php:199
+msgid "Custom Sender Name"
+msgstr ""
+
+#: admin/partials/settings.php:199
+msgid "Enter the name which notification is sent from"
+msgstr ""
+
+#: admin/partials/settings.php:201 admin/partials/settings.php:215
+msgid "Email Subject"
+msgstr ""
+
+#: admin/partials/settings.php:201
+msgid "Use requester submission subject"
+msgstr ""
+
+#: admin/partials/settings.php:201
+msgid "Use default notification subject"
+msgstr ""
+
+#: admin/partials/settings.php:203
+msgid "Default Subject"
+msgstr ""
+
+#: admin/partials/settings.php:203
+msgid "Enter the subject with which notification is sent"
+msgstr ""
+
+#: admin/partials/settings.php:205
+msgid "Submission ID"
+msgstr ""
+
+#: admin/partials/settings.php:205
+msgid "Hide submission ID inside notification subject"
+msgstr ""
+
+#: admin/partials/settings.php:207
+msgid "Confirmation Email"
+msgstr ""
+
+#: admin/partials/settings.php:209
+msgid "Enable Confirmation"
+msgstr ""
+
+#: admin/partials/settings.php:209
+msgid "Send confirmation email to requester"
+msgstr ""
+
+#: admin/partials/settings.php:211
+#, php-format
+msgid ""
+"Enter the email address which confirmation is sent from. If blank, %s will "
+"be used"
+msgstr ""
+
+#: admin/partials/settings.php:213
+msgid "Enter the name which confirmation is sent from"
+msgstr ""
+
+#: admin/partials/settings.php:215
+msgid "Enter the subject with which confirmation email is sent to user"
+msgstr ""
+
+#: admin/partials/settings.php:217
+msgid "Email Message"
+msgstr ""
+
+#: admin/partials/settings.php:217
+msgid ""
+"Enter the message to send to user for an acknowledgement of request receipt"
+msgstr ""
+
+#: admin/partials/settings.php:217
+msgid ""
+"To prevent formatting problems, please use the html tags. Are also accepted "
+"the following shortcodes:"
+msgstr ""
+
+#: admin/partials/settings.php:219
+msgid "Reply-To Email Address"
+msgstr ""
+
+#: admin/partials/settings.php:219
+msgid ""
+"Enter the email address to use for reply-to, if reply must be addressed to a "
+"different email address"
+msgstr ""
+
+#: admin/partials/settings.php:219
+msgid ""
+"Leave it blank to use From Email Address as the reply-to value. Public "
+"servers do not allow to override it, please visit the plugin FAQ"
+msgstr ""
+
+#: admin/partials/submissions.php:29
+msgid "Received"
+msgstr ""
+
+#: admin/partials/submissions.php:29
+msgid "This Year"
+msgstr ""
+
+#: admin/partials/submissions.php:29
+msgid "Last Month"
+msgstr ""
+
+#: admin/partials/submissions.php:29
+msgid "Last Week"
+msgstr ""
+
+#: admin/partials/submissions.php:29
+msgid "Last Day"
+msgstr ""
+
+#: admin/partials/submissions.php:36
+msgid "Last Message Received"
+msgstr ""
+
+#: admin/partials/submissions.php:38 admin/partials/submissions.php:42
+msgid "Before you go crazy looking for the received messages"
+msgstr ""
+
+#: admin/partials/submissions.php:38
+msgid ""
+"Submissions data are not store into the WordPress database. This feature can "
+"be enabled with SimpleForm Contact Form Submissions addon. You find it on "
+"the WordPress.org plugin repository. By default, only last message is being "
+"temporarily stored. Therefore, it is recommended to verify the correct SMTP "
+"server configuration in case of use, and always keep the notification email "
+"enabled if you want to be sure to receive messages."
+msgstr ""
+
+#: admin/partials/submissions.php:42
+msgid ""
+"Submissions data are not store into the WordPress database by default. You "
+"can easily add this feature with SimpleForm Contact Form Submissions addon "
+"activation. Go to the Plugins page."
+msgstr ""
+
+#: admin/partials/submissions.php:48 admin/partials/submissions.php:53
+msgid "Empty Inbox"
+msgstr ""
+
+#: admin/partials/submissions.php:49 admin/partials/submissions.php:54
+msgid "So far, no message has been received yet!"
+msgstr ""
+
+#: admin/partials/submissions.php:49
+#, php-format
+msgid ""
+"Please note that submissions data are not store into the WordPress database "
+"by default. You can easily add this feature with <a href=\"%s\" target="
+"\"_blank\">SimpleForm Contact Form Submissions</a> addon. You find it on the "
+"WordPress.org plugin repository."
+msgstr ""
+
+#: admin/partials/submissions.php:54
+#, php-format
+msgid ""
+"Submissions data are not store into the WordPress database by default. You "
+"can easily add this feature with <b>SimpleForm Contact Form Submissions</b> "
+"addon activation. Go to the <a href=\"%s\">Plugins</a> page."
+msgstr ""
+
+#: public/class-public.php:353 public/class-public.php:419
+#: public/class-public.php:570 public/class-public.php:783
+#: public/class-public.php:906
+msgid "Anonymous"
+msgstr ""
+
+#: public/class-public.php:377 public/class-public.php:588
+msgid "Subject not provided"
+msgstr ""
+
+#: public/class-public.php:415 public/class-public.php:779
+msgid "From"
+msgstr ""
+
+#: public/class-public.php:443 public/class-public.php:807
+msgid "at"
+msgstr ""
+
+#: public/class-public.php:445 public/class-public.php:809
+msgid "Sent"
+msgstr ""
+
+#: public/class-public.php:457 public/class-public.php:823
+msgid "Date"
+msgstr ""
+
+#: public/partials/form-variables.php:66
+msgid ""
+"We are unable to process your request at this time. Please try again later!"
+msgstr ""
+
+#: public/partials/form-variables.php:69
+msgid "Please enter a valid email address"
+msgstr ""
+
+#: public/partials/form-variables.php:83
+msgid "Mandatory fields must be filled in"
+msgstr ""
+
+#: public/partials/form-variables.php:84
+msgid "Please provide your name"
+msgstr ""
+
+#: public/partials/form-variables.php:85
+msgid "Please provide your email address"
+msgstr ""
+
+#: public/partials/form-variables.php:86
+msgid "Please enter request subject"
+msgstr ""
+
+#: public/partials/form-variables.php:87
+msgid "Please enter a message"
+msgstr ""
+
+#: public/partials/form-variables.php:88
+msgid "Please enter a captcha value"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "SimpleForm"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://wpsform.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Create a basic contact form for your website. Lightweight and very simple to "
+"manage, SimpleForm is immediately ready to use."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPSForm Team"
+msgstr ""

@@ -1,0 +1,55 @@
+/* General class selectors */
+.d-block {display: block!important;}
+.d-none {display: none!important;}
+.visible { visibility: visible!important; }
+
+/* Text above Contact Form */  
+#sform-introduction {padding-bottom: 15px;}
+
+/* Confirmation message after ajax submission */
+.form.confirmation { text-align: center;padding-top:50px; }
+.form.confirmation > img { margin: 30px auto;width: 150px }
+
+/* Field group */
+.field-group {line-height: 1; padding-bottom: 3px;}
+.field-group label {font-size: 16px; font-weight: 400; display: inline-block; margin-bottom: 5px; }
+label span { color: #dc3545; font-weight: 700; padding-left: 3px; }
+.form-control { border: 1px solid #ced4da; font-size: 16px; font-weight: 400 !important; height: calc(1.5em + .75rem + 2px); padding: .375rem .75rem; border-radius: .25rem; width: 100%; margin-bottom: 0 !important; }
+.form-control:not(#sform_captcha):focus { border-color: #007bff; outline: none; box-shadow: 0 0 0 .2rem rgba(0,123,255,.25); } 
+textarea.form-control { height: auto; line-height: 1.5; }
+.error-des { line-height: 1; color: #dc3545; font-size: 14px; height: 14px; margin-top: 5px; }
+.error-des span { display: none; }
+.form-control.is-invalid + .error-des span { display: block; }
+.form-control.is-invalid { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important; background-repeat: no-repeat !important; background-position: right calc(.375em + .1875rem) center !important; background-size: calc(.75em + .375rem) calc(.75em + .375rem) !important; }
+textarea.form-control.is-invalid { background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem) !important; }
+
+/* Terms field */
+#terms { margin-top: 10px; position: relative;}
+#sform_privacy + label { display: inline-block; margin-left: 0; padding-left: 20px; cursor:pointer; line-height: 30px; font-size: 15px; margin-bottom: 22px; }
+#sform_privacy.is-invalid + label { color: #dc3545; }
+input[type=checkbox] { -webkit-appearance: checkbox !important; -moz-appearance: checkbox !important; appearance: checkbox !important; }
+
+/* Captcha field */
+#captcha-question-wrap { width: 180px; background-color: #fff; border: 1px solid #ced4da; border-radius: .25rem; }
+#captcha-question-wrap.focus { border-color: #007bff; box-shadow: 0 0 0 .2rem rgba(0,123,255,.25) !important; }
+.form-control.is-invalid:focus, #captcha-question-wrap.is-invalid.focus { box-shadow: 0 0 0 .2rem rgba(220,53,69,.25) !important;}
+.form-control.is-invalid, #captcha-question-wrap.is-invalid {border-color: #dc3545 !important;}
+#captcha-question { width: 106px; height: inherit; font-size: 16px; font-weight: 400; cursor: text; border: none; outline: none; display: inline-block; background-color: transparent; padding-right: 0 !important; text-align: right; box-shadow: none; }
+#sform_captcha { width: 70px; font-size: 16px; border: none; outline: none;  display: inline-block; background-color: transparent; padding-left: 10px !important; box-shadow: none; }
+#captcha-question:focus, #sform_captcha:focus { box-shadow: none !important; background-color: transparent !important; }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; } /* Hide Arrows: Chrome, Safari, Edge, Opera */
+input[type=number] { -moz-appearance:textfield; } /* Hide Arrows: Firefox */
+#captcha-question-wrap.is-invalid + .error-des span { display: block; }
+
+/* Error message */
+#sform-message {padding: 10px 0;}
+#sform-message span { display: block; visibility: hidden; outline: none; text-align: center; font-size: 16px; font-weight: 400; color: #721c24; background-color: #f8d7da; padding: .5rem 1.25rem; border-radius: .25rem; }
+
+/* Submit field */
+#sform-submit-wrap { text-align: center; margin: 22px 0; }
+.btn { font-size: 16px; font-weight: 400; line-height: 1.5; padding: .5rem .75rem; border-radius: .25rem; text-transform: uppercase; }
+.btn-primary { color: #fff !important; background-color: #007bff !important; border: 1px solid #007bff !important; box-shadow: none; }
+.btn-primary:hover { color: #fff !important; background-color: #0069d9 !important; border: 1px solid #0062cc !important; text-decoration: none; box-shadow: none; }
+
+/* Text below Contact Form */
+#sform-bottom {font-size: 16px; margin: 0 auto; }
