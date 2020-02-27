@@ -1,0 +1,306 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SimpleForm Contact Form Submissions\n"
+"POT-Creation-Date: 2020-02-15 14:22+0100\n"
+"PO-Revision-Date: 2020-02-15 14:27+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: simpleform-submissions.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: includes/class-wp-list-table.php\n"
+
+#: admin/class-admin.php:53
+msgid "View Request"
+msgstr "Visualizza richiesta"
+
+#: admin/class-admin.php:99 admin/class-admin.php:118
+msgid ""
+"Check if you want to add the submissions list in dashboard and enable the "
+"form data storing"
+msgstr ""
+"Selezionare se desideri visualizzare i messaggi nella dashboard e abilitare "
+"l’archiviazione dei dati"
+
+#: admin/class-admin.php:99 admin/class-admin.php:118
+msgid ""
+"Uncheck if you want to remove the submissions list in dashboard and disable "
+"the form data storing"
+msgstr ""
+"Deselezionare se desideri rimuovere la visualizzazione dei messaggi nella "
+"dashboard e disabilitare l’archiviazione dei dati"
+
+#: admin/class-admin.php:116
+msgid "Administration Options"
+msgstr "Opzioni Amministrazione"
+
+#: admin/class-admin.php:118
+msgid "Data Storing"
+msgstr "Archiviazione dati"
+
+#: admin/class-admin.php:118
+msgid ""
+"Enable the form data storing in the database ( data will be included only "
+"within the notification email if unchecked )"
+msgstr ""
+"Abilita l’archiviazione dei dati nel database ( se l’opzione non viene "
+"selezionata i dati saranno inclusi solo nell’email di notifica )"
+
+#: admin/class-admin.php:120
+msgid "IP Address Storing"
+msgstr "Archiviazione IP"
+
+#: admin/class-admin.php:120
+msgid "Enable IP address storing in the database"
+msgstr "Abilita l’archiviazione dell’indirizzo IP nel database"
+
+#: admin/class-admin.php:153
+msgid ""
+"Data Storing option and Enable Notification option cannot be both disabled. "
+"Please keep at least one option enabled!"
+msgstr ""
+"L’opzione Archiviazione dati e l’opzione Abilita notifica non possono essere "
+"entrambe disabilitate. Tieni almeno un’opzione abilitata!"
+
+#: admin/class-admin.php:176
+msgid "Search"
+msgstr "Cerca"
+
+#: admin/class-admin.php:196
+msgid "Received"
+msgstr "Ricevute"
+
+#: admin/class-admin.php:196
+msgid "This Year"
+msgstr "Anno in corso"
+
+#: admin/class-admin.php:196
+msgid "Last Month"
+msgstr "Ultimo mese"
+
+#: admin/class-admin.php:196
+msgid "Last Week"
+msgstr "Ultima settimana"
+
+#: admin/class-admin.php:196
+msgid "Last Day"
+msgstr "Ultimo giorno"
+
+#: admin/class-admin.php:200
+msgid "Last Message Received"
+msgstr "Ultimo messaggio ricevuto"
+
+#: admin/class-admin.php:200
+msgid "Before you go crazy looking for the received messages"
+msgstr "Prima di impazzire alla ricerca dei messaggi ricevuti"
+
+#: admin/class-admin.php:200 admin/class-admin.php:203
+msgid ""
+"Submissions data are not store into the WordPress database. Open the General "
+"Tab in Settings page, and check the Data Storing option for enable the "
+"display of messages in dashboard. By default, only last message is being "
+"temporarily stored. Therefore, it is recommended to verify the correct SMTP "
+"server configuration in case of use, and always keep the notification email "
+"enabled if you want to be sure to receive messages."
+msgstr ""
+"I dati inseriti nel modulo non vengono salvati nel database di WordPress. "
+"Apri la scheda Generali nella pagina Impostazioni e selezionare l’opzione "
+"Archiviazione dati per abilitare la visualizzazione dei messaggi nella "
+"dashboard. Per impostazione predefinita viene memorizzato temporaneamente "
+"solo l’ultimo messaggio. Pertanto, si consiglia di verificare la corretta "
+"configurazione del server SMTP in caso di utilizzo, e di mantenere sempre "
+"abilitata l’email di notifica se si vuole essere sicuri di ricevere i "
+"messaggi."
+
+#: admin/class-admin.php:203
+msgid "Empty Inbox"
+msgstr "Posta in arrivo vuota"
+
+#: admin/class-admin.php:203
+msgid "So far, no message has been received yet!"
+msgstr "Finora, nessun messaggio è stato ricevuto!"
+
+#: admin/class-admin.php:240
+msgid "Number of submissions per page"
+msgstr "Numero di richieste per pagina"
+
+#: admin/class-admin.php:270
+msgid "From"
+msgstr "Da"
+
+#: admin/class-admin.php:288 includes/class-list-table.php:38
+msgid "Email"
+msgstr "Email"
+
+#: admin/class-admin.php:292 includes/class-list-table.php:39
+msgid "Date"
+msgstr "Data"
+
+#: admin/class-admin.php:303 includes/class-list-table.php:133
+msgid "at"
+msgstr "alle"
+
+#: admin/class-admin.php:313
+msgid "IP"
+msgstr "IP"
+
+#: admin/class-admin.php:318 includes/class-list-table.php:36
+msgid "Subject"
+msgstr "Oggetto"
+
+#: admin/class-admin.php:322 includes/class-list-table.php:37
+msgid "Message"
+msgstr "Messaggio"
+
+#: admin/partials/message.php:9
+msgid "Request ID"
+msgstr "ID Richiesta"
+
+#: admin/partials/message.php:14
+msgid "Submitted Message"
+msgstr "Messaggio inviato"
+
+#: admin/partials/message.php:16
+msgid "Back to Submissions list"
+msgstr "Torna all’elenco delle richieste"
+
+#: includes/class-activator.php:54
+#, php-format
+msgid ""
+"Before proceeding to activate this plugin, you need to install and activate "
+"<a href=\"%1s\" target=\"_blank\">SimpleForm</a> plugin.<p>Search it in the "
+"<a href=\"%2s\">WordPress repository</a>"
+msgstr ""
+"Prima di procedere con l’attivazione di questo plugin, è necessario attivare "
+"ed installare il plugin <a href=\"%1s\" target=\"_blank\">SimpleForm</a>."
+"<p>Cercalo nel <a href=\"%2s\">repository WordPress</a>"
+
+#: includes/class-activator.php:60 includes/class-activator.php:70
+#, php-format
+msgid ""
+"Before proceeding to activate this plugin, you need to activate "
+"<b>SimpleForm</b> plugin.<p>Back to the <a href=\"%s\">Plugins</a> page"
+msgstr ""
+"Prima di procedere con l’attivazione di questo plugin, è necessario attivare "
+"il plugin <b>SimpleForm</b>.<p>Torna alla pagina <a href=“%s”>Plugins</a>"
+
+#: includes/class-core.php:71
+#, php-format
+msgid "Core plugin missing. %1$s requires <b>SimpleForm</b> to be active."
+msgstr ""
+"Plugin base mancante. %1$s richiede <b>SimpleForm</b> per essere attivato."
+
+#: includes/class-list-table.php:51
+msgid "No submissions found"
+msgstr "Nessun messaggio trovato"
+
+#: includes/class-list-table.php:89
+msgid "View"
+msgstr "Visualizza"
+
+#: includes/class-list-table.php:90 includes/class-list-table.php:154
+msgid "Delete"
+msgstr "Elimina"
+
+#: includes/class-list-table.php:195
+msgid "Invalid Nonce"
+msgstr "Nonce non valido"
+
+#: includes/class-list-table.php:195
+msgid "Error"
+msgstr "Errore"
+
+#: includes/class-list-table.php:221
+#, php-format
+msgid "%s submission"
+msgid_plural "%s submissions"
+msgstr[0] "%s richiesta"
+msgstr[1] "%s richieste"
+
+#: includes/class-list-table.php:261
+msgid "First page"
+msgstr "Prima pagina"
+
+#: includes/class-list-table.php:272
+msgid "Previous page"
+msgstr "Pagina precedente"
+
+#: includes/class-list-table.php:279 includes/class-list-table.php:283
+msgid "Current Page"
+msgstr "Pagina corrente"
+
+#: includes/class-list-table.php:290
+#, php-format
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%1$s di %2$s"
+
+#: includes/class-list-table.php:301
+msgid "Next page"
+msgstr "Pagina successiva"
+
+#: includes/class-list-table.php:312
+msgid "Last page"
+msgstr "Ultima pagina"
+
+#: includes/class-list-table.php:355
+msgid "Enter keyword to search"
+msgstr "Inserisci la parola chiave"
+
+#. Plugin Name of the plugin/theme
+msgid "SimpleForm Contact Form Submissions"
+msgstr "SimpleForm Contact Form Submissions"
+
+#. Description of the plugin/theme
+msgid ""
+"You are afraid of losing important messages? This data storage plugin for "
+"SimpleForm save contact form submissions into WordPress database and allows "
+"you to easily manage the submitted messages from dashboard."
+msgstr ""
+"Hai paura di perdere messaggi importanti? Questo plugin di archiviazione "
+"dati per SimpleForm salva nel database di WordPress le richieste inviate "
+"tramite modulo di contatto e permette la gestione dei messaggi direttamente "
+"dalla dashboard."
+
+#. Author of the plugin/theme
+msgid "WPSForm Team"
+msgstr "WPSForm"
+
+#. Author URI of the plugin/theme
+msgid "https://wpsform.com"
+msgstr "https://wpsform.com"
+
+#, php-format
+#~ msgid ""
+#~ "You need SimpleForm to activate this plugin. Please <a href=\"%s\" target="
+#~ "\"_blank\">install SimpleForm</a> before continuing."
+#~ msgstr ""
+#~ "È necessario SimpleForm per attivare questo plugin. Installa <a href=\"%s"
+#~ "\" target=\"_blank\">SimpleForm</a> prima di continuare."
+
+#, php-format
+#~ msgid ""
+#~ "%1$s requires <a class=\"nodecoration\" href=\"%2$s\" target=\"_blank"
+#~ "\">SimpleForm</a> to be active. Please activate the core plugin first."
+#~ msgstr ""
+#~ "%1$s richiede <a class=\"nodecoration\" href=\"%2$s\" target=\"_blank"
+#~ "\">SimpleForm</a> per essere attivato. Attivare prima il plugin "
+#~ "principale."
+
+#~ msgid "simpleform"
+#~ msgstr "simpleform"
+
+#~ msgid " at "
+#~ msgstr "alle"

@@ -1,0 +1,23 @@
+button.handlediv { display: none !important; }
+h2.hndle { cursor: default !important; padding-left: 24px !important; line-height: 30px !important; background: #e7e7e7; }
+.row-actions.visible { display:inherit; }
+a:focus { box-shadow: none; }
+th#date, th.column-date { width: 20% !important; }
+.backend2 { margin: 50px -20px 30px -22px !important; }
+h1.backend2 { font-family: Segoe UI,Arial,sans-serif; font-size: 23px; font-weight: 400;  color: #fff; background-color: #72777C; padding: 12px 20px; }
+h1.backend2 > span { display: inline-block; padding: 0 20px 0 0; position: relative; vertical-align: sub; font-size: 28px; top: 1px; }
+h1.backend2 > span.backlist { font-size: 15px; padding: 4px 8px; border: 1px solid #0071a1; border-radius: 2px; text-shadow: none; font-weight: 600; color: #0071a1; background: #f3f5f6; cursor: pointer; float: right; }
+h1.backend2 > span.backlist > a, .nodecoration { text-decoration: none; }
+#post-body-content { margin-bottom: 20px; border-top: none !important; background: #FFF; }
+#sform_entrie_meta_box.postbox { border: 0px solid #e5e5e5; -webkit-box-shadow: none; box-shadow: none; }
+#sform_entrie_meta_box h2.hndle { border-bottom: 2px solid #eee; padding-left: 38px !important}
+#poststuff .inside { margin: 0; padding: 10px 24px; margin: 0; font-size: 14px; }
+.postbox { margin-bottom: 0px; }
+.thdata { line-height: 20px; font-weight: 600; float: left; padding: 20px 14px;width: 100px; }
+.tddata {float: left; line-height: 20px; padding:  20px 20px 10px; width: calc(90% - 168px);  }    
+.datarow { width: 100%; display: inline-block; }   
+.thdata.first { padding: 50px 14px 20px; }
+.tddata.first { padding: 50px 20px 0px; }     
+.thdata.last { padding: 20px 14px 30px; }
+.tddata.last { padding:  20px 20px 30px; }
+#admin-notice > a { text-decoration: none; }
