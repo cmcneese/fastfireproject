@@ -18,13 +18,18 @@ body.page-id-12 .wp-custom-header img{
     background-image: url(http://fastfireproject.local/wp-content/uploads/2020/02/bigstock-Downtown-Denver-Colorado-75641905.jpg);
 }
 
+.custom-logo {
+  width: 75%;
+  height: auto;
+  max-width: 100%;
+
+}
 /* Center Company Logo within Hero*/
 .custom-logo-link {
     display: flex;
     align-items: center;
     justify-content: center;
     height: auto;
-    min-height: 50em;
   }
 
 .custom-logo-link img{
