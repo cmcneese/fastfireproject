@@ -15,7 +15,7 @@ Version: 0.3
 .breadcrumb-wrapper{
 	padding: 130px 0;
 	background-image: url(http://fastfireproject.local/wp-content/uploads/2020/02/bigstock-Downtown-Denver-Colorado-75641905.jpg)!important;
-	background-position: bottom!important;
+	background-position: 0px 150%;
 	background-size: auto;
 	background-blend-mode: multiply;
 }
