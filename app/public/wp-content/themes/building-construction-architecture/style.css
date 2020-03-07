@@ -12,6 +12,12 @@ Tags: custom-logo,custom-menu,featured-images,threaded-comments,translation-read
 Version: 0.3
 */
 
+/*Hide Theme Credits in Footer*/
+.bizberg_copyright_inner {
+	display: none!important;
+}
+
+/*Style Hero Image*/
 .breadcrumb-wrapper{
 	padding: 130px 0;
 	background-image: url(http://fastfireproject.local/wp-content/uploads/2020/02/bigstock-Downtown-Denver-Colorado-75641905.jpg)!important;
