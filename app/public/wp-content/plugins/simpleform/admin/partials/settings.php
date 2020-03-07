@@ -20,6 +20,7 @@ $bootstrap_notes = esc_attr__('In order to use this template, you need to load B
 
 switch ($form_template) {
   case 'basic':
+  case 'rounded':
     $template_notes = $bootstrap_notes;
     break;
   case 'customized':
@@ -49,9 +50,9 @@ echo apply_filters( 'submissions_settings_filter', $extra_option );
 
 <tr><th class="heading" colspan="2"><span><?php esc_html_e('Customization Options', 'simpleform' ) ?></span></th></tr>
 		
-<tr><th class="first option"><span><?php esc_html_e('Form Template','simpleform') ?></span></th><td class="first select notes"><select name="form-template" id="form-template" class="sform"><option value="default" <?php selected( $form_template, 'default'); ?>><?php esc_html_e('Default Form Template','simpleform') ?></option><option value="basic" <?php selected( $form_template, 'basic'); ?>><?php esc_html_e('Basic Bootstrap Form Template','simpleform') ?></option><option value="customized" <?php selected( $form_template, 'customized'); ?>><?php esc_html_e('Customized Form Template','simpleform') ?></option></select><p id="template-notice" class="description"><?php echo $template_notes ?></p></td></tr>
+<tr><th class="first option"><span><?php esc_html_e('Form Template','simpleform') ?></span></th><td class="first select notes"><select name="form-template" id="form-template" class="sform"><option value="default" <?php selected( $form_template, 'default'); ?>><?php esc_html_e('Default','simpleform') ?></option><option value="basic" <?php selected( $form_template, 'basic'); ?>><?php esc_html_e('Basic Bootstrap','simpleform') ?></option><option value="rounded" <?php selected( $form_template, 'rounded'); ?>><?php esc_html_e('Rounded Bootstrap','simpleform') ?></option><option value="customized" <?php selected( $form_template, 'customized'); ?>><?php esc_html_e('Customized','simpleform') ?></option></select><p id="template-notice" class="description"><?php echo $template_notes ?></p></td></tr>
 
-<tr class="trbootstrap <?php if ($form_template =='basic') { echo 'visible'; } else { echo 'hidden'; } ?>"><th class="option"><span><?php esc_html_e( 'Bootstrap’s JS library', 'simpleform' ) ?></span></th><td class="checkbox notes"><label for="bootstrap"><input id="bootstrap" name="bootstrap" type="checkbox" class="sform" value="true" <?php checked( $bootstrap, 'true'); ?> ><?php esc_html_e( 'Load 4.4.1 version of Bootstrap’s JS library via CDN', 'simpleform' ); ?></label><p class="description"><?php esc_html_e( 'Keep checkbox unchecked if you are using a Bootstrap Theme or the Bootstrap’s JS library is already hosted locally', 'simpleform' ) ?></p></td></tr>
+<tr class="trbootstrap <?php if ($form_template =='basic' || $form_template =='rounded') { echo 'visible'; } else { echo 'hidden'; } ?>"><th class="option"><span><?php esc_html_e( 'Bootstrap’s JS library', 'simpleform' ) ?></span></th><td class="checkbox notes"><label for="bootstrap"><input id="bootstrap" name="bootstrap" type="checkbox" class="sform" value="true" <?php checked( $bootstrap, 'true'); ?> ><?php esc_html_e( 'Load 4.4.1 version of Bootstrap’s JS library via CDN', 'simpleform' ); ?></label><p class="description"><?php esc_html_e( 'Keep checkbox unchecked if you are using a Bootstrap Theme or the Bootstrap’s JS library is already hosted locally', 'simpleform' ) ?></p></td></tr>
 
 <tr class="trcustomized <?php if ($form_template =='customized' ) { echo 'visible'; } else { echo 'hidden'; } ?>"><th class="option"><span><?php esc_html_e( 'Form Stylesheet', 'simpleform' ) ?></span></th><td class="checkbox notes"><label for="stylesheet"><input id="stylesheet" name="stylesheet" type="checkbox" class="sform" value="true" <?php checked( $stylesheet, 'true'); ?> ><?php esc_html_e( 'Disable the default stylesheet', 'simpleform' ); ?></label><p class="description"><?php esc_html_e( 'Check the checkbox if you want to use your own stylesheet for the form', 'simpleform' ) ?></p></td></tr>
 

@@ -6,7 +6,7 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,8 @@ We love clean and minimalist design, and for this reason we provide a contact fo
 = Designed thinking about user experience =
 
 It is lightweight and responsive plugin. SimpleForm does not interfere with your site performance. The submission via Ajax, on backend too, allows a seamless user experience without page refreshes. You can show users a success message or redirect them elsewhere after they complete the form. You can also send a confirmation email to thank who contact you.
+
+https://www.youtube.com/watch?v=EbZDvaLnejo&rel=0
 
 **What SimpleForm is not for now:**
 
@@ -114,15 +116,16 @@ We provide free support on the WordPress.org plugin repository. Please log into 
 4. Messages tab
 5. Emails tab
 6. SMTP server configuration
-7. Notification email
-8. Confirmation email
-9. Default form template
-10. Default form template (failed validation)
-11. Bootstrap form template
-12. Bootstrap form template (failed validation)
+7. Default form template
+8. New Bootstrap form template
+9. Form failed validation
 
 == Changelog ==
  
+= 1.3.2 (29 February 2020) =
+* Fixed: Sanitization of a variable not properly used inside JavaScript script
+* Added: New Bootstrap contact form template
+
 = 1.3.1 (21 February 2020) =
 * Fixed: HTML5 validation error when form submission is executed via AJAX
 * Fixed: Captcha field styling issues

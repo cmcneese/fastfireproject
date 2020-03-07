@@ -305,7 +305,7 @@ class SimpleForm_Admin {
        $confirmation_message = isset($_POST['confirmation_message']) ? wp_kses_post(trim($_POST['confirmation_message'])) : '';
        $confirmation_reply_to = isset($_POST['confirmation_reply_to']) ? sanitize_text_field(trim($_POST['confirmation_reply_to'])) : '';
               
-       if ( $template == 'default' ||  $template == 'customized' )  { $bootstrap = 'false'; }
+       if ( $template == 'default' || $template == 'customized' )  { $bootstrap = 'false'; }
        if ( $template != 'customized' )  { $stylesheet = 'false'; }
        if ( $smtp_configuration == 'true'  )  { $server_smtp = 'false'; }
 

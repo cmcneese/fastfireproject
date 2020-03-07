@@ -53,6 +53,9 @@ class SimpleForm_Public {
       case 'basic':
       wp_enqueue_style( 'sform-style', plugins_url('/css/basic-bootstrap-template.css',__FILE__)); 	
       break;
+      case 'rounded':
+      wp_enqueue_style( 'sform-style', plugins_url('/css/rounded-bootstrap-template.css',__FILE__)); 	
+      break;
       case 'customized':
        $stylesheet = ! empty( $sform_settings['stylesheet'] ) ? esc_attr($sform_settings['stylesheet']) : 'false';
        if ( $stylesheet == 'false' ) { 
@@ -110,6 +113,9 @@ class SimpleForm_Public {
       switch ($form_template) {
       case 'basic':
       $template = 'partials/basic-bootstrap-template.php';
+      break;
+      case 'rounded':
+      $template = 'partials/rounded-bootstrap-template.php';
       break;
       case 'customized':
       $template = '';
@@ -496,7 +502,7 @@ class SimpleForm_Public {
     if ( ! has_filter('sform_post_message') ) { 
       if ( $mailing == 'true' ) {
 	   echo '<script type="text/javascript">
-	   document.location.href=encodeURI("'.esc_js($redirect_to).'");
+	   document.location.href = encodeURI("'.esc_js($redirect_to).'");
 	   </script>';  
 	   $error = '';
       } 	 
@@ -506,7 +512,7 @@ class SimpleForm_Public {
 	else { $error = apply_filters( 'sform_post_message', $mailing ); 
       if ( $error == '' ) {
 	   echo '<script type="text/javascript">
-	   document.location.href="'.$redirect_to.'";
+	   document.location.href = encodeURI("'.esc_js($redirect_to).'");
 	   </script>';  
       } 	 
 	}
