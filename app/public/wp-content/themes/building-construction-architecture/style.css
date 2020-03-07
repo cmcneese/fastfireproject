@@ -14,13 +14,17 @@ Version: 0.3
 
 .breadcrumb-wrapper{
 	padding: 130px 0;
+	background-image: url(http://fastfireproject.local/wp-content/uploads/2020/02/bigstock-Downtown-Denver-Colorado-75641905.jpg)!important;
+	background-position: bottom!important;
+	background-size: auto;
+	
 }
 
 @media only screen and (max-width: 1281px){
 
 	.slicknav_btn {
 	    top: 40px;
-	}	
+	}
 
 	.slicknav_nav {
 	    top: 96px;
@@ -59,19 +63,19 @@ Version: 0.3
 }
 
 @media (min-width: 640px) and (max-width: 767px) {
-  
+
   	.slicknav_btn {
 	    top: 35px;
-	}	
+	}
 
 	.navbar.sticky .slicknav_btn {
     	top: 26px;
-	}	
+	}
 
 	.breadcrumb-wrapper {
 	    padding: 60px 0;
 	}
-  
+
 }
 
 @media (max-width: 639px) {
@@ -103,33 +107,33 @@ Version: 0.3
 }
 
 @media only screen and (max-width: 823px) {
-	
+
 	.medical-service-section .home-service-title-wrapper .uagb-infobox .uagb-ifb-text-wrap{
 		display:none;
 	}
-	
+
 	.service-detail-wrapper-left p.uagb-ifb-desc{
 		margin-bottom:15px !important;
 	}
-	
+
 	.service-detail-wrapper-right p.uagb-ifb-desc{
 		margin-bottom:25px !important;
 	}
-	
+
 	.service-detail-wrapper-right .uagb-ifb-icon-wrap{
-		margin-bottom:15px;		
+		margin-bottom:15px;
 	}
-	
+
 	.service-detail-wrapper-left .uagb-infobox__outer-wrap{
 		margin-bottom:30px;
 	}
-	
+
 	.service-detail-wrapper-left{
 		margin-bottom:40px
 	}
-	
+
 	.service-detail-wrapper-right{
 		margin-top:40px;
 	}
-	
+
 }
