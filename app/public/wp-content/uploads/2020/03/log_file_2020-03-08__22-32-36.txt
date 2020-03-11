@@ -1,0 +1,38 @@
+
+---Downloaded files---
+The import files for: Building Construction Architecture Free were successfully downloaded!
+Initial max execution time = 900
+Files info:
+Site URL = http://fastfireproject.local
+Data file = /app/public/wp-content/plugins/elegant-blocks/theme/building-construction-architecture/demo/demo-content.xml
+Widget file = /app/public/wp-content/plugins/elegant-blocks/theme/building-construction-architecture/demo/widgets.wie
+Customizer file = /app/public/wp-content/plugins/elegant-blocks/theme/building-construction-architecture/demo/customizer.dat
+Redux files:
+not defined!
+
+------
+New AJAX call!
+[ERROR] Failed to import "pexels-photo-1108101" (Media)
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Sidebar : 
+
+Search - No Title - Imported
+Recent Posts - No Title - Imported
+Recent Comments - No Title - Imported
+Archives - No Title - Imported
+Categories - No Title - Imported
+Meta - No Title - Imported
+
+
+
+---Importing customizer settings---
+Customizer settings import finished!
+
+---pt-ocdi/after_import---
+
