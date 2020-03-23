@@ -43,7 +43,7 @@ td.first.text, td.first.select.sform { padding: 53px 50px 23px 9px; }
 td.first.select.notes { padding: 54px 50px 1px 9px; }
 td.wide.text { padding: 53px 50px 53px 9px; }
 td.last.text, td.last.select.sform  { padding: 23px 50px 53px 9px; }
-td.text.notes { padding: 23px 50px 0px 9px; }
+td.text.notes { padding: 23px 50px 2px 9px; }
 td.last.text.notes { padding: 23px 50px 30px 9px; } 
 td.checkbox { padding: 35px 10px 36px; }
 td.first.checkbox  { padding: 65px 10px 36px; }
@@ -57,6 +57,7 @@ td.last.checkbox.notes { padding: 35px 10px 42px; }
 td.radio { padding: 31px 9px 30px; }
 td.first.radio { padding: 61px 9px 30px; }
 td.radio.notes { padding: 31px 9px 7px; }
+td.last.radio { padding: 31px 9px 60px; }
 td.textarea { padding: 24px 50px 24px 9px; }
 td.first.textarea { padding: 51px 50px 14px 9px; }
 th.last.textarea.option { padding: 26px 41px 60px; width: 250px; }

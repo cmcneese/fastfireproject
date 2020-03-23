@@ -412,8 +412,9 @@ class SimpleForm_Public {
     $subject = $subject_type == 'request' ? $request_subject : $subject_text;
     
     if ( $submission_number == 'visible' ):
-          $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
-     	  $admin_subject = '#' . $reference_number . ' - ' . $subject;	
+          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
+    	  $admin_subject = '#' . $reference_number . ' - ' . $subject;	
      	  else:
      	  $admin_subject = $subject;	
     endif;
@@ -480,7 +481,9 @@ class SimpleForm_Public {
           $reply_to = ! empty( $sform_settings['confirmation_reply_to'] ) ? esc_attr($sform_settings['confirmation_reply_to']) : $from;
 		  $headers = "Content-Type: text/html; charset=UTF-8" . "\r\n";
 		  $headers .= "Reply-To: <".$reply_to.">" . "\r\n";
-          $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
+          
 	      $tags = array( '[name]','[request_subject]','[request_message]','[request_id]' );
           $values = array( $name_value,$subject_value,$formdata['message'],$reference_number );
           $content = str_replace($tags,$values,$message);
@@ -619,7 +622,7 @@ class SimpleForm_Public {
         echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_name_label, 'field' => 'name' ));
 	    exit; 
 	    }
-	    if (  ! empty($name) && ! preg_match($name_regex, $name ) ) { 
+	    if (  ! empty($name) && preg_match($name_regex, $name ) ) { 
         echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_invalid_name_label, 'field' => 'name' ));
 	    exit; 
         }
@@ -776,7 +779,9 @@ class SimpleForm_Public {
        $subject = $subject_type == 'request' ? $request_subject : $subject_text;
 
        if ( $submission_number == 'visible' ):
-          $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
+
      	  $admin_subject = '#' . $reference_number . ' - ' . $subject;	
      	  else:
      	  $admin_subject = $subject;	
@@ -845,7 +850,9 @@ class SimpleForm_Public {
           $reply_to = ! empty( $sform_settings['confirmation_reply_to'] ) ? esc_attr($sform_settings['confirmation_reply_to']) : $from;
 		  $headers = "Content-Type: text/html; charset=UTF-8" . "\r\n";
 		  $headers .= "Reply-To: <".$reply_to.">" . "\r\n";
-          $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
+          $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
+
 	      $tags = array( '[name]','[request_subject]','[request_message]','[request_id]' );
           $values = array( $name,$object,$request,$reference_number ); 
           $content = str_replace($tags,$values,$message);

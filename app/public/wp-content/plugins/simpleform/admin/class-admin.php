@@ -198,16 +198,30 @@ class SimpleForm_Admin {
        $shortcode_name = isset($_POST['shortcode_name']) ? sanitize_text_field($_POST['shortcode_name']) : '';
        $introduction_text = isset($_POST['introduction_text']) ? wp_kses_post(trim($_POST['introduction_text'])) : 'Please fill out the form below with your inquiry and we will get back to you as soon as possible. Mandatory fields are marked with (*).'; 
        $bottom_text = isset($_POST['bottom_text']) ? wp_kses_post(trim($_POST['bottom_text'])) : '';    
+              
+       $required_sign = isset($_POST['required_sign']) ? 'true' : 'false';
+       
        $name_field = isset($_POST['name_field']) ? sanitize_text_field($_POST['name_field']) : 'visible';
+       $name_spotlight = isset($_POST['name_spotlight']) ? 'hidden' : 'visible';
        $name_label = isset($_POST['name_label']) ? sanitize_text_field(trim($_POST['name_label'])) : '';
+       $name_placeholder = isset($_POST['name_placeholder']) ? sanitize_text_field($_POST['name_placeholder']) : '';
        $name_requirement = isset($_POST['name_requirement']) ? 'required' : 'optional';
        $email_field = isset($_POST['email_field']) ? sanitize_text_field($_POST['email_field']) : 'visible';
+       $email_spotlight = isset($_POST['email_spotlight']) ? 'hidden' : 'visible';
        $email_label = isset($_POST['email_label']) ? sanitize_text_field(trim($_POST['email_label'])) : '';
+       $email_placeholder = isset($_POST['email_placeholder']) ? sanitize_text_field($_POST['email_placeholder']) : '';
+       
        $email_requirement = isset($_POST['email_requirement']) ? 'required' : 'optional';
        $subject_field = isset($_POST['subject_field']) ? sanitize_text_field($_POST['subject_field']) : 'visible';
+       $subject_spotlight = isset($_POST['subject_spotlight']) ? 'hidden' : 'visible';
        $subject_label = isset($_POST['subject_label']) ? sanitize_text_field(trim($_POST['subject_label'])) : '';
+       $subject_placeholder = isset($_POST['subject_placeholder']) ? sanitize_text_field($_POST['subject_placeholder']) : '';
        $subject_requirement = isset($_POST['subject_requirement']) ? 'required' : 'optional';
+      
+       $message_spotlight = isset($_POST['message_spotlight']) ? 'hidden' : 'visible';
        $message_label = isset($_POST['message_label']) ? sanitize_text_field(trim($_POST['message_label'])) : '';
+       $message_placeholder = isset($_POST['message_placeholder']) ? sanitize_text_field($_POST['message_placeholder']) : '';
+      
        $terms_field = isset($_POST['terms_field']) ? sanitize_text_field($_POST['terms_field']) : 'visible';
        $terms_label = isset($_POST['terms_label']) ? wp_filter_post_kses(trim($_POST['terms_label'])) : '';
        $terms_requirement = isset($_POST['terms_requirement']) ? 'required' : 'optional';
@@ -220,7 +234,7 @@ class SimpleForm_Admin {
        $update_shortcode = $wpdb->update($table_shortcodes, array('name' => $shortcode_name ), array('shortcode' => 'simpleform' ));
        $update_result = $update_shortcode ? 'done' : '';
  
-       $form_attributes = array('form_name' => $shortcode_name, 'introduction_text' => $introduction_text, 'bottom_text' => $bottom_text, 'name_field' => $name_field, 'name_label' => $name_label, 'name_requirement' => $name_requirement, 'email_field' => $email_field, 'email_label' => $email_label, 'email_requirement' => $email_requirement, 'subject_field' => $subject_field, 'subject_label' => $subject_label, 'subject_requirement' => $subject_requirement, 'message_label' => $message_label, 'terms_field' => $terms_field, 'terms_label' => $terms_label, 'terms_requirement' => $terms_requirement, 'captcha_field' => $captcha_field, 'captcha_label' => $captcha_label, 'submit_label' => $submit_label );      
+       $form_attributes = array('form_name' => $shortcode_name, 'introduction_text' => $introduction_text, 'bottom_text' => $bottom_text, 'required_sign' => $required_sign, 'name_field' => $name_field, 'name_spotlight' => $name_spotlight, 'name_label' => $name_label, 'name_placeholder' => $name_placeholder, 'name_requirement' => $name_requirement, 'email_field' => $email_field, 'email_spotlight' => $email_spotlight, 'email_label' => $email_label, 'email_placeholder' => $email_placeholder, 'email_requirement' => $email_requirement, 'subject_field' => $subject_field, 'subject_spotlight' => $subject_spotlight, 'subject_label' => $subject_label, 'subject_placeholder' => $subject_placeholder, 'subject_requirement' => $subject_requirement, 'message_spotlight' => $message_spotlight, 'message_label' => $message_label, 'message_placeholder' => $message_placeholder, 'terms_field' => $terms_field, 'terms_label' => $terms_label, 'terms_requirement' => $terms_requirement, 'captcha_field' => $captcha_field, 'captcha_label' => $captcha_label, 'submit_label' => $submit_label );      
 
        $update_attributes = update_option('sform-attributes', $form_attributes); 
        if ($update_attributes) { $update_result .= 'done'; }

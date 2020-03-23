@@ -22,25 +22,25 @@ $form .= '<div class="d-none"><label for="name">Username</label><input type="tex
 
 // Name field
 if ( $name_field == 'visible' || $name_field == 'registered' && is_user_logged_in() || $name_field == 'anonymous' && ! is_user_logged_in() ) { 
-$form .= '<div class="field-group"><label for="sform_name">'.$name_label.'<span class="'.$required_name.'">'.$required_name_sign.'</span></label><input type="text" id="sform_name" name="sform_name" class="form-control '.$name_class.'" value="'.$name_value.'" '.$name_attribute.'><div id="name-error" class="error-des"><span>'.$name_field_error.'</span></div></div>'; 
+$form .= '<div class="field-group">'.$name_field_label.'<input type="text" id="sform_name" name="sform_name" class="form-control '.$name_class.'" value="'.$name_value.'" placeholder="'.$name_placeholder.'" '.$name_attribute.'><div id="name-error" class="error-des"><span>'.$name_field_error.'</span></div></div>'; 
 }
 
 // Email field	     		
 if ( $email_field == 'visible' || $email_field == 'registered' && is_user_logged_in() || $email_field == 'anonymous' && ! is_user_logged_in() ) { 
-$form .= '<div class="field-group"><label for="sform_email">'.$email_label.'<span class="'.$required_email.'">'.$required_email_sign.'</span></label><input type="email" name="sform_email" id="sform_email" class="form-control '.$email_class.'" value="'.$email_value.'" '.$email_attribute.' ><div id="email-error" class="error-des"><span>'.$email_field_error.'</span></div></div>';
+$form .= '<div class="field-group">'.$email_field_label.'<input type="email" name="sform_email" id="sform_email" class="form-control '.$email_class.'" value="'.$email_value.'" placeholder="'.$email_placeholder.'" '.$email_attribute.' ><div id="email-error" class="error-des"><span>'.$email_field_error.'</span></div></div>';
 }
 
 // Subject field
 if ( $subject_field == 'visible' || $subject_field == 'registered' && is_user_logged_in() || $subject_field == 'anonymous' && ! is_user_logged_in() ) { 
-$form .= '<div class="field-group"><label for="sform_subject">'.$subject_label.'<span class="'.$required_subject.'">'.$required_subject_sign.'</span></label><input type="text" name="sform_subject" id="sform_subject" class="form-control '.$subject_class.'" '.$subject_attribute.' value="'.$subject_value.'" ><div id="subject-error" class="error-des"><span>'.$subject_field_error.'</span></div></div>';
+$form .= '<div class="field-group">'.$subject_field_label.'<input type="text" name="sform_subject" id="sform_subject" class="form-control '.$subject_class.'" '.$subject_attribute.' value="'.$subject_value.'" placeholder="'.$subject_placeholder.'" ><div id="subject-error" class="error-des"><span>'.$subject_field_error.'</span></div></div>';
 }
 
 // Message field
-$form .= '<div class="field-group"><label for="sform_message">'.$message_label.'<span>'.$required_message_sign.'</span></label><textarea name="sform_message" id="sform_message" rows="10" type="textarea" class="form-control '.$message_class.'" required minlength="10">'.$message_value.'</textarea><div id="message-error" class="error-des"><span>'.$message_field_error.'</span></div></div>';
+$form .= '<div class="field-group">'.$message_field_label.'<textarea name="sform_message" id="sform_message" rows="10" type="textarea" class="form-control '.$message_class.'" required minlength="10" placeholder="'.$message_placeholder.'">'.$message_value.'</textarea><div id="message-error" class="error-des"><span>'.$message_field_error.'</span></div></div>';
 
 // Terms field
 if ( $terms_field == 'visible' || $terms_field == 'registered' && is_user_logged_in() || $terms_field == 'anonymous' && ! is_user_logged_in() ) { 
-$form .= '<div id="terms" class="form-group checkbox"><input type="checkbox" name="sform_privacy" id="sform_privacy" class="'.$terms_class.'" value="'.$checkbox_value.'" '.$terms_attribute.'><label for="sform_privacy" class="control-label '.$terms_class.'">'.$terms_label.'<span class="'.$required_terms.'">'.$required_terms_sign.'</span></label></div>';
+$form .= '<div id="terms" class="form-group checkbox"><input type="checkbox" name="sform_privacy" id="sform_privacy" class="'.$terms_class.'" value="'.$checkbox_value.'" '.$terms_attribute.'><label for="sform_privacy" class="control-label '.$terms_class.'">'.$terms_label.$required_terms_label.'</label></div>';
 }
 
 // Second honeypot field
@@ -48,7 +48,7 @@ $form .= '<div class="d-none"><label for="telephone">Telephone</label><input typ
 
 // Captcha field
 if ( $captcha_field == 'visible' || $captcha_field == 'registered' && is_user_logged_in() || $captcha_field == 'anonymous' && ! is_user_logged_in() ) { 
-$form .= '<div class="field-group" id="captcha-container"><label for="sform_captcha">'.$captcha_label.'<span>'.$required_captcha_sign.'</span></label><div id="captcha-question-wrap" class="'.$captcha_class.'">'.$captcha_hidden.'<input id="captcha-question" type="text" class="form-control" readonly="readonly" tabindex="-1" value="'.$captcha_question.'" /><input type="number" id="sform_captcha" name="sform_captcha" class="form-control '.$captcha_class.'" '.$captcha_attribute.' value="'.$captcha_value.'" /></div><div id="captcha-error" class="error-des"><span class="'.$captcha_error_class.'">'.$captcha_field_error.'</span></div></div>';
+$form .= '<div class="field-group" id="captcha-container"><label for="sform_captcha">'.$captcha_label.$required_captcha_label.'</label><div id="captcha-question-wrap" class="'.$captcha_class.'">'.$captcha_hidden.'<input id="captcha-question" type="text" class="form-control" readonly="readonly" tabindex="-1" value="'.$captcha_question.'" /><input type="number" id="sform_captcha" name="sform_captcha" class="form-control '.$captcha_class.'" '.$captcha_attribute.' value="'.$captcha_value.'" /></div><div id="captcha-error" class="error-des"><span class="'.$captcha_error_class.'">'.$captcha_field_error.'</span></div></div>';
 }
 
 // Contact Form error message

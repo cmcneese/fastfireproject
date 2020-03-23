@@ -26,19 +26,37 @@
        $('#name_field').on('change', function () {
          var selectVal = $("#name_field option:selected").val();
          if ( selectVal == 'hidden' ) { $('.trname').hide(); }
-         else { $('.trname').show(); }
+         else { $('.trname').show(); 
+	        if($('#namelabel').prop('checked') == true) { 
+            $('tr.namelabel').hide(); 
+            } else { 
+	        $('tr.namelabel').show(); 
+            }
+	     }
        });          
 
        $('#email_field').on('change', function () {
          var selectVal = $("#email_field option:selected").val();
          if ( selectVal == 'hidden' ) { $('.tremail').hide(); }
-         else { $('.tremail').show(); }
+         else { $('.tremail').show(); 
+	        if($('#emaillabel').prop('checked') == true) { 
+            $('tr.emaillabel').hide(); 
+            } else { 
+	        $('tr.emaillabel').show(); 
+            }
+         }
        });          
 
        $('#subject_field').on('change', function () {
          var selectVal = $("#subject_field option:selected").val();
          if ( selectVal == 'hidden' ) { $('.trsubject').hide(); }
-         else { $('.trsubject').show(); }
+         else { $('.trsubject').show(); 
+	        if($('#subjectlabel').prop('checked') == true) { 
+            $('tr.subjectlabel').hide(); 
+            } else { 
+	        $('tr.subjectlabel').show(); 
+            }
+         }
        });          
 
        $('#captcha_field').on('change', function () {
@@ -66,6 +84,24 @@
        $("#terms_label").blur(function(){
          $('#description-terms').css('visibility', 'hidden');	
        }); 
+       
+       
+       $(".field-label").on("click", function() {
+         var labelID = $(this).attr('id')
+         if($(this).prop('checked') == true) { 
+         $('tr.'+labelID).hide(); 
+         } 
+         else { 
+	     $('tr.'+labelID).show(); 
+         }
+       });
+       
+       
+       
+       
+       
+       
+       
 	
        $(".nav-tab").on("click", function() {
           var SettingsID = $(this).attr('id')

@@ -14,6 +14,20 @@ $form_error = array_slice($data, 10, 1);
 $error_class = ! empty($data['error']) ? array_flip($form_error) : '';
 $introduction_text = ! empty( $form_attributes['introduction_text'] ) ? stripslashes(wp_kses_post($form_attributes['introduction_text'])) : 'Please fill out the form below with your inquiry and we will get back to you as soon as possible. Mandatory fields are marked with (*).';
 $bottom_text = ! empty( $form_attributes['bottom_text'] ) ? stripslashes(wp_kses_post($form_attributes['bottom_text'])) : '';
+
+
+
+$required_sign = ! empty( $form_attributes['required_sign'] ) ? esc_attr($form_attributes['required_sign']) : 'true';
+// $required_word = ! empty( $form_attributes['required_word'] ) ? esc_attr($form_attributes['required_word']) : esc_attr__( '(required)', 'simpleform' );
+$required_word = ! empty( $form_attributes['required_word'] ) ? esc_attr($form_attributes['required_word']) : '';
+$required_position = ! empty( $form_attributes['required-position'] ) ? esc_attr($form_attributes['required-position']) : 'required';
+
+
+
+
+
+
+
 $name_field = ! empty( $form_attributes['name_field'] ) ? esc_attr($form_attributes['name_field']) : 'visible';
 $name_requirement = ! empty( $form_attributes['name_requirement'] ) ? esc_attr($form_attributes['name_requirement']) : 'required';
 $email_field = ! empty( $form_attributes['email_field'] ) ? esc_attr($form_attributes['email_field']) : 'visible';
@@ -22,31 +36,116 @@ $subject_field = ! empty( $form_attributes['subject_field'] ) ? esc_attr($form_a
 $subject_requirement = ! empty( $form_attributes['subject_requirement'] ) ? esc_attr($form_attributes['subject_requirement']) : 'required';
 $captcha_field = ! empty( $form_attributes['captcha_field'] ) ? esc_attr($form_attributes['captcha_field']) : 'hidden';            
 $name_label = ! empty( $form_attributes['name_label'] ) ? stripslashes(esc_attr($form_attributes['name_label'])) : esc_attr__( 'Name', 'simpleform' );
-$required_name_sign = (! isset($error_class['name']) && ! isset($error_class['name_invalid']) && ! empty(esc_attr($data['name']))) || $name_requirement != 'required' ? '' : '&lowast;';
+
 $name_field_requirement = $name_requirement == 'required' ? 'true' : 'false';
-$required_name = $name_field_requirement == 'true' ? '' : 'd-none';
+
+// EDIT
+$required_name_sign = (! isset($error_class['name']) && ! isset($error_class['name_invalid']) && ! empty(esc_attr($data['name']))) || $name_requirement != 'required' || $required_sign != 'true' ? '' : '&lowast;';
+// EDIT
+$required_name = ( $required_sign == 'true' && $name_field_requirement == 'true' ) || ( $required_sign != 'true' && $name_field_requirement == 'true' && $required_position == 'required' ) || ( $required_sign != 'true' && $name_field_requirement != 'true' && $required_position != 'required' ) ? '' : 'd-none';
+// NEW
+$required_name_word = (! isset($error_class['name']) && ! isset($error_class['name_invalid']) && ! empty(esc_attr($data['name']))) || ( $required_sign != 'true' && $name_requirement == 'required' && $required_position != 'required' ) || ( $required_sign != 'true' && $name_requirement != 'required' && $required_position == 'required' ) || $required_sign == 'true' ? '' : '&nbsp;'.$required_word;
+// NEW
+$required_name_label = $required_sign == 'true' ? '<span class="'.$required_name.'">'.$required_name_sign.'</span>' : '<span class="word '.$required_name.'">'.$required_name_word.'</span>';
+
+
+
+$name_field_label = $form_attributes['name_spotlight'] == 'hidden' ? '' : '<label for="sform_name">'.$name_label.$required_name_label.'</label>';
+$name_placeholder = ! empty( $form_attributes['name_placeholder'] ) ? esc_attr($form_attributes['name_placeholder']) : '';
+$email_placeholder = ! empty( $form_attributes['email_placeholder'] ) ? esc_attr($form_attributes['email_placeholder']) : '';
+$subject_placeholder = ! empty( $form_attributes['subject_placeholder'] ) ? esc_attr($form_attributes['subject_placeholder']) : '';
+$message_placeholder = ! empty( $form_attributes['message_placeholder'] ) ? esc_attr($form_attributes['message_placeholder']) : '';
+
+
+
+
+
+
+
+
+
+
 $email_label = ! empty( $form_attributes['email_label']  ) ? stripslashes(esc_attr($form_attributes['email_label'])) : esc_attr__( 'Email', 'simpleform' );
 $email_field_requirement = $email_requirement == 'required' ? 'true' : 'false';
-$required_email = $email_field_requirement == 'true' ? '' : 'd-none';
-$required_email_sign = (! isset($error_class['email']) && ! empty(esc_attr($data['email']))) || $email_requirement != 'required' ? '' : '&lowast;';
+
+
+
+$required_email_sign = (! isset($error_class['email']) && ! empty(esc_attr($data['email']))) || $email_requirement != 'required' || $required_sign != 'true' ? '' : '&lowast;';
+
+
+$required_email = ( $required_sign == 'true' && $email_field_requirement == 'true' ) || ( $required_sign != 'true' && $email_field_requirement == 'true' && $required_position == 'required' ) || ( $required_sign != 'true' && $email_field_requirement != 'true' && $required_position != 'required' ) ? '' : 'd-none';
+
+$required_email_word = (! isset($error_class['email']) && ! empty(esc_attr($data['email']))) || ( $required_sign != 'true' && $email_requirement == 'required' && $required_position != 'required' ) || ( $required_sign != 'true' && $email_requirement != 'required' && $required_position == 'required' ) || $required_sign == 'true' ? '' : '&nbsp;'.$required_word;
+
+$required_email_label = $required_sign == 'true' ? '<span class="'.$required_email.'">'.$required_email_sign.'</span>' : '<span class="word '.$required_email.'">'.$required_email_word.'</span>';
+
+
+
+
+
+
+
+
+
+
+
+
 $subject_label = ! empty( $form_attributes['subject_label'] ) ? stripslashes(esc_attr($form_attributes['subject_label'])) : esc_attr__( 'Subject', 'simpleform' );
 $subject_field_requirement = $subject_requirement == 'required' ? 'true' : 'false';
-$required_subject = $subject_field_requirement == 'true' ? '' : 'd-none';
-$required_subject_sign = (! isset($error_class['subject']) && ! isset($error_class['subject_invalid']) && ! empty(esc_attr($data['subject']))) || $subject_requirement != 'required' ? '' : '&lowast;';
+
+$required_subject = ( $required_sign == 'true' && $subject_field_requirement == 'true' ) || ( $required_sign != 'true' && $subject_field_requirement == 'true' && $required_position == 'required' ) || ( $required_sign != 'true' && $subject_field_requirement != 'true' && $required_position != 'required' ) ? '' : 'd-none';
+
+
+
+$required_subject_sign = (! isset($error_class['subject']) && ! isset($error_class['subject_invalid']) && ! empty(esc_attr($data['subject']))) || $subject_requirement != 'required' || $required_sign != 'true' ? '' : '&lowast;';
+
+$required_subject_word = ( (! isset($error_class['subject']) && ! isset($error_class['subject_invalid']) && ! empty(esc_attr($data['subject']))) ) || ( $subject_requirement == 'required' && $required_position != 'required' ) || ( $required_sign != 'true' && $subject_requirement != 'required' && $required_position == 'required' ) || ( $required_sign != 'true' && $subject_requirement == 'required' && $required_position != 'required' ) || $required_sign == 'true' ? '' : '&nbsp;'.$required_word;
+
+$required_subject_label = $required_sign == 'true' ? '<span class="'.$required_subject.'">'.$required_subject_sign.'</span>' : '<span class="word '.$required_subject.'">'.$required_subject_word.'</span>';
+
+
+
+
+
+
 $message_label = ! empty( $form_attributes['message_label'] ) ? stripslashes(esc_attr($form_attributes['message_label'])) : esc_attr__( 'Message', 'simpleform' );
-$required_message_sign = ! isset($error_class['message']) && ! isset($error_class['message_invalid']) && ! empty(esc_attr($data['message'])) ? '' : '&lowast;';
+$required_message_sign = ! isset($error_class['message']) && ! isset($error_class['message_invalid']) && ! empty(esc_attr($data['message'])) || $required_sign != 'true' ? '' : '&lowast;';
+
+$required_message_word = ( ! isset($error_class['message']) && ! isset($error_class['message_invalid']) && ! empty(esc_attr($data['message']))) || ( $required_sign != 'true' && $required_position != 'required' ) || $required_sign == 'true' ? '' : '&nbsp;'.$required_word;
+
+$required_message_label = $required_sign == 'true' ? '<span>'.$required_message_sign.'</span>' : '<span class="word">'.$required_message_word.'</span>';
+
+
+
+$email_field_label = $form_attributes['email_spotlight'] == 'hidden' ? '' : '<label for="sform_email">'.$email_label.$required_email_label.'</label>';
+$subject_field_label = $form_attributes['subject_spotlight'] == 'hidden' ? '' : '<label for="sform_subject">'.$subject_label.$required_subject_label.'</label>';
+$message_field_label = $form_attributes['message_spotlight'] == 'hidden' ? '' : '<label for="sform_message">'.$message_label.$required_message_label.'</label>';
+
+
+
+
+
 $terms_field = ! empty( $form_attributes['terms_field'] ) ? esc_attr($form_attributes['terms_field']) : 'visible';
 $checkbox_requirement = ! empty( $form_attributes['terms_requirement'] ) ? esc_attr($form_attributes['terms_requirement']) : 'required'; 
 $required_terms = $checkbox_requirement == 'required' ? '' : 'd-none';
 $checkbox_value = ! empty(esc_attr($data['terms'])) ? esc_attr($data['terms']) : 'false';
-$required_terms_sign = (! isset($error_class['terms']) && esc_attr($data['terms']) == 'true') || $checkbox_requirement != 'required' ? '' : '&lowast;';
+$required_terms_sign = (! isset($error_class['terms']) && esc_attr($data['terms']) == 'true') || $required_sign != 'true' || $checkbox_requirement != 'required' ? '' : '&lowast;';
+
+$required_terms_label = '<span class="'.$required_terms.'">'.$required_terms_sign.'</span>';
+
+ 
+
+
 $terms_label = ! empty( $form_attributes['terms_label'] ) ? stripslashes(wp_kses_post($form_attributes['terms_label'])) : esc_attr__( 'I have read and agree to the Privacy Policy', 'simpleform' );
 $captcha_label = ! empty( $form_attributes['captcha_label'] ) ? stripslashes(esc_attr($form_attributes['captcha_label'])) : esc_attr__( 'What does this equal to?', 'simpleform' );
 $captcha_one = $captcha_field != 'hidden' && $data['captcha_one'] != '' ? esc_attr($data['captcha_one']) : esc_attr( $math_one );
 $captcha_two = $captcha_field != 'hidden' && $data['captcha_two'] != '' ? esc_attr($data['captcha_two']) : esc_attr( $math_two );
 $captcha_hidden = '<input id="captcha_one" type="hidden" name="captcha_one" value="'.$captcha_one .'"/><input id="captcha_two" type="hidden" name="captcha_two" value="'. $captcha_two .'"/>';
 $captcha_question = $captcha_one . '&nbsp;&nbsp;+&nbsp;&nbsp;' . $captcha_two.'&nbsp;&nbsp;=';
-$required_captcha_sign = ! isset($error_class['captcha']) && ! empty(esc_attr($data['captcha'])) ? '' : '&lowast;';
+$required_captcha_sign = (! isset($error_class['captcha']) && ! empty(esc_attr($data['captcha']))) || $required_sign != 'true' ? '' : '&lowast;';
+
+$required_captcha_label = '<span>'.$required_captcha_sign.'</span>';
+
 $submit_label = ! empty($form_attributes['submit_label'] ) ? stripslashes(esc_attr($form_attributes['submit_label'])) : esc_attr__( 'Submit', 'simpleform' );
 $name_length = ! empty( $sform_settings['name_length'] ) ? esc_attr($sform_settings['name_length']) : '2';
 $error_name_label = ! empty( $sform_settings['firstname_error_message'] ) ? stripslashes(esc_attr($sform_settings['firstname_error_message'])) : esc_attr__( 'Please enter at least 2 characters', 'simpleform' );

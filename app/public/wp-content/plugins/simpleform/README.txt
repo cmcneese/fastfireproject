@@ -6,7 +6,7 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 1.3.2
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,13 @@ We provide free support on the WordPress.org plugin repository. Please log into 
 
 == Changelog ==
  
+= 1.4 (14 March 2020) =
+* Fixed: Name validation error when name field is not required
+* Fixed: Dynamic SQL Query issues
+* Added: Option for hiding asterisk in required fields
+* Added: Option for hiding labels
+* Added: Option for placeholders
+
 = 1.3.2 (29 February 2020) =
 * Fixed: Sanitization of a variable not properly used inside JavaScript script
 * Added: New Bootstrap contact form template
