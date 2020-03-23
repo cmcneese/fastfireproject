@@ -13,11 +13,12 @@
 /* Field group */
 .field-group {line-height: 1; padding-bottom: 3px;}
 .field-group label {font-size: 16px; font-weight: 400; display: inline-block; margin-bottom:  5px; }
-label span { color: #dc3545; font-weight: 700; padding-left: 3px; }
+label span { color: #dc3545; font-weight: 500; padding-left: 3px; }
+label span.word { color: inherit; font-weight: 300;}
 .form-control { border: 1px solid #ccc; font-size: 16px; font-weight: 400 !important; padding: 10px 16px !important; width: 100%; margin-bottom: 0 !important; }
 .form-control:not(#sform_captcha):focus { border-color: #0090D5; background: #fafafa; outline: none; box-shadow: none; } 
 textarea.form-control { height: auto; line-height: 1.5; }
-.error-des { line-height: 1; color: #dc3545; font-size: 14px; height: 14px; margin-top: 5px;  }
+.error-des { line-height: 1; color: #dc3545; font-size: 14px; height: 14px; margin-top: 5px; margin-bottom: 5px; }
 .error-des span { display: none; }
 .form-control.is-invalid + .error-des span { display: block; }
 
