@@ -22,10 +22,10 @@ if( function_exists( 'bizberg_get_homepage_style_class' ) ){
 * https://make.wordpress.org/themes/2019/03/29/addition-of-new-wp_body_open-hook/
 */
 
-if ( ! function_exists( 'wp_body_open' ) ) {
-    function wp_body_open() {
-        do_action( 'wp_body_open' );
-    }
+if ( function_exists( 'wp_body_open' ) ) {
+	wp_body_open();
+} else { 
+	do_action( 'wp_body_open' ); 
 }
 
 do_action( 'bizberg_after_body' ); ?>
