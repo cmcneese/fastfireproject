@@ -31,3 +31,15 @@
 2020-02-28 23:16:25 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
 2020-02-28 23:16:25 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
 2020-02-28 23:16:25 0 [Note] /usr/sbin/mysqld (mysqld 5.6.34) starting as process 502 ...
+200327 17:39:25 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-03-27 17:39:26 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+2020-03-27 17:39:26 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2020-03-27 17:39:26 0 [Note] /usr/sbin/mysqld (mysqld 5.6.34) starting as process 487 ...
+200405 02:44:49 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-04-05 02:44:49 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+2020-04-05 02:44:49 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2020-04-05 02:44:49 0 [Note] /usr/sbin/mysqld (mysqld 5.6.34) starting as process 486 ...
+200405 04:23:39 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+2020-04-05 04:23:39 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.
+2020-04-05 04:23:39 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2020-04-05 04:23:39 0 [Note] /usr/sbin/mysqld (mysqld 5.6.34) starting as process 486 ...
