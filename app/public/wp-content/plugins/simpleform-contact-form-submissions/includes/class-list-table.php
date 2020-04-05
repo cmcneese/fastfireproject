@@ -88,8 +88,9 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
         $actions = array(
             'view' => sprintf('<a href="?page='.$this->_args['singular'].'&id=%s">%s</a>', esc_attr($item['id']), __('View', 'simpleform-submissions')),
             'delete' => '<a href="' . $delete_link . '">' . __( 'Delete', 'simpleform-submissions' ) . '</a>',            
-        );
-        return sprintf('%s %s', esc_attr($item['subject']), $this->row_actions($actions));
+        );        
+	    $subject = $item['subject'] != '' && $item['subject'] != 'not stored' ? esc_attr($item['subject']) : esc_attr__( 'No Subject', 'simpleform-submissions' );
+        return sprintf('%s %s', $subject, $this->row_actions($actions));
     }
     
 	/**
@@ -109,7 +110,9 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 	 */
 
     function column_email($item) {
-       return '<span style="letter-spacing: -0.5px;">' . esc_attr($item['email']) . '</span>' ;
+	    
+	   $email = $item['email'] != '' && $item['email'] != 'not stored' ? esc_attr($item['email']) : esc_attr__( 'No Email', 'simpleform-submissions' );	    
+       return '<span style="letter-spacing: -0.5px;">' . $email . '</span>' ;
     }
 
 	/**
@@ -168,9 +171,8 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 	        $nonce = isset ( $_REQUEST['_wpnonce'] ) ? wp_unslash($_REQUEST['_wpnonce']) : '';
 			if ( ! wp_verify_nonce( $nonce, 'delete_nonce' ) ) { $this->invalid_nonce_redirect();}
             else {
-            $ids = isset($_REQUEST['id']) ? $_REQUEST['id'] : array();
-            if (is_array($ids)) $ids = implode(',', $ids);
-            if (!empty($ids)) { $wpdb->query("DELETE FROM $table_name WHERE id IN($ids)"); }
+            $id = isset($_REQUEST['id']) ? absint($_REQUEST['id']) : '';
+            if (!empty($id)) { $wpdb->query( $wpdb->prepare("DELETE FROM $table_name WHERE id = %d", $id) ); }
             }
         }
         		
@@ -178,9 +180,17 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 	        $nonce = isset ( $_REQUEST['_wpnonce'] ) ? wp_unslash($_REQUEST['_wpnonce']) : '';
 			if ( ! wp_verify_nonce( $nonce, 'bulk-sform-entries' ) ) { $this->invalid_nonce_redirect(); }
 			else {   	        
-            $ids = isset($_REQUEST['id']) ? $_REQUEST['id'] : array();
-            if (is_array($ids)) $ids = implode(',', $ids);
-            if (!empty($ids)) { $wpdb->query("DELETE FROM $table_name WHERE id IN($ids)"); }
+            // Force $ids to be an array if it's not already one by creating a new array and adding the current value
+            $ids = isset($_REQUEST['id']) && is_array($_REQUEST['id']) ? $_REQUEST['id'] : array($_REQUEST['id']);
+            // Ensure that the values passed are all positive integers
+            $ids = array_map('absint', $ids);
+            // Count the number of values
+            $ids_count = count($ids);
+            // Prepare the right amount of placeholders in an array
+            $placeholders_array = array_fill(0, $ids_count, '%s');
+            // Chains all the placeholders into a comma-separated string
+            $placeholders = implode(',', $placeholders_array);
+            if (!empty($ids)) { $wpdb->query( $wpdb->prepare("DELETE FROM $table_name WHERE id IN($placeholders)", $ids) ); }
             }
 		}
     }
@@ -378,24 +388,25 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 			$table_name = $wpdb->prefix . 'sform_submissions';
 			$keyword = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field($_REQUEST['s']) : '';
 			$search = '%'.$wpdb->esc_like($keyword).'%';						
-		    $value = 'not stored'; 
+		    $value1 = ''; 
+		    $value2 = 'not stored'; 
             $sform_settings = get_option('sform-settings');	
             $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';
 		    $orderby = (isset($_REQUEST['orderby']) && in_array($_REQUEST['orderby'], array_keys($this->get_sortable_columns()))) ? $_REQUEST['orderby'] : 'id'; 
 		    $order = (isset($_REQUEST['order']) && in_array($_REQUEST['order'], array('asc', 'desc'))) ? $_REQUEST['order'] : 'desc';
             if( $keyword != ''){	 
              if ( $ip_storing == 'true'  ) {
-	         $sql1 = $wpdb->prepare("SELECT id,subject,object,email,date,status FROM $table_name WHERE object != %s AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value, $search, $search, $search, $search, $search, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE object != %s AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s)", $value, $search, $search, $search, $search, $search );
+	         $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s)", $value1, $value2, $search, $search, $search, $search, $search );
             }
              else {	
-			 $sql1 = $wpdb->prepare("SELECT id,subject,object,email,date,status FROM $table_name WHERE object != %s AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value, $search, $search, $search, $search, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE object != %s AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s)", $value, $search, $search, $search, $search );
+			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s)", $value1, $value2, $search, $search, $search, $search );
              }
             }
             else {	
-			 $sql1 = $wpdb->prepare("SELECT id,subject,object,email,date,status FROM $table_name WHERE object != %s ORDER BY $orderby $order LIMIT %d OFFSET %d", $value, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE object != %s", $value );
+			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE object != %s AND object != %s ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE object != %s AND object != %s", $value1, $value2 );
             }
             $items = $wpdb->get_results( $sql1, ARRAY_A );
 			$columns = $this->get_columns();

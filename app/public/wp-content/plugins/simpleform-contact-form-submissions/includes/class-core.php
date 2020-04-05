@@ -155,6 +155,8 @@ class SimpleForm_Submissions {
 		$this->loader->add_filter( 'set-screen-option', $plugin_admin, 'sforms_set_option', 10, 3 );
         // Deactivate plugin if SimpleForm is missing
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'detect_core_deactivation' );
+		// Fallback for database table updating if code that runs during plugin activation fails 
+		$this->loader->add_action( 'plugins_loaded', $plugin_admin, 'simpleform_db_version_check' );
     
 	}
 
@@ -169,7 +171,13 @@ class SimpleForm_Submissions {
 		$plugin_public = new SimpleForm_Submissions_Public( $this->get_plugin_name(), $this->get_version() );
 
 		// Change form data values when form is submitted 
-		$this->loader->add_filter( 'sform_storing_values', $plugin_public, 'add_storing_fields_values', 10, 5 );
+        $plugin_data = get_plugin_data( WP_PLUGIN_DIR.'/simpleform/simpleform.php');
+        if ( version_compare ( $plugin_data['Version'], '1.5', '<') ):
+		$this->loader->add_filter( 'sform_storing_values', $plugin_public, 'add_storing_fields_values_vo', 10, 5 );
+		else:
+		$this->loader->add_filter( 'sform_storing_values', $plugin_public, 'add_storing_fields_values', 10, 7 );
+		endif;
+				
         // Display confirmation message if notification email has been disabled 
 		$this->loader->add_action( 'sform_ajax_message', $plugin_public, 'sform_display_message', 10, 5 );
         // Display confirmation message if notification email has been disabled and ajax is disabled 

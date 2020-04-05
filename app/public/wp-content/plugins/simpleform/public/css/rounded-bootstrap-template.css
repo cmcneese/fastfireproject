@@ -23,6 +23,10 @@ textarea.form-control { height: auto; line-height: 1.5; }
 .form-control.is-invalid + .error-des span { display: block; }
 .form-control.is-invalid { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important; background-repeat: no-repeat !important; background-position: right calc(.375em + .1875rem) center !important; background-size: calc(.75em + .375rem) calc(.75em + .375rem) !important; }
 textarea.form-control.is-invalid { background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem) !important; }
+.firstname.half {width: 47.5%; float: left;}
+.lastname.half {width: 47.5%; float: right;}
+.email.half {width: 47.5%; float: left;}
+.phone.half {width: 47.5%; float: right;}
 
 /* Terms field */
 #terms { margin-top: 10px; margin-bottom: 22px; position: relative; line-height: 26px; }

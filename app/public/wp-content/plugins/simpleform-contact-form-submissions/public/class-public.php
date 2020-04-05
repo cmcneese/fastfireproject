@@ -92,12 +92,48 @@ class SimpleForm_Submissions_Public {
 	 * @since    1.0
 	 */
 	 
-     public function add_storing_fields_values($form_values, $requester_name, $requester_email, $request_subject, $request) { 
+     public function add_storing_fields_values($form_values, $requester_name, $requester_lastname, $requester_email, $phone, $request_subject, $request) { 
 	
       $sform_settings = get_option('sform-settings');
       $data_storing = ! empty( $sform_settings['data-storing'] ) ? esc_attr($sform_settings['data-storing']) : 'true';	
       $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';	
-      $ip_address = $sform_settings['ip-storing'] == 'true' ? $this->get_client_ip() : 'not stored';
+      $ip_address = $ip_storing == 'true' ? $this->get_client_ip() : 'not stored';
+
+      if ( $data_storing == 'true' ) {
+       $form_values = array(
+       "name" => $requester_name,
+       "lastname" => $requester_lastname,
+       "email" => $requester_email,
+       "phone" => $phone,
+       "subject" => $request_subject,
+       "object" => $request,
+       "ip" => $ip_address, 
+       "status" => 'new',
+       );
+      }    
+      else {
+       $form_values = array( 
+       "name" => 'not stored',
+       "lastname" => 'not stored',
+       "email" => 'not stored',
+       "phone" => 'not stored',
+       "subject" => 'not stored',
+       "object" => 'not stored',
+       "ip" => 'not stored',
+       "status" => '',
+       ); 
+      }   
+     
+      return  $form_values;
+     
+     }
+
+     public function add_storing_fields_values_vo($form_values, $requester_name, $requester_email, $request_subject, $request) { 
+	
+      $sform_settings = get_option('sform-settings');
+      $data_storing = ! empty( $sform_settings['data-storing'] ) ? esc_attr($sform_settings['data-storing']) : 'true';	
+      $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';	
+      $ip_address = $ip_storing == 'true' ? $this->get_client_ip() : 'not stored';
 
       if ( $data_storing == 'true' ) {
        $form_values = array(
