@@ -147,9 +147,17 @@ class SimpleForm_Public {
 		$sform_settings = get_option('sform-settings');
 		$ajax = ! empty( $sform_settings['ajax-submission'] ) ? esc_attr($sform_settings['ajax-submission']) : 'true'; 
 
-        $name_field = ! empty( $form_attributes['name_field'] ) ? esc_attr($form_attributes['name_field']) : 'visible';
-        $name_requirement = ! empty( $form_attributes['name_requirement'] ) ? esc_attr($form_attributes['name_requirement']) : 'required';
+        $firstname_field = ! empty( $form_attributes['firstname_field'] ) ? esc_attr($form_attributes['firstname_field']) : 'visible';
+        $firstname_requirement = ! empty( $form_attributes['firstname_requirement'] ) ? esc_attr($form_attributes['firstname_requirement']) : 'optional';
+
+        $lastname_field = ! empty( $form_attributes['lastname_field'] ) ? esc_attr($form_attributes['lastname_field']) : 'hidden';
+        $lastname_requirement = ! empty( $form_attributes['lastname_requirement'] ) ? esc_attr($form_attributes['lastname_requirement']) : 'optional';
+
         $email_field = ! empty( $form_attributes['email_field'] ) ? esc_attr($form_attributes['email_field']) : 'visible';
+        
+        $phone_field = ! empty( $form_attributes['phone_field'] ) ? esc_attr($form_attributes['phone_field']) : 'hidden';
+        $phone_requirement = ! empty( $form_attributes['subject_requirement'] ) ? esc_attr($form_attributes['subject_requirement']) : 'optional';        
+        
         $email_requirement = ! empty( $form_attributes['email_requirement'] ) ? esc_attr($form_attributes['email_requirement']) : 'required';
         $subject_field = ! empty( $form_attributes['subject_field'] ) ? esc_attr($form_attributes['subject_field']) : 'visible';
         $subject_requirement = ! empty( $form_attributes['subject_requirement'] ) ? esc_attr($form_attributes['subject_requirement']) : 'required';
@@ -161,7 +169,9 @@ class SimpleForm_Public {
 	
         $formdata = array(
 			'name' => isset($_POST['sform_name']) ? sanitize_text_field($_POST['sform_name']) : '',
+			'lastname' => isset($_POST['sform_lastname']) ? sanitize_text_field($_POST['sform_lastname']) : '',
 			'email' => isset($_POST['sform_email']) ? sanitize_email($_POST['sform_email']) : '',
+			'phone' => isset($_POST['sform_phone']) ? sanitize_text_field($_POST['sform_phone']) : '',			
 			'subject' => isset($_POST['sform_subject']) ? sanitize_text_field($_POST['sform_subject']) : '',			
 			'message' => isset($_POST['sform_message']) ? sanitize_textarea_field($_POST['sform_message']) : '',
 			'terms' => isset($_POST['sform_privacy']) ? 'true' : 'false',
@@ -174,25 +184,25 @@ class SimpleForm_Public {
   	            
         $error = '';		
         
-        $name_length = '2';
-        $name_regex = '#[0-9]+#';
+        $firstname_length = '2';
+        $firstname_regex = '#[0-9]+#';
 
-        if ( $name_field == 'visible' || $name_field == 'registered' && is_user_logged_in() || $name_field == 'anonymous' && ! is_user_logged_in() )  {
+        if ( $firstname_field == 'visible' || $firstname_field == 'registered' && is_user_logged_in() || $firstname_field == 'anonymous' && ! is_user_logged_in() )  {
 
-        if ( $name_requirement == 'required' )	{
-          if ( empty($formdata['name']) || strlen($formdata['name']) < $name_length ) {
+        if ( $firstname_requirement == 'required' )	{
+          if ( empty($formdata['name']) || strlen($formdata['name']) < $firstname_length ) {
 		    if( $error == '' ) { $error = 'name'; }
           }
-	      if (  ! empty($formdata['name']) && preg_match($name_regex, $formdata['name'] ) ) { 
+	      if (  ! empty($formdata['name']) && preg_match($firstname_regex, $formdata['name'] ) ) { 
 		    if( $error == '' ) { $error = 'name_invalid'; }
 	      }		
         }
 
         else {	
-		  if ( ! empty($formdata['name']) && strlen($formdata['name'])< $name_length ) {
+		  if ( ! empty($formdata['name']) && strlen($formdata['name'])< $firstname_length ) {
 		    if( $error == '' ) { $error = 'name'; }
 		  }
-		  if (  ! empty($formdata['name']) && preg_match($name_regex, $formdata['name'] ) ) { 
+		  if (  ! empty($formdata['name']) && preg_match($firstname_regex, $formdata['name'] ) ) { 
 		    if( $error == '' ) { $error = 'name_invalid'; }
           }
         }
@@ -200,6 +210,37 @@ class SimpleForm_Public {
         }
 
         $data_name = $formdata['name'];
+
+
+
+        $lastname_length = '2';
+        $lastname_regex = '#[0-9]+#';
+
+        if ( $lastname_field == 'visible' || $lastname_field == 'registered' && is_user_logged_in() || $lastname_field == 'anonymous' && ! is_user_logged_in() )  {
+
+        if ( $lastname_requirement == 'required' )	{
+          if ( empty($formdata['lastname']) || strlen($formdata['lastname']) < $lastname_length ) {
+		    if( $error == '' ) { $error = 'lastname'; }
+          }
+	      if (  ! empty($formdata['lastname']) && preg_match($lastname_regex, $formdata['lastname'] ) ) { 
+		    if( $error == '' ) { $error = 'lastname_invalid'; }
+	      }		
+        }
+
+        else {	
+		  if ( ! empty($formdata['lastname']) && strlen($formdata['lastname'])< $lastname_length ) {
+		    if( $error == '' ) { $error = 'lastname'; }
+		  }
+		  if (  ! empty($formdata['lastname']) && preg_match($lastname_regex, $formdata['lastname'] ) ) { 
+		    if( $error == '' ) { $error = 'lastname_invalid'; }
+          }
+        }
+
+        }
+
+        $data_lastname = $formdata['lastname'];
+
+
 
         if ( $email_field == 'visible' || $email_field == 'registered' && is_user_logged_in() || $email_field == 'anonymous' && ! is_user_logged_in() )  {
 
@@ -218,7 +259,32 @@ class SimpleForm_Public {
 
 		$data_email = $formdata['email'];
 
-	    
+
+
+        $phone_regex = '/^[0-9\-\(\)\/\+\s]*$/';  // allowed characters: -()/+ and space
+
+        if ( $phone_field == 'visible' || $phone_field == 'registered' && is_user_logged_in() || $phone_field == 'anonymous' && ! is_user_logged_in() )  {
+
+        if ( $phone_requirement == 'required' )	{
+          if ( empty($formdata['phone']) ) {
+		    if( $error == '' ) { $error = 'phone'; }
+          }
+	      if (  ! empty($formdata['phone']) && ! preg_match($phone_regex, $formdata['phone'] ) ) { 
+		    if( $error == '' ) { $error = 'phone_invalid'; }
+	      }		
+        }
+        else {		
+		  if (  ! empty($formdata['phone']) && ! preg_match($phone_regex, $formdata['phone'] ) ) { 
+		    if( $error == '' ) { $error = 'phone_invalid'; }
+          }
+        }		
+		
+        }		
+
+		$data_phone = $formdata['phone'];
+
+
+
         $subject_length = '10';
         $subject_regex = '/^[^#$%&=+*{}|<>]+$/';
 		
@@ -320,12 +386,12 @@ class SimpleForm_Public {
 
 		$error = apply_filters('sform_send_email', $formdata, $error );
 		
-		$data = array('name' => $data_name,'email' => $data_email,'subject' => $data_subject,'message' => $data_message,'terms' => $data_terms,'captcha' => $data_captcha,'captcha_one' => $data_captcha_one,'captcha_two' => $data_captcha_two,'username' => $username_data,'telephone' => $telephone_data,'error' => $error );
+		$data = array('name' => $data_name,'lastname' => $data_lastname,'email' => $data_email,'phone' => $data_phone,'subject' => $data_subject,'message' => $data_message,'terms' => $data_terms,'captcha' => $data_captcha,'captcha_one' => $data_captcha_one,'captcha_two' => $data_captcha_two,'username' => $username_data,'telephone' => $telephone_data,'error' => $error );
 
 	    }
   
         else {	
-        $data = array( 'name' => '','email' => '','subject' => '','message' => '','terms' => '','captcha' => '','captcha_one' => '','captcha_two' => '','username' => '','telephone' => '' );
+        $data = array( 'name' => '','lastname' => '','email' => '','phone' =>'','subject' => '','message' => '','terms' => '','captcha' => '','captcha_one' => '','captcha_two' => '','username' => '','telephone' => '' );
 		}
 		
         return $data;
@@ -352,14 +418,34 @@ class SimpleForm_Public {
     else {
 	  if ( is_user_logged_in() ) {
 		global $current_user;
-		$requester_name = ! empty($current_user->user_firstname) ? $current_user->user_firstname . ' ' . $current_user->last_name : $current_user->display_name;
+		$requester_name = ! empty($current_user->user_firstname) ? $current_user->user_firstname : $current_user->display_name;
         $name_value = $requester_name;
       }
       else {
-		$requester_name = esc_html__( 'Anonymous', 'simpleform' );       
+		$requester_name = '';       
 		$name_value = '';     
       }
     }
+    
+    if ( ! empty($formdata['lastname']) ) { 
+    $requester_lastname = ' ' . $formdata['lastname'];      
+    $lastname_value = ' ' . $formdata['lastname'];
+    }
+    else {
+	  if ( is_user_logged_in() ) {
+		global $current_user;
+		$requester_lastname = ! empty($current_user->user_lastname) ? ' ' . $current_user->user_lastname : '';
+        $lastname_value = ' ' . $requester_lastname;
+      }
+      else {
+		$requester_lastname = '';       
+		$lastname_value = '';     
+      }
+    }
+
+      $requester = $requester_name != '' || $requester_lastname != '' ? trim($requester_name . $requester_lastname) : esc_html__( 'Anonymous', 'simpleform' );
+        
+    
             
     if ( ! empty($formdata['email']) ) { 
     $email_value = $formdata['email'];
@@ -374,13 +460,22 @@ class SimpleForm_Public {
       }
     }
             
+    if ( ! empty($formdata['phone']) ) { 
+    $phone_value = $formdata['phone'];
+    }
+    else {
+	$phone_value = '';       
+    }
+
+
+
     if ( ! empty($formdata['subject']) ) { 
     $subject_value = $formdata['subject'];
     $request_subject = $formdata['subject'];
     }
     else {
 	$subject_value = '';         
-	$request_subject = esc_attr__( 'Subject not provided', 'simpleform' );	         
+	$request_subject = esc_attr__( 'No Subject', 'simpleform' );	         
     }
 
     if ($error == '') {
@@ -395,7 +490,7 @@ class SimpleForm_Public {
     $user_ID = is_user_logged_in() ? get_current_user_id() : '0';
     $sform_default_values = array( "date" => $submission_date, "requester_type" => $requester_type, "requester_id" => $user_ID );
     $extra_fields = array('notes' => '');
-    $sform_extra_values = array_merge($sform_default_values, apply_filters( 'sform_storing_values', $extra_fields, $requester_name, $email_value, $request_subject, $formdata['message'] ));
+    $sform_extra_values = array_merge($sform_default_values, apply_filters( 'sform_storing_values', $extra_fields, $requester_name, $requester_lastname, $email_value, $phone_value, $subject_value, $formdata['message'] ));
     
     $success = $wpdb->insert($table_name, $sform_extra_values);
 
@@ -412,7 +507,6 @@ class SimpleForm_Public {
     $subject = $subject_type == 'request' ? $request_subject : $subject_text;
     
     if ( $submission_number == 'visible' ):
-          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
           $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
     	  $admin_subject = '#' . $reference_number . ' - ' . $subject;	
      	  else:
@@ -420,18 +514,22 @@ class SimpleForm_Public {
     endif;
      	      	  
     $from_data = '<b>'. esc_html__('From', 'simpleform') .':</b>&nbsp;&nbsp;';
-    if ( ! empty($name_value) ): 
-    $from_data .= $name_value;
-    else:
-    $from_data .= esc_html__('Anonymous', 'simpleform');
-    endif;
+    
+    $from_data .= $requester;
+    
     if ( ! empty($email_value) ):
     $from_data .= '&nbsp;&nbsp;&lt;&nbsp;' . $email_value . '&nbsp;&gt;';
     else:
     $from_data .= '';
     endif;
     $from_data .= '<br>';
-     	  
+    
+    
+    if ( ! empty($phone_value) ) { $phone_data = '<b>'. esc_html__('Phone', 'simpleform') .':</b>&nbsp;&nbsp;' . $phone_value .'<br>'; }
+    else { $phone_data = ''; }
+    $from_data .= $phone_data;
+    
+         	  
     if ( ! empty($subject_value) ) { $subject_data = '<br><b>'. esc_html__('Subject', 'simpleform') .':</b>&nbsp;&nbsp;' . $subject_value .'<br>'; }
     else { $subject_data = '<br>'; }
 
@@ -452,7 +550,7 @@ class SimpleForm_Public {
     $admin_message_email = '<div style="line-height:18px; padding-top:10px;">' . $from_data . '<b>'. esc_html__('Sent', 'simpleform') .':</b>&nbsp;&nbsp;' . $website_date . $subject_data  . '<br>' .  $formdata['message'] . '</div>'; 
 	    
 	$headers = "Content-Type: text/html; charset=UTF-8" .  "\r\n";
-    if ( ! empty($formdata['email']) || is_user_logged_in() ) { $headers .= "Reply-To: ".$requester_name." <".$email_value.">" . "\r\n"; }
+    if ( ! empty($formdata['email']) || is_user_logged_in() ) { $headers .= "Reply-To: ".$requester." <".$email_value.">" . "\r\n"; }
   
     do_action('check_smtp');
     add_filter( 'wp_mail_from_name', array ( $this, 'sform_notification_sender_name' ) ); 
@@ -481,7 +579,6 @@ class SimpleForm_Public {
           $reply_to = ! empty( $sform_settings['confirmation_reply_to'] ) ? esc_attr($sform_settings['confirmation_reply_to']) : $from;
 		  $headers = "Content-Type: text/html; charset=UTF-8" . "\r\n";
 		  $headers .= "Reply-To: <".$reply_to.">" . "\r\n";
-          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
           $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
           
 	      $tags = array( '[name]','[request_subject]','[request_message]','[request_id]' );
@@ -547,6 +644,8 @@ class SimpleForm_Public {
       $name = isset($_POST['sform_name']) ? sanitize_text_field($_POST['sform_name']) : '';
       $email = isset($_POST['sform_email']) ? sanitize_email($_POST['sform_email']) : '';
       $email_data = isset($_POST['sform_email']) ? sanitize_text_field($_POST['sform_email']) : '';
+      $lastname = isset($_POST['sform_lastname']) ? sanitize_text_field($_POST['sform_lastname']) : '';
+	  $phone = isset($_POST['sform_phone']) ? sanitize_text_field($_POST['sform_phone']) : '';			
       $object = isset($_POST['sform_subject']) ? sanitize_text_field(str_replace("\'", "’", $_POST['sform_subject'])) : '';
       $request = isset($_POST['sform_message']) ? sanitize_textarea_field($_POST['sform_message']) : '';
       $terms = isset($_POST['sform_privacy']) ? 'true' : 'false';
@@ -560,8 +659,12 @@ class SimpleForm_Public {
  
       $form_attributes = get_option('sform-attributes');
 
-      $name_field = ! empty( $form_attributes['name_field'] ) ? esc_attr($form_attributes['name_field']) : 'visible';
-      $name_requirement = ! empty( $form_attributes['name_requirement'] ) ? esc_attr($form_attributes['name_requirement']) : 'required';
+      $firstname_field = ! empty( $form_attributes['firstname_field'] ) ? esc_attr($form_attributes['firstname_field']) : 'visible';
+      $firstname_requirement = ! empty( $form_attributes['firstname_requirement'] ) ? esc_attr($form_attributes['firstname_requirement']) : 'required';
+      $lastname_field = ! empty( $form_attributes['lastname_field'] ) ? esc_attr($form_attributes['lastname_field']) : 'hidden';
+      $lastname_requirement = ! empty( $form_attributes['lastname_requirement'] ) ? esc_attr($form_attributes['lastname_requirement']) : 'optional';
+      $phone_field = ! empty( $form_attributes['phone_field'] ) ? esc_attr($form_attributes['phone_field']) : 'hidden';
+      $phone_requirement = ! empty( $form_attributes['subject_requirement'] ) ? esc_attr($form_attributes['subject_requirement']) : 'optional';        
       $email_field = ! empty( $form_attributes['email_field'] ) ? esc_attr($form_attributes['email_field']) : 'visible';
       $email_requirement = ! empty( $form_attributes['email_requirement'] ) ? esc_attr($form_attributes['email_requirement']) : 'required';
       $subject_field = ! empty( $form_attributes['subject_field'] ) ? esc_attr($form_attributes['subject_field']) : 'visible';
@@ -574,11 +677,22 @@ class SimpleForm_Public {
       else {
 	    if ( is_user_logged_in() ) {
 		global $current_user;
-		$requester_name = ! empty($current_user->user_firstname) ? $current_user->user_firstname . ' ' . $current_user->last_name : $current_user->display_name;
+		$requester_name = ! empty($current_user->user_firstname) ? $current_user->user_firstname : $current_user->display_name;
         }
-        else { $requester_name = esc_html__( 'Anonymous', 'simpleform' ); }
+        else { $requester_name = ''; }
       }
             
+      if ( ! empty($lastname) ) { $requester_lastname = ' ' . $lastname; }
+      else {
+	    if ( is_user_logged_in() ) {
+		global $current_user;
+		$requester_lastname = ! empty($current_user->user_lastname) ? ' ' . $current_user->user_lastname : '';
+        }
+        else { $requester_lastname = ''; }
+      }
+
+      $requester = $requester_name != '' || $requester_lastname != '' ? trim($requester_name . $requester_lastname) : esc_html__( 'Anonymous', 'simpleform' );
+
       if ( ! empty($email) ) { $requester_email = $email; }
       else {
 	    if ( is_user_logged_in() ) {
@@ -594,36 +708,68 @@ class SimpleForm_Public {
       }
       else {
 	    $subject_value = '';         
-	    $request_subject = esc_attr__( 'Subject not provided', 'simpleform' );	         
+	    $request_subject = esc_attr__( 'No Subject', 'simpleform' );	         
       }
 
-      if ( $name_field == 'visible' || $name_field == 'registered' && is_user_logged_in() || $name_field == 'anonymous' && ! is_user_logged_in() )  {  
+      if ( $firstname_field == 'visible' || $firstname_field == 'registered' && is_user_logged_in() || $firstname_field == 'anonymous' && ! is_user_logged_in() )  {  
 
-        $name_length = '2';
-        $name_regex = '#[0-9]+#';
+        $firstname_length = '2';
+        $firstname_regex = '#[0-9]+#';
         $error_name_label = ! empty( $sform_settings['firstname_error_message'] ) ? stripslashes(esc_attr($sform_settings['firstname_error_message'])) : esc_attr__( 'Please enter at least 2 characters', 'simpleform' );
         $error_invalid_name_label = ! empty( $sform_settings['invalid_name_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_name_error'])) : esc_attr__( 'The name contains characters that are not allowed', 'simpleform' );
         $error = ! empty( $sform_settings['name_error'] ) ? stripslashes(esc_attr($sform_settings['name_error'])) : esc_html__('Error occurred validating the name', 'simpleform');
 
-	
-        if ( $name_requirement == 'required' )	{
-        if ( empty($name) || strlen($name) < $name_length ) {
+        if ( $firstname_requirement == 'required' )	{
+        if ( empty($name) || strlen($name) < $firstname_length ) {
         echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_name_label, 'field' => 'name' ));
 	    exit; 
         }
-	    if (  ! empty($name) && preg_match($name_regex, $name ) ) { 
+	    if (  ! empty($name) && preg_match($firstname_regex, $name ) ) { 
         echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_invalid_name_label, 'field' => 'name' ));
 	    exit; 
         }		
         }
 
         else {	
-	    if ( ! empty($name) && strlen($name) < $name_length ) {
+	    if ( ! empty($name) && strlen($name) < $firstname_length ) {
         echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_name_label, 'field' => 'name' ));
 	    exit; 
 	    }
-	    if (  ! empty($name) && preg_match($name_regex, $name ) ) { 
+	    if (  ! empty($name) && preg_match($firstname_regex, $name ) ) { 
         echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_invalid_name_label, 'field' => 'name' ));
+	    exit; 
+        }
+        }
+
+      }
+
+
+      if ( $lastname_field == 'visible' || $lastname_field == 'registered' && is_user_logged_in() || $lastname_field == 'anonymous' && ! is_user_logged_in() )  {  
+
+        $lastname_length = '2';
+        $lastname_regex = '#[0-9]+#';
+        $error_lastname_label = ! empty( $sform_settings['lastname_error_message'] ) ? stripslashes(esc_attr($sform_settings['lastname_error_message'])) : esc_attr__( 'Please enter at least 2 characters', 'simpleform' );
+        $error_invalid_lastname_label = ! empty( $sform_settings['invalid_lastname_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_lastname_error'])) : esc_attr__( 'The lastname contains characters that are not allowed', 'simpleform' );
+        $error = ! empty( $sform_settings['lastname_error'] ) ? stripslashes(esc_attr($sform_settings['lastname_error'])) : esc_html__('Error occurred validating the lastname', 'simpleform');
+	
+        if ( $lastname_requirement == 'required' )	{
+        if ( empty($lastname) || strlen($lastname) < $lastname_length ) {
+        echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_lastname_label, 'field' => 'lastname' ));
+	    exit; 
+        }
+	    if (  ! empty($lastname) && preg_match($lastname_regex, $lastname ) ) { 
+        echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_invalid_lastname_label, 'field' => 'lastname' ));
+	    exit; 
+        }		
+        }
+
+        else {	
+	    if ( ! empty($lastname) && strlen($lastname) < $lastname_length ) {
+        echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_lastname_label, 'field' => 'lastname' ));
+	    exit; 
+	    }
+	    if (  ! empty($lastname) && preg_match($lastname_regex, $lastname ) ) { 
+        echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_invalid_lastname_label, 'field' => 'lastname' ));
 	    exit; 
         }
         }
@@ -650,7 +796,35 @@ class SimpleForm_Public {
         }		
 		
       }	
+      
+        $phone_regex = '/^[0-9\-\(\)\/\+\s]*$/';  // allowed characters: -()/+ and space
 
+        if ( $phone_field == 'visible' || $phone_field == 'registered' && is_user_logged_in() || $phone_field == 'anonymous' && ! is_user_logged_in() )  {
+
+        $empty_phone_error = ! empty( $sform_settings['empty_phone_error'] ) ? stripslashes(esc_attr($sform_settings['empty_phone_error'])) : esc_attr__( 'Please provide your phone number', 'simpleform' );
+        $error_phone_label = ! empty( $sform_settings['phone_error_message'] ) ? stripslashes(esc_attr($sform_settings['phone_error_message'])) : esc_attr__( 'The phone number contains not allowed characters', 'simpleform' );
+        $error = ! empty( $sform_settings['phone_error'] ) ? stripslashes(esc_attr($sform_settings['phone_error'])) : esc_attr__( 'Error occurred validating the phone number', 'simpleform' );
+        
+        if ( $phone_requirement == 'required' )	{
+          if ( empty($phone) ) {
+          echo json_encode(array('error' => true, 'message' => $error, 'label' => $empty_phone_error, 'field' => 'phone' ));
+	      exit; 
+          }
+	      if (  ! empty($phone) && ! preg_match($phone_regex, $phone ) ) { 
+          echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_phone_label, 'field' => 'phone' ));
+	      exit; 
+	      }		
+        }
+        else {		
+	      if (  ! empty($phone) && ! preg_match($phone_regex, $phone ) ) { 
+          echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_phone_label, 'field' => 'phone' ));
+	      exit; 
+	      }		
+        }		
+		
+        }		
+      
+      
       if ( $subject_field == 'visible' || $subject_field == 'registered' && is_user_logged_in() || $subject_field == 'anonymous' && ! is_user_logged_in() )  { 
 
         $subject_length = '10';
@@ -693,9 +867,7 @@ class SimpleForm_Public {
       $error_invalid_message_label = ! empty( $sform_settings['invalid_message_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_message_error'])) : esc_attr__( 'Enter only alphanumeric characters and punctuation marks', 'simpleform' );
       
       $error = ! empty( $sform_settings['message_error'] ) ? stripslashes(esc_attr($sform_settings['message_error'])) : esc_html__('Error occurred validating the message', 'simpleform');
-     
-      
-	
+     	
       if ( empty($request) || strlen($request) < $message_length ) {
       echo json_encode(array('error' => true, 'message' => $error, 'label' => $error_message_label, 'field' => 'message' ));
 	  exit; 
@@ -761,7 +933,7 @@ class SimpleForm_Public {
       $user_ID = is_user_logged_in() ? get_current_user_id() : '0';
       $sform_default_values = array( "date" => $submission_date, "requester_type" => $requester_type, "requester_id" => $user_ID );      
       $extra_fields = array('notes' => '');
-      $sform_extra_values = array_merge($sform_default_values, apply_filters( 'sform_storing_values', $extra_fields, $requester_name, $requester_email, $request_subject, $request ));
+      $sform_extra_values = array_merge($sform_default_values, apply_filters( 'sform_storing_values', $extra_fields, $requester_name, $requester_lastname, $requester_email, $phone, $subject_value, $request ));
       $success = $wpdb->insert($table_name, $sform_extra_values);
       
       $server_error_message = ! empty( $sform_settings['server_error_message'] ) ? stripslashes(esc_attr($sform_settings['server_error_message'])) : esc_attr__( 'Error occurred during processing data. Please try again!', 'simpleform' );
@@ -779,7 +951,6 @@ class SimpleForm_Public {
        $subject = $subject_type == 'request' ? $request_subject : $subject_text;
 
        if ( $submission_number == 'visible' ):
-          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
           $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
 
      	  $admin_subject = '#' . $reference_number . ' - ' . $subject;	
@@ -788,17 +959,17 @@ class SimpleForm_Public {
        endif;
      	  
        $from_data = '<b>'. esc_html__('From', 'simpleform') .':</b>&nbsp;&nbsp;';
-       if ( ! empty($requester_name) ): 
-       $from_data .= $requester_name;
-   	   else:
-       $from_data .= esc_html__('Anonymous', 'simpleform');
-       endif;
+       $from_data .= $requester;       
        if ( ! empty($requester_email) ):
        $from_data .= '&nbsp;&nbsp;&lt;&nbsp;' . $requester_email . '&nbsp;&gt;';
        else:
        $from_data .= '';
        endif;
-       $from_data .= '<br>';
+       $from_data .= '<br>';       
+       
+       if ( ! empty($phone) ) { $phone_data = '<b>'. esc_html__('Phone', 'simpleform') .':</b>&nbsp;&nbsp;' . $phone .'<br>'; }
+       else { $phone_data = ''; }
+       $from_data .= $phone_data;
      	  
        if ( ! empty($subject_value) ) { $subject_data = '<br><b>'. esc_html__('Subject', 'simpleform') .':</b>&nbsp;&nbsp;' . $subject_value .'<br>'; }
        else { $subject_data = '<br>'; }
@@ -822,7 +993,7 @@ class SimpleForm_Public {
 	   $from =  $notification_sender_email;
 
 	   $headers = "Content-Type: text/html; charset=UTF-8" .  "\r\n";
-       if ( ! empty($email) || is_user_logged_in() ) { $headers .= "Reply-To: ".$requester_name." <".$requester_email.">" . "\r\n"; }
+       if ( ! empty($email) || is_user_logged_in() ) { $headers .= "Reply-To: ".$requester." <".$requester_email.">" . "\r\n"; }
   
        do_action('check_smtp');
        add_filter( 'wp_mail_from_name', array ( $this, 'sform_notification_sender_name' ) ); 
@@ -850,7 +1021,6 @@ class SimpleForm_Public {
           $reply_to = ! empty( $sform_settings['confirmation_reply_to'] ) ? esc_attr($sform_settings['confirmation_reply_to']) : $from;
 		  $headers = "Content-Type: text/html; charset=UTF-8" . "\r\n";
 		  $headers .= "Reply-To: <".$reply_to.">" . "\r\n";
-          // $reference_number = $wpdb->get_var( "SELECT id FROM $table_name WHERE date = '$submission_date' ");
           $reference_number = $wpdb->get_var($wpdb->prepare("SELECT id FROM $table_name WHERE date = '%s' ", $submission_date) );
 
 	      $tags = array( '[name]','[request_subject]','[request_message]','[request_id]' );

@@ -273,21 +273,46 @@ class SimpleForm_Submissions_Admin {
         if ( isset($requester_id) && $requester_id != 0 ) {
 	    $user_info = get_user_by( 'id', $requester_id );
 	    $page_user = get_edit_user_link( $requester_id );
-        $request_author = esc_attr($item['name']). ' [ <a href="'.$page_user.'" target="_blank" class="nodecoration">'.$user_info->user_login.'</a> ]<br>Registered user';
+		$user_firstname = ! empty($user_info->first_name) ? $user_info->first_name : $user_info->display_name;
+		$user_lastname = ! empty($user_info->last_name) ? $user_info->last_name : '';
+	    $firstname = $item['name'] != '' && $item['name'] != 'not stored' ? esc_attr($item['name']) : $user_firstname;	    
+	    $lastname = $item['lastname'] != '' && $item['lastname'] != 'not stored' ? esc_attr($item['lastname']) : $user_lastname;
+        $request_author = trim($firstname.' '.$lastname). ' [ <a href="'.$page_user.'" target="_blank" class="nodecoration">'.$user_info->user_login.'</a> ]<br>Registered user';
 	    }
         else {
-	    if ( !empty($item['name']) && esc_attr($item['name']) != 'anonymous'):
-	    $request_author =  esc_attr($item['name']) . '<br>Anonymous user' ;
+	    $firstname = $item['name'] != '' && $item['name'] != 'not stored' ? esc_attr($item['name']) : '';
+	    $lastname = $item['lastname'] != '' && $item['lastname'] != 'not stored' ? esc_attr($item['lastname']) : '';
+	    if ( !empty($firstname) || !empty($lastname) ):
+	    $request_author =  trim($firstname.' '.$lastname) . '<br>Anonymous user' ;
 	    else:
 	    $request_author =  'Anonymous user';
 	    endif;
         }
 	    echo $request_author; ?></div>	 
 	 </div>
+	 
+	 <?php
+	 $email = $item['email'] != '' && $item['email'] != 'not stored' ? esc_attr($item['email']) : '';
+     if ( ! empty($email) ) { ?>
 	 <div class="datarow">
      <div class="thdata"><?php esc_html_e('Email', 'simpleform-submissions' ) ?></div>		
-	 <div class="tddata"><?php echo esc_attr($item['email']); ?></div>
+	 <div class="tddata"><?php echo $email ?></div>
 	 </div>
+   	 <?php }	 
+	 
+     $form_attributes = get_option('sform-attributes');
+     $phone_field = ! empty( $form_attributes['phone_field'] ) ? esc_attr($form_attributes['phone_field']) : 'hidden';
+
+     // if ( $phone_field != 'hidden' ) { 
+	 $phone = $item['phone'] != '' && $item['phone'] != 'not stored' ? esc_attr($item['phone']) : '';
+     if ( ! empty($phone) ) { 
+     ?>
+	 <div class="datarow">
+	 <div class="thdata"><?php esc_html_e('Phone', 'simpleform-submissions' ) ?></div>
+	 <div class="tddata"><?php echo $phone ?></div>
+	 </div>
+	 <?php } // } ?>	 	 
+	 
 	 <div class="datarow">
 	 <div class="thdata"><?php esc_html_e('Date', 'simpleform-submissions' ) ?></div>
 	 <div class="tddata"><?php $tzcity = get_option('timezone_string'); $tzoffset = get_option('gmt_offset');
@@ -303,21 +328,28 @@ class SimpleForm_Submissions_Admin {
        echo date_i18n(get_option('date_format'),$submission_timestamp).' '.esc_html__('at', 'simpleform-submissions').' '.date_i18n(get_option('time_format'),$submission_timestamp );?>
      </div>
 	 </div>
+	 
 	 <?php     
-	 $sform_settings = get_option('sform-settings');
-     $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';
-     if ( $ip_storing == 'true' ) { 
-	 $ip_address = $item['ip'] != '' ? esc_attr($item['ip']) : 'not stored';
+	 // $sform_settings = get_option('sform-settings');
+     // $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';
+     // if ( $ip_storing == 'true' ) { 
+	 $ip_address = $item['ip'] != '' && $item['ip'] != 'not stored' ? esc_attr($item['ip']) : '';
+     if ( ! empty($ip_address) ) { 
      ?>
 	 <div class="datarow">
 	 <div class="thdata"><?php esc_html_e('IP', 'simpleform-submissions' ) ?></div>
 	 <div class="tddata"><?php echo $ip_address ?></div>
 	 </div>
-	 <?php } ?>
+	 <?php } // } 
+	 
+	 $subject = $item['subject'] != '' && $item['subject'] != 'not stored' /* && $item['subject'] != esc_attr__( 'No Subject', 'simpleform' ) */ ? esc_attr($item['subject']) : '';
+     if ( ! empty($subject) ) { ?>
 	 <div class="datarow">
 	 <div class="thdata"><?php esc_html_e('Subject', 'simpleform-submissions' ) ?></div>
-	 <div class="tddata"><span id="subject-input"><?php echo esc_attr($item['subject'])?></span></div>	
+	 <div class="tddata"><span id="subject-input"><?php echo $subject ?></span></div>	
    	 </div>
+   	 <?php } ?>
+   	 
 	 <div class="datarow">
      <div class="thdata last"><?php esc_html_e('Message', 'simpleform-submissions' ) ?></div>
      <div class="tddata last"><?php echo esc_attr($item['object'])?></div>
@@ -347,5 +379,22 @@ class SimpleForm_Submissions_Admin {
       }
     
     }
-       
+
+	/**
+	 * Fallback for database table updating if code that runs during plugin activation fails.
+	 *
+	 * @since    1.1.3
+	 */
+
+    public function simpleform_db_version_check() { 
+	    
+          global $wpdb;
+          $prefix = $wpdb->prefix;
+          $submissions_table = $prefix . 'sform_submissions';
+          $columns = $wpdb->get_row("SELECT * FROM ". $submissions_table);
+          if( ! isset($columns->lastname) && ! isset($columns->phone) ){
+          $wpdb->query("ALTER TABLE " . $submissions_table . " CHANGE date date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, ADD COLUMN lastname tinytext NOT NULL AFTER name, ADD COLUMN phone VARCHAR(50) NOT NULL AFTER email");          
+         } 
+    }
+           
 }

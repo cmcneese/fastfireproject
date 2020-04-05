@@ -82,15 +82,19 @@ class SimpleForm_Submissions_Activator {
  
     public static function change_db() {
 
-        $current_db_version = SIMPLEFORM_DB_VERSION;
+        $current_version = SIMPLEFORM_SUBMISSIONS_DB_VERSION;
 
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
-        $installed_db_version = get_option('sform_db_version');
+        $installed_version = get_option('sform_sub_db_version', '1');
         $prefix = $wpdb->prefix;
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-        if ( $installed_db_version != $current_db_version ) {
+	 	$installed_version_number = str_replace('.', '', $installed_version);
+        $installed_number = str_pad($installed_version_number, 5, '0');
+	 	$current_version_number = str_replace('.', '', $current_version);
+        $current_number = str_pad($current_version_number, 5, '0');
+        if ( $installed_number < $current_number ) {
         
           $submissions_table = $prefix . 'sform_submissions';
           $sql = "CREATE TABLE " . $submissions_table . " (
@@ -98,18 +102,26 @@ class SimpleForm_Submissions_Activator {
             requester_type tinytext NOT NULL,
             requester_id int(15) NOT NULL,
             name tinytext NOT NULL,
+            lastname tinytext NOT NULL,
             email VARCHAR(200) NOT NULL,
-            subject VARCHAR(200) NOT NULL,
-            object longtext NOT NULL,
             ip VARCHAR(128) NOT NULL,	
-            date datetime DEFAULT '1970-01-01 00:00:00' NOT NULL,            
+            phone VARCHAR(50) NOT NULL,
+            subject tinytext NOT NULL,
+            object text NOT NULL,
+            date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,            
             status tinytext NOT NULL,
             notes text NOT NULL,
             PRIMARY KEY  (id)
           ) ". $charset_collate .";";
           dbDelta($sql);
+          
+          // Edit default value if date column exists
+          $columns = $wpdb->get_row("SELECT * FROM ". $submissions_table);
+          if( isset($columns->date) ){
+          $wpdb->query("ALTER TABLE " . $submissions_table . " CHANGE date date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");    
+          } 
 
-          update_option('sform_db_version', $current_db_version);
+          update_option('sform_sub_db_version', $current_db_version);
 
         }
    

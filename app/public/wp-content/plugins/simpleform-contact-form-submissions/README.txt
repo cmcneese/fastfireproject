@@ -3,9 +3,9 @@ Contributors: simpleform
 Donate link: https://wpsform.com/
 Tags: contact form, form builder, simple form, form, contact, wordpress contact form, custom contact form, simple contact form, email form, web form, message form, submissions
 Requires at least: 4.7
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.1
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,18 @@ This plugin stores personal data collected through the contact form. Enable the 
 
 == Changelog ==
  
+= 1.1.3 (1 April 2020) =
+* Fixed: Database update error on updating
+
+= 1.1.2 (31 March 2020) =
+* Fixed: Database update errors
+* Fixed: Undefined index errors
+
+= 1.1.1 (27 March 2020) =
+* Added: Compatibility with SimpleForm 1.5 version
+* Fixed: SQL injection vulnerability issues
+* Fixed: Minor issues in code
+
 = 1.1 (15 February 2020) =
 * Added: Search box
 

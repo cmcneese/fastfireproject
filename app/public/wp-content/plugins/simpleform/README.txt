@@ -4,9 +4,9 @@ Contributors: simpleform
 Donate link: https://wpsform.com/
 Tags: contact form, form builder, simple form, form, contact, wordpress contact form, custom contact form, simple contact form, email form, web form, message form, smtp
 Requires at least: 4.7
-Tested up to: 5.3
+Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ This plugin is very easy to set up thanks to a graceful and intuitive admin inte
 
 = Fully customizable =
 
-It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change the field labels and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form.
+It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, use placeholders and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form.
 
 = Ready to use =
 
@@ -82,7 +82,7 @@ Anyone who needs only what is strictly necessary. SimpleForm is designed for who
 
 = Which form fields can be used? =
 
-The standard fields that comes with SimpleForm are a name field, an email address field, a subject field, a message field and a consent checkbox field.
+The standard fields that come with SimpleForm are a firstname field, a lastname field, an email address field, a phone number field, a subject field, a message field and a consent checkbox field.
 
 = Does SimpleForm include spam protection? =
 
@@ -116,12 +116,19 @@ We provide free support on the WordPress.org plugin repository. Please log into 
 4. Messages tab
 5. Emails tab
 6. SMTP server configuration
-7. Default form template
-8. New Bootstrap form template
-9. Form failed validation
+7. Notification email settings
+8. Confirmation email settings
+9. Default form template
+10. Bootstrap form template
+11. Form failed validation
 
 == Changelog ==
  
+= 1.5 (1 April 2020) =
+* Fixed: Minor issues in code
+* Added: Field for Lastname
+* Added: Field for Phone
+
 = 1.4 (14 March 2020) =
 * Fixed: Name validation error when name field is not required
 * Fixed: Dynamic SQL Query issues
@@ -187,3 +194,7 @@ SimpleForm already contains many options for being a basic contact form, but the
  
 * English
 * Italian
+
+= Integrations =
+
+* <a href="https://wordpress.org/plugins/simpleform-contact-form-submissions/">SimpleForm Contact Form Submissions</a> - Database for SimpleForm. You are no longer need to worry about losing important messages, since each new form submission will be stored in your WordPress database!

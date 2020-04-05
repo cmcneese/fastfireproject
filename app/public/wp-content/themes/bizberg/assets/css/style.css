@@ -750,13 +750,15 @@ header .navbar-default .navbar-nav > li > a:hover:after{display: none;}
     border-bottom: 0;
 }
 
-.slicknav_nav .slicknav_row {
+.slicknav_nav .slicknav_row{
     padding: 0;
     margin: 0;
+    border-bottom: 1px solid #3b3844;
+    padding: 10px 15px;
+    position: relative;
 }
 
 .slicknav_nav a {
-    padding: 12px 15px;
     margin: 0;
     text-decoration: none;
     color: #B6B3C4;
@@ -769,17 +771,17 @@ header .navbar-default .navbar-nav > li > a:hover:after{display: none;}
     text-transform: uppercase;
     font-size: 12px;
     text-align: left;
-    border-bottom: 1px solid #3b3844;
 }
 
 .slicknav_nav a.btn-primary {
     background: transparent!important;
     border: none;
+    padding: 10px 15px;
 }
 
 .slicknav_nav .slicknav_item a,
 .slicknav_nav .slicknav_parent-link a {
-    padding: 10px 15px;
+    padding: 0;
     margin: 0;
 }
 
@@ -806,17 +808,24 @@ header .navbar-default .navbar-nav > li > a:hover:after{display: none;}
     padding: 0;
 }
 
+.slicknav_nav li.menu-item > a {
+    padding: 10px 15px;
+    border-bottom: 1px solid #3b3844;
+    width: 100%;
+}
+
 .slicknav_nav ul li li {
     padding-left: 0;
 }
 
 .slicknav_nav ul li ul {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-.slicknav_nav ul li ul a {
-    padding: 10px 10px;
+.slicknav_nav ul li ul a, .slicknav_nav ul li > a{
+    padding: 10px 15px;
+    border-bottom: 1px solid #3b3844;
 }
 
 .slicknav_nav .slicknav_row:hover {
@@ -838,7 +847,7 @@ header .navbar-default .navbar-nav > li > a:hover:after{display: none;}
     margin-left: 15px;
 }
 
-.slicknav_nav .slicknav_arrow {
+.slicknav_nav a.slicknav_item{
     font-size: 14px;
     position: absolute;
     top: 0;
@@ -5974,4 +5983,13 @@ section.no-results.not-found .page-content > p {
     background-color: #2fbeef;
     padding: 10px 17px;
     opacity: 1;
+}
+
+.full-screen-search input[type="text"].search-field:focus {
+    border: 1px solid #2fbeef;
+    box-shadow: 0px 0px 3px #2fbeef;
+}
+
+#wpadminbar a{
+    outline: none !important;
 }

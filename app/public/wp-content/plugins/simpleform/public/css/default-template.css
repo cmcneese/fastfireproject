@@ -21,6 +21,10 @@ textarea.form-control { height: auto; line-height: 1.5; }
 .error-des { line-height: 1; color: #dc3545; font-size: 14px; height: 14px; margin-top: 5px; margin-bottom: 5px; }
 .error-des span { display: none; }
 .form-control.is-invalid + .error-des span { display: block; }
+.firstname.half {width: 47.5%; float: left;}
+.lastname.half {width: 47.5%; float: right;}
+.email.half {width: 47.5%; float: left;}
+.phone.half {width: 47.5%; float: right;}
 
 /* Terms field */
 #terms { margin-top: 10px; position: relative;}

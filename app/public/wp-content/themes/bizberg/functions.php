@@ -155,11 +155,6 @@ function bizberg_scripts() {
 			'footer' => true
 		),
 		array(
-			'id' => 'smoothscroll',
-			'url' => get_template_directory_uri() . '/assets/js/smoothscroll.js',
-			'footer' => true
-		),
-		array(
 			'id' => 'inview',
 			'url' => get_template_directory_uri() . '/assets/js/jquery.inview.min.js',
 			'footer' => true
@@ -173,17 +168,22 @@ function bizberg_scripts() {
 			'id' => 'matchHeight',
 			'url' => get_template_directory_uri() . '/assets/js/jquery.matchHeight-min.js',
 			'footer' => true
-		),
-		array(
-			'id' => 'custom',
-			'url' => get_template_directory_uri() . '/assets/js/custom.js',
-			'footer' => true
 		)
 	);
 
 	wp_enqueue_script('masonry');
 
 	bizberg_add_scripts( $scripts );
+
+	wp_register_script( 'bizberg-custom' , get_template_directory_uri() . '/assets/js/custom.js' , array('jquery') , '' , true );
+
+	$translation_array = array(
+	    'admin_bar_status' => is_admin_bar_showing(),
+	);
+	wp_localize_script( 'bizberg-custom', 'bizberg_object', $translation_array );
+	 
+	// Enqueued script with localized data.
+	wp_enqueue_script( 'bizberg-custom' );
 
     wp_add_inline_style( 'bizberg-style', bizberg_inline_style() );
 
@@ -923,8 +923,6 @@ function bizberg_admin_notice_demo_data() {
     <div class="theme-info-start notice notice-info">
 
     	<div class="theme-info-wrapper" style="padding: 20px 20px 20px 5px;">
-
-    		<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/images/logo.png' ); ?>" style="margin-bottom: 20px;width: auto;">
 
 	        <?php 
 	        echo '<strong style="font-size: 20px; padding-bottom: 10px; display: block;">';

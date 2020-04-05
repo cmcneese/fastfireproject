@@ -45,7 +45,7 @@ class SimpleForm_Activator {
  
     public static function create_db() {
 
-        $current_version = SIMPLEFORM_VERSION; 
+        $current_db_version = SIMPLEFORM_DB_VERSION; 
 
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
@@ -53,7 +53,7 @@ class SimpleForm_Activator {
         $prefix = $wpdb->prefix;
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-        if ( $installed_version != $current_version ) {
+        if ( $installed_db_version < $current_db_version ) {
         
           $shortcodes_table = $prefix . 'sform_shortcodes';
           $sql = "CREATE TABLE " . $shortcodes_table . " (
@@ -69,13 +69,13 @@ class SimpleForm_Activator {
             id int(11) NOT NULL AUTO_INCREMENT,
             requester_type tinytext NOT NULL,
             requester_id int(15) NOT NULL,
-            date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+            date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
             notes text NOT NULL,
             PRIMARY KEY  (id)
           ) ". $charset_collate .";";
           dbDelta($sql);
-
-          update_option('sform_db_version', $current_version);
+          
+          update_option('sform_db_version', $current_db_version);
           
         }
    
