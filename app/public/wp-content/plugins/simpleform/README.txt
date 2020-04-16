@@ -6,7 +6,7 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ This plugin is very easy to set up thanks to a graceful and intuitive admin inte
 
 = Fully customizable =
 
-It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, use placeholders and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form.
+It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, set a minimum or maximum length for text fields, use placeholders and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form.
 
 = Ready to use =
 
@@ -124,6 +124,16 @@ We provide free support on the WordPress.org plugin repository. Please log into 
 
 == Changelog ==
  
+= 1.6 (14 April 2020) =
+* Fixed: Screen options button opening error
+* Fixed: Minor issues in code
+* Added: Option for add a minimum length to text fields
+* Added: Option for add a maximum length to text fields
+
+= 1.5.1 (6 April 2020) =
+* Fixed: Unexpected error during plugin activation
+* Fixed: Display of errors when form submission is not executed via AJAX
+
 = 1.5 (1 April 2020) =
 * Fixed: Minor issues in code
 * Added: Field for Lastname

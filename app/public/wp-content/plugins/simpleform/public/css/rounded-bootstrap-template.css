@@ -37,7 +37,7 @@ textarea.form-control.is-invalid { background-position: top calc(.375em + .1875r
 #sform_privacy.is-invalid + span { background-color: #dc3545; }
 #sform_privacy + span:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; -webkit-transition: .4s; transition: .4s; border-radius: 50%; }
 #sform_privacy:checked + span:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }
-.control-label { padding-left: 20px; font-size: 15px; }
+.control-label { padding-left: 20px; font-size: 15px; display: inline-block; }
 .control-label.is-invalid { color: #dc3545; }
 
 /* Captcha field */

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: SimpleForm\n"
-"POT-Creation-Date: 2020-04-01 16:58+0200\n"
+"POT-Creation-Date: 2020-04-13 17:04+0200\n"
 "PO-Revision-Date: 2020-01-11 16:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: translations@wpsform.com\n"
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/class-admin.php:135 admin/partials/editing.php:62
+#: admin/class-admin.php:135 admin/partials/editing.php:70
 msgid "Copy"
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr ""
 msgid "In order to use this template, you need to load Bootstrap’s JS library"
 msgstr ""
 
-#: admin/class-admin.php:135 admin/partials/settings.php:192
+#: admin/class-admin.php:135 admin/partials/settings.php:196
 msgid "Show Configuration Warnings"
 msgstr ""
 
@@ -73,57 +73,91 @@ msgstr ""
 msgid "Hide Configuration Warnings"
 msgstr ""
 
-#: admin/class-admin.php:250
+#: admin/class-admin.php:253
+msgid "Firstname Maximum Length must be not less than Firstname Minimum Length"
+msgstr ""
+
+#: admin/class-admin.php:258
+msgid ""
+"You cannot set up a minimum length equals to 0 if the firstname field is "
+"required"
+msgstr ""
+
+#: admin/class-admin.php:263
+msgid "Lastname Maximum Length must be not less than Lastname Minimum Length"
+msgstr ""
+
+#: admin/class-admin.php:268
+msgid ""
+"You cannot set up a minimum length equals to 0 if the lastname field is "
+"required"
+msgstr ""
+
+#: admin/class-admin.php:273
+msgid "Subject Maximum Length must be not less than Subject Minimum Length"
+msgstr ""
+
+#: admin/class-admin.php:278
+msgid ""
+"You cannot set up a minimum length equals to 0 if the subject field is "
+"required"
+msgstr ""
+
+#: admin/class-admin.php:283
+msgid "Message Maximum Length must be not less than Message Minimum Length"
+msgstr ""
+
+#: admin/class-admin.php:293
 msgid "The Contact Form has been updated"
 msgstr ""
 
-#: admin/class-admin.php:255
+#: admin/class-admin.php:298
 msgid "The Contact Form has already been updated"
 msgstr ""
 
-#: admin/class-admin.php:339
+#: admin/class-admin.php:382
 msgid ""
 "The SMTP server for outgoing email cannot be enabled if notification or "
 "confirmation email are not enabled"
 msgstr ""
 
-#: admin/class-admin.php:344
+#: admin/class-admin.php:387
 msgid "Please enter the SMTP address"
 msgstr ""
 
-#: admin/class-admin.php:349
+#: admin/class-admin.php:392
 msgid "Please enter the encryption type to relay outgoing email to SMTP server"
 msgstr ""
 
-#: admin/class-admin.php:354
+#: admin/class-admin.php:397
 msgid "Please enter the port to relay outgoing email to SMTP server"
 msgstr ""
 
-#: admin/class-admin.php:359
+#: admin/class-admin.php:402
 msgid "Please enter a valid port to relay outgoing email to SMTP server"
 msgstr ""
 
-#: admin/class-admin.php:364
+#: admin/class-admin.php:407
 msgid "Please enter username to login to SMTP server"
 msgstr ""
 
-#: admin/class-admin.php:369
+#: admin/class-admin.php:412
 msgid "Please enter a valid email address to login to SMTP server"
 msgstr ""
 
-#: admin/class-admin.php:374
+#: admin/class-admin.php:417
 msgid "Please enter password to login to SMTP server"
 msgstr ""
 
-#: admin/class-admin.php:382
+#: admin/class-admin.php:425
 msgid "You need to enable the notification email"
 msgstr ""
 
-#: admin/class-admin.php:447
+#: admin/class-admin.php:490
 msgid "Settings have successfully saved"
 msgstr ""
 
-#: admin/class-admin.php:451
+#: admin/class-admin.php:494
 msgid "Settings have already been saved"
 msgstr ""
 
@@ -133,7 +167,7 @@ msgid ""
 "use and who should see them:"
 msgstr ""
 
-#: admin/partials/editing.php:18 public/class-public.php:1079
+#: admin/partials/editing.php:18 public/class-public.php:1075
 msgid "Contact Form"
 msgstr ""
 
@@ -143,402 +177,444 @@ msgid ""
 "as soon as possible. Mandatory fields are marked with (*)."
 msgstr ""
 
-#: admin/partials/editing.php:24 public/partials/form-variables.php:27
+#: admin/partials/editing.php:24 public/partials/form-variables.php:36
 msgid "Firstname"
 msgstr ""
 
-#: admin/partials/editing.php:30 public/partials/form-variables.php:43
+#: admin/partials/editing.php:32 public/partials/form-variables.php:52
 msgid "Lastname"
 msgstr ""
 
-#: admin/partials/editing.php:35 public/partials/form-variables.php:52
+#: admin/partials/editing.php:39 public/partials/form-variables.php:61
 msgid "Email"
 msgstr ""
 
-#: admin/partials/editing.php:41
+#: admin/partials/editing.php:45
 msgid "Phone Number"
 msgstr ""
 
-#: admin/partials/editing.php:46 public/class-public.php:533
-#: public/class-public.php:974 public/partials/form-variables.php:70
+#: admin/partials/editing.php:50 public/class-public.php:528
+#: public/class-public.php:970 public/partials/form-variables.php:79
 msgid "Subject"
 msgstr ""
 
-#: admin/partials/editing.php:50 public/class-public.php:562
-#: public/class-public.php:1005 public/partials/form-variables.php:76
+#: admin/partials/editing.php:56 public/class-public.php:557
+#: public/class-public.php:1001 public/partials/form-variables.php:85
 msgid "Message"
 msgstr ""
 
-#: admin/partials/editing.php:53 public/partials/form-variables.php:89
+#: admin/partials/editing.php:61 public/partials/form-variables.php:98
 msgid "I have read and agree to the Privacy Policy"
 msgstr ""
 
-#: admin/partials/editing.php:56 public/partials/form-variables.php:90
+#: admin/partials/editing.php:64 public/partials/form-variables.php:99
 msgid "What does this equal to?"
 msgstr ""
 
-#: admin/partials/editing.php:57 public/partials/form-variables.php:98
+#: admin/partials/editing.php:65 public/partials/form-variables.php:107
 msgid "Submit"
 msgstr ""
 
-#: admin/partials/editing.php:62
+#: admin/partials/editing.php:70
 msgid "Shortcode"
 msgstr ""
 
-#: admin/partials/editing.php:64
+#: admin/partials/editing.php:72
 msgid "Form Name"
 msgstr ""
 
-#: admin/partials/editing.php:64
+#: admin/partials/editing.php:72
 msgid "Enter a name for this Form"
 msgstr ""
 
-#: admin/partials/editing.php:66
+#: admin/partials/editing.php:74
 msgid "Used in"
 msgstr ""
 
-#: admin/partials/editing.php:95
+#: admin/partials/editing.php:103
 msgid "Page currently containing the shortcode"
 msgid_plural "Pages currently containing the shortcode"
 msgstr[0] ""
 msgstr[1] ""
 
-#: admin/partials/editing.php:97
+#: admin/partials/editing.php:105
 msgid ""
 "Still not used. Create a new page or choose an existing one and add the "
 "shortcode"
 msgstr ""
 
-#: admin/partials/editing.php:102
+#: admin/partials/editing.php:110
 msgid "Form Description"
 msgstr ""
 
-#: admin/partials/editing.php:104
+#: admin/partials/editing.php:112
 msgid "Text above Form"
 msgstr ""
 
-#: admin/partials/editing.php:104
+#: admin/partials/editing.php:112
 msgid ""
 "Enter the text that must be displayed above the form. It can be used to "
 "provide a description or instructions for filling in the form."
 msgstr ""
 
-#: admin/partials/editing.php:104 admin/partials/editing.php:106
-#: admin/partials/settings.php:154
+#: admin/partials/editing.php:112 admin/partials/editing.php:114
+#: admin/partials/settings.php:158
 msgid "The html tags for formatting message are allowed"
 msgstr ""
 
-#: admin/partials/editing.php:106
+#: admin/partials/editing.php:114
 msgid "Text below Form"
 msgstr ""
 
-#: admin/partials/editing.php:106
+#: admin/partials/editing.php:114
 msgid ""
 "Enter the text that must be displayed below the form. It can be used to "
 "provide additional information."
 msgstr ""
 
-#: admin/partials/editing.php:108
+#: admin/partials/editing.php:116
 msgid "Form Appearance"
 msgstr ""
 
-#: admin/partials/editing.php:110
+#: admin/partials/editing.php:118
 msgid "Required Field Sign"
 msgstr ""
 
-#: admin/partials/editing.php:110
+#: admin/partials/editing.php:118
 msgid "Use an asterisk at the end of the label to mark a required field"
 msgstr ""
 
-#: admin/partials/editing.php:112
+#: admin/partials/editing.php:120
 msgid "Form Fields"
 msgstr ""
 
-#: admin/partials/editing.php:114
+#: admin/partials/editing.php:122
 msgid "Firstname Field"
 msgstr ""
 
-#: admin/partials/editing.php:114 admin/partials/editing.php:123
-#: admin/partials/editing.php:134 admin/partials/editing.php:144
-#: admin/partials/editing.php:156 admin/partials/editing.php:172
-#: admin/partials/editing.php:178
+#: admin/partials/editing.php:122 admin/partials/editing.php:136
+#: admin/partials/editing.php:152 admin/partials/editing.php:162
+#: admin/partials/editing.php:174 admin/partials/editing.php:198
+#: admin/partials/editing.php:204
 msgid "Display to all users"
 msgstr ""
 
-#: admin/partials/editing.php:114 admin/partials/editing.php:123
-#: admin/partials/editing.php:134 admin/partials/editing.php:144
-#: admin/partials/editing.php:156 admin/partials/editing.php:172
-#: admin/partials/editing.php:178
+#: admin/partials/editing.php:122 admin/partials/editing.php:136
+#: admin/partials/editing.php:152 admin/partials/editing.php:162
+#: admin/partials/editing.php:174 admin/partials/editing.php:198
+#: admin/partials/editing.php:204
 msgid "Display only to registered users"
 msgstr ""
 
-#: admin/partials/editing.php:114 admin/partials/editing.php:123
-#: admin/partials/editing.php:134 admin/partials/editing.php:144
-#: admin/partials/editing.php:156 admin/partials/editing.php:172
-#: admin/partials/editing.php:178
+#: admin/partials/editing.php:122 admin/partials/editing.php:136
+#: admin/partials/editing.php:152 admin/partials/editing.php:162
+#: admin/partials/editing.php:174 admin/partials/editing.php:198
+#: admin/partials/editing.php:204
 msgid "Display only to anonymous users"
 msgstr ""
 
-#: admin/partials/editing.php:114 admin/partials/editing.php:123
-#: admin/partials/editing.php:134 admin/partials/editing.php:144
-#: admin/partials/editing.php:156 admin/partials/editing.php:172
-#: admin/partials/editing.php:178
+#: admin/partials/editing.php:122 admin/partials/editing.php:136
+#: admin/partials/editing.php:152 admin/partials/editing.php:162
+#: admin/partials/editing.php:174 admin/partials/editing.php:198
+#: admin/partials/editing.php:204
 msgid "Do not display"
 msgstr ""
 
-#: admin/partials/editing.php:116
+#: admin/partials/editing.php:124
 msgid "Firstname Field Label Visibility"
 msgstr ""
 
-#: admin/partials/editing.php:116
+#: admin/partials/editing.php:124
 msgid "Hide label for firstname field"
 msgstr ""
 
-#: admin/partials/editing.php:118
+#: admin/partials/editing.php:126
 msgid "Firstname Field Label"
 msgstr ""
 
-#: admin/partials/editing.php:118
+#: admin/partials/editing.php:126
 msgid "Enter a label for Firstname field"
 msgstr ""
 
-#: admin/partials/editing.php:120
+#: admin/partials/editing.php:128
 msgid "Firstname Field Placeholder"
 msgstr ""
 
-#: admin/partials/editing.php:120
+#: admin/partials/editing.php:128
 msgid "Enter a placeholder for Firstname field. If blank, will not be used!"
 msgstr ""
 
-#: admin/partials/editing.php:121
-msgid "Firstname Field Requirement"
+#: admin/partials/editing.php:130
+msgid "Firstname Minimum Length"
 msgstr ""
 
-#: admin/partials/editing.php:121 admin/partials/editing.php:132
-#: admin/partials/editing.php:142 admin/partials/editing.php:154
-#: admin/partials/editing.php:164 admin/partials/editing.php:176
-msgid "Make this field required"
-msgstr ""
-
-#: admin/partials/editing.php:123
-msgid "Lastname Field"
-msgstr ""
-
-#: admin/partials/editing.php:125
-msgid "Lastname Field Layout"
-msgstr ""
-
-#: admin/partials/editing.php:125 admin/partials/editing.php:146
-msgid "Place on a single line"
-msgstr ""
-
-#: admin/partials/editing.php:125
-msgid "Place next to firstname field on the same line"
-msgstr ""
-
-#: admin/partials/editing.php:127
-msgid "Lastname Field Label Visibility"
-msgstr ""
-
-#: admin/partials/editing.php:127
-msgid "Hide label for lastname field"
-msgstr ""
-
-#: admin/partials/editing.php:129
-msgid "Lastname Field Label"
-msgstr ""
-
-#: admin/partials/editing.php:129
-msgid "Enter a label for Lastname field"
-msgstr ""
-
-#: admin/partials/editing.php:131
-msgid "Lastname Field Placeholder"
-msgstr ""
-
-#: admin/partials/editing.php:131
-msgid "Enter a placeholder for Lastname field. If blank, will not be used!"
+#: admin/partials/editing.php:130 admin/partials/editing.php:146
+#: admin/partials/editing.php:182
+msgid "Notice that 0 means no minimum limit"
 msgstr ""
 
 #: admin/partials/editing.php:132
-msgid "Lastname Field Requirement"
+msgid "Firstname Maximum Length"
+msgstr ""
+
+#: admin/partials/editing.php:132 admin/partials/editing.php:148
+#: admin/partials/editing.php:184 admin/partials/editing.php:196
+msgid "Notice that 0 means no maximum limit"
 msgstr ""
 
 #: admin/partials/editing.php:134
-msgid "Email Field"
+msgid "Firstname Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:134 admin/partials/editing.php:150
+#: admin/partials/editing.php:160 admin/partials/editing.php:172
+#: admin/partials/editing.php:186 admin/partials/editing.php:202
+msgid "Make this field required"
 msgstr ""
 
 #: admin/partials/editing.php:136
-msgid "Email Field Label Visibility"
-msgstr ""
-
-#: admin/partials/editing.php:136
-msgid "Hide label for email field"
+msgid "Lastname Field"
 msgstr ""
 
 #: admin/partials/editing.php:138
-msgid "Email Field Label"
+msgid "Lastname Field Layout"
+msgstr ""
+
+#: admin/partials/editing.php:138 admin/partials/editing.php:164
+msgid "Place on a single line"
 msgstr ""
 
 #: admin/partials/editing.php:138
-msgid "Enter a label for Email field"
+msgid "Place next to firstname field on the same line"
 msgstr ""
 
 #: admin/partials/editing.php:140
-msgid "Email Field Placeholder"
+msgid "Lastname Field Label Visibility"
 msgstr ""
 
 #: admin/partials/editing.php:140
-msgid "Enter a placeholder for Email field. If blank, will not be used!"
+msgid "Hide label for lastname field"
 msgstr ""
 
 #: admin/partials/editing.php:142
-msgid "Email Field Requirement"
+msgid "Lastname Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:142
+msgid "Enter a label for Lastname field"
 msgstr ""
 
 #: admin/partials/editing.php:144
-msgid "Phone Field"
+msgid "Lastname Field Placeholder"
+msgstr ""
+
+#: admin/partials/editing.php:144
+msgid "Enter a placeholder for Lastname field. If blank, will not be used!"
 msgstr ""
 
 #: admin/partials/editing.php:146
-msgid "Phone Field Layout"
-msgstr ""
-
-#: admin/partials/editing.php:146
-msgid "Place next to email field on the same line"
+msgid "Lastname Minimum Length"
 msgstr ""
 
 #: admin/partials/editing.php:148
-msgid "Phone Field Label Visibility"
-msgstr ""
-
-#: admin/partials/editing.php:148
-msgid "Hide label for phone field"
+msgid "Lastname Maximum Length"
 msgstr ""
 
 #: admin/partials/editing.php:150
-msgid "Phone Field Label"
-msgstr ""
-
-#: admin/partials/editing.php:150
-msgid "Enter a label for Phone field"
+msgid "Lastname Field Requirement"
 msgstr ""
 
 #: admin/partials/editing.php:152
-msgid "Phone Field Placeholder"
-msgstr ""
-
-#: admin/partials/editing.php:152
-msgid "Enter a placeholder for Phone field. If blank, will not be used!"
+msgid "Email Field"
 msgstr ""
 
 #: admin/partials/editing.php:154
-msgid "Phone Field Requirement"
+msgid "Email Field Label Visibility"
+msgstr ""
+
+#: admin/partials/editing.php:154
+msgid "Hide label for email field"
 msgstr ""
 
 #: admin/partials/editing.php:156
-msgid "Subject Field"
+msgid "Email Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:156
+msgid "Enter a label for Email field"
 msgstr ""
 
 #: admin/partials/editing.php:158
-msgid "Subject Field Label Visibility"
+msgid "Email Field Placeholder"
 msgstr ""
 
 #: admin/partials/editing.php:158
-msgid "Hide label for subject field"
+msgid "Enter a placeholder for Email field. If blank, will not be used!"
 msgstr ""
 
 #: admin/partials/editing.php:160
-msgid "Subject Field Label"
-msgstr ""
-
-#: admin/partials/editing.php:160
-msgid "Enter a label for Subject field"
+msgid "Email Field Requirement"
 msgstr ""
 
 #: admin/partials/editing.php:162
-msgid "Subject Field Placeholder"
-msgstr ""
-
-#: admin/partials/editing.php:162
-msgid "Enter a placeholder for Subject field. If blank, will not be used!"
+msgid "Phone Field"
 msgstr ""
 
 #: admin/partials/editing.php:164
-msgid "Subject Field Requirement"
+msgid "Phone Field Layout"
+msgstr ""
+
+#: admin/partials/editing.php:164
+msgid "Place next to email field on the same line"
 msgstr ""
 
 #: admin/partials/editing.php:166
-msgid "Message Field Label Visibility"
+msgid "Phone Field Label Visibility"
 msgstr ""
 
 #: admin/partials/editing.php:166
-msgid "Hide label for message field"
+msgid "Hide label for phone field"
 msgstr ""
 
 #: admin/partials/editing.php:168
-msgid "Message Field Label"
+msgid "Phone Field Label"
 msgstr ""
 
 #: admin/partials/editing.php:168
-msgid "Enter a label for Message field"
+msgid "Enter a label for Phone field"
 msgstr ""
 
 #: admin/partials/editing.php:170
-msgid "Message Field Placeholder"
+msgid "Phone Field Placeholder"
 msgstr ""
 
 #: admin/partials/editing.php:170
-msgid "Enter a placeholder for Message field. If blank, will not be used!"
+msgid "Enter a placeholder for Phone field. If blank, will not be used!"
 msgstr ""
 
 #: admin/partials/editing.php:172
+msgid "Phone Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:174
+msgid "Subject Field"
+msgstr ""
+
+#: admin/partials/editing.php:176
+msgid "Subject Field Label Visibility"
+msgstr ""
+
+#: admin/partials/editing.php:176
+msgid "Hide label for subject field"
+msgstr ""
+
+#: admin/partials/editing.php:178
+msgid "Subject Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:178
+msgid "Enter a label for Subject field"
+msgstr ""
+
+#: admin/partials/editing.php:180
+msgid "Subject Field Placeholder"
+msgstr ""
+
+#: admin/partials/editing.php:180
+msgid "Enter a placeholder for Subject field. If blank, will not be used!"
+msgstr ""
+
+#: admin/partials/editing.php:182
+msgid "Subject Minimum Length"
+msgstr ""
+
+#: admin/partials/editing.php:184
+msgid "Subject Maximum Length"
+msgstr ""
+
+#: admin/partials/editing.php:186
+msgid "Subject Field Requirement"
+msgstr ""
+
+#: admin/partials/editing.php:188
+msgid "Message Field Label Visibility"
+msgstr ""
+
+#: admin/partials/editing.php:188
+msgid "Hide label for message field"
+msgstr ""
+
+#: admin/partials/editing.php:190
+msgid "Message Field Label"
+msgstr ""
+
+#: admin/partials/editing.php:190
+msgid "Enter a label for Message field"
+msgstr ""
+
+#: admin/partials/editing.php:192
+msgid "Message Field Placeholder"
+msgstr ""
+
+#: admin/partials/editing.php:192
+msgid "Enter a placeholder for Message field. If blank, will not be used!"
+msgstr ""
+
+#: admin/partials/editing.php:194
+msgid "Message Minimum Length"
+msgstr ""
+
+#: admin/partials/editing.php:196
+msgid "Message Maximum Length"
+msgstr ""
+
+#: admin/partials/editing.php:198
 msgid "Terms Field"
 msgstr ""
 
-#: admin/partials/editing.php:174
+#: admin/partials/editing.php:200
 msgid "Terms Field Label"
 msgstr ""
 
-#: admin/partials/editing.php:174
+#: admin/partials/editing.php:200
 msgid "Enter a label for Terms field"
 msgstr ""
 
-#: admin/partials/editing.php:174
+#: admin/partials/editing.php:200
 msgid "Entering URL requires the use of html tags"
 msgstr ""
 
-#: admin/partials/editing.php:176
+#: admin/partials/editing.php:202
 msgid "Terms Field Requirement"
 msgstr ""
 
-#: admin/partials/editing.php:176
+#: admin/partials/editing.php:202
 msgid ""
 "If you’re collecting personal data this field is required for requesting the "
 "user explicit consent"
 msgstr ""
 
-#: admin/partials/editing.php:178
+#: admin/partials/editing.php:204
 msgid "Captcha Field"
 msgstr ""
 
-#: admin/partials/editing.php:180
+#: admin/partials/editing.php:206
 msgid "Captcha Field Label"
 msgstr ""
 
-#: admin/partials/editing.php:180
+#: admin/partials/editing.php:206
 msgid "Enter a label for Captcha field"
 msgstr ""
 
-#: admin/partials/editing.php:182
+#: admin/partials/editing.php:208
 msgid "Submit Field Label"
 msgstr ""
 
-#: admin/partials/editing.php:182
+#: admin/partials/editing.php:208
 msgid "Enter a label for Submit field"
 msgstr ""
 
-#: admin/partials/editing.php:187 admin/partials/settings.php:247
+#: admin/partials/editing.php:213 admin/partials/settings.php:251
 msgid "Save Changes"
 msgstr ""
 
@@ -563,7 +639,7 @@ msgstr ""
 msgid "Form Submission Options"
 msgstr ""
 
-#: admin/partials/settings.php:47 admin/partials/settings.php:192
+#: admin/partials/settings.php:47 admin/partials/settings.php:196
 msgid "SMTP Server Configuration"
 msgstr ""
 
@@ -639,385 +715,395 @@ msgstr ""
 msgid "Delete all data and settings when the plugin is uninstalled"
 msgstr ""
 
-#: admin/partials/settings.php:67 admin/partials/settings.php:71
-#: public/class-public.php:718 public/class-public.php:751
-#: public/partials/form-variables.php:100
-#: public/partials/form-variables.php:103
-#: public/partials/form-variables.php:120
-msgid "Please enter at least 2 characters"
+#: admin/partials/settings.php:67 public/partials/form-variables.php:146
+msgid "Mandatory fields must be filled in"
 msgstr ""
 
-#: admin/partials/settings.php:68 public/class-public.php:719
+#: admin/partials/settings.php:70 admin/partials/settings.php:76
+#: public/class-public.php:711 public/class-public.php:744
+#: public/partials/form-variables.php:111
+#: public/partials/form-variables.php:128
+#, php-format
+msgid "Please enter at least %d characters"
+msgstr ""
+
+#: admin/partials/settings.php:74
 msgid "The name contains characters that are not allowed"
 msgstr ""
 
-#: admin/partials/settings.php:69 public/class-public.php:720
+#: admin/partials/settings.php:75 public/class-public.php:713
 msgid "Error occurred validating the name"
 msgstr ""
 
-#: admin/partials/settings.php:72 public/class-public.php:752
+#: admin/partials/settings.php:77
 msgid "The lastname contains characters that are not allowed"
 msgstr ""
 
-#: admin/partials/settings.php:73 public/class-public.php:753
-#: public/partials/form-variables.php:130
+#: admin/partials/settings.php:78 public/class-public.php:746
+#: public/partials/form-variables.php:138
 msgid "Error occurred validating the lastname"
 msgstr ""
 
-#: admin/partials/settings.php:75 public/class-public.php:781
+#: admin/partials/settings.php:79 public/class-public.php:774
 msgid "Please enter a valid email"
 msgstr ""
 
-#: admin/partials/settings.php:76 public/class-public.php:782
-#: public/partials/form-variables.php:129
+#: admin/partials/settings.php:80 public/class-public.php:775
+#: public/partials/form-variables.php:137
 msgid "Error occurred validating the email"
 msgstr ""
 
-#: admin/partials/settings.php:78 public/class-public.php:805
-#: public/partials/form-variables.php:106
+#: admin/partials/settings.php:81 public/class-public.php:798
+#: public/partials/form-variables.php:114
 msgid "The phone number contains not allowed characters"
 msgstr ""
 
-#: admin/partials/settings.php:79 public/class-public.php:806
-#: public/partials/form-variables.php:131
+#: admin/partials/settings.php:82 public/class-public.php:799
+#: public/partials/form-variables.php:139
 msgid "Error occurred validating the phone number"
 msgstr ""
 
-#: admin/partials/settings.php:81 public/class-public.php:832
-#: public/partials/form-variables.php:108
-#: public/partials/form-variables.php:123
-msgid "Please enter a subject at least 10 characters long"
+#: admin/partials/settings.php:83 public/class-public.php:825
+#, php-format
+msgid "Please enter a subject at least %d characters long"
 msgstr ""
 
-#: admin/partials/settings.php:82 admin/partials/settings.php:85
-#: public/class-public.php:833 public/class-public.php:867
-#: public/partials/form-variables.php:110
-#: public/partials/form-variables.php:114
-#: public/partials/form-variables.php:124
-#: public/partials/form-variables.php:126
+#: admin/partials/settings.php:84 admin/partials/settings.php:87
+#: public/class-public.php:826 public/class-public.php:863
+#: public/partials/form-variables.php:118
+#: public/partials/form-variables.php:122
+#: public/partials/form-variables.php:132
+#: public/partials/form-variables.php:134
 msgid "Enter only alphanumeric characters and punctuation marks"
 msgstr ""
 
-#: admin/partials/settings.php:83 public/class-public.php:834
-#: public/partials/form-variables.php:132
+#: admin/partials/settings.php:85 public/class-public.php:827
+#: public/partials/form-variables.php:140
 msgid "Error occurred validating the subject"
 msgstr ""
 
-#: admin/partials/settings.php:84 public/class-public.php:866
-#: public/partials/form-variables.php:113
-#: public/partials/form-variables.php:125
-msgid "Please enter a message at least 10 characters long"
+#: admin/partials/settings.php:86 public/class-public.php:860
+#, php-format
+msgid "Please enter a message at least %d characters long"
 msgstr ""
 
-#: admin/partials/settings.php:86 public/class-public.php:869
-#: public/partials/form-variables.php:133
+#: admin/partials/settings.php:88 public/class-public.php:865
+#: public/partials/form-variables.php:141
 msgid "Error occurred validating the message"
 msgstr ""
 
-#: admin/partials/settings.php:87 public/class-public.php:883
-#: public/partials/form-variables.php:134
+#: admin/partials/settings.php:89 public/class-public.php:879
+#: public/partials/form-variables.php:142
 msgid "Please accept our terms and conditions before submitting form"
 msgstr ""
 
-#: admin/partials/settings.php:88 public/class-public.php:902
-#: public/partials/form-variables.php:127
+#: admin/partials/settings.php:90 public/class-public.php:898
+#: public/partials/form-variables.php:135
 msgid "Please enter a valid captcha value"
 msgstr ""
 
-#: admin/partials/settings.php:89 public/class-public.php:903
-#: public/partials/form-variables.php:135
+#: admin/partials/settings.php:91 public/class-public.php:899
+#: public/partials/form-variables.php:143
 msgid "Error occurred validating the captcha"
 msgstr ""
 
-#: admin/partials/settings.php:90 public/class-public.php:894
-#: public/partials/form-variables.php:136
+#: admin/partials/settings.php:92 public/class-public.php:890
+#: public/partials/form-variables.php:144
 msgid "Error occurred during processing data"
 msgstr ""
 
-#: admin/partials/settings.php:91 public/class-public.php:939
-#: public/partials/form-variables.php:137
+#: admin/partials/settings.php:93 public/class-public.php:935
+#: public/partials/form-variables.php:145
 msgid "Error occurred during processing data. Please try again!"
 msgstr ""
 
-#: admin/partials/settings.php:95 public/class-public.php:914
-#: public/partials/form-variables.php:116
+#: admin/partials/settings.php:97 public/class-public.php:910
+#: public/partials/form-variables.php:124
 msgid "We have received your request!"
 msgstr ""
 
-#: admin/partials/settings.php:96 public/class-public.php:915
-#: public/partials/form-variables.php:117
+#: admin/partials/settings.php:98 public/class-public.php:911
+#: public/partials/form-variables.php:125
 msgid ""
 "Your message will be reviewed soon, and we’ll get back to you as quickly as "
 "possible."
 msgstr ""
 
-#: admin/partials/settings.php:102
+#: admin/partials/settings.php:104
 msgid "Fields Error Messages"
 msgstr ""
 
-#: admin/partials/settings.php:104
+#: admin/partials/settings.php:106
+msgid "Empty Fields Error"
+msgstr ""
+
+#: admin/partials/settings.php:106
+msgid "Please enter an error message in case of multiple empty fields"
+msgstr ""
+
+#: admin/partials/settings.php:108
 msgid "Lenght Firstname Error"
 msgstr ""
 
-#: admin/partials/settings.php:104
+#: admin/partials/settings.php:108
 msgid ""
 "Please enter an error message in case of empty field or firstname not enough "
 "long"
 msgstr ""
 
-#: admin/partials/settings.php:106
+#: admin/partials/settings.php:110
 msgid "Invalid Firstname Error"
 msgstr ""
 
-#: admin/partials/settings.php:106
+#: admin/partials/settings.php:110
 msgid "Please enter an error message in case of invalid firstname"
 msgstr ""
 
-#: admin/partials/settings.php:108
+#: admin/partials/settings.php:112
 msgid "Firstname Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:108
+#: admin/partials/settings.php:112
 msgid "Please enter a message in case of error in firstname field"
 msgstr ""
 
-#: admin/partials/settings.php:111
+#: admin/partials/settings.php:115
 msgid "Lenght Lastname Error"
 msgstr ""
 
-#: admin/partials/settings.php:111
+#: admin/partials/settings.php:115
 msgid ""
 "Please enter an error message in case of empty field or lastname not enough "
 "long"
 msgstr ""
 
-#: admin/partials/settings.php:113
+#: admin/partials/settings.php:117
 msgid "Invalid Lastname Error"
 msgstr ""
 
-#: admin/partials/settings.php:113
+#: admin/partials/settings.php:117
 msgid "Please enter an error message in case of invalid lastname"
 msgstr ""
 
-#: admin/partials/settings.php:115
+#: admin/partials/settings.php:119
 msgid "Lastname Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:115
+#: admin/partials/settings.php:119
 msgid "Please enter a message in case of error in lastname field"
 msgstr ""
 
-#: admin/partials/settings.php:118
+#: admin/partials/settings.php:122
 msgid "Invalid Email Error"
 msgstr ""
 
-#: admin/partials/settings.php:118
+#: admin/partials/settings.php:122
 msgid "Please enter an error message in case of empty field or invalid email"
 msgstr ""
 
-#: admin/partials/settings.php:120
+#: admin/partials/settings.php:124
 msgid "Email Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:120
+#: admin/partials/settings.php:124
 msgid "Please enter a message in case of error in email field"
 msgstr ""
 
-#: admin/partials/settings.php:122
+#: admin/partials/settings.php:126
 msgid "Invalid Phone Error"
 msgstr ""
 
-#: admin/partials/settings.php:122
+#: admin/partials/settings.php:126
 msgid "Please enter an error message in case of invalid phone number"
 msgstr ""
 
-#: admin/partials/settings.php:124
+#: admin/partials/settings.php:128
 msgid "Phone Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:124
+#: admin/partials/settings.php:128
 msgid "Please enter a message in case of error in phone field"
 msgstr ""
 
-#: admin/partials/settings.php:126
+#: admin/partials/settings.php:130
 msgid "Lenght Subject Error"
 msgstr ""
 
-#: admin/partials/settings.php:126
+#: admin/partials/settings.php:130
 msgid ""
 "Please enter an error message in case of empty field or subject not enough "
 "long"
 msgstr ""
 
-#: admin/partials/settings.php:128
+#: admin/partials/settings.php:132
 msgid "Invalid Subject Error"
 msgstr ""
 
-#: admin/partials/settings.php:128
+#: admin/partials/settings.php:132
 msgid "Please enter an error message in case of invalid subject"
 msgstr ""
 
-#: admin/partials/settings.php:130
+#: admin/partials/settings.php:134
 msgid "Subject Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:130
+#: admin/partials/settings.php:134
 msgid "Please enter a message in case of error in subject field"
 msgstr ""
 
-#: admin/partials/settings.php:132
+#: admin/partials/settings.php:136
 msgid "Lenght Message Error"
 msgstr ""
 
-#: admin/partials/settings.php:132
+#: admin/partials/settings.php:136
 msgid ""
 "Please enter an error message in case of empty field or message not enough "
 "long"
 msgstr ""
 
-#: admin/partials/settings.php:134
+#: admin/partials/settings.php:138
 msgid "Invalid Message Error"
 msgstr ""
 
-#: admin/partials/settings.php:134
+#: admin/partials/settings.php:138
 msgid "Please enter an error message in case of invalid message"
 msgstr ""
 
-#: admin/partials/settings.php:136
+#: admin/partials/settings.php:140
 msgid "Message Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:136
+#: admin/partials/settings.php:140
 msgid "Please enter a message in case of error in message field"
 msgstr ""
 
-#: admin/partials/settings.php:138
+#: admin/partials/settings.php:142
 msgid "Not Acceptance Error"
 msgstr ""
 
-#: admin/partials/settings.php:138
+#: admin/partials/settings.php:142
 msgid "Please enter an error message in case of not acceptance of the terms"
 msgstr ""
 
-#: admin/partials/settings.php:140
+#: admin/partials/settings.php:144
 msgid "Invalid Captcha Error"
 msgstr ""
 
-#: admin/partials/settings.php:140
+#: admin/partials/settings.php:144
 msgid ""
 "Please enter an error message in case of empty field or invalid captcha value"
 msgstr ""
 
-#: admin/partials/settings.php:142
+#: admin/partials/settings.php:146
 msgid "Captcha Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:142
+#: admin/partials/settings.php:146
 msgid "Please enter a message in case of error in captcha field"
 msgstr ""
 
-#: admin/partials/settings.php:144
+#: admin/partials/settings.php:148
 msgid "Honeypot Field Error"
 msgstr ""
 
-#: admin/partials/settings.php:144
+#: admin/partials/settings.php:148
 msgid "Please enter a message in case of the honeypot field is filled in"
 msgstr ""
 
-#: admin/partials/settings.php:146
+#: admin/partials/settings.php:150
 msgid "Submission Error Messages"
 msgstr ""
 
-#: admin/partials/settings.php:148
+#: admin/partials/settings.php:152
 msgid "Server Error"
 msgstr ""
 
-#: admin/partials/settings.php:148
+#: admin/partials/settings.php:152
 msgid ""
 "Please enter an error message in case an error occurs on during processing "
 "data"
 msgstr ""
 
-#: admin/partials/settings.php:150
+#: admin/partials/settings.php:154
 msgid "Success Message"
 msgstr ""
 
-#: admin/partials/settings.php:152
+#: admin/partials/settings.php:156
 msgid "Confirmation Type"
 msgstr ""
 
-#: admin/partials/settings.php:152
+#: admin/partials/settings.php:156
 msgid "Display confirmation message"
 msgstr ""
 
-#: admin/partials/settings.php:152
+#: admin/partials/settings.php:156
 msgid "Redirect to confirmation page"
 msgstr ""
 
-#: admin/partials/settings.php:154
+#: admin/partials/settings.php:158
 msgid "Confirmation Message"
 msgstr ""
 
-#: admin/partials/settings.php:154
+#: admin/partials/settings.php:158
 msgid "Please enter a thank you message when the form is submitted"
 msgstr ""
 
-#: admin/partials/settings.php:156
+#: admin/partials/settings.php:160
 msgid "Confirmation Page"
 msgstr ""
 
-#: admin/partials/settings.php:156
+#: admin/partials/settings.php:160
 msgid "Select page where user is redirected when form is sent"
 msgstr ""
 
-#: admin/partials/settings.php:171
+#: admin/partials/settings.php:175
 msgid "Enter the username for SMTP authentication"
 msgstr ""
 
-#: admin/partials/settings.php:172
+#: admin/partials/settings.php:176
 msgid "Enter the password for SMTP authentication"
 msgstr ""
 
-#: admin/partials/settings.php:179 public/class-public.php:506
-#: public/class-public.php:950
+#: admin/partials/settings.php:183 public/class-public.php:501
+#: public/class-public.php:946
 msgid "New Contact Request"
 msgstr ""
 
-#: admin/partials/settings.php:184 public/class-public.php:576
-#: public/class-public.php:1018
+#: admin/partials/settings.php:188 public/class-public.php:571
+#: public/class-public.php:1014
 msgid "Your request has been received. Thanks!"
 msgstr ""
 
-#: admin/partials/settings.php:186 public/class-public.php:578
-#: public/class-public.php:1020
+#: admin/partials/settings.php:190 public/class-public.php:573
+#: public/class-public.php:1016
 #, php-format
 msgid "Hi %s"
 msgstr ""
 
-#: admin/partials/settings.php:186 public/class-public.php:578
-#: public/class-public.php:1020
+#: admin/partials/settings.php:190 public/class-public.php:573
+#: public/class-public.php:1016
 msgid ""
 "We have received your request. It will be reviewed soon and we’ll get back "
 "to you as quickly as possible."
 msgstr ""
 
-#: admin/partials/settings.php:186 public/class-public.php:578
-#: public/class-public.php:1020
+#: admin/partials/settings.php:190 public/class-public.php:573
+#: public/class-public.php:1016
 msgid "Thanks,"
 msgstr ""
 
-#: admin/partials/settings.php:186 public/class-public.php:578
-#: public/class-public.php:1020
+#: admin/partials/settings.php:190 public/class-public.php:573
+#: public/class-public.php:1016
 msgid "The Support Team"
 msgstr ""
 
-#: admin/partials/settings.php:194
+#: admin/partials/settings.php:198
 msgid ""
 "Improve the email deliverability sent from your website by configuring "
 "WordPress to work with a SMTP server"
 msgstr ""
 
-#: admin/partials/settings.php:194
+#: admin/partials/settings.php:198
 msgid ""
 "By default, WordPress uses the PHP mail() function to send emails, a basic "
 "feature in built in PHP. However, if own website is hosted on shared server "
@@ -1056,7 +1142,7 @@ msgid ""
 "provider if the port used is open for traffic outbound."
 msgstr ""
 
-#: admin/partials/settings.php:194
+#: admin/partials/settings.php:198
 #, php-format
 msgid ""
 "The SMPT login credentials are stored in your website database. We highly "
@@ -1065,256 +1151,256 @@ msgid ""
 "%2$s field and add the lines below to your %3$s file:"
 msgstr ""
 
-#: admin/partials/settings.php:194
+#: admin/partials/settings.php:198
 msgid "Your full email address (e.g. name@domain.com)"
 msgstr ""
 
-#: admin/partials/settings.php:194
+#: admin/partials/settings.php:198
 msgid "Your account's password"
 msgstr ""
 
-#: admin/partials/settings.php:194
+#: admin/partials/settings.php:198
 msgid ""
 "Anyway, this section is optional. Ignore it and do not enter data if you "
 "want to use a dedicated plugin to take care of outgoing email or if you "
 "don't have to."
 msgstr ""
 
-#: admin/partials/settings.php:197
+#: admin/partials/settings.php:201
 msgid "Outgoing Server SMTP"
 msgstr ""
 
-#: admin/partials/settings.php:197
+#: admin/partials/settings.php:201
 msgid "Enable a SMTP server for outgoing email if you havent't already"
 msgstr ""
 
-#: admin/partials/settings.php:197
+#: admin/partials/settings.php:201
 msgid ""
 "Uncheck if you want to use a dedicated plugin to take care of outgoing email"
 msgstr ""
 
-#: admin/partials/settings.php:199
+#: admin/partials/settings.php:203
 msgid "SMTP Host Address"
 msgstr ""
 
-#: admin/partials/settings.php:199
+#: admin/partials/settings.php:203
 msgid "Enter the server address for outgoing email"
 msgstr ""
 
-#: admin/partials/settings.php:199
+#: admin/partials/settings.php:203
 msgid "Your outgoing email server address"
 msgstr ""
 
-#: admin/partials/settings.php:201
+#: admin/partials/settings.php:205
 msgid "Type of Encryption"
 msgstr ""
 
-#: admin/partials/settings.php:201
+#: admin/partials/settings.php:205
 msgid "None"
 msgstr ""
 
-#: admin/partials/settings.php:201
+#: admin/partials/settings.php:205
 msgid "SSL"
 msgstr ""
 
-#: admin/partials/settings.php:201
+#: admin/partials/settings.php:205
 msgid "TLS"
 msgstr ""
 
-#: admin/partials/settings.php:201
+#: admin/partials/settings.php:205
 msgid ""
 "If your SMTP provider support both SSL and TLS options, we recommend using "
 "TLS encryption"
 msgstr ""
 
-#: admin/partials/settings.php:203
+#: admin/partials/settings.php:207
 msgid "SMTP Port"
 msgstr ""
 
-#: admin/partials/settings.php:203
+#: admin/partials/settings.php:207
 msgid "The port that will be used to relay outgoing email to your email server"
 msgstr ""
 
-#: admin/partials/settings.php:205
+#: admin/partials/settings.php:209
 msgid "SMTP Authentication"
 msgstr ""
 
-#: admin/partials/settings.php:205
+#: admin/partials/settings.php:209
 msgid "Enable SMTP Authentication"
 msgstr ""
 
-#: admin/partials/settings.php:205
+#: admin/partials/settings.php:209
 msgid "This options should always be checked"
 msgstr ""
 
-#: admin/partials/settings.php:207
+#: admin/partials/settings.php:211
 msgid "SMTP Username"
 msgstr ""
 
-#: admin/partials/settings.php:207
+#: admin/partials/settings.php:211
 msgid ""
 "The username to login to SMTP email server (your email). Please read the "
 "above warnings for improved security"
 msgstr ""
 
-#: admin/partials/settings.php:209
+#: admin/partials/settings.php:213
 msgid "SMTP Password"
 msgstr ""
 
-#: admin/partials/settings.php:209
+#: admin/partials/settings.php:213
 msgid ""
 "The password to login to SMTP email server (your password). Please read the "
 "above warnings for improved security"
 msgstr ""
 
-#: admin/partials/settings.php:211
+#: admin/partials/settings.php:215
 msgid "Notification Email"
 msgstr ""
 
-#: admin/partials/settings.php:213
+#: admin/partials/settings.php:217
 msgid "Enable Notification"
 msgstr ""
 
-#: admin/partials/settings.php:213
+#: admin/partials/settings.php:217
 msgid "Send notification email when a new request is submitted"
 msgstr ""
 
-#: admin/partials/settings.php:215
+#: admin/partials/settings.php:219
 msgid "Address All Submissions To"
 msgstr ""
 
-#: admin/partials/settings.php:215
+#: admin/partials/settings.php:219
 msgid "Enter the email address which notification is sent to"
 msgstr ""
 
-#: admin/partials/settings.php:215
+#: admin/partials/settings.php:219
 msgid ""
 "Form submissions are sent to this email. It is recommended to enter that one "
 "used to respond to the requests"
 msgstr ""
 
-#: admin/partials/settings.php:217 admin/partials/settings.php:233
+#: admin/partials/settings.php:221 admin/partials/settings.php:237
 msgid "From Email Address"
 msgstr ""
 
-#: admin/partials/settings.php:217
+#: admin/partials/settings.php:221
 #, php-format
 msgid ""
 "Enter the email address which notification is sent from. If blank, %s will "
 "be used"
 msgstr ""
 
-#: admin/partials/settings.php:217 admin/partials/settings.php:233
+#: admin/partials/settings.php:221 admin/partials/settings.php:237
 msgid ""
 "To avoid that emails sent out from your website being marked as spam, it is "
 "recommended to use one associated with own website's domain"
 msgstr ""
 
-#: admin/partials/settings.php:219 admin/partials/settings.php:235
+#: admin/partials/settings.php:223 admin/partials/settings.php:239
 msgid "From Name"
 msgstr ""
 
-#: admin/partials/settings.php:219
+#: admin/partials/settings.php:223
 msgid "Use requester name"
 msgstr ""
 
-#: admin/partials/settings.php:219
+#: admin/partials/settings.php:223
 msgid "Use contact form name"
 msgstr ""
 
-#: admin/partials/settings.php:219
+#: admin/partials/settings.php:223
 msgid "Use custom name"
 msgstr ""
 
-#: admin/partials/settings.php:221
+#: admin/partials/settings.php:225
 msgid "Custom Sender Name"
 msgstr ""
 
-#: admin/partials/settings.php:221
+#: admin/partials/settings.php:225
 msgid "Enter the name which notification is sent from"
 msgstr ""
 
-#: admin/partials/settings.php:223 admin/partials/settings.php:237
+#: admin/partials/settings.php:227 admin/partials/settings.php:241
 msgid "Email Subject"
 msgstr ""
 
-#: admin/partials/settings.php:223
+#: admin/partials/settings.php:227
 msgid "Use requester submission subject"
 msgstr ""
 
-#: admin/partials/settings.php:223
+#: admin/partials/settings.php:227
 msgid "Use default notification subject"
 msgstr ""
 
-#: admin/partials/settings.php:225
+#: admin/partials/settings.php:229
 msgid "Default Subject"
 msgstr ""
 
-#: admin/partials/settings.php:225
+#: admin/partials/settings.php:229
 msgid "Enter the subject with which notification is sent"
 msgstr ""
 
-#: admin/partials/settings.php:227
+#: admin/partials/settings.php:231
 msgid "Submission ID"
 msgstr ""
 
-#: admin/partials/settings.php:227
+#: admin/partials/settings.php:231
 msgid "Hide submission ID inside notification subject"
 msgstr ""
 
-#: admin/partials/settings.php:229
+#: admin/partials/settings.php:233
 msgid "Confirmation Email"
 msgstr ""
 
-#: admin/partials/settings.php:231
+#: admin/partials/settings.php:235
 msgid "Enable Confirmation"
 msgstr ""
 
-#: admin/partials/settings.php:231
+#: admin/partials/settings.php:235
 msgid "Send confirmation email to requester"
 msgstr ""
 
-#: admin/partials/settings.php:233
+#: admin/partials/settings.php:237
 #, php-format
 msgid ""
 "Enter the email address which confirmation is sent from. If blank, %s will "
 "be used"
 msgstr ""
 
-#: admin/partials/settings.php:235
+#: admin/partials/settings.php:239
 msgid "Enter the name which confirmation is sent from"
 msgstr ""
 
-#: admin/partials/settings.php:237
+#: admin/partials/settings.php:241
 msgid "Enter the subject with which confirmation email is sent to user"
 msgstr ""
 
-#: admin/partials/settings.php:239
+#: admin/partials/settings.php:243
 msgid "Email Message"
 msgstr ""
 
-#: admin/partials/settings.php:239
+#: admin/partials/settings.php:243
 msgid ""
 "Enter the message to send to user for an acknowledgement of request receipt"
 msgstr ""
 
-#: admin/partials/settings.php:239
+#: admin/partials/settings.php:243
 msgid ""
 "To prevent formatting problems, please use the html tags. Are also accepted "
 "the following shortcodes:"
 msgstr ""
 
-#: admin/partials/settings.php:241
+#: admin/partials/settings.php:245
 msgid "Reply-To Email Address"
 msgstr ""
 
-#: admin/partials/settings.php:241
+#: admin/partials/settings.php:245
 msgid ""
 "Enter the email address to use for reply-to, if reply must be addressed to a "
 "different email address"
 msgstr ""
 
-#: admin/partials/settings.php:241
+#: admin/partials/settings.php:245
 msgid ""
 "Leave it blank to use From Email Address as the reply-to value. Public "
 "servers do not allow to override it, please visit the plugin FAQ"
@@ -1350,19 +1436,24 @@ msgstr ""
 
 #: admin/partials/submissions.php:38
 msgid ""
-"Submissions data are not store into the WordPress database. This feature can "
-"be enabled with SimpleForm Contact Form Submissions addon. You find it on "
-"the WordPress.org plugin repository. By default, only last message is being "
-"temporarily stored. Therefore, it is recommended to verify the correct SMTP "
-"server configuration in case of use, and always keep the notification email "
-"enabled if you want to be sure to receive messages."
+"Submissions data are not store into the WordPress database. We have designed "
+"SimpleForm to be a minimal, lightweight, fast and privacy-respectful plugin "
+"so that it does not interfere with your site performance and can be easily "
+"managed. If you want to keep a copy of messages, you can add this feature "
+"with SimpleForm Contact Form Submissions addon. You find it on the WordPress."
+"org plugin repository. By default, only last message is being temporarily "
+"stored. Therefore, it is recommended to verify the correct SMTP server "
+"configuration in case of use, and always keep the notification email enabled "
+"if you want to be sure to receive messages."
 msgstr ""
 
 #: admin/partials/submissions.php:42
 msgid ""
-"Submissions data are not store into the WordPress database by default. You "
-"can easily add this feature with SimpleForm Contact Form Submissions addon "
-"activation. Go to the Plugins page."
+"Submissions data are not store into the WordPress database by default. We "
+"have designed SimpleForm to be a minimal, lightweight, fast and privacy-"
+"respectful plugin so that it does not interfere with your site performance "
+"and can be easily managed. You can enable this feature with SimpleForm "
+"Contact Form Submissions addon activation. Go to the Plugins page."
 msgstr ""
 
 #: admin/partials/submissions.php:48 admin/partials/submissions.php:53
@@ -1377,103 +1468,115 @@ msgstr ""
 #, php-format
 msgid ""
 "Please note that submissions data are not store into the WordPress database "
-"by default. You can easily add this feature with <a href=\"%s\" target="
-"\"_blank\">SimpleForm Contact Form Submissions</a> addon. You find it on the "
+"by default. We have designed SimpleForm to be a minimal, lightweight, fast "
+"and privacy-respectful plugin so that it does not interfere with your site "
+"performance and can be easily managed. If you want to keep a copy of "
+"messages, you can add this feature with <a href=\"%s\" target=\"_blank"
+"\">SimpleForm Contact Form Submissions</a> addon. You find it on the "
 "WordPress.org plugin repository."
 msgstr ""
 
 #: admin/partials/submissions.php:54
 #, php-format
 msgid ""
-"Submissions data are not store into the WordPress database by default. You "
-"can easily add this feature with <b>SimpleForm Contact Form Submissions</b> "
-"addon activation. Go to the <a href=\"%s\">Plugins</a> page."
+"Submissions data are not store into the WordPress database by default. We "
+"have designed SimpleForm to be a minimal, lightweight, fast and privacy-"
+"respectful plugin so that it does not interfere with your site performance "
+"and can be easily managed. You can enable this feature with <b>SimpleForm "
+"Contact Form Submissions</b> addon activation. Go to the <a href=\"%s"
+"\">Plugins</a> page."
 msgstr ""
 
-#: public/class-public.php:446 public/class-public.php:694
-#: public/class-public.php:1089
+#: public/class-public.php:441 public/class-public.php:687
+#: public/class-public.php:1085
 msgid "Anonymous"
 msgstr ""
 
-#: public/class-public.php:478 public/class-public.php:711
+#: public/class-public.php:473 public/class-public.php:704
 msgid "No Subject"
 msgstr ""
 
-#: public/class-public.php:516 public/class-public.php:961
+#: public/class-public.php:511 public/class-public.php:957
 msgid "From"
 msgstr ""
 
-#: public/class-public.php:528 public/class-public.php:970
-#: public/partials/form-variables.php:61
+#: public/class-public.php:523 public/class-public.php:966
+#: public/partials/form-variables.php:70
 msgid "Phone"
 msgstr ""
 
-#: public/class-public.php:548 public/class-public.php:989
+#: public/class-public.php:543 public/class-public.php:985
 msgid "at"
 msgstr ""
 
-#: public/class-public.php:550 public/class-public.php:991
+#: public/class-public.php:545 public/class-public.php:987
 msgid "Sent"
 msgstr ""
 
-#: public/class-public.php:562 public/class-public.php:1005
+#: public/class-public.php:557 public/class-public.php:1001
 msgid "Date"
 msgstr ""
 
-#: public/class-public.php:804 public/partials/form-variables.php:141
-msgid "Please provide your phone number"
+#: public/class-public.php:712 public/partials/form-variables.php:129
+msgid "The name contains not allowed characters"
 msgstr ""
 
-#: public/partials/form-variables.php:102
-msgid "The firstname contains not allowed characters"
-msgstr ""
-
-#: public/partials/form-variables.php:105
+#: public/class-public.php:745 public/partials/form-variables.php:113
 msgid "The lastname contains not allowed characters"
 msgstr ""
 
-#: public/partials/form-variables.php:119
+#: public/class-public.php:797 public/partials/form-variables.php:149
+msgid "Please provide your phone number"
+msgstr ""
+
+#: public/partials/form-variables.php:110
+msgid "The firstname contains not allowed characters"
+msgstr ""
+
+#: public/partials/form-variables.php:116
+#: public/partials/form-variables.php:131
+msgid "Please enter a subject at least 10 characters long"
+msgstr ""
+
+#: public/partials/form-variables.php:121
+#: public/partials/form-variables.php:133
+msgid "Please enter a message at least 10 characters long"
+msgstr ""
+
+#: public/partials/form-variables.php:127
 msgid ""
 "We are unable to process your request at this time. Please try again later!"
 msgstr ""
 
-#: public/partials/form-variables.php:121
-msgid "The name contains not allowed characters"
-msgstr ""
-
-#: public/partials/form-variables.php:122
+#: public/partials/form-variables.php:130
 msgid "Please enter a valid email address"
 msgstr ""
 
-#: public/partials/form-variables.php:128
+#: public/partials/form-variables.php:136
 msgid "Error occurred validating the firstname"
 msgstr ""
 
-#: public/partials/form-variables.php:138
-msgid "Mandatory fields must be filled in"
-msgstr ""
-
-#: public/partials/form-variables.php:139
+#: public/partials/form-variables.php:147
 msgid "Please provide your name"
 msgstr ""
 
-#: public/partials/form-variables.php:140
+#: public/partials/form-variables.php:148
 msgid "Please provide your lastname"
 msgstr ""
 
-#: public/partials/form-variables.php:142
+#: public/partials/form-variables.php:150
 msgid "Please provide your email address"
 msgstr ""
 
-#: public/partials/form-variables.php:143
+#: public/partials/form-variables.php:151
 msgid "Please enter request subject"
 msgstr ""
 
-#: public/partials/form-variables.php:144
+#: public/partials/form-variables.php:152
 msgid "Please enter a message"
 msgstr ""
 
-#: public/partials/form-variables.php:145
+#: public/partials/form-variables.php:153
 msgid "Please enter a captcha value"
 msgstr ""
 
@@ -1488,8 +1591,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Create a basic contact form for your website. Lightweight and very simple to "
-"manage, SimpleForm is immediately ready to use."
+"Create a basic contact form for your website. Lightweight, fast and very "
+"simple to manage, SimpleForm is immediately ready to use."
 msgstr ""
 
 #. Author of the plugin/theme

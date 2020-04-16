@@ -396,12 +396,12 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 		    $order = (isset($_REQUEST['order']) && in_array($_REQUEST['order'], array('asc', 'desc'))) ? $_REQUEST['order'] : 'desc';
             if( $keyword != ''){	 
              if ( $ip_storing == 'true'  ) {
-	         $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s)", $value1, $value2, $search, $search, $search, $search, $search );
+	         $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $search, $search, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s)", $value1, $value2, $search, $search, $search, $search, $search, $search, $search );
             }
              else {	
-			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s)", $value1, $value2, $search, $search, $search, $search );
+			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $search, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s)", $value1, $value2, $search, $search, $search, $search, $search, $search );
              }
             }
             else {	

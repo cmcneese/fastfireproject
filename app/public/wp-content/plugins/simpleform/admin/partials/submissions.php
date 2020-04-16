@@ -35,23 +35,23 @@ $last_message = stripslashes(get_transient('sform_last_message'));
 	if ( get_transient( 'sform_last_message' ) ) {
 	echo '<div id="last-submission"><h3><span class="dashicons '.$icon.'"></span>'.esc_html__('Last Message Received', 'simpleform' ).'</h3>'.$last_message . '</div>';
     if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_file ) ) {		
-	echo '<div id="submissions-notice" class="hidden"><h3><span class="dashicons dashicons-editor-help"></span>'.esc_html__('Before you go crazy looking for the received messages', 'simpleform' ).'</h3>'. esc_html__( 'Submissions data are not store into the WordPress database. This feature can be enabled with SimpleForm Contact Form Submissions addon. You find it on the WordPress.org plugin repository. By default, only last message is being temporarily stored. Therefore, it is recommended to verify the correct SMTP server configuration in case of use, and always keep the notification email enabled if you want to be sure to receive messages.', 'simpleform' ) .'</div>'; 	
+	echo '<div id="submissions-notice" class="unseen"><h3><span class="dashicons dashicons-editor-help"></span>'.esc_html__('Before you go crazy looking for the received messages', 'simpleform' ).'</h3>'. esc_html__( 'Submissions data are not store into the WordPress database. We have designed SimpleForm to be a minimal, lightweight, fast and privacy-respectful plugin so that it does not interfere with your site performance and can be easily managed. If you want to keep a copy of messages, you can add this feature with SimpleForm Contact Form Submissions addon. You find it on the WordPress.org plugin repository. By default, only last message is being temporarily stored. Therefore, it is recommended to verify the correct SMTP server configuration in case of use, and always keep the notification email enabled if you want to be sure to receive messages.', 'simpleform' ) .'</div>'; 	
 	}
 	else {
     if ( ! class_exists( 'SimpleForm_Submissions' ) ) {	
-	echo '<div id="submissions-notice" class="hidden"><h3><span class="dashicons dashicons-editor-help"></span>'.esc_html__('Before you go crazy looking for the received messages', 'simpleform' ).'</h3>'. esc_html__('Submissions data are not store into the WordPress database by default. You can easily add this feature with SimpleForm Contact Form Submissions addon activation. Go to the Plugins page.', 'simpleform' ) .'</div>';	
+	echo '<div id="submissions-notice" class="unseen"><h3><span class="dashicons dashicons-editor-help"></span>'.esc_html__('Before you go crazy looking for the received messages', 'simpleform' ).'</h3>'. esc_html__('Submissions data are not store into the WordPress database by default. We have designed SimpleForm to be a minimal, lightweight, fast and privacy-respectful plugin so that it does not interfere with your site performance and can be easily managed. You can enable this feature with SimpleForm Contact Form Submissions addon activation. Go to the Plugins page.', 'simpleform' ) .'</div>';	
 	}
 	}
 	}
 	else  {
     if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_file ) ) {		
 	echo '<div id="empty-submission"><h3><span class="dashicons dashicons-info"></span>'.esc_html__('Empty Inbox', 'simpleform' ).'</h3>'.
-esc_html__('So far, no message has been received yet!', 'simpleform' ).'<p>'.sprintf( __('Please note that submissions data are not store into the WordPress database by default. You can easily add this feature with <a href="%s" target="_blank">SimpleForm Contact Form Submissions</a> addon. You find it on the WordPress.org plugin repository.', 'simpleform' ), esc_url( 'https://wordpress.org/plugins/simpleform-contact-form-submissions/' ) ).'</div>';
+esc_html__('So far, no message has been received yet!', 'simpleform' ).'<p>'.sprintf( __('Please note that submissions data are not store into the WordPress database by default. We have designed SimpleForm to be a minimal, lightweight, fast and privacy-respectful plugin so that it does not interfere with your site performance and can be easily managed. If you want to keep a copy of messages, you can add this feature with <a href="%s" target="_blank">SimpleForm Contact Form Submissions</a> addon. You find it on the WordPress.org plugin repository.', 'simpleform' ), esc_url( 'https://wordpress.org/plugins/simpleform-contact-form-submissions/' ) ).'</div>';
 	}
 	else {
     if ( ! class_exists( 'SimpleForm_Submissions' ) ) {	
      echo '<div id="empty-submission"><h3><span class="dashicons dashicons-info"></span>'.esc_html__('Empty Inbox', 'simpleform' ).'</h3>'.
-esc_html__('So far, no message has been received yet!', 'simpleform' ).'<p>'.sprintf( __('Submissions data are not store into the WordPress database by default. You can easily add this feature with <b>SimpleForm Contact Form Submissions</b> addon activation. Go to the <a href="%s">Plugins</a> page.', 'simpleform' ), esc_url( $admin_url ) ) . '</div>';
+esc_html__('So far, no message has been received yet!', 'simpleform' ).'<p>'.sprintf( __('Submissions data are not store into the WordPress database by default. We have designed SimpleForm to be a minimal, lightweight, fast and privacy-respectful plugin so that it does not interfere with your site performance and can be easily managed. You can enable this feature with <b>SimpleForm Contact Form Submissions</b> addon activation. Go to the <a href="%s">Plugins</a> page.', 'simpleform' ), esc_url( $admin_url ) ) . '</div>';
 	}
 	}
 	}
