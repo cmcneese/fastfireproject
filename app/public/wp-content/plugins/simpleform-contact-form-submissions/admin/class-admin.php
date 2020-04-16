@@ -117,7 +117,7 @@ class SimpleForm_Submissions_Admin {
 	 
 	 <tr><th id="thstoring" class="option <?php if ($data_storing !='true') { echo 'wide'; } else { echo 'first'; } ?>"><span><?php esc_html_e('Data Storing', 'simpleform-submissions' ) ?></span></th><td id="tdstoring" class="checkbox notes <?php if ($data_storing !='true') { echo 'wide'; } else { echo 'first'; } ?>"><label for="data-storing"><input type="checkbox" class="sform" name="data-storing" id="data-storing" value="true" <?php checked( $data_storing, 'true'); ?>><?php _e( 'Enable the form data storing in the database ( data will be included only within the notification email if unchecked )', 'simpleform-submissions' ); ?></label><p id="storing-description" class="description"><?php if ($data_storing !='true') { esc_html_e('Check if you want to add the submissions list in dashboard and enable the form data storing', 'simpleform-submissions' ); } else { esc_html_e('Uncheck if you want to remove the submissions list in dashboard and disable the form data storing', 'simpleform-submissions' ); } ?></p></td></tr>
 						  
-	 <tr class="trstoring <?php if ($data_storing !='true') {echo 'hidden';} else {echo 'visible';} ?>"><th class="option"><span><?php esc_html_e('IP Address Storing', 'simpleform-submissions' ) ?></span></th><td class="checkbox last"><label for="ip-storing"><input id="ip-storing" name="ip-storing" type="checkbox" class="sform" value="true" <?php checked( $ip_storing, 'true'); ?> ><?php _e( 'Enable IP address storing in the database', 'simpleform-submissions' ); ?></label></td></tr>
+	 <tr class="trstoring <?php if ($data_storing !='true') {echo 'unseen';} else {echo 'visible';} ?>"><th class="option"><span><?php esc_html_e('IP Address Storing', 'simpleform-submissions' ) ?></span></th><td class="checkbox last"><label for="ip-storing"><input id="ip-storing" name="ip-storing" type="checkbox" class="sform" value="true" <?php checked( $ip_storing, 'true'); ?> ><?php _e( 'Enable IP address storing in the database', 'simpleform-submissions' ); ?></label></td></tr>
 		
      <?php
 		
@@ -197,7 +197,7 @@ class SimpleForm_Submissions_Admin {
 <?php
 	  $icon = version_compare(get_bloginfo('version'),'5.0', '>=') ? 'dashicons-buddicons-pm' : 'dashicons-media-text';
 	  if ( get_transient( 'sform_last_message' ) ) {
-	  echo '<div id="last-submission"><h3><span class="dashicons '.$icon.'"></span>'.esc_html__('Last Message Received', 'simpleform' ).'</h3>'.$last_message . '</div>'; echo '<div id="submissions-notice" class="hidden"><h3><span class="dashicons dashicons-editor-help"></span>'.esc_html__('Before you go crazy looking for the received messages', 'simpleform' ).'</h3>'.esc_html__('Submissions data are not store into the WordPress database. Open the General Tab in Settings page, and check the Data Storing option for enable the display of messages in dashboard. By default, only last message is being temporarily stored. Therefore, it is recommended to verify the correct SMTP server configuration in case of use, and always keep the notification email enabled if you want to be sure to receive messages.', 'simpleform-submissions' ).'</div>';
+	  echo '<div id="last-submission"><h3><span class="dashicons '.$icon.'"></span>'.esc_html__('Last Message Received', 'simpleform' ).'</h3>'.$last_message . '</div>'; echo '<div id="submissions-notice" class="unseen"><h3><span class="dashicons dashicons-editor-help"></span>'.esc_html__('Before you go crazy looking for the received messages', 'simpleform' ).'</h3>'.esc_html__('Submissions data are not store into the WordPress database. Open the General Tab in Settings page, and check the Data Storing option for enable the display of messages in dashboard. By default, only last message is being temporarily stored. Therefore, it is recommended to verify the correct SMTP server configuration in case of use, and always keep the notification email enabled if you want to be sure to receive messages.', 'simpleform-submissions' ).'</div>';
 	  }
 	  else  {
 	  echo '<div id="empty-submission"><h3><span class="dashicons dashicons-info"></span>'.esc_html__('Empty Inbox', 'simpleform' ).'</h3>'.esc_html__('So far, no message has been received yet!', 'simpleform' ).'<p>'.esc_html__('Submissions data are not store into the WordPress database. Open the General Tab in Settings page, and check the Data Storing option for enable the display of messages in dashboard. By default, only last message is being temporarily stored. Therefore, it is recommended to verify the correct SMTP server configuration in case of use, and always keep the notification email enabled if you want to be sure to receive messages.', 'simpleform-submissions' ).'</div>';
@@ -303,7 +303,6 @@ class SimpleForm_Submissions_Admin {
      $form_attributes = get_option('sform-attributes');
      $phone_field = ! empty( $form_attributes['phone_field'] ) ? esc_attr($form_attributes['phone_field']) : 'hidden';
 
-     // if ( $phone_field != 'hidden' ) { 
 	 $phone = $item['phone'] != '' && $item['phone'] != 'not stored' ? esc_attr($item['phone']) : '';
      if ( ! empty($phone) ) { 
      ?>
@@ -311,7 +310,7 @@ class SimpleForm_Submissions_Admin {
 	 <div class="thdata"><?php esc_html_e('Phone', 'simpleform-submissions' ) ?></div>
 	 <div class="tddata"><?php echo $phone ?></div>
 	 </div>
-	 <?php } // } ?>	 	 
+	 <?php } ?>	 	 
 	 
 	 <div class="datarow">
 	 <div class="thdata"><?php esc_html_e('Date', 'simpleform-submissions' ) ?></div>
@@ -330,9 +329,6 @@ class SimpleForm_Submissions_Admin {
 	 </div>
 	 
 	 <?php     
-	 // $sform_settings = get_option('sform-settings');
-     // $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';
-     // if ( $ip_storing == 'true' ) { 
 	 $ip_address = $item['ip'] != '' && $item['ip'] != 'not stored' ? esc_attr($item['ip']) : '';
      if ( ! empty($ip_address) ) { 
      ?>
@@ -340,9 +336,9 @@ class SimpleForm_Submissions_Admin {
 	 <div class="thdata"><?php esc_html_e('IP', 'simpleform-submissions' ) ?></div>
 	 <div class="tddata"><?php echo $ip_address ?></div>
 	 </div>
-	 <?php } // } 
+	 <?php }
 	 
-	 $subject = $item['subject'] != '' && $item['subject'] != 'not stored' /* && $item['subject'] != esc_attr__( 'No Subject', 'simpleform' ) */ ? esc_attr($item['subject']) : '';
+	 $subject = $item['subject'] != '' && $item['subject'] != 'not stored' ? esc_attr($item['subject']) : '';
      if ( ! empty($subject) ) { ?>
 	 <div class="datarow">
 	 <div class="thdata"><?php esc_html_e('Subject', 'simpleform-submissions' ) ?></div>

@@ -4,8 +4,8 @@
  *
  * Plugin Name:       SimpleForm
  * Plugin URI:        https://wpsform.com
- * Description:       Create a basic contact form for your website. Lightweight and very simple to manage, SimpleForm is immediately ready to use.
- * Version:           1.5
+ * Description:       Create a basic contact form for your website. Lightweight, fast and very simple to manage, SimpleForm is immediately ready to use.
+ * Version:           1.6
  * Author:            WPSForm Team
  * Author URI:        https://wpsform.com
  * License:           GPL-2.0+
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
  */
  
 define( 'SIMPLEFORM_NAME', 'SimpleForm' );
-define( 'SIMPLEFORM_VERSION', '1.5' );
+define( 'SIMPLEFORM_VERSION', '1.6' );
 define( 'SIMPLEFORM_DB_VERSION', '1.5' );
 define( 'SIMPLEFORM_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SIMPLEFORM_URL', plugin_dir_url( __FILE__ ) );

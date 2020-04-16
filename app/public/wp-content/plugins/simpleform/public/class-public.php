@@ -146,18 +146,13 @@ class SimpleForm_Public {
 		$form_attributes = get_option('sform-attributes');
 		$sform_settings = get_option('sform-settings');
 		$ajax = ! empty( $sform_settings['ajax-submission'] ) ? esc_attr($sform_settings['ajax-submission']) : 'true'; 
-
         $firstname_field = ! empty( $form_attributes['firstname_field'] ) ? esc_attr($form_attributes['firstname_field']) : 'visible';
         $firstname_requirement = ! empty( $form_attributes['firstname_requirement'] ) ? esc_attr($form_attributes['firstname_requirement']) : 'optional';
-
         $lastname_field = ! empty( $form_attributes['lastname_field'] ) ? esc_attr($form_attributes['lastname_field']) : 'hidden';
         $lastname_requirement = ! empty( $form_attributes['lastname_requirement'] ) ? esc_attr($form_attributes['lastname_requirement']) : 'optional';
-
         $email_field = ! empty( $form_attributes['email_field'] ) ? esc_attr($form_attributes['email_field']) : 'visible';
-        
         $phone_field = ! empty( $form_attributes['phone_field'] ) ? esc_attr($form_attributes['phone_field']) : 'hidden';
         $phone_requirement = ! empty( $form_attributes['subject_requirement'] ) ? esc_attr($form_attributes['subject_requirement']) : 'optional';        
-        
         $email_requirement = ! empty( $form_attributes['email_requirement'] ) ? esc_attr($form_attributes['email_requirement']) : 'required';
         $subject_field = ! empty( $form_attributes['subject_field'] ) ? esc_attr($form_attributes['subject_field']) : 'visible';
         $subject_requirement = ! empty( $form_attributes['subject_requirement'] ) ? esc_attr($form_attributes['subject_requirement']) : 'required';
@@ -184,7 +179,7 @@ class SimpleForm_Public {
   	            
         $error = '';		
         
-        $firstname_length = '2';
+        $firstname_length = isset( $form_attributes['firstname_minlength'] ) ? esc_attr($form_attributes['firstname_minlength']) : '2';
         $firstname_regex = '#[0-9]+#';
 
         if ( $firstname_field == 'visible' || $firstname_field == 'registered' && is_user_logged_in() || $firstname_field == 'anonymous' && ! is_user_logged_in() )  {
@@ -199,7 +194,7 @@ class SimpleForm_Public {
         }
 
         else {	
-		  if ( ! empty($formdata['name']) && strlen($formdata['name'])< $firstname_length ) {
+		  if ( ! empty($formdata['name']) && strlen($formdata['name']) < $firstname_length ) {
 		    if( $error == '' ) { $error = 'name'; }
 		  }
 		  if (  ! empty($formdata['name']) && preg_match($firstname_regex, $formdata['name'] ) ) { 
@@ -213,7 +208,7 @@ class SimpleForm_Public {
 
 
 
-        $lastname_length = '2';
+        $lastname_length = isset( $form_attributes['lastname_minlength'] ) ? esc_attr($form_attributes['lastname_minlength']) : '2';
         $lastname_regex = '#[0-9]+#';
 
         if ( $lastname_field == 'visible' || $lastname_field == 'registered' && is_user_logged_in() || $lastname_field == 'anonymous' && ! is_user_logged_in() )  {
@@ -228,7 +223,7 @@ class SimpleForm_Public {
         }
 
         else {	
-		  if ( ! empty($formdata['lastname']) && strlen($formdata['lastname'])< $lastname_length ) {
+		  if ( ! empty($formdata['lastname']) && strlen($formdata['lastname']) < $lastname_length ) {
 		    if( $error == '' ) { $error = 'lastname'; }
 		  }
 		  if (  ! empty($formdata['lastname']) && preg_match($lastname_regex, $formdata['lastname'] ) ) { 
@@ -285,7 +280,7 @@ class SimpleForm_Public {
 
 
 
-        $subject_length = '10';
+        $subject_length = isset( $form_attributes['subject_minlength'] ) ? esc_attr($form_attributes['subject_minlength']) : '5';
         $subject_regex = '/^[^#$%&=+*{}|<>]+$/';
 		
         if ( $subject_field == 'visible' || $subject_field == 'registered' && is_user_logged_in() || $subject_field == 'anonymous' && ! is_user_logged_in() )  {
@@ -315,7 +310,7 @@ class SimpleForm_Public {
 	
         $data_subject = stripslashes($formdata['subject']);
 
-        $message_length = '10';
+        $message_length = isset( $form_attributes['$message_minlength'] ) ? esc_attr($form_attributes['$message_minlength']) : '10';
         $message_regex = '/^[^#$%&=+*{}|<>]+$/';
 
 	    if ( strlen($formdata['message']) < $message_length ) {
@@ -656,9 +651,7 @@ class SimpleForm_Public {
       $honeypot_username = isset($_POST['username']) ? sanitize_text_field($_POST['username']) : '';
       $honeypot_telephone = isset($_POST['telephone']) ? sanitize_text_field($_POST['telephone']) : '';
       $sform_settings = get_option('sform-settings');
- 
       $form_attributes = get_option('sform-attributes');
-
       $firstname_field = ! empty( $form_attributes['firstname_field'] ) ? esc_attr($form_attributes['firstname_field']) : 'visible';
       $firstname_requirement = ! empty( $form_attributes['firstname_requirement'] ) ? esc_attr($form_attributes['firstname_requirement']) : 'required';
       $lastname_field = ! empty( $form_attributes['lastname_field'] ) ? esc_attr($form_attributes['lastname_field']) : 'hidden';
@@ -713,10 +706,10 @@ class SimpleForm_Public {
 
       if ( $firstname_field == 'visible' || $firstname_field == 'registered' && is_user_logged_in() || $firstname_field == 'anonymous' && ! is_user_logged_in() )  {  
 
-        $firstname_length = '2';
+        $firstname_length = isset( $form_attributes['firstname_minlength'] ) ? esc_attr($form_attributes['firstname_minlength']) : '2';
         $firstname_regex = '#[0-9]+#';
-        $error_name_label = ! empty( $sform_settings['firstname_error_message'] ) ? stripslashes(esc_attr($sform_settings['firstname_error_message'])) : esc_attr__( 'Please enter at least 2 characters', 'simpleform' );
-        $error_invalid_name_label = ! empty( $sform_settings['invalid_name_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_name_error'])) : esc_attr__( 'The name contains characters that are not allowed', 'simpleform' );
+        $error_name_label = ! empty( $sform_settings['firstname_error_message'] ) ? stripslashes(esc_attr($sform_settings['firstname_error_message'])) : sprintf( __('Please enter at least %d characters', 'simpleform' ), $firstname_length );
+        $error_invalid_name_label = ! empty( $sform_settings['invalid_name_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_name_error'])) : esc_attr__( 'The name contains not allowed characters', 'simpleform' );
         $error = ! empty( $sform_settings['name_error'] ) ? stripslashes(esc_attr($sform_settings['name_error'])) : esc_html__('Error occurred validating the name', 'simpleform');
 
         if ( $firstname_requirement == 'required' )	{
@@ -746,10 +739,10 @@ class SimpleForm_Public {
 
       if ( $lastname_field == 'visible' || $lastname_field == 'registered' && is_user_logged_in() || $lastname_field == 'anonymous' && ! is_user_logged_in() )  {  
 
-        $lastname_length = '2';
+        $lastname_length = isset( $form_attributes['lastname_minlength'] ) ? esc_attr($form_attributes['lastname_minlength']) : '2';
         $lastname_regex = '#[0-9]+#';
-        $error_lastname_label = ! empty( $sform_settings['lastname_error_message'] ) ? stripslashes(esc_attr($sform_settings['lastname_error_message'])) : esc_attr__( 'Please enter at least 2 characters', 'simpleform' );
-        $error_invalid_lastname_label = ! empty( $sform_settings['invalid_lastname_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_lastname_error'])) : esc_attr__( 'The lastname contains characters that are not allowed', 'simpleform' );
+        $error_lastname_label = ! empty( $sform_settings['lastname_error_message'] ) ? stripslashes(esc_attr($sform_settings['lastname_error_message'])) : sprintf( __('Please enter at least %d characters', 'simpleform' ), $lastname_length );
+        $error_invalid_lastname_label = ! empty( $sform_settings['invalid_lastname_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_lastname_error'])) : esc_attr__( 'The lastname contains not allowed characters', 'simpleform' );
         $error = ! empty( $sform_settings['lastname_error'] ) ? stripslashes(esc_attr($sform_settings['lastname_error'])) : esc_html__('Error occurred validating the lastname', 'simpleform');
 	
         if ( $lastname_requirement == 'required' )	{
@@ -827,9 +820,9 @@ class SimpleForm_Public {
       
       if ( $subject_field == 'visible' || $subject_field == 'registered' && is_user_logged_in() || $subject_field == 'anonymous' && ! is_user_logged_in() )  { 
 
-        $subject_length = '10';
+        $subject_length = isset( $form_attributes['subject_minlength'] ) ? esc_attr($form_attributes['subject_minlength']) : '5';
         $subject_regex = '/^[^#$%&=+*{}|<>]+$/';
-        $error_subject_label = ! empty( $sform_settings['subject_error_message'] ) ? stripslashes(esc_attr($sform_settings['subject_error_message'])) : esc_attr__( 'Please enter a subject at least 10 characters long', 'simpleform' );
+        $error_subject_label = ! empty( $sform_settings['subject_error_message'] ) ? stripslashes(esc_attr($sform_settings['subject_error_message'])) : sprintf( __('Please enter a subject at least %d characters long', 'simpleform' ), $subject_length );
         $error_invalid_subject_label = ! empty( $sform_settings['invalid_subject_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_subject_error'])) : esc_attr__( 'Enter only alphanumeric characters and punctuation marks', 'simpleform' );
         $error = ! empty( $sform_settings['subject_error'] ) ? stripslashes(esc_attr($sform_settings['subject_error'])) : esc_html__('Error occurred validating the subject', 'simpleform');
 
@@ -861,9 +854,12 @@ class SimpleForm_Public {
 
       }
 
-      $message_length = '10';
+      $message_length = isset( $form_attributes['message_minlength'] ) ? esc_attr($form_attributes['message_minlength']) : '10';
       $message_regex = '/^[^#$%&=+*{}|<>]+$/';
-      $error_message_label = ! empty( $sform_settings['object_error_message'] ) ? stripslashes(esc_attr($sform_settings['object_error_message'])) : esc_attr__( 'Please enter a message at least 10 characters long', 'simpleform' );
+      
+      $error_message_label = ! empty( $sform_settings['object_error_message'] ) ? stripslashes(esc_attr($sform_settings['object_error_message'])) : sprintf( __('Please enter a message at least %d characters long', 'simpleform' ), $message_length );
+      
+      
       $error_invalid_message_label = ! empty( $sform_settings['invalid_message_error'] ) ? stripslashes(esc_attr($sform_settings['invalid_message_error'])) : esc_attr__( 'Enter only alphanumeric characters and punctuation marks', 'simpleform' );
       
       $error = ! empty( $sform_settings['message_error'] ) ? stripslashes(esc_attr($sform_settings['message_error'])) : esc_html__('Error occurred validating the message', 'simpleform');

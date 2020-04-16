@@ -121,7 +121,7 @@ class SimpleForm_Submissions_Activator {
           $wpdb->query("ALTER TABLE " . $submissions_table . " CHANGE date date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");    
           } 
 
-          update_option('sform_sub_db_version', $current_db_version);
+          update_option('sform_sub_db_version', $current_version);
 
         }
    
