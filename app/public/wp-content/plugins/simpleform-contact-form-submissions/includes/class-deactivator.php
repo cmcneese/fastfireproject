@@ -20,4 +20,3 @@ class SimpleForm_Submissions_Deactivator {
 	}
 
 }
-

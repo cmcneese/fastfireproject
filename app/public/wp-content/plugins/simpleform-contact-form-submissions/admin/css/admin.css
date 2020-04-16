@@ -21,3 +21,4 @@ h1.backend2 > span.backlist > a, .nodecoration { text-decoration: none; }
 .thdata.last { padding: 20px 14px 30px; }
 .tddata.last { padding:  20px 20px 30px; }
 #admin-notice > a { text-decoration: none; }
+.unseen { display: none !important; }

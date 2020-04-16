@@ -137,9 +137,9 @@ class SimpleForm {
 	    $this->loader->add_action('wp_ajax_formdata_ajax_processing', $plugin_public, 'formdata_ajax_processing');
 	    $this->loader->add_action('wp_ajax_nopriv_formdata_ajax_processing', $plugin_public, 'formdata_ajax_processing'); 
 	    // Register callback for form data validation
-		$this->loader->add_filter( 'sform_validation', $plugin_public, 'formdata_validation', 10, 1 ); 
+		$this->loader->add_filter( 'sform_validation', $plugin_public, 'formdata_validation', 12, 1 ); 
 	    // Register callback for form data processing
-		$this->loader->add_filter( 'sform_send_email', $plugin_public, 'formdata_processing', 10, 2 );
+		$this->loader->add_filter( 'sform_send_email', $plugin_public, 'formdata_processing', 12, 2 );
 
 	}
 

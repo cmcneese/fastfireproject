@@ -53,7 +53,7 @@ class SimpleForm_Activator {
         $prefix = $wpdb->prefix;
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-        if ( $installed_db_version < $current_db_version ) {
+        if ( $installed_version != $current_db_version ) {
         
           $shortcodes_table = $prefix . 'sform_shortcodes';
           $sql = "CREATE TABLE " . $shortcodes_table . " (

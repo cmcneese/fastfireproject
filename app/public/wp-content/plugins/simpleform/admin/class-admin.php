@@ -203,12 +203,16 @@ class SimpleForm_Admin {
        $firstname_spotlight = isset($_POST['firstname_spotlight']) ? 'hidden' : 'visible';
        $firstname_label = isset($_POST['firstname_label']) ? sanitize_text_field(trim($_POST['firstname_label'])) : '';
        $firstname_placeholder = isset($_POST['firstname_placeholder']) ? sanitize_text_field($_POST['firstname_placeholder']) : '';
+       $firstname_minlength = isset($_POST['firstname_minlength']) ? intval($_POST['firstname_minlength']) : '2';                // ctype_digit
+       $firstname_maxlength = isset($_POST['firstname_maxlength']) ? intval($_POST['firstname_maxlength']) : '0';              
        $firstname_requirement = isset($_POST['firstname_requirement']) ? 'required' : 'optional';
        $lastname_field = isset($_POST['lastname_field']) ? sanitize_text_field($_POST['lastname_field']) : 'visible';
        $lastname_alignment = isset($_POST['lastname-alignment']) ? sanitize_key($_POST['lastname-alignment']) : 'name';
        $lastname_spotlight = isset($_POST['lastname_spotlight']) ? 'hidden' : 'visible';
        $lastname_label = isset($_POST['lastname_label']) ? sanitize_text_field(trim($_POST['lastname_label'])) : '';
        $lastname_placeholder = isset($_POST['lastname_placeholder']) ? sanitize_text_field($_POST['lastname_placeholder']) : '';
+       $lastname_minlength = isset($_POST['lastname_minlength']) ? intval($_POST['lastname_minlength']) : '2';
+       $lastname_maxlength = isset($_POST['lastname_maxlength']) ? intval($_POST['lastname_maxlength']) : '0';              
        $lastname_requirement = isset($_POST['lastname_requirement']) ? 'required' : 'optional';
        $email_field = isset($_POST['email_field']) ? sanitize_text_field($_POST['email_field']) : 'visible';
        $email_spotlight = isset($_POST['email_spotlight']) ? 'hidden' : 'visible';
@@ -225,10 +229,14 @@ class SimpleForm_Admin {
        $subject_spotlight = isset($_POST['subject_spotlight']) ? 'hidden' : 'visible';
        $subject_label = isset($_POST['subject_label']) ? sanitize_text_field(trim($_POST['subject_label'])) : '';
        $subject_placeholder = isset($_POST['subject_placeholder']) ? sanitize_text_field($_POST['subject_placeholder']) : '';
+       $subject_minlength = isset($_POST['subject_minlength']) ? intval($_POST['subject_minlength']) : '5';
+       $subject_maxlength = isset($_POST['subject_maxlength']) ? intval($_POST['subject_maxlength']) : '0';       
        $subject_requirement = isset($_POST['subject_requirement']) ? 'required' : 'optional';
        $message_spotlight = isset($_POST['message_spotlight']) ? 'hidden' : 'visible';
        $message_label = isset($_POST['message_label']) ? sanitize_text_field(trim($_POST['message_label'])) : '';
        $message_placeholder = isset($_POST['message_placeholder']) ? sanitize_text_field($_POST['message_placeholder']) : '';
+       $message_minlength = isset($_POST['message_minlength']) ? intval($_POST['message_minlength']) : '10';
+       $message_maxlength = isset($_POST['message_maxlength']) ? intval($_POST['message_maxlength']) : '0';       
        $terms_field = isset($_POST['terms_field']) ? sanitize_text_field($_POST['terms_field']) : 'visible';
        $terms_label = isset($_POST['terms_label']) ? wp_filter_post_kses(trim($_POST['terms_label'])) : '';
        $terms_requirement = isset($_POST['terms_requirement']) ? 'required' : 'optional';
@@ -241,7 +249,42 @@ class SimpleForm_Admin {
        $update_shortcode = $wpdb->update($table_shortcodes, array('name' => $shortcode_name ), array('shortcode' => 'simpleform' ));
        $update_result = $update_shortcode ? 'done' : '';
  
-       $form_attributes = array('form_name' => $shortcode_name, 'introduction_text' => $introduction_text, 'bottom_text' => $bottom_text, 'required_sign' => $required_sign, 'firstname_field' => $firstname_field, 'firstname_spotlight' => $firstname_spotlight, 'firstname_label' => $firstname_label, 'firstname_placeholder' => $firstname_placeholder, 'firstname_requirement' => $firstname_requirement, 'lastname_field' => $lastname_field, 'lastname-alignment' => $lastname_alignment, 'lastname_spotlight' => $lastname_spotlight, 'lastname_label' => $lastname_label, 'lastname_placeholder' => $lastname_placeholder, 'lastname_requirement' => $lastname_requirement, 'email_field' => $email_field, 'email_spotlight' => $email_spotlight, 'email_label' => $email_label, 'email_placeholder' => $email_placeholder, 'email_requirement' => $email_requirement, 'phone_field' => $phone_field, 'phone-alignment' => $phone_alignment, 'phone_spotlight' => $phone_spotlight, 'phone_label' => $phone_label, 'phone_placeholder' => $phone_placeholder, 'phone_requirement' => $phone_requirement, 'subject_field' => $subject_field, 'subject_spotlight' => $subject_spotlight, 'subject_label' => $subject_label, 'subject_placeholder' => $subject_placeholder, 'subject_requirement' => $subject_requirement, 'message_spotlight' => $message_spotlight, 'message_label' => $message_label, 'message_placeholder' => $message_placeholder, 'terms_field' => $terms_field, 'terms_label' => $terms_label, 'terms_requirement' => $terms_requirement, 'captcha_field' => $captcha_field, 'captcha_label' => $captcha_label, 'submit_label' => $submit_label );      
+       if ( $firstname_maxlength <= $firstname_minlength && $firstname_maxlength != 0 ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Firstname Maximum Length must be not less than Firstname Minimum Length', 'simpleform' ) ));
+	   exit;
+       }
+       
+       if ( $firstname_minlength == 0 && $firstname_requirement == 'required' ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the firstname field is required', 'simpleform' ) ));
+	   exit;
+       }
+       
+       if ( $lastname_maxlength <= $lastname_minlength && $lastname_maxlength != 0 ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Lastname Maximum Length must be not less than Lastname Minimum Length', 'simpleform' ) ));
+	   exit;
+       }
+
+       if ( $lastname_minlength == 0 && $lastname_requirement == 'required' ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the lastname field is required', 'simpleform' ) ));
+	   exit;
+       }
+
+       if ( $subject_maxlength <= $subject_minlength && $subject_maxlength != 0 ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Subject Maximum Length must be not less than Subject Minimum Length', 'simpleform' ) ));
+	   exit;
+       }
+
+       if ( $subject_minlength == 0 && $subject_requirement == 'required' ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the subject field is required', 'simpleform' ) ));
+	   exit;
+       }
+
+       if ( $message_maxlength <= $message_minlength && $message_maxlength != 0 ) {
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Message Maximum Length must be not less than Message Minimum Length', 'simpleform' ) ));
+	   exit;
+       }
+
+       $form_attributes = array('form_name' => $shortcode_name, 'introduction_text' => $introduction_text, 'bottom_text' => $bottom_text, 'required_sign' => $required_sign, 'firstname_field' => $firstname_field, 'firstname_spotlight' => $firstname_spotlight, 'firstname_label' => $firstname_label, 'firstname_placeholder' => $firstname_placeholder, 'firstname_minlength' => $firstname_minlength, 'firstname_maxlength' => $firstname_maxlength, 'firstname_requirement' => $firstname_requirement, 'lastname_field' => $lastname_field, 'lastname-alignment' => $lastname_alignment, 'lastname_spotlight' => $lastname_spotlight, 'lastname_label' => $lastname_label, 'lastname_placeholder' => $lastname_placeholder, 'lastname_minlength' => $lastname_minlength, 'lastname_maxlength' => $lastname_maxlength, 'lastname_requirement' => $lastname_requirement, 'email_field' => $email_field, 'email_spotlight' => $email_spotlight, 'email_label' => $email_label, 'email_placeholder' => $email_placeholder, 'email_requirement' => $email_requirement, 'phone_field' => $phone_field, 'phone-alignment' => $phone_alignment, 'phone_spotlight' => $phone_spotlight, 'phone_label' => $phone_label, 'phone_placeholder' => $phone_placeholder, 'phone_requirement' => $phone_requirement, 'subject_field' => $subject_field, 'subject_spotlight' => $subject_spotlight, 'subject_label' => $subject_label, 'subject_placeholder' => $subject_placeholder, 'subject_minlength' => $subject_minlength, 'subject_maxlength' => $subject_maxlength, 'subject_requirement' => $subject_requirement, 'message_spotlight' => $message_spotlight, 'message_label' => $message_label, 'message_placeholder' => $message_placeholder, 'message_minlength' => $message_minlength, 'message_maxlength' => $message_maxlength, 'terms_field' => $terms_field, 'terms_label' => $terms_label, 'terms_requirement' => $terms_requirement, 'captcha_field' => $captcha_field, 'captcha_label' => $captcha_label, 'submit_label' => $submit_label );      
 
        $update_attributes = update_option('sform-attributes', $form_attributes); 
        if ($update_attributes) { $update_result .= 'done'; }
