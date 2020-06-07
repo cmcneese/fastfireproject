@@ -5,7 +5,7 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.1.4
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,14 @@ This plugin stores personal data collected through the contact form. Enable the 
 4. Terms field requirement for GDPR compliance
 
 == Changelog ==
+
+= 1.2.1 (10 May 2020) =
+* Fixed: Database update error on updating
+* Fixed: Minor issues in code
+
+= 1.2 (1 May 2020) =
+* Added: Date filter
+* Fixed: Minor issues in code
 
 = 1.1.4 (11 April 2020) =
 * Fixed: Search for lastname and phone missing

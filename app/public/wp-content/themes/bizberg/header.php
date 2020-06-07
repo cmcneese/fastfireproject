@@ -28,9 +28,11 @@ if ( function_exists( 'wp_body_open' ) ) {
 	do_action( 'wp_body_open' ); 
 }
 
-do_action( 'bizberg_after_body' ); ?>
+do_action( 'bizberg_after_body' );
 
-<header id="masthead">
+$primary_header_layout = bizberg_get_theme_mod( 'primary_header_layout' ); ?>
+
+<header id="masthead" class="primary_header_<?php echo esc_attr( $primary_header_layout ); ?>">
 
 	<a class="skip-link screen-reader-text" href="#content">
 		<?php esc_html_e( 'Skip to content', 'bizberg' ); ?>		
@@ -40,37 +42,94 @@ do_action( 'bizberg_after_body' ); ?>
 	do_action( 'bizberg_top_header' );
 	?>
 
-    <nav class="navbar navbar-default with-slicknav">
+	<?php 
+
+	$desktop_sticky_menu_status = bizberg_get_theme_mod( 'enable_desktop_sticky_menu_status' );
+	$header_2_position = bizberg_get_theme_mod( 'header_2_position' );
+	$flex_container = 'bizberg-flex-container';
+	$primary_header_layout_width = bizberg_get_theme_mod( 'primary_header_layout_width' );
+
+	$header_columns = bizberg_get_theme_mod( 'header_columns' );
+	$header_columns_class = explode( '|' , $header_columns );
+
+	$header_columns_middle_style = bizberg_get_theme_mod( 'header_columns_middle_style' );
+	$header_columns_middle_style_class = explode( '|' , $header_columns_middle_style );
+
+	$last_item_header = bizberg_get_theme_mod( 'last_item_header' );
+	if( $last_item_header == 'none' ){
+		$header_columns_class = array( 'col-sm-7' , 'col-sm-5' );
+	}
+
+	if( $primary_header_layout == 'center' ){ ?>
+
+		<div class="primary_header_2_wrapper <?php echo esc_attr( $primary_header_layout_width == "100%" ? 'full_width' : '' ); ?>">
+
+			<div class="container <?php echo esc_attr( $flex_container ); ?>">
+
+				<div class="row <?php echo esc_attr( $flex_container ); ?>">
+
+					<?php
+
+					if( $header_2_position == 'left' ){ ?>
+
+						<div class="<?php echo esc_attr( $header_columns_class[0] ); ?>">
+							<div class="primary_header_2">
+								<?php bizberg_get_primary_header_logo(); ?>
+					   		</div>
+					   	</div>
+					   	<div class="<?php echo esc_attr( $header_columns_class[1] ); ?>">
+					   		<div class="custom_header_content">
+					   			<?php bizberg_get_last_item_header(); ?>
+					   		</div>
+					   	</div>
+
+					   	<?php
+
+					} else { ?>
+
+						<div class="<?php echo esc_attr( $header_columns_middle_style_class[0] ); ?>">
+							<div class="custom_header_content_logo_center left">
+					   			<?php bizberg_get_first_item_header_logo_center(); ?>
+					   		</div>
+						</div>
+
+						<div class="<?php echo esc_attr( $header_columns_middle_style_class[1] ); ?>">
+							<div class="primary_header_2">
+								<?php bizberg_get_primary_header_logo(); ?>
+					   		</div>
+					   	</div>
+
+					   	<div class="<?php echo esc_attr( $header_columns_middle_style_class[2] ); ?>">
+					   		<div class="custom_header_content_logo_center right">
+					   			<?php bizberg_get_last_item_header_logo_center(); ?>
+					   		</div>
+					   	</div>
+
+						<?php
+
+					} ?>
+
+				</div>
+
+			</div>
+
+		</div>		
+
+		<?php
+	} ?>
+
+    <nav class="navbar navbar-default with-slicknav <?php echo esc_attr( $desktop_sticky_menu_status ? '' : 'sticky_disable' ); ?>">
+
         <div id="navbar" class="collapse navbar-collapse navbar-arrow">
+
             <div class="container">
 
             	<div class="bizberg_header_wrapper">
 
-	                <a 
-	                class="logo pull-left <?php echo ( has_custom_logo() || !empty( get_bloginfo( 'description' ) ) ? '' : 'bizberg_no_tagline' ); ?>" 
-	                href="<?php echo esc_url( home_url('/') ); ?>">
-
-	                	<?php 
-	                	if ( has_custom_logo() ) { ?>
-	                    	<img 
-	                    	src="<?php echo esc_url( bizberg_get_custom_logo_link() ); ?>" 
-	                    	alt="<?php esc_attr_e( 'Logo', 'bizberg' ) ?>" 
-	                    	class="site_logo">
-	                    	<?php 
-	                    	do_action( 'bizberg_top_logo' );
-	                    } else {
-	                    	echo '<h3>' . esc_html( get_bloginfo( 'name' ) ) . '</h3>';
-
-	                    	if( !empty( get_bloginfo( 'description' ) ) ){
-	                    		echo '<p>' . esc_html( get_bloginfo( 'description' ) ) . '</p>';
-	                    	}
-
-	                    } ?>
-
-	                </a>
-
-	                <?php 
+	                <?php 	                
 	                
+	                bizberg_get_primary_header_logo();	                	               
+
 	                if( has_nav_menu( 'menu-1' ) ){
 
 	                	$walker = new Bizberg_Menu_With_Description;
@@ -120,10 +179,20 @@ if( is_page_template( 'page-templates/full-width.php' )
 } elseif( !is_front_page() ){
 	bizberg_get_breadcrums();
 } else { 
-	// Slider or Banner
-	if( get_theme_mod( 'slider_banner' , 'banner' ) == 'slider' ){
-		bizberg_get_slider_1();
-	} else {
-		bizberg_get_banner();
+
+	$status = bizberg_get_theme_mod( 'slider_banner' );
+	switch ( $status ) {
+		case 'slider':
+			bizberg_get_slider_1();
+			break;
+
+		case 'banner':
+			bizberg_get_banner();
+			break;
+		
+		default:
+			# code...
+			break;
 	}
+
 } 

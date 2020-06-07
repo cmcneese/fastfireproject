@@ -1,14 +1,18 @@
 function get_sticky_header(){
 
     // For admin bar
-    if( bizberg_object.admin_bar_status == 1 && jQuery(window).scrollTop() > 50 && jQuery(window).width() > 639 ){
+    if( bizberg_object.admin_bar_status == 1 && jQuery(window).scrollTop() > 50 && jQuery(window).width() > 639 && bizberg_object.primary_header_layout != 'center' ){
         jQuery('nav.navbar-default').css({ "top": jQuery('#wpadminbar').height() + 'px' });
     } else {
         jQuery('nav.navbar-default').css({ "top": "0px" });
     }
 
     // Add sticky class
-    if ( jQuery(window).scrollTop() > 50 ) {
+    if ( jQuery(window).scrollTop() > 50 && bizberg_object.primary_header_layout != 'center' ) {
+        jQuery('nav.navbar-default').addClass('sticky');
+    } 
+    else if( bizberg_object.primary_header_layout == 'center' && jQuery(window).scrollTop() > jQuery('.primary_header_2_wrapper').outerHeight() && !jQuery('.navbar.navbar-default').hasClass('sticky_disable') ){
+        jQuery('nav.navbar-default').css({ "top": jQuery('#wpadminbar').height() + 'px' });
         jQuery('nav.navbar-default').addClass('sticky');
     } 
     else {
@@ -171,9 +175,74 @@ function get_sticky_header(){
             $grid.masonry('layout');
         });
 
-    }, 1000);   
+    }, 1000);  
+
+    bizberg_post_slider(); 
+
+    jQuery("body").prognroll({
+        color: "#f75691"
+    });
 
 })(jQuery);
+
+function bizberg_post_slider(){
+
+    // swiper slider
+
+    var interleaveOffset = 0.5;
+    var swiperOptions = {
+        loop: bizberg_object.slider_loop,
+        speed: parseInt( bizberg_object.slider_speed ) * 1000,
+        grabCursor: bizberg_object.slider_grab_n_slider,
+        SlidesPerView: 1,
+        watchSlidesProgress: true,
+        mousewheelControl: false,
+        keyboardControl: false,
+        allowTouchMove: bizberg_object.slider_grab_n_slider,
+        watchOverflow: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        autoplay: {
+            delay: parseInt( bizberg_object.autoplay_delay ) * 1000,
+        },
+        fadeEffect: {
+            crossFade: true
+        },
+        on: {
+            progress: function() {
+                var swiper = this;
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    var slideProgress = swiper.slides[i].progress;
+                    var innerOffset = swiper.width * interleaveOffset;
+                    var innerTranslate = slideProgress * innerOffset;
+                    swiper.slides[i].querySelector(".slide-inner").style.transform = "translate3d(" + innerTranslate + "px, 0, 0)";
+                } 
+            },
+            touchStart: function() {
+                var swiper = this;
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = "";
+                }
+            },
+            setTransition: function(speed) {
+                var swiper = this;
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = speed + "ms";
+                    swiper.slides[i].querySelector(".slide-inner").style.transition = speed + "ms";
+                }
+            }
+        }
+    };
+
+    var swiper = new Swiper(".swiper-container", swiperOptions);
+        
+}
 
 // Photo gallery instagram style
 
@@ -206,7 +275,7 @@ jQuery(function($) {
             nextItemIndex-=2;
         }
         var nextItem = $('.carouselGallery-carousel[data-index='+nextItemIndex+']');
-       // console.log(nextItemIndex);
+
         if(nextItem.length > 0){
             $('.carouselGallery-col-1, .carouselGallery-col-2').removeClass('active');
             $('body').find('.carouselGallery-wrapper').remove();
@@ -218,7 +287,7 @@ jQuery(function($) {
 
     var modalHtml = '';
     showModal = function(that){
-     //   console.log(that);
+   
         var username = that.data('username'),
         location = that.data('location'),
         imagetext = that.data('imagetext'),
@@ -335,6 +404,16 @@ jQuery(document).keyup(function(e) {
     }
 
 });
+
+jQuery(".navbar .slicknav_nav > li:last-child").keydown(function(e) {
+
+    if (e.which == 9 && e.shiftKey) {
+        // do nothing
+    } else if (e.which == 9) {
+        jQuery('#responsive-menu').slicknav('close');   
+    } 
+    
+});
         
 jQuery(document).on('click', 'a[href^="#"]', function (event) {
 
@@ -352,11 +431,11 @@ jQuery(document).on('click', 'a[href^="#"]', function (event) {
 
 });
 
-/**
-* Fixed mobile menu
-*/
+jQuery(window).on( 'scroll load resize', function() {  
 
-jQuery(window).on( 'scroll load resize', function() {
+    /**
+    * Fixed mobile menu
+    */
 
     setTimeout(function(){ 
 
@@ -376,23 +455,79 @@ jQuery(window).on( 'scroll load resize', function() {
             jQuery('.navbar .slicknav_btn').removeAttr('style');
         }
 
-        adjust_site_title( width, scrollTop );
-
     }, 100);    
+
+    bizberg_prognroll();
 
 });
 
-// For site title
-function adjust_site_title( width, scrollTop ){
+function bizberg_prognroll(){
 
-    if( width >= 768 && width <= 1024 ){
-        jQuery('.bizberg_no_tagline').css({
-            'padding-top': ( scrollTop / 3.8 ) + 'px'
-        });
-    } else {       
-        jQuery('.bizberg_no_tagline').css({
-            'padding-top': parseInt( scrollTop / 3 ) + 'px'
-        });
-    }    
+    var screen_width = jQuery(window).width();
+    var admin_bar_status = bizberg_object.admin_bar_status;
+    var wpadminbar = admin_bar_status ? jQuery('#wpadminbar').height() : 0;    
 
+    // Default
+    jQuery('.prognroll-bar').css({
+        'top' : wpadminbar + 'px'
+    });
+
+    if( bizberg_object.desktop_sticky == 1 && screen_width >= 1025 && screen_width <= 2000 && bizberg_object.primary_header_layout == 'center' ){
+
+        jQuery('.prognroll-bar').css({
+            'top' : '0px'
+        });
+        return;
+        
+    }
+    
+    if( bizberg_object.desktop_sticky == 1 && screen_width >= 1025 && screen_width <= 2000 ){
+        var nav_bar_height = jQuery('header .navbar').height();
+        jQuery('.prognroll-bar').css({
+            'top' : ( nav_bar_height + wpadminbar ) + 'px'
+        });
+    }
+
+    if( bizberg_object.mobile_sticky == 1 && screen_width >= 320 && screen_width <= 1024 ){
+        var nav_bar_height = jQuery('header .navbar').height();
+        jQuery('.prognroll-bar').css({
+            'top' : ( nav_bar_height + wpadminbar ) + 'px'
+        });
+    }
+
+}
+
+jQuery(document).on('mouseenter','header .navbar-default .navbar-nav > li > ul > li > a,header .navbar-default .navbar-nav > li > ul > li > ul > li > a', function(){
+
+    var selector = jQuery(this).parents('ul.sub-menu').last().closest('li').find('a:first');
+    var selector_li_id = jQuery(this).parents('ul.sub-menu').last().closest('li').attr('id');
+
+    selector.attr(
+        'style' , 'border-color:' + bizberg_color_luminance( bizberg_object.header_menu_color_hover , -0.2 )
+    );
+    jQuery( 'head' ).append('<span class="hide_menu_separator"><style>.navbar-default .navbar-nav > li#' + selector_li_id + ' > a:after{display:none}</style></span>');
+
+}).on('mouseleave','header .navbar-default .navbar-nav > li > ul > li > a,header .navbar-default .navbar-nav > li > ul > li > ul > li > a', function(){
+
+    var selector = jQuery(this).parents('ul.sub-menu').last().closest('li').find('a:first');
+    selector.removeAttr('style');
+    jQuery('.hide_menu_separator').remove();
+
+});
+
+function bizberg_color_luminance(hex, lum) {
+    // validate hex string
+    hex = String(hex).replace(/[^0-9a-f]/gi, '');
+    if (hex.length < 6) {
+        hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    }
+    lum = lum || 0;
+    // convert to decimal and change luminosity
+    var rgb = "#", c, i;
+    for (i = 0; i < 3; i++) {
+        c = parseInt(hex.substr(i*2,2), 16);
+        c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+        rgb += ("00"+c).substr(c.length);
+    }
+    return rgb;
 }

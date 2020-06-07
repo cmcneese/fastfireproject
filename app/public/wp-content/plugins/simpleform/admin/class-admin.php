@@ -132,7 +132,7 @@ class SimpleForm_Admin {
      return;
 
      wp_enqueue_script( 'sform_saving_options', plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
-     wp_localize_script( 'sform_saving_options', 'ajax_sform_settings_options_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 	'copy' => esc_html__( 'Copy', 'simpleform' ), 'copied' => esc_html__( 'Copied', 'simpleform' ), 'saving' => esc_html__( 'Saving data in progress', 'simpleform' ), 'loading' => esc_html__( 'Saving settings in progress', 'simpleform' ), 'customized' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, copy one of the template files and name it custom-template.php', 'simpleform' ), 'bootstrap' => esc_html__( 'In order to use this template, you need to load Bootstrap’s JS library', 'simpleform' ), 'show' => esc_html__( 'Show Configuration Warnings', 'simpleform' ), 'hide' => esc_html__( 'Hide Configuration Warnings', 'simpleform' ) )); 
+     wp_localize_script( 'sform_saving_options', 'ajax_sform_settings_options_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 	'copy' => esc_html__( 'Copy', 'simpleform' ), 'copied' => esc_html__( 'Copied', 'simpleform' ), 'saving' => esc_html__( 'Saving data in progress', 'simpleform' ), 'loading' => esc_html__( 'Saving settings in progress', 'simpleform' ), 'notes' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, copy one of the template files and name it custom-template.php', 'simpleform' ), 'adminurl' => admin_url(), 'status' => esc_html__( 'Page in draft status not yet published','simpleform'), 'publish' =>  esc_html__( 'Publish now','simpleform'), 'show' => esc_html__( 'Show Configuration Warnings', 'simpleform' ), 'hide' => esc_html__( 'Hide Configuration Warnings', 'simpleform' ), 'cssenabled' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, add your CSS stylesheet file and name it custom-style.css', 'simpleform' ),'cssdisabled' => esc_html__( 'Keep unchecked if you want to use custom CSS code and include it somewhere in your theme’s code without using an additional file', 'simpleform' ), 'jsenabled' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, add your JavaScript file and name it custom-script.js', 'simpleform' ), 'jsdisabled' => esc_html__( 'Keep unchecked if you want to use custom JavaScript code and include it somewhere in your theme’s code without using an additional file', 'simpleform' ) )); 
 	      
 	}
 	
@@ -199,12 +199,16 @@ class SimpleForm_Admin {
        $introduction_text = isset($_POST['introduction_text']) ? wp_kses_post(trim($_POST['introduction_text'])) : 'Please fill out the form below with your inquiry and we will get back to you as soon as possible. Mandatory fields are marked with (*).'; 
        $bottom_text = isset($_POST['bottom_text']) ? wp_kses_post(trim($_POST['bottom_text'])) : '';    
        $required_sign = isset($_POST['required_sign']) ? 'true' : 'false';
+       $label_position = isset($_POST['label_position']) ? sanitize_key($_POST['label_position']) : 'top';
+       $form_direction = isset($_POST['form_direction']) ? sanitize_key($_POST['form_direction']) : 'ltr';
+       $required_word = isset($_POST['required_word']) ? sanitize_text_field(trim($_POST['required_word'])) : '';
+       $required_position = isset($_POST['required_position']) ? sanitize_key($_POST['required_position']) : 'required';
        $firstname_field = isset($_POST['firstname_field']) ? sanitize_text_field($_POST['firstname_field']) : 'visible';
        $firstname_spotlight = isset($_POST['firstname_spotlight']) ? 'hidden' : 'visible';
        $firstname_label = isset($_POST['firstname_label']) ? sanitize_text_field(trim($_POST['firstname_label'])) : '';
        $firstname_placeholder = isset($_POST['firstname_placeholder']) ? sanitize_text_field($_POST['firstname_placeholder']) : '';
-       $firstname_minlength = isset($_POST['firstname_minlength']) ? intval($_POST['firstname_minlength']) : '2';                // ctype_digit
-       $firstname_maxlength = isset($_POST['firstname_maxlength']) ? intval($_POST['firstname_maxlength']) : '0';              
+       $firstname_minlength = isset($_POST['firstname_minlength']) ? intval($_POST['firstname_minlength']) : '2';
+       $firstname_maxlength = isset($_POST['firstname_maxlength']) ? intval($_POST['firstname_maxlength']) : '0';       
        $firstname_requirement = isset($_POST['firstname_requirement']) ? 'required' : 'optional';
        $lastname_field = isset($_POST['lastname_field']) ? sanitize_text_field($_POST['lastname_field']) : 'visible';
        $lastname_alignment = isset($_POST['lastname-alignment']) ? sanitize_key($_POST['lastname-alignment']) : 'name';
@@ -212,7 +216,7 @@ class SimpleForm_Admin {
        $lastname_label = isset($_POST['lastname_label']) ? sanitize_text_field(trim($_POST['lastname_label'])) : '';
        $lastname_placeholder = isset($_POST['lastname_placeholder']) ? sanitize_text_field($_POST['lastname_placeholder']) : '';
        $lastname_minlength = isset($_POST['lastname_minlength']) ? intval($_POST['lastname_minlength']) : '2';
-       $lastname_maxlength = isset($_POST['lastname_maxlength']) ? intval($_POST['lastname_maxlength']) : '0';              
+       $lastname_maxlength = isset($_POST['lastname_maxlength']) ? intval($_POST['lastname_maxlength']) : '0';       
        $lastname_requirement = isset($_POST['lastname_requirement']) ? 'required' : 'optional';
        $email_field = isset($_POST['email_field']) ? sanitize_text_field($_POST['email_field']) : 'visible';
        $email_spotlight = isset($_POST['email_spotlight']) ? 'hidden' : 'visible';
@@ -284,7 +288,13 @@ class SimpleForm_Admin {
 	   exit;
        }
 
-       $form_attributes = array('form_name' => $shortcode_name, 'introduction_text' => $introduction_text, 'bottom_text' => $bottom_text, 'required_sign' => $required_sign, 'firstname_field' => $firstname_field, 'firstname_spotlight' => $firstname_spotlight, 'firstname_label' => $firstname_label, 'firstname_placeholder' => $firstname_placeholder, 'firstname_minlength' => $firstname_minlength, 'firstname_maxlength' => $firstname_maxlength, 'firstname_requirement' => $firstname_requirement, 'lastname_field' => $lastname_field, 'lastname-alignment' => $lastname_alignment, 'lastname_spotlight' => $lastname_spotlight, 'lastname_label' => $lastname_label, 'lastname_placeholder' => $lastname_placeholder, 'lastname_minlength' => $lastname_minlength, 'lastname_maxlength' => $lastname_maxlength, 'lastname_requirement' => $lastname_requirement, 'email_field' => $email_field, 'email_spotlight' => $email_spotlight, 'email_label' => $email_label, 'email_placeholder' => $email_placeholder, 'email_requirement' => $email_requirement, 'phone_field' => $phone_field, 'phone-alignment' => $phone_alignment, 'phone_spotlight' => $phone_spotlight, 'phone_label' => $phone_label, 'phone_placeholder' => $phone_placeholder, 'phone_requirement' => $phone_requirement, 'subject_field' => $subject_field, 'subject_spotlight' => $subject_spotlight, 'subject_label' => $subject_label, 'subject_placeholder' => $subject_placeholder, 'subject_minlength' => $subject_minlength, 'subject_maxlength' => $subject_maxlength, 'subject_requirement' => $subject_requirement, 'message_spotlight' => $message_spotlight, 'message_label' => $message_label, 'message_placeholder' => $message_placeholder, 'message_minlength' => $message_minlength, 'message_maxlength' => $message_maxlength, 'terms_field' => $terms_field, 'terms_label' => $terms_label, 'terms_requirement' => $terms_requirement, 'captcha_field' => $captcha_field, 'captcha_label' => $captcha_label, 'submit_label' => $submit_label );      
+       if ( ( $firstname_spotlight == 'hidden' ||  $lastname_spotlight == 'hidden' || $email_spotlight == 'hidden' || $phone_spotlight == 'hidden' || $subject_spotlight == 'hidden' || $message_spotlight == 'hidden' ) && $label_position == 'inline' ) {	       
+	   $message = $form_direction == 'ltr' ? esc_html__( 'Labels cannot be left aligned if you have set a field label hidden', 'simpleform' ) : esc_html__( 'Labels cannot be right aligned if you have set a field label hidden', 'simpleform' );    
+       echo json_encode(array('error' => true, 'update' => false, 'message' => $message ));
+	   exit;
+       }
+
+       $form_attributes = array('form_name' => $shortcode_name, 'introduction_text' => $introduction_text, 'bottom_text' => $bottom_text, 'required_sign' => $required_sign, 'firstname_field' => $firstname_field, 'firstname_spotlight' => $firstname_spotlight, 'firstname_label' => $firstname_label, 'firstname_placeholder' => $firstname_placeholder, 'firstname_minlength' => $firstname_minlength, 'firstname_maxlength' => $firstname_maxlength, 'firstname_requirement' => $firstname_requirement, 'lastname_field' => $lastname_field, 'lastname-alignment' => $lastname_alignment, 'lastname_spotlight' => $lastname_spotlight, 'lastname_label' => $lastname_label, 'lastname_placeholder' => $lastname_placeholder, 'lastname_minlength' => $lastname_minlength, 'lastname_maxlength' => $lastname_maxlength, 'lastname_requirement' => $lastname_requirement, 'email_field' => $email_field, 'email_spotlight' => $email_spotlight, 'email_label' => $email_label, 'email_placeholder' => $email_placeholder, 'email_requirement' => $email_requirement, 'phone_field' => $phone_field, 'phone-alignment' => $phone_alignment, 'phone_spotlight' => $phone_spotlight, 'phone_label' => $phone_label, 'phone_placeholder' => $phone_placeholder, 'phone_requirement' => $phone_requirement, 'subject_field' => $subject_field, 'subject_spotlight' => $subject_spotlight, 'subject_label' => $subject_label, 'subject_placeholder' => $subject_placeholder, 'subject_minlength' => $subject_minlength, 'subject_maxlength' => $subject_maxlength, 'subject_requirement' => $subject_requirement, 'message_spotlight' => $message_spotlight, 'message_label' => $message_label, 'message_placeholder' => $message_placeholder, 'message_minlength' => $message_minlength, 'message_maxlength' => $message_maxlength, 'terms_field' => $terms_field, 'terms_label' => $terms_label, 'terms_requirement' => $terms_requirement, 'captcha_field' => $captcha_field, 'captcha_label' => $captcha_label, 'submit_label' => $submit_label, 'label_position' => $label_position, 'form_direction' => $form_direction, 'required_word' => $required_word, 'required_position' => $required_position );      
 
        $update_attributes = update_option('sform-attributes', $form_attributes); 
        if ($update_attributes) { $update_result .= 'done'; }
@@ -319,11 +329,14 @@ class SimpleForm_Admin {
       if ( ! current_user_can('update_plugins')) { exit("Security checked!"); }   
    
       else {
-       $smtp_configuration = isset($_POST['smtp-configuration']) ? 'true' : 'false';       
+       $smtp_configuration = isset($_POST['smtp-configuration']) ? 'true' : 'false';  
+       $html5_validation = isset($_POST['html5-validation']) ? 'true' : 'false';
        $ajax_submission = isset($_POST['ajax-submission']) ? 'true' : 'false';
        $template = isset($_POST['form-template']) ? sanitize_text_field($_POST['form-template']) : 'default';
        $bootstrap = isset($_POST['bootstrap']) ? 'true' : 'false';
        $stylesheet = isset($_POST['stylesheet']) ? 'true' : 'false';
+       $cssfile = isset($_POST['stylesheet-file']) ? 'true' : 'false';
+       $javascript = isset($_POST['javascript']) ? 'true' : 'false';
        $uninstall = isset($_POST['deletion-all-data']) ? 'true' : 'false';
        $firstname_error_message = isset($_POST['firstname_error_message']) ? sanitize_text_field(trim($_POST['firstname_error_message'])) : '';
        $invalid_firstname_error_message = isset($_POST['invalid_name_error']) ? sanitize_text_field(trim($_POST['invalid_name_error'])) : '';
@@ -375,7 +388,9 @@ class SimpleForm_Admin {
        $confirmation_reply_to = isset($_POST['confirmation_reply_to']) ? sanitize_text_field(trim($_POST['confirmation_reply_to'])) : '';
               
        if ( $template == 'default' || $template == 'customized' )  { $bootstrap = 'false'; }
-       if ( $template != 'customized' )  { $stylesheet = 'false'; }
+       
+       if ( $stylesheet != 'true' )  { $cssfile = 'false'; }
+
        if ( $smtp_configuration == 'true'  )  { $server_smtp = 'false'; }
 
        if ( $server_smtp == 'true' && $notification == 'false' && $confirmation_email == 'false' )  { 
@@ -429,10 +444,13 @@ class SimpleForm_Admin {
 	
        $sform_settings = array(
 	             'smtp-configuration' => $smtp_configuration,
+	             'html5-validation' => $html5_validation,
                  'ajax-submission' => $ajax_submission,
                  'form-template' => $template,
                  'bootstrap' => $bootstrap,
                  'stylesheet' => $stylesheet,
+                 'stylesheet-file' => $cssfile, 
+                 'javascript' => $javascript,
                  'deletion-all-data' => $uninstall, 
                  'firstname_error_message' => $firstname_error_message, 
                  'invalid_name_error' => $invalid_firstname_error_message, 
@@ -511,7 +529,7 @@ class SimpleForm_Admin {
 		
      global $wpdb;
      $table_name = $wpdb->prefix . 'sform_shortcodes';
-     $form_values = $wpdb->get_row( "SELECT * FROM $table_name ", ARRAY_A );   
+     $form_values = $wpdb->get_row( "SELECT * FROM {$table_name}", ARRAY_A );   
      return $form_values;
      
     } 
@@ -529,5 +547,5 @@ class SimpleForm_Admin {
       return $tables;
 			
     }
-       
+           
 }

@@ -62,6 +62,7 @@ td.first.textarea { padding: 51px 50px 14px 9px; }
 th.last.textarea.option { padding: 26px 41px 60px; width: 250px; }
 td.last.textarea { padding: 11px 50px 24px 9px; }
 td.select.notes { padding: 23px 50px 0 9px; }
+td.last.select.notes { padding: 24px 50px 31px 9px; }
 #trmessage > th { padding: 30px 41px; width: 250px; } 
 #trmessage > td { padding: 14px 48px 4px 10px; }
 th > span { cursor: default; }

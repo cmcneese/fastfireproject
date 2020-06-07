@@ -119,6 +119,15 @@
          }
        });
        
+       $("#required_sign").on("click", function() {
+          if($(this).prop('checked') == true) { 
+	      $('.trsign').addClass('unseen');
+          } 
+          else { 
+          $('.trsign').removeClass('unseen'); 
+          } 
+       });
+       
        $(".nav-tab").on("click", function() {
           var SettingsID = $(this).attr('id')
 	      $( ".nav-tab-active" ).removeClass( "nav-tab-active" );
@@ -158,23 +167,40 @@
        
        $('#form-template').on('change', function () {
          var selectVal = $("#form-template option:selected").val();
-         if ( selectVal == 'basic' || selectVal == 'rounded' ) { 
-	         $('.trbootstrap').removeClass('unseen');
-	         $('.trcustomized').addClass('unseen'); 	          
-	         $("#template-notice").text(ajax_sform_settings_options_object.bootstrap);
-	     }
-         else { 
-	         $('.trbootstrap').addClass('unseen'); 
 	         if ( selectVal == 'customized' ) { 
-		         $('.trcustomized').removeClass('unseen'); 
-		         $("#template-notice").text(ajax_sform_settings_options_object.customized);
+		         $("#template-notice").text(ajax_sform_settings_options_object.notes);
 		     }
              else { 
-	             $('.trcustomized').addClass('unseen'); 	          
                  $("#template-notice").html('&nbsp;');
-	         }		         
-         }
+	         }		
        });          
+       
+        $("#stylesheet").on("click", function() {
+          if($(this).prop('checked') == true) { 
+	      $('.trstylesheet').removeClass('unseen');
+          } 
+          else { 
+          $('.trstylesheet').addClass('unseen'); 
+          } 
+       });
+      
+	   $("#stylesheet-file").on("click", function() {
+         if($(this).prop('checked') == true) { 
+			$('#stylesheet-description').html(ajax_sform_settings_options_object.cssenabled); 
+	     } 
+	     else { 
+		    $('#stylesheet-description').html(ajax_sform_settings_options_object.cssdisabled); 
+		 }
+       });
+       
+	   $("#javascript").on("click", function() {
+         if($(this).prop('checked') == true) { 
+			$('#javascript-description').html(ajax_sform_settings_options_object.jsenabled); 
+	     } 
+	     else { 
+		    $('#javascript-description').html(ajax_sform_settings_options_object.jsdisabled); 
+		 }
+       });
        
        $("#success-message").on("click", function() {
          if($(this).prop('checked') == true) { 
@@ -190,6 +216,20 @@
          } 
        });
 
+       $('#confirmation_page').on('change', function () {
+	       
+	     var element = $(this).find('option:selected'); 
+         var value = element.attr("value"); 
+         var Tag = element.attr("Tag"); 
+       
+         if ( Tag == 'draft' ) { 
+             $("#post-status").html(ajax_sform_settings_options_object.status + ' - <a href="'+ ajax_sform_settings_options_object.adminurl +'post.php?post=' + value + '&action=edit" target="_blank" style="text-decoration: none; color: #9ccc79;">' + ajax_sform_settings_options_object.publish + '</a>');
+	     }
+         else { 
+             $("#post-status").html('&nbsp;');
+	     }		         
+         
+       });          
 
        $("#smpt-warnings").on("click", function() {
          if( $('.smpt-warnings').hasClass('unseen') ) { $(this).text(ajax_sform_settings_options_object.hide); $('.smpt-settings').addClass('unseen'); $('.smpt-warnings').removeClass('unseen'); } 
@@ -205,7 +245,6 @@
 		   else { $('.trsmtp').addClass('unseen'); } 
          }
        });
-
 
        $("#server_smtp").on("click", function() {
          if($(this).prop('checked') == true) { 
@@ -254,7 +293,6 @@
           $('#tdnotification').css('padding','66px 10px 65px'); 
           }
        });
-
 
        $("#requester-name").on("click", function() {
        if($(this).prop('checked') == true) { $('.trcustomname').addClass('unseen'); } 
@@ -331,7 +369,6 @@
 		  e.preventDefault(); 
 		  return false;
 	   });
-
 
        $(document).on('change', 'input[type=checkbox], input[type=radio], select', function() {
 	     $('.message').css('visibility', 'hidden');

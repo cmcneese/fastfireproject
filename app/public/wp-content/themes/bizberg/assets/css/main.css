@@ -106,8 +106,7 @@ body {
   font-family: 'OpenSansRegular';
   font-weight: 400;
   color: #64686d;
-  line-height: 26px;
-  line-height: 1.5;
+  line-height: 1.8em;
 }
 
 img {
@@ -136,12 +135,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
-  font-family: 'MontserratRegular';
+  font-family: 'Lato', sans-serif;
  text-shadow:none;
- /*color: #2c2c2c;*/
-     /*padding-bottom: 10px;*/
 
 }
 
@@ -158,7 +155,7 @@ h3{
 }
 
 h4{
-  font-size:18px
+  font-size:19px
 }
 
 a,

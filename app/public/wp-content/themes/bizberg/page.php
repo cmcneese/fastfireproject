@@ -25,7 +25,7 @@
 
 				<?php
 				if( is_active_sidebar( 'sidebar-2' ) ){ ?>
-					<div class="col-sm-3">
+					<div class="col-md-3 col-sm-12">
 						<?php 
 						get_sidebar(); 
 						?>

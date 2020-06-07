@@ -277,15 +277,15 @@ class SimpleForm_Submissions_Admin {
 		$user_lastname = ! empty($user_info->last_name) ? $user_info->last_name : '';
 	    $firstname = $item['name'] != '' && $item['name'] != 'not stored' ? esc_attr($item['name']) : $user_firstname;	    
 	    $lastname = $item['lastname'] != '' && $item['lastname'] != 'not stored' ? esc_attr($item['lastname']) : $user_lastname;
-        $request_author = trim($firstname.' '.$lastname). ' [ <a href="'.$page_user.'" target="_blank" class="nodecoration">'.$user_info->user_login.'</a> ]<br>Registered user';
+        $request_author = trim($firstname.' '.$lastname). ' [ <a href="'.$page_user.'" target="_blank" class="nodecoration">'.$user_info->user_login.'</a> ]<br>'.esc_html__('Registered user', 'simpleform-submissions' );
 	    }
         else {
 	    $firstname = $item['name'] != '' && $item['name'] != 'not stored' ? esc_attr($item['name']) : '';
 	    $lastname = $item['lastname'] != '' && $item['lastname'] != 'not stored' ? esc_attr($item['lastname']) : '';
 	    if ( !empty($firstname) || !empty($lastname) ):
-	    $request_author =  trim($firstname.' '.$lastname) . '<br>Anonymous user' ;
+	    $request_author =  trim($firstname.' '.$lastname) . '<br>'.esc_html__('Anonymous user', 'simpleform-submissions' );
 	    else:
-	    $request_author =  'Anonymous user';
+	    $request_author =  esc_html__('Anonymous user', 'simpleform-submissions' );
 	    endif;
         }
 	    echo $request_author; ?></div>	 
@@ -387,10 +387,11 @@ class SimpleForm_Submissions_Admin {
           global $wpdb;
           $prefix = $wpdb->prefix;
           $submissions_table = $prefix . 'sform_submissions';
-          $columns = $wpdb->get_row("SELECT * FROM ". $submissions_table);
-          if( ! isset($columns->lastname) && ! isset($columns->phone) ){
+          $result = $wpdb->query("SHOW COLUMNS from {$submissions_table} LIKE 'lastname'");
+          if( !$result){
           $wpdb->query("ALTER TABLE " . $submissions_table . " CHANGE date date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, ADD COLUMN lastname tinytext NOT NULL AFTER name, ADD COLUMN phone VARCHAR(50) NOT NULL AFTER email");          
-         } 
+          }            
+         
     }
            
 }

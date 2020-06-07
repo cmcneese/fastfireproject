@@ -4,7 +4,7 @@ Contributors: cyclonetheme
 Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, left-sidebar , right-sidebar,grid-layout,theme-options,blog ,news ,portfolio
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 2.9
+Stable tag: 3.5
 Requires PHP: 5.6
 Author URI: https://cyclonethemes.com/
 Theme URI: https://cyclonethemes.com/downloads/bizberg-lite/
@@ -82,9 +82,9 @@ jQuery.slicknav.js
 License: MIT
 Source: https://github.com/ComputerWolf/SlickNav
 
-smoothscroll.js
+swiper.js
 License: MIT
-Source: https://github.com/cferdinandi/smooth-scroll
+Source: https://github.com/nolimits4web/swiper
 
 Bootstrap
 Licenses: MIT
@@ -97,6 +97,10 @@ Source: http://fontawesome.io/
 TGM Plugin Activation
 Source:  http://tgmpluginactivation.com/
 Licenses: GPLv2 or later
+
+PrognRoll
+Source:  https://github.com/mburakerman/prognroll
+Licenses: MIT
 
 == Images ==
 

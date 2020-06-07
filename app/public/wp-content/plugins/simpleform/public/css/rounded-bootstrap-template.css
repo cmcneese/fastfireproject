@@ -1,20 +1,20 @@
 /* General class selectors */
-.d-block {display: block!important;}
-.d-none {display: none!important;}
+.d-block { display: block!important; }
+.d-none { display: none!important; }
 .visible { visibility: visible!important; }
 
 /* Text above Contact Form */  
-#sform-introduction {padding-bottom: 15px;}
+#sform-introduction { padding-bottom: 15px; clear: both; }
 
 /* Confirmation message after ajax submission */
-.form.confirmation { text-align: center;padding-top:50px; }
-.form.confirmation > img { margin: 30px auto;width: 150px }
+.form.confirmation { text-align: center; padding-top:50px; }
+.form.confirmation > img, .form.confirmation > p > img { margin: 30px auto;width: 250px }
 
 /* Field group */
-.field-group {line-height: 1; padding-bottom: 3px;}
+.field-group { line-height: 1; padding-bottom: 3px; clear: both; }
 .field-group label {font-size: 16px; font-weight: 400; display: inline-block; margin-bottom: 5px; }
 label span { color: #dc3545; font-weight: 500; padding-left: 3px; }
-label span.word { color: inherit; font-weight: 300; }
+label span.word { color: inherit; font-weight: 300; font-size: 0.8em; font-style: italic; }
 .form-control { border: 1px solid #6c757d; font-size: 16px; font-weight: 400 !important; height: calc(1.5em + .75rem + 2px); padding: .375rem .75rem; border-radius: .25rem; width: 100%; margin-bottom: 0 !important; }
 .form-control:not(#sform_captcha):focus { border-color: #007bff; outline: none; box-shadow: 0 0 0 .2rem rgba(0,123,255,.25); } 
 textarea.form-control { height: auto; line-height: 1.5; }
@@ -23,15 +23,16 @@ textarea.form-control { height: auto; line-height: 1.5; }
 .form-control.is-invalid + .error-des span { display: block; }
 .form-control.is-invalid { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e") !important; background-repeat: no-repeat !important; background-position: right calc(.375em + .1875rem) center !important; background-size: calc(.75em + .375rem) calc(.75em + .375rem) !important; }
 textarea.form-control.is-invalid { background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem) !important; }
-.firstname.half {width: 47.5%; float: left;}
-.lastname.half {width: 47.5%; float: right;}
-.email.half {width: 47.5%; float: left;}
-.phone.half {width: 47.5%; float: right;}
+.firstname.half { width: 47.5%; float: left; }
+.lastname.half { width: 47.5%; float: right; }
+.email.half { width: 47.5%; float: left; }
+.phone.half { width: 47.5%; float: right; }
+.half { clear: none; }
 
 /* Terms field */
 #terms { margin-top: 10px; margin-bottom: 22px; position: relative; line-height: 26px; }
 .switch { position: relative; display: inline-block; width: 52px; height: 26px; float:left; }
-#sform_privacy {display:none;}
+#sform_privacy { display:none; }
 #sform_privacy + span { position: absolute; z-index: 1; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #6c757d; -webkit-transition: .4s; transition: .4s; border-radius: 26px; }
 #sform_privacy:checked + span { background-color: #8bc34a; }
 #sform_privacy.is-invalid + span { background-color: #dc3545; }
@@ -43,17 +44,17 @@ textarea.form-control.is-invalid { background-position: top calc(.375em + .1875r
 /* Captcha field */
 #captcha-question-wrap { width: 180px; background-color: #fff; border: 1px solid #6c757d; border-radius: .25rem; }
 #captcha-question-wrap.focus { border-color: #007bff; box-shadow: 0 0 0 .2rem rgba(0,123,255,.25) !important; }
-.form-control.is-invalid:focus, #captcha-question-wrap.is-invalid.focus { box-shadow: 0 0 0 .2rem rgba(220,53,69,.25) !important;}
-.form-control.is-invalid, #captcha-question-wrap.is-invalid {border-color: #dc3545 !important;}
+.form-control.is-invalid:focus, #captcha-question-wrap.is-invalid.focus { box-shadow: 0 0 0 .2rem rgba(220,53,69,.25) !important; }
+.form-control.is-invalid, #captcha-question-wrap.is-invalid { border-color: #dc3545 !important; }
 #captcha-question { width: 106px; height: inherit; font-size: 16px; font-weight: 400; cursor: text; border: none; outline: none; display: inline-block; background-color: transparent; padding-right: 0 !important; text-align: right; box-shadow: none; }
-#sform_captcha { width: 70px; font-size: 16px; border: none; outline: none;  display: inline-block; background-color: transparent; padding-left: 10px !important; box-shadow: none; }
+#sform_captcha { width: 70px; font-size: 16px; border: none; outline: none;  display: inline-block; background-color: transparent; padding-left: 5px !important; box-shadow: none; }
 #captcha-question:focus, #sform_captcha:focus { box-shadow: none !important; background-color: transparent !important; }
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; } /* Hide Arrows: Chrome, Safari, Edge, Opera */
-input[type=number] { -moz-appearance:textfield; } /* Hide Arrows: Firefox */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { -moz-appearance:textfield; }
 #captcha-question-wrap.is-invalid + .error-des span { display: block; }
 
 /* Error message */
-#sform-message {padding: 10px 0;}
+#sform-message { padding: 0 0 5px 0; }
 #sform-message span { display: block; visibility: hidden; outline: none; text-align: center; font-size: 16px; background: #dc3545; color: #FFF; padding: .5rem 1.25rem; border-radius: .25rem; opacity: 0.75; }
 
 /* Submit field */
@@ -65,4 +66,45 @@ input[type=number] { -moz-appearance:textfield; } /* Hide Arrows: Firefox */
 .btn:focus { outline: none; }
 
 /* Text below Contact Form */
-#sform-bottom {font-size: 16px; margin: 0 auto; }
+#sform-bottom {font-size: 16px; margin: 0 auto; clear: both; }
+
+/* Two columns layout */
+.row { display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; clear: right; }
+.row > #captcha-error { width: 100%; padding-left: 135px; }
+.col-sm-10 { position: relative; width: 100%; min-height: 1px; }
+.checkbox.col-sm-10 { float: right; }
+#sform-message.col-sm-10, #sform-submit-wrap.col-sm-10, #terms.col-sm-10 { float: right; }
+label[for=sform_captcha].col-sm-2 { letter-spacing: -0.075em; }
+@media (min-width: 576px) {
+.col-sm-10 { -ms-flex: 0 0 calc(100% - 135px); flex: 0 0 calc(100% - 135px); max-width: calc(100% - 135px); }
+.col-sm-2 { -ms-flex: 135px; flex: 135px; max-width: 135px; line-height: 41px; padding-right: 15px; }
+}
+@media (max-width: 575px) {
+.col-sm-10 { -ms-flex: 0 0 100%; flex: 0 0 100%; max-width: 100%; }
+.col-sm-2 { -ms-flex: 0 0 100%; flex: 0 0 100%; max-width: 100%; }
+}
+@media (max-width: 1023px) {
+.firstname.half { width: 100%; float: left; }
+.lastname.half { width: 100%; float: right; }
+.email.half { width: 100%; float: left; }
+.phone.half { width: 100%; float: right; }
+}
+
+/* RTL direction */
+#sform-introduction.rtl, #sform-bottom.rtl, #sform.rtl { direction: rtl; }
+.rtl .field-group label span { display: inline-block; padding-right: 5px; padding-left: 0; } 
+.rtl .lastname.half, .rtl .phone.half { float: left; }
+.rtl .firstname.half, .rtl .email.half { float: right; }
+.rtl .row { clear: left; }
+.rtl .checkbox.col-sm-10 { float: left; }
+.rtl .checkbox #sform_privacy + label:before { right: 0; }
+.rtl .checkbox #sform_privacy + label { padding-right: 50px; }
+.rtl .field-group #captcha-question-wrap #captcha-question { text-align: left; padding-left: 0 !important; }
+.rtl .field-group #captcha-question-wrap #sform_captcha { padding-right: 5px !important; }
+.rtl #captcha-container #captcha-error { padding-right: 135px; }
+.rtl #sform-message, .rtl #sform-submit-wrap { width: 100%; }
+.rtl #sform-message, .rtl #sform-submit-wrap, .rtl #terms.col-sm-10 { float: left; }
+.rtl #terms .switch { float: right; }
+.rtl #terms .control-label  { padding-right: 20px; padding-left: 0; }
+.rtl #terms .control-label span { padding-right: 5px; padding-left: 0; }
+.rtl .field-group .col-sm-2 { padding-right: 0; }

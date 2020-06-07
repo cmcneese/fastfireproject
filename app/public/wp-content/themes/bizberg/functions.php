@@ -66,6 +66,8 @@ if ( ! function_exists( 'bizberg_setup' ) ) :
 		add_theme_support( 'custom-logo', array(
 			'flex-width'  => true,
 			'flex-height' => true,
+			'height'      => '300',
+ 			'width'       => '500'
 		) );
 
 		add_image_size( 'bizberg_medium', 300, 300, true );
@@ -117,6 +119,24 @@ function bizberg_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Right Header', 'bizberg' ),
+		'id'            => 'bizberg_header',
+		'description'   => esc_html__( 'Add widgets here.', 'bizberg' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Left Header', 'bizberg' ),
+		'id'            => 'bizberg_header_left',
+		'description'   => esc_html__( 'Add widgets here.', 'bizberg' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'bizberg_widgets_init' );
 
@@ -129,10 +149,30 @@ function bizberg_custom_wp_admin_style() {
     wp_enqueue_style( 'font-awesome-5', get_template_directory_uri() . '/assets/icons/font-awesome-5/css/all.css' );
 }
 
+function bizberg_google_fonts(){
+
+	$query_args = array(
+   		'family' => 'Lato:wght@300;400;700;900&display=swap'
+ 	);
+
+ 	wp_register_style( 
+   		'bizberg-google-fonts', 
+   		add_query_arg( $query_args, '//fonts.googleapis.com/css2' ), 
+   		array(), 
+   		null 
+ 	);
+ 	
+ 	wp_enqueue_style( 'bizberg-google-fonts' );
+
+}
+
 /**
  * Enqueue scripts and styles.
  */
 function bizberg_scripts() {
+
+	$my_theme = wp_get_theme();
+	$current_version = $my_theme->get( 'Version' ); // Get theme Current Version
 
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css' );
 	wp_enqueue_style( 'font-awesome-5', get_template_directory_uri() . '/assets/icons/font-awesome-5/css/all.css' );
@@ -142,6 +182,8 @@ function bizberg_scripts() {
 	wp_enqueue_style( 'bizberg-style2', get_template_directory_uri() . '/assets/css/style.css' , array() , '0.8' );
 	wp_enqueue_style( 'bizberg-responsive', get_template_directory_uri() . '/assets/css/responsive.css' );
 	wp_enqueue_style( 'bizberg-style', get_stylesheet_uri() );
+
+	bizberg_google_fonts();
 
 	$scripts = array(
 		array(
@@ -168,17 +210,35 @@ function bizberg_scripts() {
 			'id' => 'matchHeight',
 			'url' => get_template_directory_uri() . '/assets/js/jquery.matchHeight-min.js',
 			'footer' => true
+		),
+		array(
+			'id' => 'swiper',
+			'url' => get_template_directory_uri() . '/assets/js/swiper.js',
+			'footer' => true
+		),
+		array(
+			'id' => 'prognroll',
+			'url' => get_template_directory_uri() . '/assets/js/prognroll.js',
+			'footer' => true
 		)
 	);
 
 	wp_enqueue_script('masonry');
 
-	bizberg_add_scripts( $scripts );
+	bizberg_add_scripts( $scripts , $current_version );
 
-	wp_register_script( 'bizberg-custom' , get_template_directory_uri() . '/assets/js/custom.js' , array('jquery') , '' , true );
+	wp_register_script( 'bizberg-custom' , get_template_directory_uri() . '/assets/js/custom.js' , array('jquery') , $current_version , true );
 
 	$translation_array = array(
-	    'admin_bar_status' => is_admin_bar_showing(),
+	   'admin_bar_status' => is_admin_bar_showing(),
+	   'slider_loop' => bizberg_get_theme_mod( 'slider_loop_status' ),
+	   'slider_speed' => bizberg_get_theme_mod( 'slider_speed' ),
+	   'autoplay_delay' => bizberg_get_theme_mod( 'autoplay_delay' ),
+	   'slider_grab_n_slider' => bizberg_get_theme_mod( 'slider_grab_n_slider' ),
+	   'header_menu_color_hover' => bizberg_get_theme_mod( 'header_menu_color_hover' ),
+	   'desktop_sticky' => bizberg_get_theme_mod( 'enable_desktop_sticky_menu_status' ),
+	   'mobile_sticky' => bizberg_get_theme_mod( 'enable_mobile_sticky_menu_status' ),
+	   'primary_header_layout' => bizberg_get_theme_mod( 'primary_header_layout' )
 	);
 	wp_localize_script( 'bizberg-custom', 'bizberg_object', $translation_array );
 	 
@@ -197,6 +257,18 @@ add_action( 'wp_enqueue_scripts', 'bizberg_scripts' );
 function bizberg_inline_style(){
 
 	$detail_page_img_position = get_theme_mod( 'detail_page_img_position' , 'left' );
+	$slider_banner_status = bizberg_get_theme_mod( 'slider_banner' );
+	$inner_page_background_type = bizberg_set_inner_page_background_type();
+
+	// Gradient Slider
+	$slider_primary_color = bizberg_get_theme_mod( 'slider_gradient_primary_color' );
+	$slider_gradient_secondary_color = bizberg_get_theme_mod( 'slider_gradient_secondary_color' );
+
+	// Banner Text Position
+	$banner_text_position = bizberg_get_theme_mod( 'banner_text_position' );
+
+	// Banner Spacing
+	$banner_spacing = bizberg_get_theme_mod( 'banner_spacing' );
 
 	$inline_css = '';
 	if( $detail_page_img_position == 'center' ){
@@ -209,14 +281,45 @@ function bizberg_inline_style(){
 		}";
 	}
 
+	if( $slider_banner_status == 'none' ){
+		$inline_css .= 'body.home header#masthead {
+		    border-bottom: 1px solid #eee;
+		}';
+	}
+
+	if( $inner_page_background_type == 'none' ){
+		$inline_css .= 'body:not(.home) header#masthead {
+		    border-bottom: 1px solid #eee;
+		}';
+	}
+
+	$inline_css .= '.banner .slider .overlay {
+	   background: linear-gradient(-90deg, ' . esc_attr( $slider_primary_color ) . ', ' . esc_attr( $slider_gradient_secondary_color ) . ');
+	}';
+
+	$banner_spacing_attr = array();
+	foreach ( $banner_spacing as $key => $value ) {
+		$banner_spacing_attr[] = $key . ':' . $value;
+	}
+
+	$inline_css .= '.breadcrumb-wrapper .section-title{ text-align:' . esc_attr( $banner_text_position ) . ';' . implode( '; ', $banner_spacing_attr ) . ' }';
+
 	return apply_filters( 'bizberg_inline_style', $inline_css );
 
 } 
 
-function bizberg_add_scripts( $scripts ){
+function bizberg_add_scripts( $scripts, $current_version ){
 
 	foreach ( $scripts as $key => $value ) {
-		wp_enqueue_script( $value['id'] , $value['url'] , array('jquery'), 0.8, $value['footer'] );
+
+		wp_enqueue_script( 
+			$value['id'], 
+			$value['url'], 
+			array( 'jquery' ), 
+			$current_version, 
+			$value['footer'] 
+		);
+
 	}
 
 }
@@ -284,7 +387,11 @@ function bizberg_post_categories( $post , $limit = false , $plain_text = false ,
 	    if( $plain_text == true ){
 	    	$cats[] = esc_html( $cat->name );
 	    } else {
-	    	$cats[] = '<a href="' . esc_url( get_category_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';	 
+	    	if( $limit == 1 ){
+	    		$cats[] = '<a href="' . esc_url( get_category_link( $cat ) ) . '"><i class="far fa-folder"></i> ' . esc_html( $cat->name ) . '</a>';	
+	    	} else {
+	    		$cats[] = '<a href="' . esc_url( get_category_link( $cat ) ) . '">' . esc_html( $cat->name ) . '</a>';	 
+	    	}	    	
 	    }   
 	}
 	
@@ -293,8 +400,8 @@ function bizberg_post_categories( $post , $limit = false , $plain_text = false ,
 	} else{
 		if( $echo == true ){
 			echo wp_kses_post( implode( ' , ' , $cats ) );	
-		} else{
-			return implode( ' , ' , $cats );
+		} else{			
+			return implode( ' , ' , $cats );			
 		}
 	
 	}
@@ -303,10 +410,14 @@ function bizberg_post_categories( $post , $limit = false , $plain_text = false ,
 
 function bizberg_numbered_pagination(){
 
+	if( !paginate_links() ){
+		return;
+	}
+
 	echo '<div class="result-paging-wrapper">';
 	the_posts_pagination( 
 		array(
-			'mid_size' 	=> 2,
+			'mid_size' 	=> 1,
 			'prev_text' => esc_html__( '&laquo;', 'bizberg' ),
 			'next_text' => esc_html__( '&raquo;', 'bizberg' ),
 		) 
@@ -332,11 +443,39 @@ if( !function_exists( 'bizberg_get_custom_logo_link' ) ){
 
 }
 
+function bizberg_get_slider_title_design( $title ){
+
+	$slider_title_layout = bizberg_get_theme_mod( 'slider_title_layout' );
+	$slider_text_align = bizberg_get_theme_mod( 'slider_text_align' );
+
+	switch ( $slider_title_layout ) {
+		case '2':
+			return '<h1 class="slider_title_layout_' . $slider_title_layout . ' ' . $slider_text_align . '">' . esc_html( $title ) . '</h1>';
+			break;
+
+		case '3':
+			$title = explode( " ", $title );
+			return '<h1 class="slider_title_layout_' . $slider_title_layout . ' ' . $slider_text_align . '">' .  '<span class="firstword">'.$title[0].'</span>'.substr(implode(" ", $title), strlen($title[0])) . '</h1>';
+			break;
+
+		case '4':
+			$title = explode( " ", $title );
+			$last_space_position = strrpos( implode(" ", $title) , ' ' );
+			return '<h1 class="slider_title_layout_' . $slider_title_layout . ' ' . $slider_text_align . '">' . substr( implode(" ", $title) , 0, $last_space_position ) . ' <span class="lastword">'. array_pop( $title ) .'</span>' . '</h1>';
+			break;
+		
+		default:
+			return '<h1>' . esc_html( $title ) . '</h1>';
+			break;
+	}
+
+}
+
 function bizberg_get_slider_1(){ 
 
 	$args = array(
 		'post_type' => 'post',
-		'posts_per_page' => -1,
+		'posts_per_page' => 2,
 		'post_status' => 'publish',
 		'cat' => get_theme_mod( 'slider_category' , '0' )
 	);
@@ -346,49 +485,109 @@ function bizberg_get_slider_1(){
 
 	if( $query->have_posts() ): ?>
 	
-		<section id="featured-banner" class="featured-banner home-style">
+	    <!-- banner starts -->
+	    <section class="banner">
+	        <div class="slider">
+	            <div class="swiper-container">
+	                <div class="swiper-wrapper">
 
-	        <div id="myCarousel" class="carousel slide">
+	                	<?php 
+		            	while( $query->have_posts() ): $query->the_post(); 
 
-	            <div class="carousel-inner">
+		            		$thumbnail_id = get_post_thumbnail_id(); ?>
 
-	            	<?php 
-	            	while( $query->have_posts() ): $query->the_post(); 
+		                    <div class="swiper-slide">
 
-	            	$thumbnail_id = get_post_thumbnail_id(); ?>
+		                        <div class="slide-inner">
 
-		                <div class="item <?php echo esc_attr( $count == 0 ? 'active' : '' ); ?>">
-		                    <!-- Set the first background image using inline CSS below. -->
-		                    <div class="fill" style="background-image:url(<?php echo esc_url( bizberg_get_image_link_by_id( $thumbnail_id , 'full' ) ); ?>);"></div>
-		                    <div class="carousel-caption">
-		                        <h2><?php the_title(); ?></h2>
-		                        <?php the_excerpt(); ?>
+		                           <div class="slide-image" style="background-image:url(<?php echo esc_url( bizberg_get_image_link_by_id( $thumbnail_id , 'full' ) ); ?>)"></div>
+
+		                           	<div class="swiper-content">
+		                                	
+	                                		<?php 
+	                                		echo wp_kses_post(
+	                                			bizberg_get_slider_title_design( 
+	                                				get_the_title() 
+	                                			)
+	                                		); ?>		                                			
+		                                	
+		                                	<p class="mar-bottom-20">
+		                                		<?php 
+		                                		echo wp_trim_words( 
+		                                			sanitize_text_field( get_the_content() ), 
+		                                			bizberg_get_theme_mod( 'slider_content_length' ), 
+		                                			' [...]'
+		                                		); ?>
+		                                	</p>
+
+		                                	<?php 
+		                                	$slider_read_more_status = bizberg_get_theme_mod( 'slider_read_more_status' );
+		                                	
+		                                	if( !$slider_read_more_status ){ ?>
+
+			                                	<a 
+												href="<?php the_permalink(); ?>" 
+												class="slider_btn btn btn-primary btn-lg">
+													<span class="slider_btn_text_wrapper">
+														<?php 
+														echo bizberg_get_slider_read_more_btn();
+														?>
+													</span>
+												</a>
+
+			                                	<?php 
+
+			                                } ?>
+
+		                            </div> 
+		                            <div class="overlay"></div>
+		                        </div> 
 		                    </div>
-		                    <div class="overlay"></div>
-		                </div>
 
-	                <?php 
-	                $count++;
-	                endwhile; ?>
+		                 	<?php
 
+		                endwhile;
+		                ?>
+
+	                </div>
+	                <!-- Add Arrows -->
+	                <div class="swiper-button-next"></div>
+	                <div class="swiper-button-prev"></div>
+	                <div class="swiper-pagination"></div>
 	            </div>
-
-	            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-	                <span class="icon-prev"></span>
-	            </a>
-	            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-	                <span class="icon-next"></span>
-	            </a>
-
+	            
 	        </div>
-
-	    </section><!-- carousel-inner ends --> 
+	        <div class="bizberg_shape_divider_slider_homepage_wrapper">
+	        	<?php echo wp_kses_post( bizberg_get_shape_divider() ); ?>
+	        </div>
+	    </section>
+    	<!-- banner ends -->
 
 		<?php
 
 	endif;
 
 	wp_reset_postdata();
+}
+
+function bizberg_get_slider_read_more_btn(){
+	return esc_html( bizberg_get_theme_mod( 'slider_read_more_text' ) );
+}
+
+function bizberg_get_shape_divider(){
+
+	$shape_divider_bottom = bizberg_get_theme_mod('shape_divider_bottom');
+	$shape_divider_flip_horizontal = bizberg_get_theme_mod('shape_divider_flip_horizontal');
+	$shape_divider_flip_horizontal_class = $shape_divider_flip_horizontal ? 'shape_divider_flip_horizontal' : '';
+
+	if( $shape_divider_bottom != 'none' ){
+		
+		return '<div class="bizberg_shape_divider_slider_homepage ' . $shape_divider_flip_horizontal_class . ' "><img src="' . esc_url( get_template_directory_uri() . '/assets/images/shape-divider/' . $shape_divider_bottom ) . '" ></div>';
+
+	}
+
+	return '';
+
 }
 
 function bizberg_get_image_link_by_id( $image_id , $size ){
@@ -544,17 +743,41 @@ function bizberg_search_form( $form ) {
     return $form;
 }
 
+function bizberg_get_banner_image_properties(){
+
+	$banner_image = bizberg_get_theme_mod( 'banner_image' );
+
+	if( !empty( $banner_image ) && is_array( $banner_image ) ){
+
+		$style = array();
+		foreach ( $banner_image as $key => $value ) {
+
+			if( $key == 'background-image' ){
+				$style[] = $key  .': url('. $value . ')';
+			} else {
+				$style[] = $key  .':'. $value;
+			}
+
+		}
+
+		return implode( '; ' , $style );
+	}
+
+	if( is_string( $banner_image ) ){
+		return 'background-image:url(' . $banner_image . ')';
+	}
+
+	return false;
+	
+}
+
 function bizberg_get_banner(){ 
 
-	$breadcrumb_bg = get_theme_mod( 'banner_image' );
-
-	if( empty( $breadcrumb_bg ) ){
-		$breadcrumb_bg = get_template_directory_uri() . '/assets/images/breadcrum.jpg';		
-	} ?>
+	$banner_image_attr = bizberg_get_banner_image_properties(); ?>
 
 	<div 
-	class="breadcrumb-wrapper homepage_banner" 
-	style="background-image:url( <?php echo esc_url( $breadcrumb_bg ); ?> )">
+	class="breadcrumb-wrapper homepage_banner"
+	style="<?php echo esc_attr( $banner_image_attr ); ?>">
 		<div class="container">
 			<div class="col-sm-12">
 				<div class="section-title">
@@ -586,17 +809,58 @@ function bizberg_get_banner_subtitle(){
 	return esc_html( get_theme_mod( 'banner_subtitle' ) );
 }
 
+function bizberg_set_inner_page_background_type(){
+
+	if( is_search() ){
+
+		$breadcrumb_search_page = bizberg_get_theme_mod( 'breadcrumb_search_page' );
+		if( $breadcrumb_search_page ){
+			return 'none';
+		}
+
+	}
+
+	if( is_archive() ){
+
+		$breadcrumb_archive_page = bizberg_get_theme_mod( 'breadcrumb_archive_page' );
+		if( $breadcrumb_archive_page ){
+			return 'none';
+		}
+
+	}
+
+	if( is_page() ){
+
+		$breadcrumb_single_page = bizberg_get_theme_mod( 'breadcrumb_single_page' );
+		if( $breadcrumb_single_page ){
+			return 'none';
+		}
+		
+	}
+
+	if( is_single() ){
+
+		$breadcrumb_single_post = bizberg_get_theme_mod( 'breadcrumb_single_post' );
+		if( $breadcrumb_single_post ){
+			return 'none';
+		}
+		
+	}
+
+	return false;
+
+}
+
 function bizberg_get_breadcrums(){
 
-	$breadcrumb_bg = get_theme_mod( 'banner_image' );
+	$inner_page_background_type = bizberg_set_inner_page_background_type();
 
-	if( empty( $breadcrumb_bg ) ){
-		$breadcrumb_bg = get_template_directory_uri() . '/assets/images/breadcrum.jpg';		
+	if( $inner_page_background_type == 'none' ){
+		return;
 	} ?>
 
 	<div 
-	class="breadcrumb-wrapper" 
-	style="background-image: url( <?php echo( esc_url( $breadcrumb_bg ) ); ?> )">
+	class="breadcrumb-wrapper not-home">
 		<div class="container">
 			<div class="col-sm-12">
 				<div class="section-title">
@@ -894,7 +1158,7 @@ function bizberg_get_comments_number( $post ){
 
 	$no_of_comments = get_comments_number( $post->ID );
 
-	echo '<a href="' . esc_url( get_comments_link() ) . '"><i class="fas fa-comments"></i> ';
+	echo '<a href="' . esc_url( get_comments_link() ) . '"><i class="far fa-comments"></i> ';
 	echo absint( $no_of_comments );	
 	echo '</a>';
 
@@ -1026,8 +1290,8 @@ function bizberg_add_items_on_menus( $items, $args ) {
 
     if( $args->theme_location == 'menu-1' ){ 
 
-    	$search_status = get_theme_mod( 'header_search', false );
-    	$header_button = get_theme_mod( 'header_button', true );
+    	$search_status = bizberg_get_theme_mod( 'header_search' );
+    	$header_button = bizberg_get_theme_mod( 'header_button' );
 
     	ob_start(); 
 
@@ -1191,7 +1455,7 @@ function bizberg_check_sidebar_active_inactive_class(){
 
 	if( is_active_sidebar( 'sidebar-2' ) || in_array( bizberg_sidebar_position() , array( 'blog-nosidebar-1' , 'blog-nosidebar'  ) ) ){
 
-		return 'col-sm-9 content-wrapper';
+		return 'col-md-9 col-sm-12 content-wrapper';
 		
 	}
 	return 'col-sm-10 content-wrapper col-sm-offset-1 content-wrapper-no-sidebar';
@@ -1201,7 +1465,7 @@ function bizberg_check_sidebar_active_inactive_class(){
 function bizberg_check_sidebar_active_inactive_class_home(){
 
 	if( is_active_sidebar( 'sidebar-2' ) || in_array( bizberg_sidebar_position() , array( 'blog-nosidebar-1' , 'blog-nosidebar'  ) ) ){
-		return 'col-sm-9 content-wrapper';
+		return 'col-md-9 col-sm-12 content-wrapper';
 	}
 
 	return 'col-sm-10 content-wrapper col-sm-offset-1 content-wrapper-no-sidebar';
@@ -1211,9 +1475,239 @@ function bizberg_check_sidebar_active_inactive_class_home(){
 function bizberg_check_sidebar_active_inactive_class_page(){
 
 	if( is_active_sidebar( 'sidebar-2' ) ){
-		return 'col-sm-9 content-wrapper';
+		return 'col-md-9 col-sm-12 content-wrapper';
 	}
 
 	return 'col-sm-10 content-wrapper col-sm-offset-1 content-wrapper-no-sidebar';
+
+}
+
+if ( ! function_exists( 'bizberg_get_theme_mod' ) ) {
+  	function bizberg_get_theme_mod( $field_id, $default_value = '' ) {
+    	if ( $field_id ) {
+      	if ( !$default_value ) {
+        		if ( class_exists( 'Kirki' ) && isset( Kirki::$fields[ $field_id ] ) && isset( Kirki::$fields[ $field_id ]['default'] ) ) {
+          		$default_value = Kirki::$fields[ $field_id ]['default'];
+        		}
+      	}
+      	$value = get_theme_mod( $field_id, $default_value );
+      	return $value;
+    	}
+    	return false;
+  	}
+}
+
+function bizberg_blog_read_time( $post ){
+
+	$words_per_minute = 225;
+	$words_per_second = $words_per_minute / 60;
+
+	// Count the words in the content.
+	$word_count = str_word_count( strip_tags( $post->post_content ) );
+
+	// [UNUSED] How many minutes?
+	$minutes = floor( $word_count / $words_per_minute );
+
+	// [UNUSED] How many seconds (remainder)?
+	$seconds_remainder = floor( $word_count % $words_per_minute / $words_per_second );
+
+	// How many seconds (total)?
+	$seconds_total = floor( $word_count / $words_per_second );
+
+	echo wp_kses_post( '<i class="far fa-clock"></i> ' . bizberg_blog_convert_read_time($seconds_total) );
+
+}
+
+function bizberg_blog_convert_read_time( $seconds ){
+
+    $string = "";
+
+	$days = intval(intval($seconds) / (3600*24));
+	$hours = (intval($seconds) / 3600) % 24;
+	$minutes = (intval($seconds) / 60) % 60;
+	$seconds = (intval($seconds)) % 60;
+
+	if($days> 0){
+	    $string .= "$days " . esc_html__( 'days read', 'bizberg' );
+	    return $string;
+	}
+	if($hours > 0){
+	    $string .= "$hours " . esc_html__( 'hrs read', 'bizberg' );
+	    return $string;
+	}
+	if($minutes > 0){
+	    $string .= "$minutes " . esc_html__( 'min read', 'bizberg' );
+	    return $string;
+	}
+	if ($seconds > 0){
+	    $string .= "$seconds " . esc_html__( 'sec read', 'bizberg' );
+	    return $string;
+	}
+
+	return $string;
+}
+
+function bizberg_get_primary_header_logo(){ ?>
+
+	<a 
+    class="logo pull-left <?php echo ( has_custom_logo() || !empty( get_bloginfo( 'description' ) ) ? '' : 'bizberg_no_tagline' ); ?>" 
+    href="<?php echo esc_url( home_url('/') ); ?>">
+
+    	<?php 
+    	if ( has_custom_logo() ) { ?>
+        	<img 
+        	src="<?php echo esc_url( bizberg_get_custom_logo_link() ); ?>" 
+        	alt="<?php esc_attr_e( 'Logo', 'bizberg' ) ?>" 
+        	class="site_logo">
+        	<?php 
+        	do_action( 'bizberg_top_logo' );
+        } else {
+        	echo '<h3>' . esc_html( get_bloginfo( 'name' ) ) . '</h3>';
+
+        	if( !empty( get_bloginfo( 'description' ) ) ){
+        		echo '<p>' . esc_html( get_bloginfo( 'description' ) ) . '</p>';
+        	}
+
+        } ?>
+
+    </a>
+
+	<?php
+}
+
+function bizberg_get_last_item_header(){
+
+	$last_item_header = bizberg_get_theme_mod( 'last_item_header' );
+	$last_item_html = bizberg_get_theme_mod('last_item_html');
+
+	switch ( $last_item_header ) {
+
+		case 'text':
+			echo wp_kses_post( $last_item_html );
+			break;
+
+		case 'widget':
+			if( is_active_sidebar( 'bizberg_header' ) ){
+				echo '<div class="header_widget_section">';
+				dynamic_sidebar( 'bizberg_header' );
+				echo '</div>';
+			} else {
+				if( current_user_can( 'administrator' ) ){
+					echo '<a href="' . esc_url( admin_url( '/customize.php?autofocus[panel]=widgets' ) ) . '">' . esc_html__( 'ADD WIDGET', 'bizberg' ) . '</a>';
+				}
+			}		
+			break;
+		
+		default:
+			# code...
+			break;
+	}
+
+}
+
+function bizberg_get_last_item_header_logo_center(){
+
+	$last_item_header = bizberg_get_theme_mod( 'last_item_header_logo_center' );
+	$last_item_html = bizberg_get_theme_mod('last_item_html_logo_center');
+
+	switch ( $last_item_header ) {
+
+		case 'text':
+			echo wp_kses_post( $last_item_html );
+			break;
+
+		case 'widget':
+			if( is_active_sidebar( 'bizberg_header' ) ){
+				echo '<div class="header_widget_section">';
+				dynamic_sidebar( 'bizberg_header' );
+				echo '</div>';
+			} else {
+				if( current_user_can( 'administrator' ) ){
+					echo '<a href="' . esc_url( admin_url( '/customize.php?autofocus[panel]=widgets' ) ) . '">' . esc_html__( 'ADD WIDGET', 'bizberg' ) . '</a>';
+				}
+			}		
+			break;
+
+		case 'social_icons':
+
+			echo '<div class="bizberg_header_social_icon_right">';
+			echo bizberg_get_header_social_icons( 'last_item_social_links' );
+			echo '</div>';
+
+			break;
+		
+		default:
+			# code...
+			break;
+	}
+
+}
+
+function bizberg_get_first_item_header_logo_center(){
+
+	$first_item_header = bizberg_get_theme_mod( 'first_item_header_logo_center' );
+	$first_item_html = bizberg_get_theme_mod('first_item_html_logo_center');
+
+	switch ( $first_item_header ) {
+
+		case 'text':
+			echo wp_kses_post( $first_item_html );
+			break;
+
+		case 'widget':
+			if( is_active_sidebar( 'bizberg_header_left' ) ){
+				echo '<div class="header_widget_section">';
+				dynamic_sidebar( 'bizberg_header_left' );
+				echo '</div>';
+			} else {
+				if( current_user_can( 'administrator' ) ){
+					echo '<a href="' . esc_url( admin_url( '/customize.php?autofocus[panel]=widgets' ) ) . '">' . esc_html__( 'ADD WIDGET', 'bizberg' ) . '</a>';
+				}
+			}		
+			break;
+
+		case 'social_icons':
+
+			echo '<div class="bizberg_header_social_icon_left">';
+			echo bizberg_get_header_social_icons( 'first_item_social_links' );
+			echo '</div>';
+
+			break;
+		
+		default:
+			# code...
+			break;
+	}
+
+}
+
+function bizberg_get_header_social_icons( $name ){
+
+	ob_start();
+
+	$first_item_social_links = bizberg_get_theme_mod( $name );
+
+	if( !empty( $first_item_social_links ) && is_array( $first_item_social_links ) ){
+
+		foreach ( $first_item_social_links as $key => $value ) {
+
+		 	$icon = !empty( $value['icon'] ) ? sanitize_text_field( $value['icon'] ) : '';
+		 	$link_url = !empty( $value['link_url'] ) ? sanitize_text_field( $value['link_url'] ) : '#';
+		 	$color = !empty( $value['color'] ) ? sanitize_text_field( $value['color'] ) : '#000'; ?>
+
+			<a 
+			href="<?php echo esc_url( $link_url ); ?>" 
+			class="bizberg_header_icon"
+			style="color: <?php echo esc_attr( $color ); ?>">
+				<i class="<?php echo esc_attr( $icon ); ?>"></i>
+			</a>
+
+			<?php
+
+		}
+
+	}
+
+	return ob_get_clean();
 
 }

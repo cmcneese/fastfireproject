@@ -4,7 +4,7 @@
  *
  * Plugin Name:  SimpleForm Contact Form Submissions
  * Description:  You are afraid of losing important messages? This data storage plugin for SimpleForm save contact form submissions into WordPress database and allows you to easily manage the submitted messages from dashboard.
- * Version:      1.1.4
+ * Version:      1.2.1
  * Author:       WPSForm Team
  * Author URI:   https://wpsform.com
  * License:      GPL-2.0+
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) { die; }
  */
  
 define( 'SIMPLEFORM_SUBMISSIONS_NAME', 'SimpleForm Contact Form Submissions' ); 
-define( 'SIMPLEFORM_SUBMISSIONS_VERSION', '1.1.4' ); 
+define( 'SIMPLEFORM_SUBMISSIONS_VERSION', '1.2.1' ); 
 define( 'SIMPLEFORM_SUBMISSIONS_DB_VERSION', '1.1.4' ); 
 
 /**

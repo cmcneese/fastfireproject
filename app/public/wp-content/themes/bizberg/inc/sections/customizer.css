@@ -455,3 +455,60 @@ a.pro_feature_btn {
     text-align: center;
     width: 100%;
 }
+.bizberg_customizer_custom_heading {
+    padding: 8px 14px;
+    background-color: #007cba;
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 10px;
+    border-top: 1px solid #dedede;
+    border-bottom: 1px solid #dedede;
+    text-align: center;
+}
+
+/**
+* Start change design of section/panel to be same as core
+*/
+
+#accordion-section-base-typography h3.accordion-section-title,
+#accordion-section-headings h3.accordion-section-title{
+    color: #555d66 !important;
+    background-color: #fff !important;
+    border-bottom: 1px solid #ddd !important;
+    border-left: 4px solid #fff !important;
+    transition: .15s color ease-in-out, .15s background-color ease-in-out, .15s border-color ease-in-out !important;
+}
+#accordion-section-base-typography h3.accordion-section-title:hover,
+#accordion-section-base-typography h3.accordion-section-title:focus,
+#accordion-section-headings h3.accordion-section-title:hover,
+#accordion-section-headings h3.accordion-section-title:focus{
+    color: #0073aa !important;
+    background: #f3f3f5 !important;
+    border-left-color: #0073aa !important;
+}
+#accordion-section-base-typography h3.accordion-section-title::after,
+#accordion-section-headings h3.accordion-section-title:after{
+    color: #a0a5aa !important;
+}
+#accordion-section-base-typography h3.accordion-section-title:hover:after,
+#accordion-section-base-typography h3.accordion-section-title:focus:after,
+#accordion-section-headings h3.accordion-section-title:hover:after,
+#accordion-section-headings h3.accordion-section-title:focus:after{
+    color: #0073aa !important;
+}
+
+/**
+* End change design of section/panel to be same as core
+*/
+
+.bizberg_customizer_custom_heading_notice {
+    padding: 20px;
+    background: #fff;
+    border-left: 5px solid #FFC107;
+}
+
+#customize-control-primary_header_layout label {
+    width: 30%;
+    margin-right: 8px;
+}

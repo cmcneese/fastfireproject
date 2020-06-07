@@ -6,7 +6,7 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,11 +18,11 @@ SimpleForm is a very simple to manage plugin for creating a basic contact form f
 
 = Easy to use =
 
-This plugin is very easy to set up thanks to a graceful and intuitive admin interface. You can quickly create a contact form by using the shortcode and copying it where you want it to appear.
+This plugin is very easy to set up thanks to a graceful and intuitive admin interface. You can quickly create a contact form by using our pre-built page or copying a shortcode where you want it to appear.
 
 = Fully customizable =
 
-It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, set a minimum or maximum length for text fields, use placeholders and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form.
+It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, choose the labels placement and how required fields are marked, set a minimum or maximum length for text fields, use placeholders and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form, you can add your own customized JavaScript code or CSS stylesheet.
 
 = Ready to use =
 
@@ -72,7 +72,7 @@ Activating the SimpleForm plugin is just like any other plugin.
 
 = And once activated ? =
 
-You will find the new menu ‘Contacts’ to administration dashboard. Take the time to configure SimpleForm and open the 'Settings' page listed below the new menu just added, make the changes desired, then click the 'Save changes' button at the bottom. Now, you're able to add contact form to your website, just copy/paste or type `[simpleform]` into the page content and save. The form should appear on that page!
+You will find the new menu ‘Contacts’ to administration dashboard. Take the time to configure SimpleForm and open the 'Settings' page listed below the new menu just added, make the changes desired, then click the 'Save changes' button at the bottom. Now, you're able to add contact form to your website.
 
 == Frequently Asked Questions ==
 
@@ -82,7 +82,7 @@ Anyone who needs only what is strictly necessary. SimpleForm is designed for who
 
 = Which form fields can be used? =
 
-The standard fields that come with SimpleForm are a firstname field, a lastname field, an email address field, a phone number field, a subject field, a message field and a consent checkbox field.
+The standard fields that come with SimpleForm are a name field, a lastname field, an email address field, a phone number field, a subject field, a message field and a consent checkbox field.
 
 = Does SimpleForm include spam protection? =
 
@@ -104,6 +104,10 @@ SimpleForm doesn’t store submitted messages into the WordPress database by def
 
 Yes, SimpleForm is ready to be translated in other languages. If you’re a polyglot, help out by translating it into your own language!
 
+= Can I change text direction? =
+
+Yes, you can change text direction from left to right to right to left.
+
 = Where can I get support? =
 
 We provide free support on the WordPress.org plugin repository. Please log into your account. Click on 'Support' and in the 'Search this forum' field type a keyword about the issue you're experiencing. Read topics that are similar to your issue to see if the topic has been resolved previously. If your issue remains after reading past topics, please create a new topic and fill out the form. Before use the support channel, please have a look at our [FAQ section](https://wpsform.com/faq/) as it may help you to find the answer immediately.
@@ -123,7 +127,26 @@ We provide free support on the WordPress.org plugin repository. Please log into 
 11. Form failed validation
 
 == Changelog ==
- 
+
+= 1.7 (1 June 2020) =
+* Fixed: No text will be displayed above the form if nothing is entered in the form description option
+* Fixed: Incorrect displaying of error messages when field minimum length option is used
+* Fixed: Undefined index errors
+* Fixed: Typo errors
+* Changed: Minor issues in code
+* Added: Option for labels position
+* Added: Option for using a word to mark required fields
+* Added: Option for right-to-left text direction
+* Added: Option for disable html5 form validation
+* Added: Option for using a customized JavaScript code
+
+= 1.6.1 (10 May 2020) =
+* Fixed: Installation error during new site creation on WordPress Multisite Network
+* Fixed: Dynamic SQL Query statements
+* Fixed: Minor issues in code and localization
+* Added: Pre-built pages for contact form and thank you message
+* Added: Pages in draft status will be shown in selecting the confirmation message page
+
 = 1.6 (14 April 2020) =
 * Fixed: Screen options button opening error
 * Fixed: Minor issues in code

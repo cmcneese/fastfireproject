@@ -75,11 +75,15 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 	   $admin_page_url =  admin_url( 'admin.php' );
 	   $search_orderby = (isset($_REQUEST['orderby']) && in_array($_REQUEST['orderby'], array_keys($this->get_sortable_columns()))) ? $_REQUEST['orderby'] : ''; 
 	   $search_order = (isset($_REQUEST['order']) && in_array($_REQUEST['order'], array('asc', 'desc'))) ? $_REQUEST['order'] : '';
+       $search_date = isset ( $_REQUEST['date'] ) ? sanitize_text_field($_REQUEST['date']) : '';
+       $search_key = isset( $_REQUEST['s'] ) ? sanitize_text_field($_REQUEST['s']) : '';
 	   $query_args_deleted = array(
 			'page'		=> wp_unslash( $_REQUEST['page'] ),
             'paged' => $pagenum,
             'order' => $search_order,
             'orderby' => $search_orderby,
+            'date'  => $search_date, 
+            's' => $search_key,
 			'action'	=> 'delete',
 			'id'		=> esc_attr($item['id']),
 			'_wpnonce'	=> wp_create_nonce( 'delete_nonce' ),
@@ -341,6 +345,116 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
 	}
 
 	/**
+	 * Add a date filter.
+	 *
+	 * @since 1.2
+	 */
+	 
+    function extra_tablenav( $which ) {
+    
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'sform_submissions'; 
+
+        if ( $which == "top" ){
+	    	    
+			$keyword = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field($_REQUEST['s']) : '';
+			$search = '%'.$wpdb->esc_like($keyword).'%';						
+		    $value1 = ''; 
+		    $value2 = 'not stored'; 
+            $sform_settings = get_option('sform-settings');	
+            $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';
+
+            if( $keyword != ''){	 
+             if ( $ip_storing == 'true'  ) {
+	         $sql_oldest_date = $wpdb->prepare("SELECT date FROM {$table_name} WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY date LIMIT 1", $value1, $value2, $search, $search, $search, $search, $search, $search, $search );
+	         $sql_last_date = $wpdb->prepare("SELECT date FROM {$table_name} WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY date DESC LIMIT 1", $value1, $value2, $search, $search, $search, $search, $search, $search, $search );
+            }
+             else {	
+	         $sql_oldest_date = $wpdb->prepare("SELECT date FROM {$table_name} WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY date LIMIT 1", $value1, $value2, $search, $search, $search, $search, $search, $search );
+	         $sql_last_date = $wpdb->prepare("SELECT date FROM {$table_name} WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY date DESC LIMIT 1", $value1, $value2, $search, $search, $search, $search, $search, $search );
+             }
+            }
+            else {	 
+	         $sql_oldest_date = "SELECT date FROM {$table_name} ORDER BY date LIMIT 1";
+ 	         $sql_last_date = "SELECT date FROM {$table_name} ORDER BY date DESC LIMIT 1";
+            }
+        
+            $date_oldest = $wpdb->get_var($sql_oldest_date);
+            $last_date = $wpdb->get_var($sql_last_date);
+            $current_year = date('Y', strtotime('now'));
+            $oldest_year = date('Y', strtotime($date_oldest));
+            $years_time_range = $current_year - $oldest_year;
+                
+    	    if ( strtotime($date_oldest) <= strtotime('-1 days') ) {
+
+            echo '<select name="date" class="" id="date" style="max-width: none !important;">
+            <option value="">' . __('All Dates', 'simpleform-submissions') .'</option>';
+		    
+    	      if ( strtotime($last_date) >= strtotime('-1 days') ) {
+		       $selected = '';
+               if( isset($_REQUEST['date']) && $_REQUEST['date'] == 'last_day' && strtotime('-1 days') <= strtotime($last_date) ){
+               $selected = ' selected = "selected"';   
+               }
+               echo '<option value="last_day" '.$selected.'>' . __('Last Day', 'simpleform-submissions') .'</option>';
+               }
+
+    	       if ( strtotime($last_date) >= strtotime('-7 days') ) {
+		       $selected = '';
+               if( isset($_REQUEST['date']) && $_REQUEST['date'] == 'last_week' && strtotime('-7 days') <= strtotime($last_date) ){
+               $selected = ' selected = "selected"';   
+               }
+               echo '<option value="last_week" '.$selected.'>' . __('Last Week', 'simpleform-submissions') .'</option>';
+               }
+
+    	       if ( strtotime($last_date) >= strtotime('-30 days') ) {
+		       $selected = '';
+               if( isset($_REQUEST['date']) && $_REQUEST['date'] == 'last_month'  && strtotime('-30 days') <= strtotime($last_date) ){
+               $selected = ' selected = "selected"';   
+               }
+               echo '<option value="last_month" '.$selected.'>' . __('Last Month', 'simpleform-submissions') .'</option>';
+               }
+
+    	       if ( strtotime($last_date) >= strtotime('first day of january this year') ) {
+		       $selected = '';
+               if( isset($_REQUEST['date']) && $_REQUEST['date'] == 'current_year'  && strtotime('first day of january this year') <= strtotime($last_date) ){
+               $selected = ' selected = "selected"';   
+               }
+               echo '<option value="current_year" '.$selected.'>' . __('Current Year', 'simpleform-submissions') .'</option>';
+               }
+
+    	       if ( strtotime($last_date) >= strtotime('-1 year') ) {
+		       $selected = '';
+               if( isset($_REQUEST['date']) && $_REQUEST['date'] == 'last_year'  && strtotime('-1 year') <= strtotime($last_date) ){
+               $selected = ' selected = "selected"';   
+               }
+               echo '<option value="last_year" '.$selected.'>' . __('Last Year', 'simpleform-submissions') .'</option>';
+               }
+	        
+               for ($i=1; $i<=$years_time_range; $i++) {
+               $option_year = $current_year - $i;
+               $request_year = $wpdb->get_results("SELECT * FROM $table_name WHERE YEAR(date)='$option_year' ", ARRAY_A);            
+	           if ( $request_year ) { 
+		           $selected = '';
+	               if( isset($_REQUEST['date']) && $_REQUEST['date'] == $option_year ) {
+                   $selected = ' selected = "selected"';                    	
+                   }
+                   echo '<option value="'.$option_year.'" '.$selected.'>' . $option_year .'</option>';
+	           }
+  
+            } // END LOOP
+
+	        ?>    
+            </select>
+            
+        <?php
+        } 
+
+        echo '<input id="my-post-query-submit" class="button" type="submit" value="'. __("Filter", "simpleform-submissions") .'" name="" style="margin-right: 10px;">';
+   
+        }    
+    } 
+    
+	/**
 	 * Overwrite the table navigation removing the wp_nonce_field execution.
 	 *
 	 * @since    1.0
@@ -394,19 +508,33 @@ class SForms_Submissions_List_Table extends WP_List_Table  {
             $ip_storing = ! empty( $sform_settings['ip-storing'] ) ? esc_attr($sform_settings['ip-storing']) : 'true';
 		    $orderby = (isset($_REQUEST['orderby']) && in_array($_REQUEST['orderby'], array_keys($this->get_sortable_columns()))) ? $_REQUEST['orderby'] : 'id'; 
 		    $order = (isset($_REQUEST['order']) && in_array($_REQUEST['order'], array('asc', 'desc'))) ? $_REQUEST['order'] : 'desc';
+            $date_filter = ( isset( $_REQUEST['date'] ) ? sanitize_text_field($_REQUEST['date']) : '');
+     
+            if( $date_filter != ''){	 
+	          if ( $date_filter == 'last_day' ) { $filter_by_date = " AND ( date >= UTC_TIMESTAMP() - INTERVAL 24 HOUR )"; }
+	          if ( $date_filter == 'last_week' ) { $filter_by_date = " AND ( date >= UTC_TIMESTAMP() - INTERVAL 7 DAY )";  }
+	          if ( $date_filter == 'last_month' ) { $filter_by_date = " AND ( date >= UTC_TIMESTAMP() - INTERVAL 30 DAY )"; }
+	          if ( $date_filter == 'current_year' ) { $filter_by_date = " AND ( YEAR(date) = YEAR(CURDATE()) )"; }
+	          if ( $date_filter == 'last_year' ) { $filter_by_date = " AND ( date >= UTC_TIMESTAMP() - INTERVAL 1 YEAR )"; }
+	          if ( $date_filter != 'last_day' && $date_filter != 'last_week' && $date_filter != 'last_month' && $date_filter != 'current_year' && $date_filter != 'last_year' ) { $filter_by_date = " AND ( YEAR(date) = '$date_filter' )"; }
+		     
+	        }
+            else { $filter_by_date = ""; }
+		    
+		    
             if( $keyword != ''){	 
              if ( $ip_storing == 'true'  ) {
-	         $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $search, $search, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s)", $value1, $value2, $search, $search, $search, $search, $search, $search, $search );
+	         $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s) $filter_by_date ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $search, $search, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR ip LIKE %s OR email LIKE %s OR phone LIKE %s) $filter_by_date", $value1, $value2, $search, $search, $search, $search, $search, $search, $search );
             }
              else {	
-			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s) ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $search, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s)", $value1, $value2, $search, $search, $search, $search, $search, $search );
+			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s) $filter_by_date ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $search, $search, $search, $search, $search, $search, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE ( object != %s AND object != %s ) AND (name LIKE %s OR lastname LIKE %s OR subject LIKE %s OR object LIKE %s OR email LIKE %s OR phone LIKE %s) $filter_by_date", $value1, $value2, $search, $search, $search, $search, $search, $search );
              }
             }
             else {	
-			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE object != %s AND object != %s ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $per_page, $paged );
-	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE object != %s AND object != %s", $value1, $value2 );
+			 $sql1 = $wpdb->prepare("SELECT * FROM $table_name WHERE object != %s AND object != %s $filter_by_date ORDER BY $orderby $order LIMIT %d OFFSET %d", $value1, $value2, $per_page, $paged );
+	         $sql2 = $wpdb->prepare("SELECT COUNT(id) FROM $table_name WHERE object != %s AND object != %s $filter_by_date", $value1, $value2 );
             }
             $items = $wpdb->get_results( $sql1, ARRAY_A );
 			$columns = $this->get_columns();

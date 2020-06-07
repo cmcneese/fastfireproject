@@ -21,7 +21,7 @@ get_header(); ?>
 						endif;
 
 						/* Start the Loop */
-						echo '<div class="row">';
+						echo '<div class="row" id="content">';
 						while ( have_posts() ) : the_post();
 
 							if( bizberg_sidebar_position() != 'blog-nosidebar-1' ){
@@ -53,7 +53,7 @@ get_header(); ?>
 
 					if( is_active_sidebar( 'sidebar-2' ) ){ ?>
 
-						<div class="col-sm-3">
+						<div class="col-md-3 col-sm-12">
 							<?php get_sidebar(); ?>
 				    	</div>
 						<?php

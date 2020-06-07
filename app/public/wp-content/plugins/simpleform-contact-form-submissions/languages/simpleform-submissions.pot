@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: SimpleForm Contact Form Submissions\n"
-"POT-Creation-Date: 2020-03-27 11:55+0100\n"
+"POT-Creation-Date: 2020-05-02 00:18+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: SimpleForm Translations Team <translations@wpsform.com>\n"
@@ -78,15 +78,15 @@ msgstr ""
 msgid "This Year"
 msgstr ""
 
-#: admin/class-admin.php:196
+#: admin/class-admin.php:196 includes/class-list-table.php:426
 msgid "Last Month"
 msgstr ""
 
-#: admin/class-admin.php:196
+#: admin/class-admin.php:196 includes/class-list-table.php:418
 msgid "Last Week"
 msgstr ""
 
-#: admin/class-admin.php:196
+#: admin/class-admin.php:196 includes/class-list-table.php:410
 msgid "Last Day"
 msgstr ""
 
@@ -124,31 +124,39 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+#: admin/class-admin.php:280
+msgid "Registered user"
+msgstr ""
+
+#: admin/class-admin.php:286 admin/class-admin.php:288
+msgid "Anonymous user"
+msgstr ""
+
 #: admin/class-admin.php:298 includes/class-list-table.php:38
 msgid "Email"
 msgstr ""
 
-#: admin/class-admin.php:311
+#: admin/class-admin.php:310
 msgid "Phone"
 msgstr ""
 
-#: admin/class-admin.php:317 includes/class-list-table.php:39
+#: admin/class-admin.php:316 includes/class-list-table.php:39
 msgid "Date"
 msgstr ""
 
-#: admin/class-admin.php:328 includes/class-list-table.php:136
+#: admin/class-admin.php:327 includes/class-list-table.php:152
 msgid "at"
 msgstr ""
 
-#: admin/class-admin.php:340
+#: admin/class-admin.php:336
 msgid "IP"
 msgstr ""
 
-#: admin/class-admin.php:348 includes/class-list-table.php:36
+#: admin/class-admin.php:344 includes/class-list-table.php:36
 msgid "Subject"
 msgstr ""
 
-#: admin/class-admin.php:354 includes/class-list-table.php:37
+#: admin/class-admin.php:350 includes/class-list-table.php:37
 msgid "Message"
 msgstr ""
 
@@ -188,64 +196,80 @@ msgstr ""
 msgid "No submissions found"
 msgstr ""
 
-#: includes/class-list-table.php:89
+#: includes/class-list-table.php:105
 msgid "View"
 msgstr ""
 
-#: includes/class-list-table.php:90 includes/class-list-table.php:157
+#: includes/class-list-table.php:106 includes/class-list-table.php:173
 msgid "Delete"
 msgstr ""
 
-#: includes/class-list-table.php:92
+#: includes/class-list-table.php:108
 msgid "No Subject"
 msgstr ""
 
-#: includes/class-list-table.php:114
+#: includes/class-list-table.php:130
 msgid "No Email"
 msgstr ""
 
-#: includes/class-list-table.php:205
+#: includes/class-list-table.php:221
 msgid "Invalid Nonce"
 msgstr ""
 
-#: includes/class-list-table.php:205
+#: includes/class-list-table.php:221
 msgid "Error"
 msgstr ""
 
-#: includes/class-list-table.php:231
+#: includes/class-list-table.php:247
 #, php-format
 msgid "%s submission"
 msgid_plural "%s submissions"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-list-table.php:271
+#: includes/class-list-table.php:287
 msgid "First page"
 msgstr ""
 
-#: includes/class-list-table.php:282
+#: includes/class-list-table.php:298
 msgid "Previous page"
 msgstr ""
 
-#: includes/class-list-table.php:289 includes/class-list-table.php:293
+#: includes/class-list-table.php:305 includes/class-list-table.php:309
 msgid "Current Page"
 msgstr ""
 
-#: includes/class-list-table.php:300
+#: includes/class-list-table.php:316
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
 
-#: includes/class-list-table.php:311
+#: includes/class-list-table.php:327
 msgid "Next page"
 msgstr ""
 
-#: includes/class-list-table.php:322
+#: includes/class-list-table.php:338
 msgid "Last page"
 msgstr ""
 
-#: includes/class-list-table.php:365
+#: includes/class-list-table.php:403
+msgid "All Dates"
+msgstr ""
+
+#: includes/class-list-table.php:434
+msgid "Current Year"
+msgstr ""
+
+#: includes/class-list-table.php:442
+msgid "Last Year"
+msgstr ""
+
+#: includes/class-list-table.php:464
+msgid "Filter"
+msgstr ""
+
+#: includes/class-list-table.php:491
 msgid "Enter keyword to search"
 msgstr ""
 

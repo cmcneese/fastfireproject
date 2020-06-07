@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SimpleForm Contact Form Submissions\n"
-"POT-Creation-Date: 2020-03-27 11:56+0100\n"
-"PO-Revision-Date: 2020-03-27 11:56+0100\n"
+"POT-Creation-Date: 2020-05-02 00:18+0200\n"
+"PO-Revision-Date: 2020-05-02 00:19+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -86,15 +86,15 @@ msgstr "Ricevute"
 msgid "This Year"
 msgstr "Anno in corso"
 
-#: admin/class-admin.php:196
+#: admin/class-admin.php:196 includes/class-list-table.php:426
 msgid "Last Month"
 msgstr "Ultimo mese"
 
-#: admin/class-admin.php:196
+#: admin/class-admin.php:196 includes/class-list-table.php:418
 msgid "Last Week"
 msgstr "Ultima settimana"
 
-#: admin/class-admin.php:196
+#: admin/class-admin.php:196 includes/class-list-table.php:410
 msgid "Last Day"
 msgstr "Ultimo giorno"
 
@@ -140,31 +140,39 @@ msgstr "Numero di richieste per pagina"
 msgid "From"
 msgstr "Da"
 
+#: admin/class-admin.php:280
+msgid "Registered user"
+msgstr "Utente Registrato"
+
+#: admin/class-admin.php:286 admin/class-admin.php:288
+msgid "Anonymous user"
+msgstr "Utente Anonimo"
+
 #: admin/class-admin.php:298 includes/class-list-table.php:38
 msgid "Email"
 msgstr "Email"
 
-#: admin/class-admin.php:311
+#: admin/class-admin.php:310
 msgid "Phone"
 msgstr "Telefono"
 
-#: admin/class-admin.php:317 includes/class-list-table.php:39
+#: admin/class-admin.php:316 includes/class-list-table.php:39
 msgid "Date"
 msgstr "Data"
 
-#: admin/class-admin.php:328 includes/class-list-table.php:136
+#: admin/class-admin.php:327 includes/class-list-table.php:152
 msgid "at"
 msgstr "alle"
 
-#: admin/class-admin.php:340
+#: admin/class-admin.php:336
 msgid "IP"
 msgstr "IP"
 
-#: admin/class-admin.php:348 includes/class-list-table.php:36
+#: admin/class-admin.php:344 includes/class-list-table.php:36
 msgid "Subject"
 msgstr "Oggetto"
 
-#: admin/class-admin.php:354 includes/class-list-table.php:37
+#: admin/class-admin.php:350 includes/class-list-table.php:37
 msgid "Message"
 msgstr "Messaggio"
 
@@ -210,64 +218,80 @@ msgstr ""
 msgid "No submissions found"
 msgstr "Nessun messaggio trovato"
 
-#: includes/class-list-table.php:89
+#: includes/class-list-table.php:105
 msgid "View"
 msgstr "Visualizza"
 
-#: includes/class-list-table.php:90 includes/class-list-table.php:157
+#: includes/class-list-table.php:106 includes/class-list-table.php:173
 msgid "Delete"
 msgstr "Elimina"
 
-#: includes/class-list-table.php:92
+#: includes/class-list-table.php:108
 msgid "No Subject"
 msgstr "Nessun Oggetto"
 
-#: includes/class-list-table.php:114
+#: includes/class-list-table.php:130
 msgid "No Email"
 msgstr "Nessuna Email"
 
-#: includes/class-list-table.php:205
+#: includes/class-list-table.php:221
 msgid "Invalid Nonce"
 msgstr "Nonce non valido"
 
-#: includes/class-list-table.php:205
+#: includes/class-list-table.php:221
 msgid "Error"
 msgstr "Errore"
 
-#: includes/class-list-table.php:231
+#: includes/class-list-table.php:247
 #, php-format
 msgid "%s submission"
 msgid_plural "%s submissions"
 msgstr[0] "%s richiesta"
 msgstr[1] "%s richieste"
 
-#: includes/class-list-table.php:271
+#: includes/class-list-table.php:287
 msgid "First page"
 msgstr "Prima pagina"
 
-#: includes/class-list-table.php:282
+#: includes/class-list-table.php:298
 msgid "Previous page"
 msgstr "Pagina precedente"
 
-#: includes/class-list-table.php:289 includes/class-list-table.php:293
+#: includes/class-list-table.php:305 includes/class-list-table.php:309
 msgid "Current Page"
 msgstr "Pagina corrente"
 
-#: includes/class-list-table.php:300
+#: includes/class-list-table.php:316
 #, php-format
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr "%1$s di %2$s"
 
-#: includes/class-list-table.php:311
+#: includes/class-list-table.php:327
 msgid "Next page"
 msgstr "Pagina successiva"
 
-#: includes/class-list-table.php:322
+#: includes/class-list-table.php:338
 msgid "Last page"
 msgstr "Ultima pagina"
 
-#: includes/class-list-table.php:365
+#: includes/class-list-table.php:403
+msgid "All Dates"
+msgstr "Tutte le date"
+
+#: includes/class-list-table.php:434
+msgid "Current Year"
+msgstr "Anno in corso"
+
+#: includes/class-list-table.php:442
+msgid "Last Year"
+msgstr "Ultimo anno"
+
+#: includes/class-list-table.php:464
+msgid "Filter"
+msgstr "Filtra"
+
+#: includes/class-list-table.php:491
 msgid "Enter keyword to search"
 msgstr "Inserisci la parola chiave"
 
