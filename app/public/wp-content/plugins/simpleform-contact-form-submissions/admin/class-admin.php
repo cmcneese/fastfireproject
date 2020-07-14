@@ -74,9 +74,9 @@ class SimpleForm_Submissions_Admin {
     
     public function enqueue_styles($hook) {
 
-     global $sforms_submissions_page;
+     global $sform_submissions_page;
 	 global $sform_entrie_page;
-	 if( $hook != $sforms_submissions_page && $hook != $sform_entrie_page )
+	 if( $hook != $sform_submissions_page && $hook != $sform_entrie_page )
 	 return;
 	 
 	 wp_enqueue_style('sform_submissions_style', plugins_url('/css/admin.css',__FILE__));
@@ -91,8 +91,8 @@ class SimpleForm_Submissions_Admin {
 	
 	public function enqueue_scripts($hook){
 	    		
-     global $sforms_submissions_page;
-	 if( $hook == $sforms_submissions_page )
+     global $sform_settings_page;
+	 if( $hook != $sform_settings_page )
 	 return;
 
      wp_enqueue_script( 'sform_submissions', plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
@@ -173,7 +173,10 @@ class SimpleForm_Submissions_Admin {
       $table->views(); 
      ?>
      <form id="submissions-table" method="get"><input type="hidden" name="page" value="<?php echo sanitize_key($_REQUEST['page']) ?>"/>
-     <?php $table->search_box( __( 'Search' ), 'simpleform-submissions');
+     <?php $table->search_box( __( 'Search' ), 'simpleform-submissions');	 
+	 $transient_notice = stripslashes(get_transient('sform_action_notice'));
+     $notice = $transient_notice != '' ? $transient_notice : '';
+     echo $notice; 
      $table->display(); ?></form><?php
      }
 
@@ -227,7 +230,7 @@ class SimpleForm_Submissions_Admin {
 	 */
 
     public function sforms_submissions_list_options() {
-
+	    
      $sform_settings = get_option('sform-settings');
      $data_storing = ! empty( $sform_settings['data-storing'] ) ? esc_attr($sform_settings['data-storing']) : 'true';
   
@@ -237,9 +240,11 @@ class SimpleForm_Submissions_Admin {
       $screen = get_current_screen();
       if(!is_object($screen) || $screen->id != $sform_submissions_page)
       return;
-      $args = array( 'label' => esc_attr__('Number of submissions per page', 'simpleform-submissions'),'default' => 10,'option' => 'submissions_per_page');
-      add_screen_option( 'per_page', $args );
+      $option = 'per_page';
+      $args = array( 'label' => esc_attr__('Number of submissions per page', 'simpleform-submissions'),'default' => 20,'option' => 'edit_submission_per_page');
+      add_screen_option( $option, $args );
       $table = new SForms_Submissions_List_Table(); 
+      
      }
   
     }
@@ -250,11 +255,24 @@ class SimpleForm_Submissions_Admin {
 	 * @since    1.0
 	 */
 
-    public function sforms_set_option($status, $option, $value) {
+    public function submissions_screen_option($status, $option, $value) {
       
-      if ( 'submissions_per_page' == $option ) return $value;
-      return $status;
+     if ( 'edit_submission_per_page' == $option ) return $value;
+     return $status;
     
+    }
+    
+	/**
+	 * Register a post type for change the pagination in Screen Options tab.
+	 *
+	 * @since    1.3
+	 */
+
+    public function submission_post_type() {
+	
+	    $args = array();
+	    register_post_type( 'submission', $args );
+	    
     }
 	
 	/**
@@ -385,13 +403,32 @@ class SimpleForm_Submissions_Admin {
     public function simpleform_db_version_check() { 
 	    
           global $wpdb;
-          $prefix = $wpdb->prefix;
-          $submissions_table = $prefix . 'sform_submissions';
-          $result = $wpdb->query("SHOW COLUMNS from {$submissions_table} LIKE 'lastname'");
+          $result = $wpdb->query("SHOW COLUMNS from {$wpdb->prefix}sform_submissions LIKE 'trash_date'");
           if( !$result){
-          $wpdb->query("ALTER TABLE " . $submissions_table . " CHANGE date date datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, ADD COLUMN lastname tinytext NOT NULL AFTER name, ADD COLUMN phone VARCHAR(50) NOT NULL AFTER email");          
+          $wpdb->query("ALTER TABLE {$wpdb->prefix}sform_submissions ADD COLUMN trash_date datetime NOT NULL");                    
           }            
          
     }
-           
+    
+ 	/**
+	 * Add conditional items into the Bulk Actions dropdown for submissions list.
+	 *
+	 * @since    1.3
+	 */
+
+    public function register_sform_actions($bulk_actions) { 
+	    
+        global $wpdb;
+	    $view = isset( $_REQUEST['view'] ) && sanitize_text_field($_REQUEST['view']) == 'trash' ? 'trash' : '';
+	    if ( ! empty($view) && $view == 'trash' ) { 
+          $bulk_actions['bulk-untrash'] = __('Restore', 'simpleform-submissions');
+          $bulk_actions['bulk-delete'] = __('Delete', 'simpleform-submissions');
+        } 
+        else { 
+          $bulk_actions['bulk-trash'] = __('Move to Trash', 'simpleform-submissions');
+        } 
+        return $bulk_actions;
+         
+    }
+
 }

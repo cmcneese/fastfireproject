@@ -20,14 +20,14 @@ input.sform { width: 100%; }
 input.sform[type=text], input.sform[type=number], select.sform { height: 42px !important; padding: 10px 15px; -moz-border-radius: 4px;
 -webkit-border-radius: 4px; border-radius: 4px; background-color: #FFF !important; border: 2px solid #ddd !important; font-size: 14px !important;
 line-height: 24px !important; color: #444; box-shadow: none !important; }
-select.sform { -webkit-appearance: none; -moz-appearance: none; appearance: none; max-width: 275px; padding: 2px 20px 2px 8px !important; padding-right: 30px !important; }
+select.sform { -webkit-appearance: none; -moz-appearance: none; appearance: none; max-width: 280px; padding: 2px 20px 2px 8px !important; padding-right: 30px !important; }
 textarea { height: 230px !important; width: 100%; padding: 10px 15px; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; background-color: #FFF !important; border: 2px solid #ddd !important; font-size: 14px !important; line-height: 24px !important; color: #444; box-shadow: none !important; }
 textarea.description { height: 148px !important; }
 .unseen { display: none !important; }
 .visible { display:table-row; }
 th.heading { padding: 12px 41px; color: #FFF; background: #72777C; }
 th.first.option { padding: 66px 41px 30px; width: 250px; }
-th.option { padding: 36px 41px 30px; width: 250px; }
+th.option { padding: 36px 41px 30px; width: 275px; }
 th.last.option { padding: 36px 41px 60px; width: 250px; }
 th.wide.option { padding: 66px 41px 60px; width: 250px; }
 td.shortcode.text { padding: 57px 50px 29px 9px; }
@@ -38,10 +38,10 @@ input#field1:disabled {max-width: 135px; ;border: none; box-shadow: none; font-w
 td.used_page { padding: 36px 50px 43px 9px;  }
 td.text, td.select.sform  { padding: 23px 50px 23px 9px; }
 td.first.select { padding-top: 51px !important; }
-td.first.text, td.first.select.sform { padding: 53px 50px 23px 9px; }
+td.first.text, td.first.select.sform { padding: 54px 50px 24px 9px; }
 td.first.select.notes { padding: 54px 50px 1px 9px; }
 td.wide.text { padding: 53px 50px 53px 9px; }
-td.last.text, td.last.select.sform  { padding: 23px 50px 53px 9px; }
+td.last.text /*, td.last.select.sform */ { padding: 24px 50px 54px 9px; }
 td.text.notes { padding: 23px 50px 2px 9px; }
 td.last.text.notes { padding: 23px 50px 30px 9px; } 
 td.checkbox { padding: 35px 10px 36px; }
@@ -62,7 +62,8 @@ td.first.textarea { padding: 51px 50px 14px 9px; }
 th.last.textarea.option { padding: 26px 41px 60px; width: 250px; }
 td.last.textarea { padding: 11px 50px 24px 9px; }
 td.select.notes { padding: 23px 50px 0 9px; }
-td.last.select.notes { padding: 24px 50px 31px 9px; }
+td.last.select { padding: 24px 50px 54px 9px; }
+td.last.select.notes { padding: 30px 50px 37px 9px; }
 #trmessage > th { padding: 30px 41px; width: 250px; } 
 #trmessage > td { padding: 14px 48px 4px 10px; }
 th > span { cursor: default; }
@@ -85,3 +86,5 @@ tr.smpt-warnings > td  { padding: 30px 41px; vertical-align: none; }
 #last-submission h3, #submissions-notice h3, #empty-submission h3 { line-height: 30px; }
 #last-submission span.dashicons, #submissions-notice span.dashicons, #empty-submission span.dashicons { font-size: 30px; width: 30px; height: 30px; padding-right: 10px; }
 #submissions-notice > a { text-decoration: none; font-weight: 600; }
+#alert-wrap { position: relative; }
+#noscript { position: absolute; left: 0; right: 0; color: #FFF; border-radius: 8px; background: #dc3545; margin: 0 75px 25px; line-height: 30px; height: 30px; padding: 9px; }

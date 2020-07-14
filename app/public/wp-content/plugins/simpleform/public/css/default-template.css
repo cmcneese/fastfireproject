@@ -1,5 +1,5 @@
 /* General class selectors */
-.d-block { display: block!important; }
+.d-block { display: inline-block!important; }
 .d-none { display: none!important; }
 .visible { visibility: visible!important; }
 
@@ -15,7 +15,7 @@
 .field-group label { font-size: 16px; font-weight: 400; display: inline-block; margin-bottom:  5px; }
 label span { color: #dc3545; font-weight: 500; padding-left: 3px; }
 label span.word { color: inherit; font-weight: 300; font-size: 0.8em; font-style: italic; }
-.form-control { border: 1px solid #ccc; font-size: 16px; font-weight: 400 !important; padding: 10px 16px !important; width: 100%; margin-bottom: 0 !important; }
+.form-control { border: 1px solid #ccc; font-size: 16px; font-weight: 400 !important; padding: 10px 16px !important; width: 100%; margin-bottom: 0 !important; border-radius: 5px; }
 .form-control:not(#sform_captcha):focus { border-color: #0090D5; background: #fafafa; outline: none; box-shadow: none; } 
 textarea.form-control { height: auto; line-height: 1.5; }
 .error-des { line-height: 1; color: #dc3545; font-size: 14px; height: 14px; margin-top: 5px; margin-bottom: 5px; }
@@ -37,7 +37,7 @@ textarea.form-control { height: auto; line-height: 1.5; }
 #sform_privacy.is-invalid + label { color: #dc3545; }
 
 /* Captcha field */
-#captcha-question-wrap { width: 180px; background-color: #fff; border: 1px solid #ccc; }
+#captcha-question-wrap { width: 180px; background-color: #fff; border: 1px solid #ccc; height: intrinsic; border-radius: 5px; }
 #captcha-question-wrap.focus { background: #fafafa; border-color: #0090D5; box-shadow: none; }
 .form-control.is-invalid:focus, #captcha-question-wrap.is-invalid.focus { box-shadow: none; }
 .form-control.is-invalid, #captcha-question-wrap.is-invalid {border-color: #dc3545 !important; }
@@ -51,8 +51,9 @@ input[type=number] { -moz-appearance:textfield; }
 #captcha-question-wrap.is-invalid + .error-des span { display: block; }
 
 /* Error message */
-#sform-message { padding: 0 0 5px 0; }
-#sform-message span { display: block; visibility: hidden; outline: none; text-align: center; background: #dc3545; color: #FFF; font-size: 16px; padding: 7.5px 12.5px; }
+#sform-message { padding: 0 0 5px 0; position: relative; }
+#sform-message span { display: block; visibility: hidden; outline: none; text-align: center; background: #dc3545; color: #FFF; font-size: 16px; padding: 7.5px 12.5px; border-radius: 5px; }
+#noscript { position: absolute; top: 0; width: 100%; }
 
 /* Submit field */
 #sform-submit-wrap { text-align: center; margin: 22px 0; }
@@ -99,3 +100,6 @@ label[for=sform_captcha].col-sm-2 { letter-spacing: -0.075em; }
 .rtl #sform-message, .rtl #sform-submit-wrap { float: left; }
 .rtl #sform-message, .rtl #sform-submit-wrap { width: 100%; }
 .rtl .field-group .col-sm-2 { padding-right: 0; }
+
+/* Anti-spam */
+.carrots { opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; }

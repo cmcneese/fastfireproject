@@ -2,53 +2,76 @@
 	'use strict';
 	
 	 $( window ).load(function() {
+ 
+	   if ( $("#sform").find(".is-invalid").length ) {     
+		  $("#sform").addClass("was-validated");
+      }    
 
-       $( "input,textarea" ).not( "#sform_email, #sform_privacy, #sform_captcha" ).on('input', function()  {
-         $(this).val($(this).val().replace(/\s\s+/g, " "));
-         if ( $(this).prop('required') ) {
-         var field = $(this).attr('id');
-           if ( $(this).val() != '') {         
-	           $('label[for='+field+'] span').addClass("d-none");
+       $("#sform").submit(function(event) {
+	     $(this).addClass("was-validated");
+         var submit = true;
+	      if( $(this).hasClass("needs-validation") && $('input[name="url"]').val() == '' && $('input[name="telephone"]').val() == '' ) { 
+           if ($(this)[0].checkValidity() === false ) {
+             submit = false;
+             $(".form-control").each(function(){
+	         if ($(this).is(":invalid") ) {
+             $(this).addClass("is-invalid");
+             $(this).next().children().addClass("d-block");
+             $(this).parent().addClass("is-invalid");
+             }
+             })
+             $('#sform-message span').addClass('visible');                
+ 	         if( $('#sform_privacy').prop('required') == true && $('#sform_privacy').prop("checked") == false ) { 
+                $('#sform_privacy').addClass("is-invalid");
+                $('label[for="sform_privacy"]').addClass('is-invalid');
+             }  
+	         if( $(this).hasClass("needs-focus") ) { 
+                 $(this).find(":invalid").first().focus();
+	         }
            }
            else {
-	           $('label[for='+field+'] span').removeClass("d-none");
+             $("#sform").removeClass("needs-validation");
            }
          }
+          if ( submit === false || $('input[name="url"]').val() != '' || $('input[name="telephone"]').val() != '' ) {
+           event.preventDefault();
+          }
        });
-       
-       $( "#sform_email" ).on('input', function()  {
-         $(this).val($(this).val().replace(/\s\s+/g, " "));
-         if ( $(this).prop('required') ) {
-         const regex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-           if ( $(this).val() != '' && regex.test($(this).val()) ) {
-	           $('label[for="sform_email"] span').addClass("d-none");
-           }
-           else{
-	           $('label[for="sform_email"] span').removeClass("d-none");
-           }
-         }
-       });
-
-       $("input, textarea").on("keypress", function(e) {
-	     if (e.which === 32 && !this.value.length)
-	     e.preventDefault();
-	   });    
-
+	
        $( "input,textarea" ).on("input", function()  {
-         $(this).removeClass("is-invalid");     
-         $('label[for="' + $(this).attr('id') + '"]').removeClass("is-invalid");
-		 $('.message').removeClass("visible");
+         $(this).val($(this).val().replace(/\s\s+/g, " "));
+         var field = $(this).attr('id');    	 
+	     if ( $(this).is(":valid") ) {   
+		    $(this).removeClass("is-invalid");
+            $('label[for="' + $(this).attr('id') + '"]').removeClass("is-invalid");
+            $(this).next().children().removeClass("d-block");
+            $(this).parent().removeClass("is-invalid");
+	        if ( ! $("#sform").find(".is-invalid").length && ! $("#sform").find(":invalid").length ) {     
+		       $('.message').removeClass("visible");
+       	    } 
+            if ( $(this).prop('required') ) {
+               $('label[for='+field+'] span').addClass("d-none"); 
+            }
+    	 }
+    	 else {   
+	       if ( $("#sform").hasClass("was-validated") ) {
+		    $('label[for='+field+'] span').removeClass("d-none");
+		    $(this).addClass("is-invalid");
+            $('label[for="' + $(this).attr('id') + '"]').addClass("is-invalid");
+            $(this).next().children().addClass("d-block");
+            $(this).parent().addClass("is-invalid");
+		    $('.message').addClass("visible");
+            if ( $(this).prop('required') ) {
+               $('label[for='+field+'] span').removeClass("d-none"); 
+            }
+           }
+    	 }
+
        });
 
        $("#terms").on("click",function () {
-  	     if( $('input[name="sform_privacy"]').prop("checked") == false ) { 
-      	   $('input[name="sform_privacy"]').val('false');
-      	   $('.control-label span').removeClass("d-none");
-         } 
-         else {
-     	   $('input[name="sform_privacy"]').val('true');
-      	   $('.control-label span').addClass("d-none");
-      	 }
+  	     if( $('#sform_privacy').prop("checked") == false ) { $('#sform_privacy').val('false'); } 
+         else { $('#sform_privacy').val('true'); }
        });  
        
        $("#sform_captcha").focus(function(){
@@ -57,29 +80,27 @@
        $(this).parent().removeClass("focus");
        })      
        
-       $("#sform_captcha").on("keypress", function(e) {
-	     if (e.which === 48 && !this.value.length)
-	     e.preventDefault();
-	   });    
-
        $( "#sform_captcha" ).on('input', function(e)  {
-		  var value = parseInt($(this).val());
-		  var question = parseInt($("#captcha_one").val()) + parseInt($("#captcha_two").val());
-		  if( value == question ) { 
+		  if ( $(this).is(":valid") ) {
 			$('label[for="sform_captcha"] span').addClass("d-none");
             $(this).removeClass("is-invalid");                      
 	        $("#captcha-question-wrap").removeClass("is-invalid");  
             $("#captcha-error span").removeClass("d-block");
 	      }
-		  else { 
-			$('label[for="sform_captcha"] span').removeClass("d-none");
-			if( $("form").hasClass("was-validated") ) { 
-	        $("#captcha-question-wrap").addClass("is-invalid");  
-            $("#captcha-error span").addClass("d-block");
-			}
-		  }          
        });
  
+       // Prevent zero to be entered as first value in captcha field
+       $("#sform_captcha").on("keypress", function(e) {
+	     if (e.which === 48 && !this.value.length)
+	     e.preventDefault();
+	   });  
+	   
+       // Prevent space to be entered as first value
+       $("input, textarea").on("keypress", function(e) {
+	     if (e.which === 32 && !this.value.length)
+	     e.preventDefault();
+	   });    
+	     
    	 });
 
 })( jQuery );

@@ -17,6 +17,9 @@ if ( ! function_exists( 'bizberg_setup' ) ) :
 	 */
 	function bizberg_setup() {
 		
+		add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'align-wide' );
+		
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
 		add_post_type_support( 'page', 'excerpt' );
@@ -1710,4 +1713,24 @@ function bizberg_get_header_social_icons( $name ){
 
 	return ob_get_clean();
 
+}
+
+function bizberg_upgrade_msg( $msg = '', $btn_link = '#', $btn_label = '' ){
+
+    ob_start();
+
+    if( empty( $btn_label ) ){
+        $btn_label = esc_html__( 'Upgrade to PRO' , 'bizberg' );
+    } ?>
+
+    <div class="upgrade_pro">        
+        <p><?php echo esc_html( $msg ); ?></p>
+        <a href="<?php echo esc_html( $btn_link ); ?>" target="_blank">
+            <?php echo esc_html( $btn_label ); ?>        
+        </a>
+    </div>
+
+    <?php
+
+    return ob_get_clean();
 }

@@ -2,9 +2,8 @@
 
 Contributors: cyclonetheme
 Tags: custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, left-sidebar , right-sidebar,grid-layout,theme-options,blog ,news ,portfolio
-Requires at least: 4.0
-Tested up to: 5.3
-Stable tag: 3.5
+Requires at least: 4.9
+Tested up to: 5.5
 Requires PHP: 5.6
 Author URI: https://cyclonethemes.com/
 Theme URI: https://cyclonethemes.com/downloads/bizberg-lite/
@@ -25,12 +24,6 @@ Bizberg is distributed under the terms of the GNU General Public License v2
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
-
-== Frequently Asked Questions ==
-
-= Does this theme support any plugins? =
-
-Bizberg includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

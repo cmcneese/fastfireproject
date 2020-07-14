@@ -85,8 +85,8 @@ $pages = '';
 if ( $results){
 foreach ($results as $post) { 
 if( $post->post_status == 'draft' || $post->post_status == 'publish' ) {
-$edit_post_link = '<a href="' . get_edit_post_link($post->ID) . '" target="_blank" style="text-decoration: none; color: #9ccc79;">' . __( 'Publish now','simpleform') . '</a>';	
-$post_status = $post->post_status == 'draft' ? '&nbsp;&nbsp;(&nbsp;'.__( 'Page in draft status not yet published','simpleform').'&nbsp;-&nbsp;'.$edit_post_link .'&nbsp;)': '';
+$publish_link = '<a href="' . get_edit_post_link($post->ID) . '" target="_blank" style="text-decoration: none; color: #9ccc79;">' . __( 'Publish now','simpleform') . '</a>';	
+$post_status = $post->post_status == 'draft' ? '&nbsp;&nbsp;(&nbsp;'.__( 'Page in draft status not yet published','simpleform').'&nbsp;-&nbsp;'.$publish_link .'&nbsp;)': '';
 $pages .= '<a href="' . $post->guid . '" target="_blank" style="text-decoration: none;">' . $post->post_title . '</a>'.$post_status .'<br/>'; }
 } }
 $total_pages = $num;
@@ -205,7 +205,11 @@ echo $pages . $message . '</td></tr>';
 
 </tbody></table>
 
-<div id="submit-wrap"><div id="message-wrap" class="message"></div>	
+<div id="submit-wrap"><div id="alert-wrap">
+<noscript><div id="noscript"><?php esc_html_e('You need JavaScript enabled to edit form. Please activate it. Thanks!', 'simpleform' ) ?></div></noscript>
+<div id="message-wrap" class="message"></div>
+</div>
+
 <input type="submit" class="submit-button" id="sform-edit-form" name="sform-edit-form"  value="<?php esc_html_e( 'Save Changes', 'simpleform' ) ?>">	
 
 <?php  wp_nonce_field( 'ajax-verification-nonce', 'verification_nonce'); ?>

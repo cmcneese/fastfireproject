@@ -152,7 +152,11 @@ class SimpleForm_Submissions {
         // Add screen option tab
 		$this->loader->add_action( 'load_submissions_table_options', $plugin_admin, 'submissions_table_options' );
         // Save screen options
-		$this->loader->add_filter( 'set-screen-option', $plugin_admin, 'sforms_set_option', 10, 3 );
+		$this->loader->add_filter( 'set-screen-option', $plugin_admin, 'submissions_screen_option', 10, 3 );		
+		// Register a post type for change the pagination in Screen Options tab
+		$this->loader->add_action( 'init', $plugin_admin, 'submission_post_type' );
+		// Add conditional items into the Bulk Actions dropdown for submissions list
+		$this->loader->add_action( 'bulk_actions-toplevel_page_sform-submissions', $plugin_admin, 'register_sform_actions' );
         // Deactivate plugin if SimpleForm is missing
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'detect_core_deactivation' );
 		// Fallback for database table updating if code that runs during plugin activation fails 
@@ -177,7 +181,6 @@ class SimpleForm_Submissions {
 		else:
 		$this->loader->add_filter( 'sform_storing_values', $plugin_public, 'add_storing_fields_values', 10, 7 );
 		endif;
-				
         // Display confirmation message if notification email has been disabled 
 		$this->loader->add_action( 'sform_ajax_message', $plugin_public, 'sform_display_message', 10, 5 );
         // Display confirmation message if notification email has been disabled and ajax is disabled 

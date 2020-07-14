@@ -95,6 +95,12 @@
 		 $('#description-captcha').css('visibility', 'hidden'); 
 	   });             
 
+       $('#preference_field').on('change', function () {
+         var selectVal = $("#preference_field option:selected").val();
+         if ( selectVal == 'hidden' ) { $('.trpreference').addClass('unseen'); }
+         else { $('.trpreference').removeClass('unseen'); }
+       }); 
+       
        $('#terms_field').on('change', function () {
          var selectVal = $("#terms_field option:selected").val();
          if ( selectVal == 'hidden' ) { $('.trterms').addClass('unseen'); }
@@ -199,6 +205,24 @@
 	     } 
 	     else { 
 		    $('#javascript-description').html(ajax_sform_settings_options_object.jsdisabled); 
+		 }
+       });
+       
+	   $("#characters_length").on("click", function() {
+         if($(this).prop('checked') == true) { 
+			$('#characters-description').html(ajax_sform_settings_options_object.showcharacters); 
+		    $('#firstname_error_message').val(ajax_sform_settings_options_object.numnamer);
+		    $('#lastname_error_message').val(ajax_sform_settings_options_object.numlster);
+		    $('#subject_error_message').val(ajax_sform_settings_options_object.numsuber);
+		    $('#object_error_message').val(ajax_sform_settings_options_object.nummsger);
+
+	     } 
+	     else { 
+		    $('#characters-description').html(ajax_sform_settings_options_object.hidecharacters); 
+		    $('#firstname_error_message').val(ajax_sform_settings_options_object.gennamer);
+		    $('#lastname_error_message').val(ajax_sform_settings_options_object.genlster);
+		    $('#subject_error_message').val(ajax_sform_settings_options_object.gensuber);
+		    $('#object_error_message').val(ajax_sform_settings_options_object.genmsger);
 		 }
        });
        

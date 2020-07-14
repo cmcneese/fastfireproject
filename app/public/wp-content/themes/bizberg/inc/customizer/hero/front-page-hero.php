@@ -408,7 +408,7 @@ Kirki::add_field( 'bizberg', [
 	'settings'    => 'slider_title_box_highlight_color',
 	'label'       => __( 'Highlight Color', 'bizberg' ),
 	'section'     => 'front_page_hero',
-	'default'     => '#2fbeef',
+	'default'     => apply_filters( 'bizberg_slider_title_box_highlight_color', '#2fbeef' ),
 	'transport' => 'auto',
 	'output' => array(
 		array(
@@ -447,7 +447,7 @@ Kirki::add_field( 'bizberg', [
 	'settings'    => 'slider_arrow_background_color',
 	'label'       => __( 'Arrow Hover Color', 'bizberg' ),
 	'section'     => 'front_page_hero',
-	'default'     => '#2fbeef',
+	'default'     =>  apply_filters( 'bizberg_slider_arrow_background_color', '#2fbeef' ),
 	'output' => array(
 		array(
 			'element'  => '.banner .slider .swiper-button-prev:hover, .banner .slider .swiper-button-next:hover',
@@ -469,7 +469,7 @@ Kirki::add_field( 'bizberg', [
 	'settings'    => 'slider_dot_active_color',
 	'label'       => __( 'Dot Active Color', 'bizberg' ),
 	'section'     => 'front_page_hero',
-	'default'     => '#2fbeef',
+	'default'     => apply_filters( 'bizberg_slider_dot_active_color', '#2fbeef' ),
 	'output' => array(
 		array(
 			'element'  => '.banner .slider .swiper-pagination-bullet-active',
@@ -498,7 +498,7 @@ Kirki::add_field( 'bizberg', [
 	'settings'    => 'slider_gradient_primary_color',
 	'label'       => __( 'Gradient Primary Color', 'bizberg' ),
 	'section'     => 'front_page_hero',
-	'default'     => 'rgba(47,190,239,0.62)',
+	'default'     => apply_filters( 'bizberg_slider_gradient_primary_color', 'rgba(47,190,239,0.62)' ),
 	'choices'     => [
 		'alpha' => true,
 	],
@@ -582,7 +582,7 @@ Kirki::add_field( 'bizberg', [
 	'settings'    => 'read_more_background_color',
 	'label'       => __( 'Button Background Color', 'bizberg' ),
 	'section'     => 'front_page_hero',
-	'default'     => '#2fbeef',
+	'default'     => apply_filters( 'bizberg_read_more_background_color', '#2fbeef' ),
 	'transport' => 'auto',
 	'output' => array(
 		array(

@@ -94,12 +94,11 @@ class Bizberg_Customize_Section extends WP_Customize_Section {
 		switch ( $theme->get( 'TextDomain' ) ) {
 
 			case 'bizberg':
-			case 'happy-wedding-day':
-			case 'ngo-charity-fundraising':
-			case 'building-construction-architecture':
-			case 'education-business':
-			case 'green-eco-planet':
 				return 'https://cyclonethemes.com/downloads/bizberg-pro/';
+				break;
+
+			case 'happy-wedding-day':
+				return 'https://bizbergthemes.com/downloads/happy-wedding-day-pro/';
 				break;
 
 			case 'dr-life-saver':
@@ -112,6 +111,22 @@ class Bizberg_Customize_Section extends WP_Customize_Section {
 
 			case 'professional-education-consultancy':
 				return 'https://cyclonethemes.com/downloads/professional-education-consultancy-pro/';
+				break;
+
+			case 'green-eco-planet':
+				return 'https://bizbergthemes.com/downloads/green-eco-planet-pro/';
+				break;
+
+			case 'education-business':
+				return 'https://bizbergthemes.com/downloads/education-business-pro/';
+				break;
+
+			case 'building-construction-architecture':
+				return 'https://bizbergthemes.com/downloads/building-construction-architecture-pro/';
+				break;
+
+			case 'ngo-charity-fundraising':
+				return 'https://bizbergthemes.com/downloads/ngo-charity-fundraising-pro/';
 				break;
 			
 			default:

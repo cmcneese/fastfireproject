@@ -1,7 +1,5 @@
 <?php
 
-require get_stylesheet_directory() . '/inc/customizer.php';
-
 add_action( 'wp_enqueue_scripts', 'building_construction_architecture_chld_thm_parent_css' );
 function building_construction_architecture_chld_thm_parent_css() {
 
@@ -18,14 +16,6 @@ function building_construction_architecture_chld_thm_parent_css() {
     	) 
     );
     
-}
-
-/**
-* Changed the blog layout to 3 columns
-*/
-add_filter( 'bizberg_sidebar_settings', 'building_construction_architecture_sidebar_settings' );
-function building_construction_architecture_sidebar_settings(){
-	return '4';
 }
 
 /**
@@ -59,3 +49,46 @@ add_filter( 'bizberg_header_button_color_hover', 'building_construction_architec
 function building_construction_architecture_header_button_color_hover(){
     return '#fcb80b';
 }
+
+/**
+* Add necessary plugins for the theme
+*/
+
+add_filter( 'bizberg_recommended_plugins', function( $plugins ){
+
+    if( empty( $plugins ) ){
+        return $plugins;
+    }
+
+    $disable_plugins = array(
+        'elegant-blocks',
+        'ultimate-addons-for-gutenberg'
+    );
+
+    foreach ( $plugins as $key => $value ) {        
+        if( in_array( $value['slug'], $disable_plugins ) ){
+            unset( $plugins[$key] );
+        }
+    }
+
+    $new_plugins = array(
+        array(
+            'name' => esc_html__( 'Elementor Page Builder', 'building-construction-architecture' ),
+            'slug' => 'elementor',
+            'required' => false
+        ),
+        array(
+            'name' => esc_html__( 'Essential Addons for Elementor', 'building-construction-architecture' ),
+            'slug' => 'essential-addons-for-elementor-lite',
+            'required' => false
+        ),
+        array(
+            'name' => esc_html__( 'Cyclone Demo Importer', 'building-construction-architecture' ),
+            'slug' => 'cyclone-demo-importer',
+            'required' => false
+        )
+    );
+
+    return array_merge( array_values( $plugins ) , $new_plugins );
+
+});

@@ -14,7 +14,7 @@ if( function_exists( 'bizberg_get_homepage_style_class' ) ){
 }
 ?>
 
-<body <?php body_class( 'sidebar ' . $body_class ); ?>>
+<body <?php body_class( 'bizberg sidebar ' . $body_class ); ?>>
 
 <?php 
 
@@ -170,10 +170,12 @@ $primary_header_layout = bizberg_get_theme_mod( 'primary_header_layout' ); ?>
 </header><!-- header section end -->
 
 <?php 
+global $template; // For elementor
 if( is_page_template( 'page-templates/full-width.php' ) 
 	|| is_404() 
 	|| is_page_template( 'contact-us.php' )
-	|| is_page_template( 'page-templates/page-fullwidth-transparent-header.php' ) ){
+	|| is_page_template( 'page-templates/page-fullwidth-transparent-header.php' )
+	|| basename($template) == 'header-footer.php' ){
 	// no breadcrum
 	echo '';
 } elseif( !is_front_page() ){

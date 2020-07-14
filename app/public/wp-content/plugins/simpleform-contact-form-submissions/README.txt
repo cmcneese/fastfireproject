@@ -5,17 +5,19 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A data storage plugin created specifically for SimpleForm. It allows to save data in the database and to easily manage the submitted messages from dashboard.
+A data storage plugin created specifically for SimpleForm. It allows to save data in the database when user submits the contact form and lets you easily manage the messages from dashboard.
 
 == Description ==
 
-No configuration required. Once activated, you will find the new Data Storing option in the Settings page. Make sure to keep this option enabled and you are no longer need to worry about losing important messages, since each new form submission will be stored in your WordPress database!
+Thanks to this lightweight plugin you can view all data sent through the contact form in sortable table form or retrieve only data you need from wordpress database by using the date filter or the search box. You can permanently delete the messages, move the messages to the trash or restore them from trash. Select columns and pagination from “Screen Options”. No configuration required. Once activated, you will find the new “Data Storing” option in the Settings page. Make sure to keep this option enabled and you are no longer need to worry about losing important messages, since each new form submission will be stored in your WordPress database!
 
 For more detailed information, refer to the [SimpleForm](https://wordpress.org/plugins/simpleform/) plugin page.
+
+https://www.youtube.com/watch?v=XiiQUWFTF4E&rel=0
 
 == Installation ==
 
@@ -49,26 +51,42 @@ Activating the SimpleForm Contact Form Submissions plugin is just like any other
 
 No. You cannot. You need SimpleForm to activate this plugin.
 
+= Why this feature is not integrated in SimpleForm plugin? =
+
+We have designed SimpleForm to be a minimal, lightweight, fast and privacy-respectful plugin and we have wanted to keep it that way. You can choose to enable this feature at any time and with a single click depending on your needs.
+
 = Where can I check my form submissions? =
 
-Make sure you have selected the Data Storing option in the Settings page within General tab, then open the Submissions page.
+Make sure you have selected the “Data Storing” option in the Settings page within General tab, then open the Submissions page.
 
-= Can I disable the IP address storing? =
+= How can I disable storing submissions to wordpress database? =
+
+Go to the Settings page within General tab and uncheck the “Data Storing” option. The submissions list in dashboard will be removed. User data storing will be disabled and this data will be included only within the notification email.
+
+= Can I disable only the IP address storing? =
 
 Of course. You can select this option in the Settings page within General tab.
 
 = How to make SimpleForm meet the GDPR conditions? = 
 
-This plugin stores personal data collected through the contact form. Enable the Terms checkbox in the Edit Form page, and make it a required field for requesting the user explicit consent. 
+This plugin stores personal data collected through the contact form. Enable the “Consent Field” in the Edit Form page and make it a required field for requesting the user explicit consent. 
+
+= What is the name of the table where the data is stored? = 
+
+The table name is wp_sform_submissions but if you changed your WordPress MySQl table prefix from the default wp_ to something else, this table will also have that prefix.
 
 == Screenshots ==
 
 1. Settings page
 2. Submissions page
 3. Submitted message page
-4. Terms field requirement for GDPR compliance
+4. Consent field for GDPR compliance
 
 == Changelog ==
+
+= 1.3 (27 June 2020) =
+* Added: Trash status and related view for the submissions list
+* Fixed: Pagination error when number of submissions per page is changed
 
 = 1.2.1 (10 May 2020) =
 * Fixed: Database update error on updating
@@ -105,7 +123,6 @@ This plugin stores personal data collected through the contact form. Enable the 
 = 1.0 =
 Just released into the WP plugin repository.
 
-== Translations ==
+== Demo ==
  
-* English
-* Italian
+You don’t know SimpleForm yet? Check out our [Demo](https://wpsform.com/demo/) and find out how it works.

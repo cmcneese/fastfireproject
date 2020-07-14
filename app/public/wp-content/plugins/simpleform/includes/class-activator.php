@@ -49,10 +49,9 @@ class SimpleForm_Activator {
 
     public static function sform_pages() {
 
-       $installed_version = get_option('sform_db_version');
  	   $form_page_option = get_option( 'sform_contact_page' );
 	   $confirmation_page_option = get_option( 'sform_confirmation_page' );
-       if ( !$installed_version && !$form_page_option && !$confirmation_page_option) {
+       if ( !$form_page_option && !$confirmation_page_option) {
        $form_page = array( 'post_type' => 'page', 'post_content' => '[simpleform]', 'post_title' => __( 'Contact Us', 'simpleform' ), 'post_status' => 'draft' );
        $thank_string1 = esc_html__( 'Thank you for contacting us.', 'simpleform' );
        $thank_string2 = esc_html__( 'Your message will be reviewed soon, and we’ll get back to you as quickly as possible.', 'simpleform' );

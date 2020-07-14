@@ -5,9 +5,9 @@
 
       $("#sform").on("submit", function (e) { 
 
-          $('.form-control, #sform_privacy, #captcha-question-wrap').removeClass('is-invalid');
+	   if( ! $(this).hasClass("needs-validation") && ! $(this).hasClass("block-validation") ) { 
+	      $('.form-control, #sform_privacy, #captcha-question-wrap, .control-label').removeClass('is-invalid');
           $('#sform-message span').removeClass('visible');   
-          $('.control-label').removeClass('is-invalid');
           var postdata = $('form#sform').serialize();
 		  $.ajax({
             type: 'POST',
@@ -16,25 +16,26 @@
             data: postdata + '&action=formdata_ajax_processing',
             success: function(data){
 	          var error = data['error'];
-	          var message = data['message'];
+	          var notice = data['notice'];
 	          var label = data['label'];
 	          var field = data['field'];
 	          var redirect = data['redirect'];
 	          var redirect_url = data['redirect_url'];
               if( error === true ){
-                $('#sform-message span').addClass('visible');                                                
-                $('.message').html(data.message);
-                $('#sform_' + field).addClass('is-invalid');
+	            $.each(data, function(field, label) {
+	            $('#sform_' + field).addClass('is-invalid');
                 $('label[for="sform_' + field + '"].control-label').addClass('is-invalid');              
                 $('div#' + field + '-question-wrap').addClass('is-invalid');
-                $('#' + field + '-error span').text(data.label);
+                $('#' + field + '-error span').text(label);
+	            if( $('#sform').hasClass("needs-focus") ) { $('input.is-invalid, textarea.is-invalid').first().focus(); }
+                });
+	            $('#sform-message span').addClass('visible');                                                
+                $('.message').html(data.notice);
               }
               if( error === false ){
                 if( redirect === false ){
-                  $("#sform").css("display","none");
-                  $("#sform-introduction").css("display","none");
-                  $("#sform-bottom").css("display","none");
-                  $('#sform-confirmation').html(data.message);
+                  $("#sform, #sform-introduction, #sform-bottom").addClass('d-none');
+                  $('#sform-confirmation').html(data.notice);
                   $('#sform-confirmation').focus();
                 }
                 else {
@@ -50,7 +51,9 @@
 		  });
 		  e.preventDefault();
 		  return false;
-	   });
+	   }	  
+		  
+	  });
    
    	 });
 

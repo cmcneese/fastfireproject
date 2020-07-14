@@ -32,7 +32,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h1,.breadcrumb-wrapper h1',
+			'element' => 'h1:not(.elementor-heading-title),.breadcrumb-wrapper h1',
 		],
 	],
 	'active_callback' => [
@@ -58,7 +58,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h1,.breadcrumb-wrapper h1',
+			'element' => 'h1:not(.elementor-heading-title),.breadcrumb-wrapper h1',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 481px) and (max-width: 1024px)',
@@ -87,7 +87,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h1,.breadcrumb-wrapper h1',
+			'element' => 'h1:not(.elementor-heading-title),.breadcrumb-wrapper h1',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 320px) and (max-width: 480px)'
@@ -134,7 +134,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h2,#sidebar .widget h2.widget-title',
+			'element' => 'h2:not(.elementor-heading-title),#sidebar .widget h2.widget-title',
 		],
 	],
 	'active_callback' => [
@@ -160,7 +160,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h2,#sidebar .widget h2.widget-title',
+			'element' => 'h2:not(.elementor-heading-title),#sidebar .widget h2.widget-title',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 481px) and (max-width: 1024px)',
@@ -189,7 +189,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h2,#sidebar .widget h2.widget-title',
+			'element' => 'h2:not(.elementor-heading-title),#sidebar .widget h2.widget-title',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 320px) and (max-width: 480px)'
@@ -236,7 +236,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h3,.detail-content.single_page h3',
+			'element' => 'h3:not(.elementor-heading-title),.detail-content.single_page h3',
 		],
 	],
 	'active_callback' => [
@@ -262,7 +262,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h3,.detail-content.single_page h3',
+			'element' => 'h3:not(.elementor-heading-title),.detail-content.single_page h3',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 481px) and (max-width: 1024px)',
@@ -291,7 +291,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h3,.detail-content.single_page h3',
+			'element' => 'h3:not(.elementor-heading-title),.detail-content.single_page h3',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 320px) and (max-width: 480px)'
@@ -338,7 +338,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h4',
+			'element' => 'h4:not(.elementor-heading-title)',
 		],
 	],
 	'active_callback' => [
@@ -364,7 +364,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h4',
+			'element' => 'h4:not(.elementor-heading-title)',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 481px) and (max-width: 1024px)',
@@ -393,7 +393,7 @@ Kirki::add_field( 'bizberg', [
 	'transport'   => 'auto',
 	'output'      => [
 		[
-			'element' => 'h4',
+			'element' => 'h4:not(.elementor-heading-title)',
 			'value_pattern' => '$px !important',
 			'property' => 'font-size',
 			'media_query' => '@media (min-width: 320px) and (max-width: 480px)'

@@ -172,11 +172,11 @@ class SimpleForm_Submissions_Public {
       $data_storing = ! empty( $sform_settings['data-storing'] ) ? esc_attr($sform_settings['data-storing']) : 'true';	
 
       if ( $data_storing == 'true' || $mailing == 'true' ) {
-       echo json_encode(array('error' => false, 'redirect' => $redirect, 'redirect_url' => $redirect_url, 'message' => $thank_you_message ));
+       echo json_encode(array('error' => false, 'redirect' => $redirect, 'redirect_url' => $redirect_url, 'message' => $thank_you_message, 'notice' => $thank_you_message ));
 	   exit;
       }
       else { 
-       echo json_encode(array('error' => true, 'message' => $server_error_message ));
+       echo json_encode(array('error' => true, 'message' => $server_error_message, 'notice' => $thank_you_message ));
 	   exit;
       }
 	 
@@ -199,6 +199,5 @@ class SimpleForm_Submissions_Public {
      return $error;
 
     }	
-
 
 } 

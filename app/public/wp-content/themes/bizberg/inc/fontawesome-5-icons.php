@@ -2,17 +2,23 @@
 
 if( !function_exists( 'bizberg_get_fontawesome_5' ) ){
     
-    function bizberg_get_fontawesome_5(){
+    function bizberg_get_fontawesome_5( $strip_tag = false ){
 
         $data = array();
-        foreach ( bizberg_fontawesome_5_icons() as $key => $value ) {       
-            $data[$value] = sprintf( 
-                esc_attr__( '<i class="%1$s"></i> %2$s' , 'bizberg' ), 
-                $value,
-                ucwords( str_replace( '-', ' ', $key ) )
-            );
+        foreach ( bizberg_fontawesome_5_icons() as $key => $value ) {    
+
+            if( $strip_tag ){
+                $data[$value] = ucwords( str_replace( '-', ' ', $key ) );
+            } else {
+                $data[$value] = sprintf( 
+                    esc_attr__( '<i class="%1$s"></i> %2$s' , 'bizberg' ), 
+                    $value,
+                    ucwords( str_replace( '-', ' ', $key ) )
+                );
+            }
 
         }
+        
         return $data;
 
     }

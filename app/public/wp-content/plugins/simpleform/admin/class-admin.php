@@ -130,9 +130,24 @@ class SimpleForm_Admin {
 	   
      if( $hook != $sform_submissions_page && $hook != $sform_contact_options_page &&  $hook != $sform_settings_page ) 
      return;
+     
+     $sform_settings = get_option('sform-settings'); 
+     $form_attributes = get_option('sform-attributes');
+     $firstname_length = isset( $form_attributes['firstname_minlength'] ) ? esc_attr($form_attributes['firstname_minlength']) : '2';
+     $firstname_numeric_error = ! empty( $sform_settings['firstname_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['firstname_error_message']) == $firstname_length ? stripslashes(esc_attr($sform_settings['firstname_error_message'])) : sprintf( __('Please enter at least %d characters', 'simpleform' ), $firstname_length );
+     $firstname_generic_error = ! empty( $sform_settings['firstname_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['firstname_error_message']) == '' ? stripslashes(esc_attr($sform_settings['firstname_error_message'])) : esc_attr__('Please type your full name', 'simpleform' );
+     $lastname_length = isset( $form_attributes['lastname_minlength'] ) ? esc_attr($form_attributes['lastname_minlength']) : '2';
+     $lastname_numeric_error = ! empty( $sform_settings['lastname_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['lastname_error_message']) == $lastname_length ? stripslashes(esc_attr($sform_settings['lastname_error_message'])) : sprintf( __('Please enter at least %d characters', 'simpleform' ), $lastname_length );
+     $lastname_generic_error = ! empty( $sform_settings['lastname_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['lastname_error_message']) == '' ? stripslashes(esc_attr($sform_settings['lastname_error_message'])) : esc_attr__('Please type your full lastname', 'simpleform' );
+     $subject_length = isset( $form_attributes['subject_minlength'] ) ? esc_attr($form_attributes['subject_minlength']) : '5';
+     $subject_numeric_error = ! empty( $sform_settings['subject_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['subject_error_message']) == $subject_length ? stripslashes(esc_attr($sform_settings['subject_error_message'])) : sprintf( __('Please enter a subject at least %d characters long', 'simpleform' ), $subject_length );
+     $subject_generic_error = ! empty( $sform_settings['subject_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['subject_error_message']) == '' ? stripslashes(esc_attr($sform_settings['subject_error_message'])) : esc_attr__('Please type a short and specific subject', 'simpleform' );
+     $message_length = isset( $form_attributes['message_minlength'] ) ? esc_attr($form_attributes['message_minlength']) : '10';
+     $message_numeric_error = ! empty( $sform_settings['object_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['object_error_message']) == $message_length ? stripslashes(esc_attr($sform_settings['object_error_message'])) : sprintf( __('Please enter a message at least %d characters long', 'simpleform' ), $message_length );
+     $message_generic_error = ! empty( $sform_settings['object_error_message'] ) && preg_replace('/[^0-9]/', '', $sform_settings['object_error_message']) == '' ? stripslashes(esc_attr($sform_settings['object_error_message'])) : esc_attr__('Please type a clearer message so we can respond appropriately', 'simpleform' );
 
      wp_enqueue_script( 'sform_saving_options', plugin_dir_url( __FILE__ ) . 'js/admin.js', array( 'jquery' ), $this->version, false );
-     wp_localize_script( 'sform_saving_options', 'ajax_sform_settings_options_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 	'copy' => esc_html__( 'Copy', 'simpleform' ), 'copied' => esc_html__( 'Copied', 'simpleform' ), 'saving' => esc_html__( 'Saving data in progress', 'simpleform' ), 'loading' => esc_html__( 'Saving settings in progress', 'simpleform' ), 'notes' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, copy one of the template files and name it custom-template.php', 'simpleform' ), 'adminurl' => admin_url(), 'status' => esc_html__( 'Page in draft status not yet published','simpleform'), 'publish' =>  esc_html__( 'Publish now','simpleform'), 'show' => esc_html__( 'Show Configuration Warnings', 'simpleform' ), 'hide' => esc_html__( 'Hide Configuration Warnings', 'simpleform' ), 'cssenabled' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, add your CSS stylesheet file and name it custom-style.css', 'simpleform' ),'cssdisabled' => esc_html__( 'Keep unchecked if you want to use custom CSS code and include it somewhere in your theme’s code without using an additional file', 'simpleform' ), 'jsenabled' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, add your JavaScript file and name it custom-script.js', 'simpleform' ), 'jsdisabled' => esc_html__( 'Keep unchecked if you want to use custom JavaScript code and include it somewhere in your theme’s code without using an additional file', 'simpleform' ) )); 
+     wp_localize_script( 'sform_saving_options', 'ajax_sform_settings_options_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 	'copy' => esc_html__( 'Copy', 'simpleform' ), 'copied' => esc_html__( 'Copied', 'simpleform' ), 'saving' => esc_html__( 'Saving data in progress', 'simpleform' ), 'loading' => esc_html__( 'Saving settings in progress', 'simpleform' ), 'notes' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, copy one of the template files and name it custom-template.php', 'simpleform' ), 'adminurl' => admin_url(), 'status' => esc_html__( 'Page in draft status not yet published','simpleform'), 'publish' =>  esc_html__( 'Publish now','simpleform'), 'show' => esc_html__( 'Show Configuration Warnings', 'simpleform' ), 'hide' => esc_html__( 'Hide Configuration Warnings', 'simpleform' ), 'cssenabled' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, add your CSS stylesheet file and name it custom-style.css', 'simpleform' ),'cssdisabled' => esc_html__( 'Keep unchecked if you want to use custom CSS code and include it somewhere in your theme’s code without using an additional file', 'simpleform' ), 'jsenabled' => esc_html__( 'Create a directory inside your active theme’s directory, name it simpleform, add your JavaScript file and name it custom-script.js', 'simpleform' ), 'jsdisabled' => esc_html__( 'Keep unchecked if you want to use custom JavaScript code and include it somewhere in your theme’s code without using an additional file', 'simpleform' ), 'showcharacters' => esc_html__('Keep unchecked if you want to use generic error message without showing the minimum number of required characters', 'simpleform' ), 'hidecharacters' => esc_html__('Keep checked if you want to show the minimum number of required characters and you want to make sure that\'s exactly the number you setted for that specific field', 'simpleform' ), 'numnamer' => $firstname_numeric_error, 'gennamer' => $firstname_generic_error, 'numlster' => $lastname_numeric_error, 'genlster' => $lastname_generic_error, 'numsuber' => $subject_numeric_error, 'gensuber' => $subject_generic_error, 'nummsger' => $message_numeric_error, 'genmsger' => $message_generic_error )); 
 	      
 	}
 	
@@ -168,7 +183,6 @@ class SimpleForm_Admin {
       $smtp_password = ! empty( $sform_settings['smtp_password'] ) ? esc_attr($sform_settings['smtp_password']) : '';
       $username = defined( 'SFORM_SMTP_USERNAME' ) ? SFORM_SMTP_USERNAME : $smtp_username;
       $password = defined( 'SFORM_SMTP_PASSWORD' ) ? SFORM_SMTP_PASSWORD : $smtp_password;
-      
       $phpmailer->isSMTP();
       $phpmailer->Host       = $smtp_host;
       $phpmailer->SMTPAuth   = $smtp_authentication;
@@ -240,7 +254,7 @@ class SimpleForm_Admin {
        $message_label = isset($_POST['message_label']) ? sanitize_text_field(trim($_POST['message_label'])) : '';
        $message_placeholder = isset($_POST['message_placeholder']) ? sanitize_text_field($_POST['message_placeholder']) : '';
        $message_minlength = isset($_POST['message_minlength']) ? intval($_POST['message_minlength']) : '10';
-       $message_maxlength = isset($_POST['message_maxlength']) ? intval($_POST['message_maxlength']) : '0';       
+       $message_maxlength = isset($_POST['message_maxlength']) ? intval($_POST['message_maxlength']) : '0';  
        $terms_field = isset($_POST['terms_field']) ? sanitize_text_field($_POST['terms_field']) : 'visible';
        $terms_label = isset($_POST['terms_label']) ? wp_filter_post_kses(trim($_POST['terms_label'])) : '';
        $terms_requirement = isset($_POST['terms_requirement']) ? 'required' : 'optional';
@@ -254,12 +268,12 @@ class SimpleForm_Admin {
        $update_result = $update_shortcode ? 'done' : '';
  
        if ( $firstname_maxlength <= $firstname_minlength && $firstname_maxlength != 0 ) {
-       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Firstname Maximum Length must be not less than Firstname Minimum Length', 'simpleform' ) ));
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Name Maximum Length must be not less than Name Minimum Length', 'simpleform' ) ));
 	   exit;
        }
        
        if ( $firstname_minlength == 0 && $firstname_requirement == 'required' ) {
-       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the firstname field is required', 'simpleform' ) ));
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the Name field is required', 'simpleform' ) ));
 	   exit;
        }
        
@@ -269,7 +283,7 @@ class SimpleForm_Admin {
        }
 
        if ( $lastname_minlength == 0 && $lastname_requirement == 'required' ) {
-       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the lastname field is required', 'simpleform' ) ));
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the Lastname field is required', 'simpleform' ) ));
 	   exit;
        }
 
@@ -279,7 +293,7 @@ class SimpleForm_Admin {
        }
 
        if ( $subject_minlength == 0 && $subject_requirement == 'required' ) {
-       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the subject field is required', 'simpleform' ) ));
+       echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'You cannot set up a minimum length equals to 0 if the Subject field is required', 'simpleform' ) ));
 	   exit;
        }
 
@@ -331,13 +345,22 @@ class SimpleForm_Admin {
       else {
        $smtp_configuration = isset($_POST['smtp-configuration']) ? 'true' : 'false';  
        $html5_validation = isset($_POST['html5-validation']) ? 'true' : 'false';
+       $focus = isset($_POST['focus']) ? sanitize_key($_POST['focus']) : 'alert';
        $ajax_submission = isset($_POST['ajax-submission']) ? 'true' : 'false';
        $template = isset($_POST['form-template']) ? sanitize_text_field($_POST['form-template']) : 'default';
-       $bootstrap = isset($_POST['bootstrap']) ? 'true' : 'false';
        $stylesheet = isset($_POST['stylesheet']) ? 'true' : 'false';
        $cssfile = isset($_POST['stylesheet-file']) ? 'true' : 'false';
        $javascript = isset($_POST['javascript']) ? 'true' : 'false';
        $uninstall = isset($_POST['deletion-all-data']) ? 'true' : 'false';
+       $characters_length = isset($_POST['characters_length']) ? 'true' : 'false';
+       $empty_fields_message = isset($_POST['empty_fields_message']) ? sanitize_text_field(trim($_POST['empty_fields_message'])) : '';
+       $empty_name_error = isset($_POST['empty_name_error']) ? sanitize_text_field(trim($_POST['empty_name_error'])) : '';
+       $empty_lastname_error = isset($_POST['empty_lastname_error']) ? sanitize_text_field(trim($_POST['empty_lastname_error'])) : '';
+       $empty_phone_error = isset($_POST['empty_phone_error']) ? sanitize_text_field(trim($_POST['empty_phone_error'])) : '';
+       $empty_email_label = isset($_POST['empty_email_error']) ? sanitize_text_field(trim($_POST['empty_email_error'])) : '';
+       $empty_subject_error = isset($_POST['empty_subject_error']) ? sanitize_text_field(trim($_POST['empty_subject_error'])) : '';
+       $empty_message_error = isset($_POST['empty_message_error']) ? sanitize_text_field(trim($_POST['empty_message_error'])) : '';
+       $empty_captcha_error = isset($_POST['empty_captcha_error']) ? sanitize_text_field(trim($_POST['empty_captcha_error'])) : '';
        $firstname_error_message = isset($_POST['firstname_error_message']) ? sanitize_text_field(trim($_POST['firstname_error_message'])) : '';
        $invalid_firstname_error_message = isset($_POST['invalid_name_error']) ? sanitize_text_field(trim($_POST['invalid_name_error'])) : '';
        $name_error = isset($_POST['name_error']) ? sanitize_text_field(trim($_POST['name_error'])) : '';
@@ -386,12 +409,15 @@ class SimpleForm_Admin {
        $confirmation_subject = isset($_POST['confirmation_subject']) ? sanitize_text_field(trim($_POST['confirmation_subject'])) : '';
        $confirmation_message = isset($_POST['confirmation_message']) ? wp_kses_post(trim($_POST['confirmation_message'])) : '';
        $confirmation_reply_to = isset($_POST['confirmation_reply_to']) ? sanitize_text_field(trim($_POST['confirmation_reply_to'])) : '';
-              
-       if ( $template == 'default' || $template == 'customized' )  { $bootstrap = 'false'; }
-       
+                     
        if ( $stylesheet != 'true' )  { $cssfile = 'false'; }
 
        if ( $smtp_configuration == 'true'  )  { $server_smtp = 'false'; }
+ 
+       if ( $html5_validation == 'false' && $focus == 'alert' )  { 
+	        echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'Focus is automatically set to first invalid field if HTML5 validation is not disabled', 'simpleform' ) ));
+	        exit; 
+       }
 
        if ( $server_smtp == 'true' && $notification == 'false' && $confirmation_email == 'false' )  { 
 	        echo json_encode(array('error' => true, 'update' => false, 'message' => esc_html__( 'The SMTP server for outgoing email cannot be enabled if notification or confirmation email are not enabled', 'simpleform' ) ));
@@ -445,13 +471,22 @@ class SimpleForm_Admin {
        $sform_settings = array(
 	             'smtp-configuration' => $smtp_configuration,
 	             'html5-validation' => $html5_validation,
+	             'focus' => $focus,
                  'ajax-submission' => $ajax_submission,
                  'form-template' => $template,
-                 'bootstrap' => $bootstrap,
                  'stylesheet' => $stylesheet,
                  'stylesheet-file' => $cssfile, 
                  'javascript' => $javascript,
                  'deletion-all-data' => $uninstall, 
+                 'characters_length' => $characters_length,
+                 'empty_fields_message' => $empty_fields_message,
+                 'empty_name_error' => $empty_name_error,
+                 'empty_lastname_error' => $empty_lastname_error,
+                 'empty_phone_error' => $empty_phone_error,
+                 'empty_email_error' => $empty_email_label,
+                 'empty_subject_error' => $empty_subject_error,
+                 'empty_message_error' => $empty_message_error,
+                 'empty_captcha_error' => $empty_captcha_error,
                  'firstname_error_message' => $firstname_error_message, 
                  'invalid_name_error' => $invalid_firstname_error_message, 
                  'name_error' => $name_error,      
@@ -529,7 +564,7 @@ class SimpleForm_Admin {
 		
      global $wpdb;
      $table_name = $wpdb->prefix . 'sform_shortcodes';
-     $form_values = $wpdb->get_row( "SELECT * FROM {$table_name}", ARRAY_A );   
+     $form_values = $wpdb->get_row( "SELECT * FROM {$table_name}", ARRAY_A );  
      return $form_values;
      
     } 

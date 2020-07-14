@@ -6,7 +6,7 @@ Tags: contact form, form builder, simple form, form, contact, wordpress contact 
 Requires at least: 4.7
 Tested up to: 5.4
 Requires PHP: 5.6
-Stable tag: 1.7
+Stable tag: 1.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ This plugin is very easy to set up thanks to a graceful and intuitive admin inte
 
 = Fully customizable =
 
-It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, choose the labels placement and how required fields are marked, set a minimum or maximum length for text fields, use placeholders and decide what message to display when an error occurs. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form, you can add your own customized JavaScript code or CSS stylesheet.
+It allows you to customize everything you want. You can decide which fields to display and what kind of user can see them. You can decide which fields are required and which are not. You can change or hide the field labels, choose the labels placement and how required fields are marked, set a minimum or maximum length for text fields, use placeholders, decide what message to display when an error occurs and how to set focus on errors. You can add customized text above and below the form, you can choose a template based on your tastes or you are free to create and use a personal template for your contact form, you can add your own customized JavaScript code or CSS stylesheet.
 
 = Ready to use =
 
@@ -36,7 +36,7 @@ We love clean and minimalist design, and for this reason we provide a contact fo
 
 It is lightweight and responsive plugin. SimpleForm does not interfere with your site performance. The submission via Ajax, on backend too, allows a seamless user experience without page refreshes. You can show users a success message or redirect them elsewhere after they complete the form. You can also send a confirmation email to thank who contact you.
 
-https://www.youtube.com/watch?v=EbZDvaLnejo&rel=0
+https://www.youtube.com/watch?v=63LcRkSTCxI&rel=0
 
 **What SimpleForm is not for now:**
 
@@ -123,10 +123,21 @@ We provide free support on the WordPress.org plugin repository. Please log into 
 7. Notification email settings
 8. Confirmation email settings
 9. Default form template
-10. Bootstrap form template
-11. Form failed validation
+10. Form failed validation
 
 == Changelog ==
+
+= 1.8.1 (12 July 2020) =
+* Added: Alert for JavaScript disabled
+* Changed: Empty field error option is not displayed unless field is required
+* Changed: Better honeypot fields implementation
+
+= 1.8 (1 July 2020) =
+* Changed: JavaScript code optimization 
+* Changed: All errors are now displayed in case of multiple invalid fields
+* Added: Option for change focus on form errors
+* Added: Option for use a generic message without showing the minimum number of required characters in field length error messages
+* Added: Options for error messages in case of empty required fields
 
 = 1.7 (1 June 2020) =
 * Fixed: No text will be displayed above the form if nothing is entered in the form description option

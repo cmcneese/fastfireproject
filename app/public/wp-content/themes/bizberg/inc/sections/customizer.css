@@ -512,3 +512,32 @@ a.pro_feature_btn {
     width: 30%;
     margin-right: 8px;
 }
+
+.upgrade_pro {
+    background: #87ceeb;
+    padding: 5px 20px 30px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #2196F3;
+    font-size: 12px;
+    text-align: center;
+}
+.upgrade_pro p {
+    font-size: 13px;
+    padding-bottom: 5px;
+}
+.upgrade_pro a {
+    background: #FF5722;
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 15px 8px;
+}
+li[id^="customize-control-upgrade_msg_"] {
+    pointer-events: auto;
+}
+.upgrade_pro a:hover,
+.upgrade_pro a:active,
+.upgrade_pro a:focus {
+    background: #ff3c00;
+    color: #fff;
+}

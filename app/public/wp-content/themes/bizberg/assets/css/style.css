@@ -38,6 +38,25 @@ html, body{overflow-x: hidden!important;}
   text-align: left;
 }
 
+input[type=text], 
+input[type=email], 
+input[type=password], 
+input[type=date], 
+select {
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 0px;
+    padding: 10px 20px;
+    color: #666;
+    margin-bottom: 1rem;
+    height: 44px;
+    box-shadow: none;
+    margin-bottom: 0;
+    width: 100%;
+}
+
 .btn, form.post-password-form input[type="submit"]{
   border-width: 0;
   border-radius: 2px;
@@ -6371,4 +6390,66 @@ section.no-results.not-found .page-content > p {
 }
 .bizberg_shape_divider_slider_homepage_wrapper{
   position: relative;
+}
+
+/* For Block CSS */
+.bizberg .alignfull {
+    margin-left  : calc( -100vw / 2 + 100% / 2 );
+    margin-right : calc( -100vw / 2 + 100% / 2 );
+    max-width    : 100vw;
+}
+.bizberg .alignwide {
+    margin-left  : calc( -95vw / 2 + 100% / 2 );
+    margin-right : calc( -95vw / 2 + 100% / 2 );
+    max-width    : 100vw;
+}
+.bizberg .alignfull.wp-block-cover {
+    margin-left: calc( -100vw / 2 + 100% / 2 );
+    margin-right: calc( -100vw / 2 + 100% / 2 );
+    max-width: 100vw;
+    width: 100vw;
+}
+.bizberg .alignwide.wp-block-cover {
+    margin-left: calc( -95vw / 2 + 100% / 2 );
+    margin-right: calc( -95vw / 2 + 100% / 2 );
+    max-width: 95vw;
+    width: 95vw;
+}
+/* For Block CSS */
+
+.bizberg-container-full .elementor-container{
+    margin: 0 auto;
+    max-width: 100% !important;
+}
+
+.bizberg_wpcf7 .wpcf7 p {
+    color: #fff;
+}
+.wpcf7 label {
+    width: 100%;
+}
+.bizberg_wpcf7 .wpcf7 textarea {
+    background: #fff;
+}
+.wpcf7 textarea{
+    border: 1px solid #f1f1f1;
+}
+.bizberg_wpcf7 div.wpcf7-validation-errors, 
+.bizberg_wpcf7 div.wpcf7-acceptance-missing, 
+.bizberg_wpcf7 div.wpcf7-mail-sent-ng, 
+.bizberg_wpcf7 div.wpcf7-aborted {
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 13px;
+    margin-top: 15px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+input.wpcf7-form-control.wpcf7-submit {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    padding: 12px 22px;
 }
